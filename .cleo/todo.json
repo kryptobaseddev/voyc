@@ -1,0 +1,926 @@
+{
+  "$schema": "./schemas/todo.schema.json",
+  "version": "2.9.0",
+  "project": {
+    "name": "voyc",
+    "currentPhase": "setup",
+    "phases": {
+      "setup": {
+        "order": 1,
+        "name": "Setup & Foundation",
+        "description": "Initial project setup, dependencies, and configuration",
+        "status": "active",
+        "startedAt": "2026-01-28T01:10:57Z",
+        "completedAt": null
+      },
+      "core": {
+        "order": 2,
+        "name": "Core Development",
+        "description": "Build core functionality and features",
+        "status": "pending",
+        "startedAt": null,
+        "completedAt": null
+      },
+      "testing": {
+        "order": 3,
+        "name": "Testing & Validation",
+        "description": "Comprehensive testing, validation, and quality assurance",
+        "status": "pending",
+        "startedAt": null,
+        "completedAt": null
+      },
+      "polish": {
+        "order": 4,
+        "name": "Polish & Refinement",
+        "description": "UX improvements, optimization, and release preparation",
+        "status": "pending",
+        "startedAt": null,
+        "completedAt": null
+      },
+      "maintenance": {
+        "order": 5,
+        "name": "Maintenance",
+        "description": "Bug fixes, updates, and ongoing support",
+        "status": "pending",
+        "startedAt": null,
+        "completedAt": null
+      }
+    }
+  },
+  "lastUpdated": "2026-01-28T07:58:10Z",
+  "_meta": {
+    "schemaVersion": "2.9.0",
+    "checksum": "140ee2243e3b1cf5",
+    "configVersion": "2.6.0",
+    "lastSessionId": null,
+    "activeSession": null,
+    "generation": 45,
+    "lastModified": "2026-01-28T05:00:24Z",
+    "multiSessionEnabled": true,
+    "activeSessionCount": 0
+  },
+  "focus": {
+    "currentTask": null,
+    "currentPhase": "setup",
+    "blockedUntil": null,
+    "sessionNote": null,
+    "nextAction": null
+  },
+  "tasks": [
+    {
+      "id": "T001",
+      "title": "Build application from claudedocs/prd.md",
+      "status": "pending",
+      "priority": "medium",
+      "type": "epic",
+      "parentId": null,
+      "createdAt": "2026-01-28T04:15:32Z",
+      "updatedAt": "2026-01-28T04:16:24Z",
+      "size": "large",
+      "position": 1,
+      "positionVersion": 0,
+      "phase": "setup"
+    },
+    {
+      "id": "T002",
+      "title": "Research PRD requirements and architecture",
+      "status": "done",
+      "priority": "medium",
+      "type": "task",
+      "parentId": "T001",
+      "createdAt": "2026-01-28T04:15:51Z",
+      "updatedAt": "2026-01-28T04:18:36Z",
+      "size": "medium",
+      "position": 1,
+      "positionVersion": 0,
+      "phase": "setup",
+      "acceptance": [
+        "Summarize functional requirements",
+        "Extract architecture decisions",
+        "Identify gaps/questions"
+      ],
+      "completedAt": "2026-01-28T04:18:36Z",
+      "notes": [
+        "[COMPLETED 2026-01-28T04:18:36Z] Research completed via codex-subagent T002R. Summary: GNOME Wayland dictation app requirements; architecture: TypeScript + GJS + GTK4 with modules for UI/hotkeys/audio/STT/injection/config/startup; open questions around OpenAI STT endpoint, ydotool permissions, terminal detection, notifications, config migration. See .codex-subagents/T002R.last.json"
+      ],
+      "verification": {
+        "passed": false,
+        "round": 0,
+        "gates": {
+          "implemented": true,
+          "testsPassed": null,
+          "qaPassed": null,
+          "cleanupDone": null,
+          "securityPassed": null,
+          "documented": null
+        },
+        "lastAgent": "coder",
+        "lastUpdated": "2026-01-28T04:18:36Z",
+        "failureLog": []
+      }
+    },
+    {
+      "id": "T003",
+      "title": "Consensus on architecture decisions",
+      "status": "done",
+      "priority": "medium",
+      "type": "task",
+      "parentId": "T001",
+      "createdAt": "2026-01-28T04:15:55Z",
+      "updatedAt": "2026-01-28T04:28:00Z",
+      "size": "small",
+      "position": 2,
+      "positionVersion": 0,
+      "phase": "setup",
+      "acceptance": [
+        "Confirm architecture decisions with HITL",
+        "Resolve open questions from research"
+      ],
+      "depends": [
+        "T002"
+      ],
+      "completedAt": "2026-01-28T04:28:00Z",
+      "notes": [
+        "[COMPLETED 2026-01-28T04:28:00Z] Consensus via codex-subagent T003C. Decision: ElevenLabs primary STT, multi-provider config, Baseten-hosted LLM post-processing; Wayland/GJS/GTK4 architecture per PRD. Open questions recorded in .codex-subagents/T003C.last.json"
+      ],
+      "verification": {
+        "passed": false,
+        "round": 0,
+        "gates": {
+          "implemented": true,
+          "testsPassed": null,
+          "qaPassed": null,
+          "cleanupDone": null,
+          "securityPassed": null,
+          "documented": null
+        },
+        "lastAgent": "coder",
+        "lastUpdated": "2026-01-28T04:28:00Z",
+        "failureLog": []
+      }
+    },
+    {
+      "id": "T004",
+      "title": "Specification of requirements",
+      "status": "done",
+      "priority": "medium",
+      "type": "task",
+      "parentId": "T001",
+      "createdAt": "2026-01-28T04:15:58Z",
+      "updatedAt": "2026-01-28T04:33:19Z",
+      "size": "medium",
+      "position": 3,
+      "positionVersion": 0,
+      "phase": "setup",
+      "acceptance": [
+        "Produce RFC2119-style requirements",
+        "Define acceptance criteria for major features"
+      ],
+      "depends": [
+        "T003"
+      ],
+      "completedAt": "2026-01-28T04:33:19Z",
+      "notes": [
+        "[COMPLETED 2026-01-28T04:33:19Z] Specification written by codex-subagent T004S. Output: docs/specs/VOICE_DICTATION_APP.md. See .codex-subagents/T004S.last.json"
+      ],
+      "verification": {
+        "passed": false,
+        "round": 0,
+        "gates": {
+          "implemented": true,
+          "testsPassed": null,
+          "qaPassed": null,
+          "cleanupDone": null,
+          "securityPassed": null,
+          "documented": null
+        },
+        "lastAgent": "coder",
+        "lastUpdated": "2026-01-28T04:33:19Z",
+        "failureLog": []
+      }
+    },
+    {
+      "id": "T005",
+      "title": "Decomposition into implementation tasks",
+      "status": "done",
+      "priority": "medium",
+      "type": "task",
+      "parentId": "T001",
+      "createdAt": "2026-01-28T04:16:01Z",
+      "updatedAt": "2026-01-28T04:41:11Z",
+      "size": "medium",
+      "position": 4,
+      "positionVersion": 0,
+      "phase": "setup",
+      "acceptance": [
+        "Task tree with dependencies",
+        "Wave-based execution order",
+        "Identify parallelizable tasks"
+      ],
+      "depends": [
+        "T004"
+      ],
+      "completedAt": "2026-01-28T04:41:11Z",
+      "notes": [
+        "[COMPLETED 2026-01-28T04:41:11Z] Decomposition via codex-subagent T005D4. Added implementation tasks under T001. See .codex-subagents/T005D4.last.json"
+      ],
+      "verification": {
+        "passed": false,
+        "round": 0,
+        "gates": {
+          "implemented": true,
+          "testsPassed": null,
+          "qaPassed": null,
+          "cleanupDone": null,
+          "securityPassed": null,
+          "documented": null
+        },
+        "lastAgent": "coder",
+        "lastUpdated": "2026-01-28T04:41:11Z",
+        "failureLog": []
+      }
+    },
+    {
+      "id": "T006",
+      "title": "Build TS+GJS+GTK4 tooling",
+      "status": "done",
+      "priority": "medium",
+      "type": "task",
+      "parentId": "T001",
+      "createdAt": "2026-01-28T04:40:47Z",
+      "updatedAt": "2026-01-28T05:20:30Z",
+      "size": "medium",
+      "position": 5,
+      "positionVersion": 0,
+      "phase": "setup",
+      "acceptance": [
+        "ts-for-gir bindings generated",
+        "Build script outputs JS bundle"
+      ],
+      "completedAt": "2026-01-28T05:20:30Z",
+      "notes": [
+        "[COMPLETED 2026-01-28T05:20:30Z] TypeScript + GJS + GTK4 build toolchain complete with ts-for-gir bindings, esbuild bundling, and working GJS execution"
+      ],
+      "verification": {
+        "passed": false,
+        "round": 0,
+        "gates": {
+          "implemented": true,
+          "testsPassed": null,
+          "qaPassed": null,
+          "cleanupDone": null,
+          "securityPassed": null,
+          "documented": null
+        },
+        "lastAgent": "coder",
+        "lastUpdated": "2026-01-28T05:20:31Z",
+        "failureLog": []
+      }
+    },
+    {
+      "id": "T007",
+      "title": "Config system + XDG paths + provider schema",
+      "status": "done",
+      "priority": "medium",
+      "type": "task",
+      "parentId": "T001",
+      "createdAt": "2026-01-28T04:40:47Z",
+      "updatedAt": "2026-01-28T05:31:35Z",
+      "size": "medium",
+      "position": 6,
+      "positionVersion": 0,
+      "phase": "setup",
+      "acceptance": [
+        "Config stored in XDG path",
+        "Provider keys and endpoints configurable"
+      ],
+      "depends": [
+        "T006"
+      ],
+      "completedAt": "2026-01-28T05:31:35Z",
+      "notes": [
+        "[COMPLETED 2026-01-28T05:31:35Z] Config system with XDG paths, provider schema, GObject signals, and full test coverage"
+      ],
+      "verification": {
+        "passed": false,
+        "round": 0,
+        "gates": {
+          "implemented": true,
+          "testsPassed": null,
+          "qaPassed": null,
+          "cleanupDone": null,
+          "securityPassed": null,
+          "documented": null
+        },
+        "lastAgent": "coder",
+        "lastUpdated": "2026-01-28T05:31:35Z",
+        "failureLog": []
+      }
+    },
+    {
+      "id": "T008",
+      "title": "PipeWire audio capture module",
+      "status": "done",
+      "priority": "medium",
+      "type": "task",
+      "parentId": "T001",
+      "createdAt": "2026-01-28T04:40:48Z",
+      "updatedAt": "2026-01-28T05:55:04Z",
+      "size": "medium",
+      "position": 7,
+      "positionVersion": 0,
+      "phase": "core",
+      "acceptance": [
+        "Mic capture via PipeWire works",
+        "16-bit mono PCM in-memory"
+      ],
+      "depends": [
+        "T006",
+        "T007"
+      ],
+      "completedAt": "2026-01-28T05:55:04Z",
+      "notes": [
+        "[COMPLETED 2026-01-28T05:55:04Z] PipeWire audio capture with GStreamer, WAV buffer, RMS silence detection"
+      ],
+      "verification": {
+        "passed": false,
+        "round": 0,
+        "gates": {
+          "implemented": true,
+          "testsPassed": null,
+          "qaPassed": null,
+          "cleanupDone": null,
+          "securityPassed": null,
+          "documented": null
+        },
+        "lastAgent": "coder",
+        "lastUpdated": "2026-01-28T05:55:04Z",
+        "failureLog": []
+      }
+    },
+    {
+      "id": "T009",
+      "title": "Portal global hotkeys",
+      "status": "done",
+      "priority": "medium",
+      "type": "task",
+      "parentId": "T001",
+      "createdAt": "2026-01-28T04:40:48Z",
+      "updatedAt": "2026-01-28T05:31:35Z",
+      "size": "small",
+      "position": 8,
+      "positionVersion": 0,
+      "phase": "core",
+      "acceptance": [
+        "Global hotkey registered via xdg-desktop-portal",
+        "Hotkey triggers start/stop"
+      ],
+      "depends": [
+        "T006"
+      ],
+      "completedAt": "2026-01-28T05:31:35Z",
+      "notes": [
+        "[COMPLETED 2026-01-28T05:31:35Z] Portal global hotkeys via xdg-desktop-portal with D-Bus bindings and graceful fallback"
+      ],
+      "verification": {
+        "passed": false,
+        "round": 0,
+        "gates": {
+          "implemented": true,
+          "testsPassed": null,
+          "qaPassed": null,
+          "cleanupDone": null,
+          "securityPassed": null,
+          "documented": null
+        },
+        "lastAgent": "coder",
+        "lastUpdated": "2026-01-28T05:31:35Z",
+        "failureLog": []
+      }
+    },
+    {
+      "id": "T010",
+      "title": "Tray UI + GTK4 settings window",
+      "status": "done",
+      "priority": "medium",
+      "type": "task",
+      "parentId": "T001",
+      "createdAt": "2026-01-28T04:40:48Z",
+      "updatedAt": "2026-01-28T05:55:05Z",
+      "size": "medium",
+      "position": 9,
+      "positionVersion": 0,
+      "phase": "core",
+      "acceptance": [
+        "Tray shows state + controls",
+        "Settings UI updates config"
+      ],
+      "depends": [
+        "T006",
+        "T007"
+      ],
+      "completedAt": "2026-01-28T05:55:05Z",
+      "notes": [
+        "[COMPLETED 2026-01-28T05:55:05Z] Tray UI with AppIndicator, GTK4 settings window with 4 tabs"
+      ],
+      "verification": {
+        "passed": false,
+        "round": 0,
+        "gates": {
+          "implemented": true,
+          "testsPassed": null,
+          "qaPassed": null,
+          "cleanupDone": null,
+          "securityPassed": null,
+          "documented": null
+        },
+        "lastAgent": "coder",
+        "lastUpdated": "2026-01-28T05:55:05Z",
+        "failureLog": []
+      }
+    },
+    {
+      "id": "T011",
+      "title": "STT provider abstraction + ElevenLabs REST",
+      "status": "done",
+      "priority": "medium",
+      "type": "task",
+      "parentId": "T001",
+      "createdAt": "2026-01-28T04:40:49Z",
+      "updatedAt": "2026-01-28T06:03:20Z",
+      "size": "medium",
+      "position": 10,
+      "positionVersion": 0,
+      "phase": "core",
+      "acceptance": [
+        "ElevenLabs is default provider",
+        "POST /v1/speech-to-text implemented with xi-api-key",
+        "OpenAI STT provider supported via config"
+      ],
+      "depends": [
+        "T006",
+        "T007",
+        "T008"
+      ],
+      "completedAt": "2026-01-28T06:03:20Z",
+      "notes": [
+        "[COMPLETED 2026-01-28T06:03:20Z] STT provider abstraction with ElevenLabs REST and OpenAI implementations"
+      ],
+      "verification": {
+        "passed": false,
+        "round": 0,
+        "gates": {
+          "implemented": true,
+          "testsPassed": null,
+          "qaPassed": null,
+          "cleanupDone": null,
+          "securityPassed": null,
+          "documented": null
+        },
+        "lastAgent": "coder",
+        "lastUpdated": "2026-01-28T06:03:20Z",
+        "failureLog": []
+      }
+    },
+    {
+      "id": "T012",
+      "title": "ElevenLabs realtime STT (WebSocket)",
+      "status": "done",
+      "priority": "medium",
+      "type": "task",
+      "parentId": "T001",
+      "createdAt": "2026-01-28T04:40:49Z",
+      "updatedAt": "2026-01-28T06:16:55Z",
+      "size": "medium",
+      "position": 11,
+      "positionVersion": 0,
+      "phase": "core",
+      "acceptance": [
+        "WebSocket STT connects to wss://api.elevenlabs.io/v1/speech-to-text/realtime",
+        "audio_format + VAD options configurable",
+        "Realtime mode uses ElevenLabs Scribe v2 Realtime model"
+      ],
+      "depends": [
+        "T011"
+      ],
+      "completedAt": "2026-01-28T06:16:55Z",
+      "notes": [
+        "[COMPLETED 2026-01-28T06:16:55Z] ElevenLabs realtime STT via WebSocket with streaming audio buffer"
+      ],
+      "verification": {
+        "passed": false,
+        "round": 0,
+        "gates": {
+          "implemented": true,
+          "testsPassed": null,
+          "qaPassed": null,
+          "cleanupDone": null,
+          "securityPassed": null,
+          "documented": null
+        },
+        "lastAgent": "coder",
+        "lastUpdated": "2026-01-28T06:16:55Z",
+        "failureLog": []
+      }
+    },
+    {
+      "id": "T013",
+      "title": "Post-processing pipeline (Baseten LLaMA + chain)",
+      "status": "done",
+      "priority": "medium",
+      "type": "task",
+      "parentId": "T001",
+      "createdAt": "2026-01-28T04:40:50Z",
+      "updatedAt": "2026-01-28T06:16:55Z",
+      "size": "medium",
+      "position": 12,
+      "positionVersion": 0,
+      "phase": "core",
+      "acceptance": [
+        "Baseten LLaMA default configured",
+        "Pipeline supports multi-provider ordering"
+      ],
+      "depends": [
+        "T011",
+        "T007"
+      ],
+      "completedAt": "2026-01-28T06:16:55Z",
+      "notes": [
+        "[COMPLETED 2026-01-28T06:16:55Z] Post-processing pipeline with Baseten LLaMA, multi-stage chain support"
+      ],
+      "verification": {
+        "passed": false,
+        "round": 0,
+        "gates": {
+          "implemented": true,
+          "testsPassed": null,
+          "qaPassed": null,
+          "cleanupDone": null,
+          "securityPassed": null,
+          "documented": null
+        },
+        "lastAgent": "coder",
+        "lastUpdated": "2026-01-28T06:16:56Z",
+        "failureLog": []
+      }
+    },
+    {
+      "id": "T014",
+      "title": "Wayland-safe text injection",
+      "status": "done",
+      "priority": "medium",
+      "type": "task",
+      "parentId": "T001",
+      "createdAt": "2026-01-28T04:40:50Z",
+      "updatedAt": "2026-01-28T05:31:36Z",
+      "size": "medium",
+      "position": 13,
+      "positionVersion": 0,
+      "phase": "core",
+      "acceptance": [
+        "Injection works on Wayland",
+        "Does not rely on X11-only tools"
+      ],
+      "depends": [
+        "T006"
+      ],
+      "completedAt": "2026-01-28T05:31:36Z",
+      "notes": [
+        "[COMPLETED 2026-01-28T05:31:36Z] Wayland-safe text injection with clipboard, terminal detection, ydotool/wtype support"
+      ],
+      "verification": {
+        "passed": false,
+        "round": 0,
+        "gates": {
+          "implemented": true,
+          "testsPassed": null,
+          "qaPassed": null,
+          "cleanupDone": null,
+          "securityPassed": null,
+          "documented": null
+        },
+        "lastAgent": "coder",
+        "lastUpdated": "2026-01-28T05:31:36Z",
+        "failureLog": []
+      }
+    },
+    {
+      "id": "T015",
+      "title": "End-to-end dictation orchestration",
+      "status": "done",
+      "priority": "medium",
+      "type": "task",
+      "parentId": "T001",
+      "createdAt": "2026-01-28T04:40:51Z",
+      "updatedAt": "2026-01-28T06:27:20Z",
+      "size": "medium",
+      "position": 14,
+      "positionVersion": 0,
+      "phase": "core",
+      "acceptance": [
+        "Start->capture->STT->post-process->inject flow works",
+        "State machine handles errors"
+      ],
+      "depends": [
+        "T008",
+        "T009",
+        "T011",
+        "T013",
+        "T014"
+      ],
+      "completedAt": "2026-01-28T06:27:20Z",
+      "notes": [
+        "[COMPLETED 2026-01-28T06:27:20Z] End-to-end dictation orchestration with state machine, full module integration"
+      ],
+      "verification": {
+        "passed": false,
+        "round": 0,
+        "gates": {
+          "implemented": true,
+          "testsPassed": null,
+          "qaPassed": null,
+          "cleanupDone": null,
+          "securityPassed": null,
+          "documented": null
+        },
+        "lastAgent": "coder",
+        "lastUpdated": "2026-01-28T06:27:21Z",
+        "failureLog": []
+      }
+    },
+    {
+      "id": "T016",
+      "title": "Logging/metrics + privacy guards",
+      "status": "done",
+      "priority": "medium",
+      "type": "task",
+      "parentId": "T001",
+      "createdAt": "2026-01-28T04:40:51Z",
+      "updatedAt": "2026-01-28T05:55:06Z",
+      "size": "small",
+      "position": 15,
+      "positionVersion": 0,
+      "phase": "core",
+      "acceptance": [
+        "Latency timestamps recorded",
+        "No raw audio logged by default"
+      ],
+      "depends": [
+        "T007"
+      ],
+      "completedAt": "2026-01-28T05:55:06Z",
+      "notes": [
+        "[COMPLETED 2026-01-28T05:55:06Z] Structured logging, latency metrics, privacy guards with redaction"
+      ],
+      "verification": {
+        "passed": false,
+        "round": 0,
+        "gates": {
+          "implemented": true,
+          "testsPassed": null,
+          "qaPassed": null,
+          "cleanupDone": null,
+          "securityPassed": null,
+          "documented": null
+        },
+        "lastAgent": "coder",
+        "lastUpdated": "2026-01-28T05:55:06Z",
+        "failureLog": []
+      }
+    },
+    {
+      "id": "T017",
+      "title": "Autostart + background lifecycle",
+      "status": "done",
+      "priority": "medium",
+      "type": "task",
+      "parentId": "T001",
+      "createdAt": "2026-01-28T04:40:52Z",
+      "updatedAt": "2026-01-28T06:03:21Z",
+      "size": "small",
+      "position": 16,
+      "positionVersion": 0,
+      "phase": "core",
+      "acceptance": [
+        "App can auto-start via XDG autostart",
+        "Background mode stable"
+      ],
+      "depends": [
+        "T010"
+      ],
+      "completedAt": "2026-01-28T06:03:21Z",
+      "notes": [
+        "[COMPLETED 2026-01-28T06:03:21Z] XDG autostart with desktop entry, DBus single instance, lifecycle management"
+      ],
+      "verification": {
+        "passed": false,
+        "round": 0,
+        "gates": {
+          "implemented": true,
+          "testsPassed": null,
+          "qaPassed": null,
+          "cleanupDone": null,
+          "securityPassed": null,
+          "documented": null
+        },
+        "lastAgent": "coder",
+        "lastUpdated": "2026-01-28T06:03:21Z",
+        "failureLog": []
+      }
+    },
+    {
+      "id": "T018",
+      "title": "Test plan + smoke tests",
+      "status": "done",
+      "priority": "medium",
+      "type": "task",
+      "parentId": "T001",
+      "createdAt": "2026-01-28T04:40:52Z",
+      "updatedAt": "2026-01-28T07:11:23Z",
+      "size": "medium",
+      "position": 17,
+      "positionVersion": 0,
+      "phase": "testing",
+      "acceptance": [
+        "Smoke tests cover dictation flow",
+        "Failure cases documented"
+      ],
+      "depends": [
+        "T015"
+      ],
+      "completedAt": "2026-01-28T07:11:23Z",
+      "notes": [
+        "[COMPLETED 2026-01-28T07:11:23Z] Test plan document, build/config/integration smoke tests, all passing"
+      ],
+      "verification": {
+        "passed": false,
+        "round": 0,
+        "gates": {
+          "implemented": true,
+          "testsPassed": null,
+          "qaPassed": null,
+          "cleanupDone": null,
+          "securityPassed": null,
+          "documented": null
+        },
+        "lastAgent": "coder",
+        "lastUpdated": "2026-01-28T07:11:23Z",
+        "failureLog": []
+      }
+    },
+    {
+      "id": "T019",
+      "title": "Update spec with Baseten latency + smart formatting",
+      "status": "done",
+      "priority": "medium",
+      "type": "task",
+      "parentId": "T001",
+      "createdAt": "2026-01-28T04:42:54Z",
+      "updatedAt": "2026-01-28T04:58:50Z",
+      "size": "small",
+      "position": 18,
+      "positionVersion": 0,
+      "phase": "setup",
+      "acceptance": [
+        "Spec includes latency target (<250ms) and Baseten details",
+        "Spec includes smart formatting/context-aware edit requirements",
+        "Spec states batch STT default (Scribe v2)",
+        "realtime optional/experimental",
+        "Spec documents OpenAI STT provider support"
+      ],
+      "depends": [
+        "T004"
+      ],
+      "completedAt": "2026-01-28T04:58:50Z",
+      "notes": [
+        "[COMPLETED 2026-01-28T04:57:35Z] Updated spec for Scribe v2 defaults, OpenAI support, Baseten latency target, and smart formatting requirements.",
+        "[COMPLETED 2026-01-28T04:58:50Z] Spec updated with batch default Scribe v2, realtime optional Scribe v2 Realtime, OpenAI STT support, Baseten latency <250ms, smart formatting. File: docs/specs/VOICE_DICTATION_APP.md"
+      ],
+      "verification": {
+        "passed": false,
+        "round": 0,
+        "gates": {
+          "implemented": true,
+          "testsPassed": null,
+          "qaPassed": null,
+          "cleanupDone": null,
+          "securityPassed": null,
+          "documented": null
+        },
+        "lastAgent": "coder",
+        "lastUpdated": "2026-01-28T04:58:50Z",
+        "failureLog": []
+      }
+    },
+    {
+      "id": "T020",
+      "title": "Application Legitimization & Release Engineering",
+      "status": "pending",
+      "priority": "high",
+      "type": "epic",
+      "parentId": null,
+      "createdAt": "2026-01-28T07:58:09Z",
+      "updatedAt": "2026-01-28T07:58:09Z",
+      "size": "large",
+      "position": 2,
+      "positionVersion": 0,
+      "phase": "polish",
+      "description": "Establish git repo, packaging (Flatpak/AppImage), versioning, and update infrastructure",
+      "labels": [
+        "ci-cd",
+        "distribution",
+        "git",
+        "release"
+      ],
+      "acceptance": [
+        "Versioning and update checks implemented"
+      ],
+      "notes": [
+        "2026-01-28 07:58:09 UTC: Aligns with RCSD-IVTR protocols"
+      ]
+    },
+    {
+      "id": "T021",
+      "title": "Initialize Git & Semantic Versioning",
+      "status": "pending",
+      "priority": "high",
+      "type": "task",
+      "parentId": "T020",
+      "createdAt": "2026-01-28T07:58:09Z",
+      "updatedAt": "2026-01-28T07:58:09Z",
+      "size": "small",
+      "position": 1,
+      "positionVersion": 0,
+      "phase": "polish",
+      "description": "Initialize git repo, .gitignore, and establish semantic versioning source of truth",
+      "acceptance": [
+        "package.json version matches logic"
+      ]
+    },
+    {
+      "id": "T022",
+      "title": "Research Flatpak & AppImage Pipelines",
+      "status": "pending",
+      "priority": "medium",
+      "type": "task",
+      "parentId": "T020",
+      "createdAt": "2026-01-28T07:58:10Z",
+      "updatedAt": "2026-01-28T07:58:10Z",
+      "size": "medium",
+      "position": 2,
+      "positionVersion": 0,
+      "phase": "polish",
+      "description": "Investigate modern GTK4 Flatpak manifests and AppImageBuilder configs",
+      "acceptance": [
+        "AppImage tools identified"
+      ],
+      "depends": [
+        "T021"
+      ]
+    },
+    {
+      "id": "T023",
+      "title": "Implement In-App Version Check",
+      "status": "pending",
+      "priority": "medium",
+      "type": "task",
+      "parentId": "T020",
+      "createdAt": "2026-01-28T07:58:10Z",
+      "updatedAt": "2026-01-28T07:58:10Z",
+      "size": "medium",
+      "position": 3,
+      "positionVersion": 0,
+      "phase": "polish",
+      "description": "Add update check logic to main process using GitHub Releases API (or similar)",
+      "acceptance": [
+        "UI notifies user of available update"
+      ],
+      "depends": [
+        "T021"
+      ]
+    },
+    {
+      "id": "T024",
+      "title": "Create CI/CD Release Pipeline",
+      "status": "pending",
+      "priority": "high",
+      "type": "task",
+      "parentId": "T020",
+      "createdAt": "2026-01-28T07:58:10Z",
+      "updatedAt": "2026-01-28T07:58:10Z",
+      "size": "large",
+      "position": 4,
+      "positionVersion": 0,
+      "phase": "polish",
+      "description": "GitHub Actions workflow to build and release Flatpak/AppImage assets",
+      "acceptance": [
+        "Assets attached to GitHub Release"
+      ],
+      "depends": [
+        "T022",
+        "T023"
+      ]
+    }
+  ],
+  "labels": {}
+}

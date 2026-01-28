@@ -1,0 +1,28 @@
+{
+  "compilerOptions": {
+    "target": "ES2020",
+    "module": "ESNext",
+    "moduleResolution": "node",
+    "lib": ["ES2020"],
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "outDir": "./dist",
+    "rootDir": ".",
+    "declaration": false,
+    "sourceMap": false,
+    "noEmitOnError": false,
+    "removeComments": false
+  },
+  "include": [
+    "tests/**/*",
+    "types/**/*",
+    "node_modules/@girs/**/*"
+  ],
+  "exclude": [
+    "node_modules/@girs/**/package.json",
+    "dist",
+    "src"
+  ]
+}

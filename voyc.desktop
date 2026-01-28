@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Name=Voyc
+Comment=Voice dictation for Linux
+Exec=/usr/bin/gjs /path/to/dist/main.js
+Icon=voyc
+Terminal=false
+X-GNOME-Autostart-enabled=true
+StartupNotify=false
+Categories=Utility;Audio;
+Keywords=dictation;voice;speech;stt;

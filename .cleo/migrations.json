@@ -1,0 +1,8 @@
+{
+  "$schema": "../schemas/migrations.schema.json",
+  "_meta": {
+    "schemaVersion": "1.0.0",
+    "lastChecked": null
+  },
+  "appliedMigrations": []
+}

@@ -1,0 +1,35 @@
+{
+  "provider": "elevenlabs",
+  "elevenlabsApiKey": "",
+  "elevenlabsEndpoint": "https://api.elevenlabs.io/v1",
+  "elevenlabsModel": "scribe_v2",
+  "elevenlabsRealtime": false,
+  "openaiApiKey": "",
+  "openaiEndpoint": "https://api.openai.com/v1",
+  "openaiModel": "whisper-1",
+  "basetenApiKey": "",
+  "basetenEndpoint": "",
+  "basetenModel": "llama-3.1-8b",
+  "silenceTimeout": 30,
+  "autostart": true,
+  "enablePostProcessing": true,
+  "postProcessProvider": "baseten",
+  "postProcessChain": ["baseten"],
+  "audioDevice": null,
+  "logLevel": "info",
+  "logTranscripts": false,
+  "retainAudio": false,
+  "hotkeys": {
+    "toggleDictation": "<Super><Shift>V",
+    "pasteAsTerminal": "<Super><Shift>T"
+  },
+  "latencyThresholds": {
+    "basetenPostProcessMs": 250,
+    "totalLatencyMs": 3000,
+    "sttLatencyMs": 2000
+  },
+  "privacy": {
+    "redactLogs": true,
+    "showDataPolicy": true
+  }
+}

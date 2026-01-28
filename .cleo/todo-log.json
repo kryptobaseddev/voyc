@@ -1,0 +1,1183 @@
+{
+  "$schema": "./schemas/log.schema.json",
+  "version": "2.4.0",
+  "project": "voyc",
+  "_meta": {
+    "schemaVersion": "2.4.0",
+    "totalEntries": 56,
+    "firstEntry": "2026-01-28T01:10:57Z",
+    "lastEntry": "2026-01-28T07:11:23Z",
+    "entriesPruned": 0
+  },
+  "entries": [
+    {
+      "id": "log_cbbb6b12dd81",
+      "timestamp": "2026-01-28T01:10:57Z",
+      "sessionId": null,
+      "action": "system_initialized",
+      "actor": "system",
+      "taskId": null,
+      "before": null,
+      "after": null,
+      "details": "CLEO system initialized for project: voyc"
+    },
+    {
+      "id": "log-1769573733-b3e4ef",
+      "timestamp": "2026-01-28T04:15:33Z",
+      "action": "task_created",
+      "taskId": "T001",
+      "actor": "system",
+      "details": {
+        "title": "Build application from claudedocs/prd.md",
+        "status": "pending",
+        "priority": "medium"
+      },
+      "before": null,
+      "after": {
+        "title": "Build application from claudedocs/prd.md",
+        "status": "pending",
+        "priority": "medium"
+      }
+    },
+    {
+      "id": "log_91c5dbdabbf9",
+      "timestamp": "2026-01-28T04:15:45Z",
+      "sessionId": "session_20260127_201545_cc61ac",
+      "action": "session_start",
+      "actor": "system",
+      "taskId": "T001",
+      "before": null,
+      "after": null,
+      "details": "Multi-session started",
+      "scope": {
+        "type": "epic",
+        "rootTaskId": "T001"
+      }
+    },
+    {
+      "id": "log-1769573752-e59263",
+      "timestamp": "2026-01-28T04:15:52Z",
+      "action": "task_created",
+      "taskId": "T002",
+      "actor": "system",
+      "details": {
+        "title": "Research PRD requirements and architecture",
+        "status": "pending",
+        "priority": "medium"
+      },
+      "before": null,
+      "after": {
+        "title": "Research PRD requirements and architecture",
+        "status": "pending",
+        "priority": "medium"
+      }
+    },
+    {
+      "id": "log-1769573755-555876",
+      "timestamp": "2026-01-28T04:15:55Z",
+      "action": "task_created",
+      "taskId": "T003",
+      "actor": "system",
+      "details": {
+        "title": "Consensus on architecture decisions",
+        "status": "pending",
+        "priority": "medium"
+      },
+      "before": null,
+      "after": {
+        "title": "Consensus on architecture decisions",
+        "status": "pending",
+        "priority": "medium"
+      }
+    },
+    {
+      "id": "log-1769573758-006f5e",
+      "timestamp": "2026-01-28T04:15:58Z",
+      "action": "task_created",
+      "taskId": "T004",
+      "actor": "system",
+      "details": {
+        "title": "Specification of requirements",
+        "status": "pending",
+        "priority": "medium"
+      },
+      "before": null,
+      "after": {
+        "title": "Specification of requirements",
+        "status": "pending",
+        "priority": "medium"
+      }
+    },
+    {
+      "id": "log-1769573761-04f65f",
+      "timestamp": "2026-01-28T04:16:01Z",
+      "action": "task_created",
+      "taskId": "T005",
+      "actor": "system",
+      "details": {
+        "title": "Decomposition into implementation tasks",
+        "status": "pending",
+        "priority": "medium"
+      },
+      "before": null,
+      "after": {
+        "title": "Decomposition into implementation tasks",
+        "status": "pending",
+        "priority": "medium"
+      }
+    },
+    {
+      "id": "log_bbb9f863c8bd",
+      "timestamp": "2026-01-28T04:16:24Z",
+      "sessionId": "session_20260127_201545_cc61ac",
+      "action": "session_end",
+      "actor": "system",
+      "taskId": null,
+      "before": null,
+      "after": null,
+      "details": {
+        "note": "Restarting session to include newly added tasks"
+      }
+    },
+    {
+      "id": "log_ec07ea92cd80",
+      "timestamp": "2026-01-28T04:16:27Z",
+      "sessionId": "session_20260127_201627_85bae9",
+      "action": "session_start",
+      "actor": "system",
+      "taskId": "T002",
+      "before": null,
+      "after": null,
+      "details": "Multi-session started",
+      "scope": {
+        "type": "epic",
+        "rootTaskId": "T001"
+      }
+    },
+    {
+      "id": "log_e5eec87e64da",
+      "timestamp": "2026-01-28T04:18:36Z",
+      "sessionId": null,
+      "action": "status_changed",
+      "actor": "system",
+      "taskId": "T002",
+      "before": {
+        "status": "active",
+        "completedAt": null
+      },
+      "after": {
+        "status": "done",
+        "completedAt": "2026-01-28T04:18:36Z"
+      },
+      "details": {
+        "field": "status",
+        "operation": "complete"
+      }
+    },
+    {
+      "id": "log_5939bcff7828",
+      "timestamp": "2026-01-28T04:26:44Z",
+      "sessionId": null,
+      "action": "session_focus_changed",
+      "actor": "claude",
+      "taskId": null,
+      "before": {
+        "currentTask": "T002"
+      },
+      "after": {
+        "currentTask": "T003"
+      },
+      "details": null
+    },
+    {
+      "id": "log_c4c4f392b947",
+      "timestamp": "2026-01-28T04:28:01Z",
+      "sessionId": null,
+      "action": "status_changed",
+      "actor": "system",
+      "taskId": "T003",
+      "before": {
+        "status": "active",
+        "completedAt": null
+      },
+      "after": {
+        "status": "done",
+        "completedAt": "2026-01-28T04:28:00Z"
+      },
+      "details": {
+        "field": "status",
+        "operation": "complete"
+      }
+    },
+    {
+      "id": "log_0707013009c2",
+      "timestamp": "2026-01-28T04:28:10Z",
+      "sessionId": null,
+      "action": "session_focus_changed",
+      "actor": "claude",
+      "taskId": null,
+      "before": {
+        "currentTask": "T003"
+      },
+      "after": {
+        "currentTask": "T004"
+      },
+      "details": null
+    },
+    {
+      "id": "log_81cfd026b934",
+      "timestamp": "2026-01-28T04:33:19Z",
+      "sessionId": null,
+      "action": "status_changed",
+      "actor": "system",
+      "taskId": "T004",
+      "before": {
+        "status": "active",
+        "completedAt": null
+      },
+      "after": {
+        "status": "done",
+        "completedAt": "2026-01-28T04:33:19Z"
+      },
+      "details": {
+        "field": "status",
+        "operation": "complete"
+      }
+    },
+    {
+      "id": "log_a2e4e2265114",
+      "timestamp": "2026-01-28T04:33:24Z",
+      "sessionId": null,
+      "action": "session_focus_changed",
+      "actor": "claude",
+      "taskId": null,
+      "before": {
+        "currentTask": "T004"
+      },
+      "after": {
+        "currentTask": "T005"
+      },
+      "details": null
+    },
+    {
+      "id": "log_e0cb9f9e6487",
+      "timestamp": "2026-01-28T04:34:23Z",
+      "sessionId": null,
+      "action": "session_focus_changed",
+      "actor": "claude",
+      "taskId": null,
+      "before": {
+        "currentTask": "T005"
+      },
+      "after": {
+        "currentTask": "T005"
+      },
+      "details": null
+    },
+    {
+      "id": "log_dcd28903bc44",
+      "timestamp": "2026-01-28T04:36:42Z",
+      "sessionId": null,
+      "action": "session_focus_changed",
+      "actor": "claude",
+      "taskId": null,
+      "before": {
+        "currentTask": "T005"
+      },
+      "after": {
+        "currentTask": "T005"
+      },
+      "details": null
+    },
+    {
+      "id": "log-1769575247-c872e5",
+      "timestamp": "2026-01-28T04:40:47Z",
+      "action": "task_created",
+      "taskId": "T006",
+      "actor": "system",
+      "details": {
+        "title": "Build TS+GJS+GTK4 tooling",
+        "status": "pending",
+        "priority": "medium"
+      },
+      "before": null,
+      "after": {
+        "title": "Build TS+GJS+GTK4 tooling",
+        "status": "pending",
+        "priority": "medium"
+      }
+    },
+    {
+      "id": "log-1769575247-b4ee0f",
+      "timestamp": "2026-01-28T04:40:47Z",
+      "action": "task_created",
+      "taskId": "T007",
+      "actor": "system",
+      "details": {
+        "title": "Config system + XDG paths + provider schema",
+        "status": "pending",
+        "priority": "medium"
+      },
+      "before": null,
+      "after": {
+        "title": "Config system + XDG paths + provider schema",
+        "status": "pending",
+        "priority": "medium"
+      }
+    },
+    {
+      "id": "log-1769575248-e6e6ef",
+      "timestamp": "2026-01-28T04:40:48Z",
+      "action": "task_created",
+      "taskId": "T008",
+      "actor": "system",
+      "details": {
+        "title": "PipeWire audio capture module",
+        "status": "pending",
+        "priority": "medium"
+      },
+      "before": null,
+      "after": {
+        "title": "PipeWire audio capture module",
+        "status": "pending",
+        "priority": "medium"
+      }
+    },
+    {
+      "id": "log-1769575248-a9da08",
+      "timestamp": "2026-01-28T04:40:48Z",
+      "action": "task_created",
+      "taskId": "T009",
+      "actor": "system",
+      "details": {
+        "title": "Portal global hotkeys",
+        "status": "pending",
+        "priority": "medium"
+      },
+      "before": null,
+      "after": {
+        "title": "Portal global hotkeys",
+        "status": "pending",
+        "priority": "medium"
+      }
+    },
+    {
+      "id": "log-1769575248-1a8736",
+      "timestamp": "2026-01-28T04:40:49Z",
+      "action": "task_created",
+      "taskId": "T010",
+      "actor": "system",
+      "details": {
+        "title": "Tray UI + GTK4 settings window",
+        "status": "pending",
+        "priority": "medium"
+      },
+      "before": null,
+      "after": {
+        "title": "Tray UI + GTK4 settings window",
+        "status": "pending",
+        "priority": "medium"
+      }
+    },
+    {
+      "id": "log-1769575249-b3b194",
+      "timestamp": "2026-01-28T04:40:49Z",
+      "action": "task_created",
+      "taskId": "T011",
+      "actor": "system",
+      "details": {
+        "title": "STT provider abstraction + ElevenLabs REST",
+        "status": "pending",
+        "priority": "medium"
+      },
+      "before": null,
+      "after": {
+        "title": "STT provider abstraction + ElevenLabs REST",
+        "status": "pending",
+        "priority": "medium"
+      }
+    },
+    {
+      "id": "log-1769575249-51163c",
+      "timestamp": "2026-01-28T04:40:49Z",
+      "action": "task_created",
+      "taskId": "T012",
+      "actor": "system",
+      "details": {
+        "title": "ElevenLabs realtime STT (WebSocket)",
+        "status": "pending",
+        "priority": "medium"
+      },
+      "before": null,
+      "after": {
+        "title": "ElevenLabs realtime STT (WebSocket)",
+        "status": "pending",
+        "priority": "medium"
+      }
+    },
+    {
+      "id": "log-1769575250-37ec22",
+      "timestamp": "2026-01-28T04:40:50Z",
+      "action": "task_created",
+      "taskId": "T013",
+      "actor": "system",
+      "details": {
+        "title": "Post-processing pipeline (Baseten LLaMA + chain)",
+        "status": "pending",
+        "priority": "medium"
+      },
+      "before": null,
+      "after": {
+        "title": "Post-processing pipeline (Baseten LLaMA + chain)",
+        "status": "pending",
+        "priority": "medium"
+      }
+    },
+    {
+      "id": "log-1769575250-afee83",
+      "timestamp": "2026-01-28T04:40:50Z",
+      "action": "task_created",
+      "taskId": "T014",
+      "actor": "system",
+      "details": {
+        "title": "Wayland-safe text injection",
+        "status": "pending",
+        "priority": "medium"
+      },
+      "before": null,
+      "after": {
+        "title": "Wayland-safe text injection",
+        "status": "pending",
+        "priority": "medium"
+      }
+    },
+    {
+      "id": "log-1769575251-120771",
+      "timestamp": "2026-01-28T04:40:51Z",
+      "action": "task_created",
+      "taskId": "T015",
+      "actor": "system",
+      "details": {
+        "title": "End-to-end dictation orchestration",
+        "status": "pending",
+        "priority": "medium"
+      },
+      "before": null,
+      "after": {
+        "title": "End-to-end dictation orchestration",
+        "status": "pending",
+        "priority": "medium"
+      }
+    },
+    {
+      "id": "log-1769575251-a7ceaf",
+      "timestamp": "2026-01-28T04:40:51Z",
+      "action": "task_created",
+      "taskId": "T016",
+      "actor": "system",
+      "details": {
+        "title": "Logging/metrics + privacy guards",
+        "status": "pending",
+        "priority": "medium"
+      },
+      "before": null,
+      "after": {
+        "title": "Logging/metrics + privacy guards",
+        "status": "pending",
+        "priority": "medium"
+      }
+    },
+    {
+      "id": "log-1769575252-d44816",
+      "timestamp": "2026-01-28T04:40:52Z",
+      "action": "task_created",
+      "taskId": "T017",
+      "actor": "system",
+      "details": {
+        "title": "Autostart + background lifecycle",
+        "status": "pending",
+        "priority": "medium"
+      },
+      "before": null,
+      "after": {
+        "title": "Autostart + background lifecycle",
+        "status": "pending",
+        "priority": "medium"
+      }
+    },
+    {
+      "id": "log-1769575252-e078e6",
+      "timestamp": "2026-01-28T04:40:52Z",
+      "action": "task_created",
+      "taskId": "T018",
+      "actor": "system",
+      "details": {
+        "title": "Test plan + smoke tests",
+        "status": "pending",
+        "priority": "medium"
+      },
+      "before": null,
+      "after": {
+        "title": "Test plan + smoke tests",
+        "status": "pending",
+        "priority": "medium"
+      }
+    },
+    {
+      "id": "log_1cf0bb476194",
+      "timestamp": "2026-01-28T04:41:11Z",
+      "sessionId": null,
+      "action": "status_changed",
+      "actor": "system",
+      "taskId": "T005",
+      "before": {
+        "status": "active",
+        "completedAt": null
+      },
+      "after": {
+        "status": "done",
+        "completedAt": "2026-01-28T04:41:11Z"
+      },
+      "details": {
+        "field": "status",
+        "operation": "complete"
+      }
+    },
+    {
+      "id": "log_e10c1382ba92",
+      "timestamp": "2026-01-28T04:41:41Z",
+      "sessionId": "session_20260127_201627_85bae9",
+      "action": "session_end",
+      "actor": "system",
+      "taskId": null,
+      "before": null,
+      "after": null,
+      "details": {
+        "note": "Restarting session to include new implementation tasks"
+      }
+    },
+    {
+      "id": "log_476b8e161596",
+      "timestamp": "2026-01-28T04:41:45Z",
+      "sessionId": "session_20260127_204145_3b8b76",
+      "action": "session_start",
+      "actor": "system",
+      "taskId": "T006",
+      "before": null,
+      "after": null,
+      "details": "Multi-session started",
+      "scope": {
+        "type": "epic",
+        "rootTaskId": "T001"
+      }
+    },
+    {
+      "id": "log-1769575374-adf0ea",
+      "timestamp": "2026-01-28T04:42:54Z",
+      "action": "task_created",
+      "taskId": "T019",
+      "actor": "system",
+      "details": {
+        "title": "Update spec with Baseten latency + smart formatting",
+        "status": "pending",
+        "priority": "medium"
+      },
+      "before": null,
+      "after": {
+        "title": "Update spec with Baseten latency + smart formatting",
+        "status": "pending",
+        "priority": "medium"
+      }
+    },
+    {
+      "id": "log_0d96a5ad1c69",
+      "timestamp": "2026-01-28T04:53:39Z",
+      "sessionId": null,
+      "action": "task_updated",
+      "actor": "system",
+      "taskId": "T019",
+      "before": {
+        "title": "Update spec with Baseten latency + smart formatting",
+        "status": "pending",
+        "priority": "medium",
+        "description": null,
+        "phase": "setup",
+        "labels": null,
+        "files": null,
+        "acceptance": [
+          "Spec includes latency target (<250ms) and Baseten details",
+          "Spec includes smart formatting/context-aware edit requirements"
+        ],
+        "depends": [
+          "T004"
+        ],
+        "blockedBy": null
+      },
+      "after": {
+        "title": "Update spec with Baseten latency + smart formatting",
+        "status": "pending",
+        "priority": "medium",
+        "description": null,
+        "phase": "setup",
+        "labels": null,
+        "files": null,
+        "acceptance": [
+          "Spec includes latency target (<250ms) and Baseten details",
+          "Spec includes smart formatting/context-aware edit requirements",
+          "Spec states batch STT default (Scribe v2)",
+          "realtime optional/experimental",
+          "Spec documents OpenAI STT provider support"
+        ],
+        "depends": [
+          "T004"
+        ],
+        "blockedBy": null
+      },
+      "details": {
+        "operation": "update"
+      }
+    },
+    {
+      "id": "log_cabba6138a97",
+      "timestamp": "2026-01-28T04:53:43Z",
+      "sessionId": null,
+      "action": "task_updated",
+      "actor": "system",
+      "taskId": "T011",
+      "before": {
+        "title": "STT provider abstraction + ElevenLabs REST",
+        "status": "pending",
+        "priority": "medium",
+        "description": null,
+        "phase": "core",
+        "labels": null,
+        "files": null,
+        "acceptance": [
+          "ElevenLabs is default provider",
+          "POST /v1/speech-to-text implemented with xi-api-key"
+        ],
+        "depends": [
+          "T006",
+          "T007",
+          "T008"
+        ],
+        "blockedBy": null
+      },
+      "after": {
+        "title": "STT provider abstraction + ElevenLabs REST",
+        "status": "pending",
+        "priority": "medium",
+        "description": null,
+        "phase": "core",
+        "labels": null,
+        "files": null,
+        "acceptance": [
+          "ElevenLabs is default provider",
+          "POST /v1/speech-to-text implemented with xi-api-key",
+          "OpenAI STT provider supported via config"
+        ],
+        "depends": [
+          "T006",
+          "T007",
+          "T008"
+        ],
+        "blockedBy": null
+      },
+      "details": {
+        "operation": "update"
+      }
+    },
+    {
+      "id": "log_087cb85a7551",
+      "timestamp": "2026-01-28T04:53:46Z",
+      "sessionId": null,
+      "action": "task_updated",
+      "actor": "system",
+      "taskId": "T012",
+      "before": {
+        "title": "ElevenLabs realtime STT (WebSocket)",
+        "status": "pending",
+        "priority": "medium",
+        "description": null,
+        "phase": "core",
+        "labels": null,
+        "files": null,
+        "acceptance": [
+          "WebSocket STT connects to wss://api.elevenlabs.io/v1/speech-to-text/realtime",
+          "audio_format + VAD options configurable"
+        ],
+        "depends": [
+          "T011"
+        ],
+        "blockedBy": null
+      },
+      "after": {
+        "title": "ElevenLabs realtime STT (WebSocket)",
+        "status": "pending",
+        "priority": "medium",
+        "description": null,
+        "phase": "core",
+        "labels": null,
+        "files": null,
+        "acceptance": [
+          "WebSocket STT connects to wss://api.elevenlabs.io/v1/speech-to-text/realtime",
+          "audio_format + VAD options configurable",
+          "Realtime mode uses ElevenLabs Scribe v2 Realtime model"
+        ],
+        "depends": [
+          "T011"
+        ],
+        "blockedBy": null
+      },
+      "details": {
+        "operation": "update"
+      }
+    },
+    {
+      "id": "log_7ee8643810b8",
+      "timestamp": "2026-01-28T04:57:35Z",
+      "sessionId": null,
+      "action": "status_changed",
+      "actor": "system",
+      "taskId": "T019",
+      "before": {
+        "status": "pending",
+        "completedAt": null
+      },
+      "after": {
+        "status": "done",
+        "completedAt": "2026-01-28T04:57:35Z"
+      },
+      "details": {
+        "field": "status",
+        "operation": "complete"
+      }
+    },
+    {
+      "id": "log_18570d9ffdd3",
+      "timestamp": "2026-01-28T04:57:39Z",
+      "sessionId": "session_20260127_204145_3b8b76",
+      "action": "session_end",
+      "actor": "system",
+      "taskId": null,
+      "before": null,
+      "after": null,
+      "details": {
+        "note": "Task T019 completed: updated spec defaults, realtime experimental note, OpenAI STT support, and Baseten latency/formatting requirements."
+      }
+    },
+    {
+      "id": "log_ba5b9eb38170",
+      "timestamp": "2026-01-28T04:58:45Z",
+      "sessionId": "session_20260127_205845_2b75bf",
+      "action": "session_start",
+      "actor": "system",
+      "taskId": "T019",
+      "before": null,
+      "after": null,
+      "details": "Multi-session started",
+      "scope": {
+        "type": "epic",
+        "rootTaskId": "T001"
+      }
+    },
+    {
+      "id": "log_a5139e191427",
+      "timestamp": "2026-01-28T04:58:50Z",
+      "sessionId": null,
+      "action": "status_changed",
+      "actor": "system",
+      "taskId": "T019",
+      "before": {
+        "status": "active",
+        "completedAt": "2026-01-28T04:57:35Z"
+      },
+      "after": {
+        "status": "done",
+        "completedAt": "2026-01-28T04:58:50Z"
+      },
+      "details": {
+        "field": "status",
+        "operation": "complete"
+      }
+    },
+    {
+      "id": "log_76aa9d28e6c2",
+      "timestamp": "2026-01-28T04:59:09Z",
+      "sessionId": "session_20260127_205845_2b75bf",
+      "action": "session_end",
+      "actor": "system",
+      "taskId": null,
+      "before": null,
+      "after": null,
+      "details": {
+        "note": "Spec update complete"
+      }
+    },
+    {
+      "id": "log_c010de4381c7",
+      "timestamp": "2026-01-28T05:00:24Z",
+      "sessionId": null,
+      "action": "session_focus_changed",
+      "actor": "claude",
+      "taskId": null,
+      "before": {
+        "currentTask": "T006"
+      },
+      "after": {
+        "currentTask": "T006"
+      },
+      "details": null
+    },
+    {
+      "id": "log_4f280b8c7fae",
+      "timestamp": "2026-01-28T05:20:31Z",
+      "sessionId": null,
+      "action": "status_changed",
+      "actor": "system",
+      "taskId": "T006",
+      "before": {
+        "status": "active",
+        "completedAt": null
+      },
+      "after": {
+        "status": "done",
+        "completedAt": "2026-01-28T05:20:30Z"
+      },
+      "details": {
+        "field": "status",
+        "operation": "complete"
+      }
+    },
+    {
+      "id": "log_8ec82de2412d",
+      "timestamp": "2026-01-28T05:31:35Z",
+      "sessionId": null,
+      "action": "status_changed",
+      "actor": "system",
+      "taskId": "T007",
+      "before": {
+        "status": "pending",
+        "completedAt": null
+      },
+      "after": {
+        "status": "done",
+        "completedAt": "2026-01-28T05:31:35Z"
+      },
+      "details": {
+        "field": "status",
+        "operation": "complete"
+      }
+    },
+    {
+      "id": "log_9096c1662abc",
+      "timestamp": "2026-01-28T05:31:36Z",
+      "sessionId": null,
+      "action": "status_changed",
+      "actor": "system",
+      "taskId": "T009",
+      "before": {
+        "status": "pending",
+        "completedAt": null
+      },
+      "after": {
+        "status": "done",
+        "completedAt": "2026-01-28T05:31:35Z"
+      },
+      "details": {
+        "field": "status",
+        "operation": "complete"
+      }
+    },
+    {
+      "id": "log_63c775a06971",
+      "timestamp": "2026-01-28T05:31:36Z",
+      "sessionId": null,
+      "action": "status_changed",
+      "actor": "system",
+      "taskId": "T014",
+      "before": {
+        "status": "pending",
+        "completedAt": null
+      },
+      "after": {
+        "status": "done",
+        "completedAt": "2026-01-28T05:31:36Z"
+      },
+      "details": {
+        "field": "status",
+        "operation": "complete"
+      }
+    },
+    {
+      "id": "log_522630e31b4c",
+      "timestamp": "2026-01-28T05:55:05Z",
+      "sessionId": null,
+      "action": "status_changed",
+      "actor": "system",
+      "taskId": "T008",
+      "before": {
+        "status": "pending",
+        "completedAt": null
+      },
+      "after": {
+        "status": "done",
+        "completedAt": "2026-01-28T05:55:04Z"
+      },
+      "details": {
+        "field": "status",
+        "operation": "complete"
+      }
+    },
+    {
+      "id": "log_cf8795c48e3f",
+      "timestamp": "2026-01-28T05:55:05Z",
+      "sessionId": null,
+      "action": "status_changed",
+      "actor": "system",
+      "taskId": "T010",
+      "before": {
+        "status": "pending",
+        "completedAt": null
+      },
+      "after": {
+        "status": "done",
+        "completedAt": "2026-01-28T05:55:05Z"
+      },
+      "details": {
+        "field": "status",
+        "operation": "complete"
+      }
+    },
+    {
+      "id": "log_e658c0386584",
+      "timestamp": "2026-01-28T05:55:06Z",
+      "sessionId": null,
+      "action": "status_changed",
+      "actor": "system",
+      "taskId": "T016",
+      "before": {
+        "status": "pending",
+        "completedAt": null
+      },
+      "after": {
+        "status": "done",
+        "completedAt": "2026-01-28T05:55:06Z"
+      },
+      "details": {
+        "field": "status",
+        "operation": "complete"
+      }
+    },
+    {
+      "id": "log_916f77ddf339",
+      "timestamp": "2026-01-28T06:03:20Z",
+      "sessionId": null,
+      "action": "status_changed",
+      "actor": "system",
+      "taskId": "T011",
+      "before": {
+        "status": "pending",
+        "completedAt": null
+      },
+      "after": {
+        "status": "done",
+        "completedAt": "2026-01-28T06:03:20Z"
+      },
+      "details": {
+        "field": "status",
+        "operation": "complete"
+      }
+    },
+    {
+      "id": "log_9fb777babe76",
+      "timestamp": "2026-01-28T06:03:21Z",
+      "sessionId": null,
+      "action": "status_changed",
+      "actor": "system",
+      "taskId": "T017",
+      "before": {
+        "status": "pending",
+        "completedAt": null
+      },
+      "after": {
+        "status": "done",
+        "completedAt": "2026-01-28T06:03:21Z"
+      },
+      "details": {
+        "field": "status",
+        "operation": "complete"
+      }
+    },
+    {
+      "id": "log_9a8d00290099",
+      "timestamp": "2026-01-28T06:16:55Z",
+      "sessionId": null,
+      "action": "status_changed",
+      "actor": "system",
+      "taskId": "T012",
+      "before": {
+        "status": "pending",
+        "completedAt": null
+      },
+      "after": {
+        "status": "done",
+        "completedAt": "2026-01-28T06:16:55Z"
+      },
+      "details": {
+        "field": "status",
+        "operation": "complete"
+      }
+    },
+    {
+      "id": "log_683694551cc5",
+      "timestamp": "2026-01-28T06:16:56Z",
+      "sessionId": null,
+      "action": "status_changed",
+      "actor": "system",
+      "taskId": "T013",
+      "before": {
+        "status": "pending",
+        "completedAt": null
+      },
+      "after": {
+        "status": "done",
+        "completedAt": "2026-01-28T06:16:55Z"
+      },
+      "details": {
+        "field": "status",
+        "operation": "complete"
+      }
+    },
+    {
+      "id": "log_461ed3f7db8b",
+      "timestamp": "2026-01-28T06:27:21Z",
+      "sessionId": null,
+      "action": "status_changed",
+      "actor": "system",
+      "taskId": "T015",
+      "before": {
+        "status": "pending",
+        "completedAt": null
+      },
+      "after": {
+        "status": "done",
+        "completedAt": "2026-01-28T06:27:20Z"
+      },
+      "details": {
+        "field": "status",
+        "operation": "complete"
+      }
+    },
+    {
+      "id": "log_68d5c245d8e1",
+      "timestamp": "2026-01-28T07:11:23Z",
+      "sessionId": null,
+      "action": "status_changed",
+      "actor": "system",
+      "taskId": "T018",
+      "before": {
+        "status": "pending",
+        "completedAt": null
+      },
+      "after": {
+        "status": "done",
+        "completedAt": "2026-01-28T07:11:23Z"
+      },
+      "details": {
+        "field": "status",
+        "operation": "complete"
+      }
+    },
+    {
+      "id": "log-1769587089-55b0a3",
+      "timestamp": "2026-01-28T07:58:09Z",
+      "action": "task_created",
+      "taskId": "T020",
+      "actor": "system",
+      "details": {
+        "title": "Application Legitimization & Release Engineering",
+        "status": "pending",
+        "priority": "high"
+      },
+      "before": null,
+      "after": {
+        "title": "Application Legitimization & Release Engineering",
+        "status": "pending",
+        "priority": "high"
+      }
+    },
+    {
+      "id": "log-1769587089-2df32a",
+      "timestamp": "2026-01-28T07:58:09Z",
+      "action": "task_created",
+      "taskId": "T021",
+      "actor": "system",
+      "details": {
+        "title": "Initialize Git & Semantic Versioning",
+        "status": "pending",
+        "priority": "high"
+      },
+      "before": null,
+      "after": {
+        "title": "Initialize Git & Semantic Versioning",
+        "status": "pending",
+        "priority": "high"
+      }
+    },
+    {
+      "id": "log-1769587090-321dda",
+      "timestamp": "2026-01-28T07:58:10Z",
+      "action": "task_created",
+      "taskId": "T022",
+      "actor": "system",
+      "details": {
+        "title": "Research Flatpak & AppImage Pipelines",
+        "status": "pending",
+        "priority": "medium"
+      },
+      "before": null,
+      "after": {
+        "title": "Research Flatpak & AppImage Pipelines",
+        "status": "pending",
+        "priority": "medium"
+      }
+    },
+    {
+      "id": "log-1769587090-a68b77",
+      "timestamp": "2026-01-28T07:58:10Z",
+      "action": "task_created",
+      "taskId": "T023",
+      "actor": "system",
+      "details": {
+        "title": "Implement In-App Version Check",
+        "status": "pending",
+        "priority": "medium"
+      },
+      "before": null,
+      "after": {
+        "title": "Implement In-App Version Check",
+        "status": "pending",
+        "priority": "medium"
+      }
+    },
+    {
+      "id": "log-1769587090-16db92",
+      "timestamp": "2026-01-28T07:58:10Z",
+      "action": "task_created",
+      "taskId": "T024",
+      "actor": "system",
+      "details": {
+        "title": "Create CI/CD Release Pipeline",
+        "status": "pending",
+        "priority": "high"
+      },
+      "before": null,
+      "after": {
+        "title": "Create CI/CD Release Pipeline",
+        "status": "pending",
+        "priority": "high"
+      }
+    }
+  ]
+}

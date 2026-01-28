@@ -1,0 +1,262 @@
+{
+  "$schema": "./schemas/sessions.schema.json",
+  "version": "1.0.0",
+  "project": "voyc",
+  "_meta": {
+    "schemaVersion": "1.0.0",
+    "checksum": "",
+    "lastModified": "2026-01-28T05:00:24Z",
+    "totalSessionsCreated": 4
+  },
+  "config": {
+    "maxConcurrentSessions": 5,
+    "maxActiveTasksPerScope": 1,
+    "scopeValidation": "strict",
+    "allowNestedScopes": true,
+    "allowScopeOverlap": false
+  },
+  "sessions": [
+    {
+      "id": "session_20260127_201545_cc61ac",
+      "status": "ended",
+      "name": "PRD Build",
+      "agentId": null,
+      "scope": {
+        "type": "epic",
+        "rootTaskId": "T001",
+        "computedTaskIds": [
+          "T001"
+        ]
+      },
+      "focus": {
+        "currentTask": "T001",
+        "currentPhase": null,
+        "previousTask": null,
+        "sessionNote": "Restarting session to include newly added tasks",
+        "nextAction": null,
+        "focusHistory": [
+          {
+            "taskId": "T001",
+            "timestamp": "2026-01-28T04:15:45Z",
+            "action": "focused"
+          }
+        ]
+      },
+      "startedAt": "2026-01-28T04:15:45Z",
+      "lastActivity": "2026-01-28T04:16:24Z",
+      "suspendedAt": null,
+      "stats": {
+        "tasksCompleted": 0,
+        "focusChanges": 1,
+        "suspendCount": 0,
+        "resumeCount": 0
+      },
+      "startMetrics": {
+        "session_id": "session_20260127_201545_cc61ac",
+        "start_timestamp": "2026-01-28T04:15:45Z",
+        "start_tokens": 0,
+        "max_tokens": 200000
+      },
+      "endedAt": "2026-01-28T04:16:24Z"
+    },
+    {
+      "id": "session_20260127_201627_85bae9",
+      "status": "ended",
+      "name": "PRD Build",
+      "agentId": null,
+      "scope": {
+        "type": "epic",
+        "rootTaskId": "T001",
+        "computedTaskIds": [
+          "T001",
+          "T002",
+          "T003",
+          "T004",
+          "T005"
+        ]
+      },
+      "focus": {
+        "currentTask": "T005",
+        "currentPhase": null,
+        "previousTask": "T005",
+        "sessionNote": "Restarting session to include new implementation tasks",
+        "nextAction": null,
+        "focusHistory": [
+          {
+            "taskId": "T002",
+            "timestamp": "2026-01-28T04:16:27Z",
+            "action": "focused"
+          },
+          {
+            "taskId": "T003",
+            "timestamp": "2026-01-28T04:26:44Z",
+            "action": "focused"
+          },
+          {
+            "taskId": "T004",
+            "timestamp": "2026-01-28T04:28:10Z",
+            "action": "focused"
+          },
+          {
+            "taskId": "T005",
+            "timestamp": "2026-01-28T04:33:24Z",
+            "action": "focused"
+          },
+          {
+            "taskId": "T005",
+            "timestamp": "2026-01-28T04:34:23Z",
+            "action": "focused"
+          },
+          {
+            "taskId": "T005",
+            "timestamp": "2026-01-28T04:36:42Z",
+            "action": "focused"
+          }
+        ]
+      },
+      "startedAt": "2026-01-28T04:16:27Z",
+      "lastActivity": "2026-01-28T04:41:41Z",
+      "suspendedAt": null,
+      "stats": {
+        "tasksCompleted": 0,
+        "focusChanges": 6,
+        "suspendCount": 0,
+        "resumeCount": 0
+      },
+      "startMetrics": {
+        "session_id": "session_20260127_201627_85bae9",
+        "start_timestamp": "2026-01-28T04:16:27Z",
+        "start_tokens": 0,
+        "max_tokens": 200000
+      },
+      "endedAt": "2026-01-28T04:41:41Z"
+    },
+    {
+      "id": "session_20260127_204145_3b8b76",
+      "status": "active",
+      "name": "PRD Build Impl",
+      "agentId": null,
+      "scope": {
+        "type": "epic",
+        "rootTaskId": "T001",
+        "computedTaskIds": [
+          "T001",
+          "T002",
+          "T003",
+          "T004",
+          "T005",
+          "T006",
+          "T007",
+          "T008",
+          "T009",
+          "T010",
+          "T011",
+          "T012",
+          "T013",
+          "T014",
+          "T015",
+          "T016",
+          "T017",
+          "T018"
+        ]
+      },
+      "focus": {
+        "currentTask": "T006",
+        "currentPhase": null,
+        "previousTask": "T006",
+        "sessionNote": "Task T019 completed: updated spec defaults, realtime experimental note, OpenAI STT support, and Baseten latency/formatting requirements.",
+        "nextAction": null,
+        "focusHistory": [
+          {
+            "taskId": "T006",
+            "timestamp": "2026-01-28T04:41:45Z",
+            "action": "focused"
+          },
+          {
+            "taskId": "T006",
+            "timestamp": "2026-01-28T05:00:24Z",
+            "action": "focused"
+          }
+        ]
+      },
+      "startedAt": "2026-01-28T04:41:45Z",
+      "lastActivity": "2026-01-28T05:00:24Z",
+      "suspendedAt": null,
+      "stats": {
+        "tasksCompleted": 0,
+        "focusChanges": 2,
+        "suspendCount": 0,
+        "resumeCount": 1
+      },
+      "startMetrics": {
+        "session_id": "session_20260127_204145_3b8b76",
+        "start_timestamp": "2026-01-28T04:41:45Z",
+        "start_tokens": 0,
+        "max_tokens": 200000
+      },
+      "endedAt": null
+    },
+    {
+      "id": "session_20260127_205845_2b75bf",
+      "status": "ended",
+      "name": "Spec Update",
+      "agentId": null,
+      "scope": {
+        "type": "epic",
+        "rootTaskId": "T001",
+        "computedTaskIds": [
+          "T001",
+          "T002",
+          "T003",
+          "T004",
+          "T005",
+          "T006",
+          "T007",
+          "T008",
+          "T009",
+          "T010",
+          "T011",
+          "T012",
+          "T013",
+          "T014",
+          "T015",
+          "T016",
+          "T017",
+          "T018",
+          "T019"
+        ]
+      },
+      "focus": {
+        "currentTask": "T019",
+        "currentPhase": null,
+        "previousTask": null,
+        "sessionNote": "Spec update complete",
+        "nextAction": null,
+        "focusHistory": [
+          {
+            "taskId": "T019",
+            "timestamp": "2026-01-28T04:58:45Z",
+            "action": "focused"
+          }
+        ]
+      },
+      "startedAt": "2026-01-28T04:58:45Z",
+      "lastActivity": "2026-01-28T04:59:09Z",
+      "suspendedAt": null,
+      "stats": {
+        "tasksCompleted": 0,
+        "focusChanges": 1,
+        "suspendCount": 0,
+        "resumeCount": 0
+      },
+      "startMetrics": {
+        "session_id": "session_20260127_205845_2b75bf",
+        "start_timestamp": "2026-01-28T04:58:45Z",
+        "start_tokens": 0,
+        "max_tokens": 200000
+      },
+      "endedAt": "2026-01-28T04:59:09Z"
+    }
+  ],
+  "sessionHistory": []
+}
