@@ -1,0 +1,64 @@
+@import "tailwindcss";
+
+@theme {
+  --color-text: #0f0f0f;
+  --color-background: #fbfbfb;
+  --color-background-ui: #6366f1;
+  --color-logo-primary: #818cf8;
+  --color-logo-stroke: #312e81;
+  --color-text-stroke: #f6f6f6;
+  --color-mid-gray: #808080;
+}
+
+:root {
+  /* Typography */
+  font-size: 15px;
+  line-height: 24px;
+  font-weight: 400;
+
+  /* Typography settings */
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+
+  /* Apply colors */
+  color: var(--color-text);
+  background-color: var(--color-background);
+}
+
+.container {
+  margin: 0;
+  padding-top: 10vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    /* Colors - Dark Theme */
+    --color-text: #fbfbfb;
+    --color-background: #1a1a2e;
+    --color-logo-primary: #a5b4fc;
+    --color-logo-stroke: #c7d2fe;
+  }
+}
+
+@layer utilities {
+  .text-stroke {
+    -webkit-text-stroke: 2px var(--color-text-stroke);
+  }
+}
+
+.logo-primary {
+  fill: var(--color-logo-primary);
+}
+
+.logo-stroke {
+  fill: var(--color-logo-stroke);
+  stroke: var(--color-logo-stroke);
+  stroke-width: 1;
+}

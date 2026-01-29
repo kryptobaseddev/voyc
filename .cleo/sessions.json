@@ -5,8 +5,8 @@
   "_meta": {
     "schemaVersion": "1.0.0",
     "checksum": "",
-    "lastModified": "2026-01-28T05:00:24Z",
-    "totalSessionsCreated": 4
+    "lastModified": "2026-01-28T23:59:13Z",
+    "totalSessionsCreated": 5
   },
   "config": {
     "maxConcurrentSessions": 5,
@@ -256,6 +256,59 @@
         "max_tokens": 200000
       },
       "endedAt": "2026-01-28T04:59:09Z"
+    },
+    {
+      "id": "session_20260128_115628_4620fd",
+      "status": "ended",
+      "name": "Critical Gaps v1.0",
+      "agentId": null,
+      "scope": {
+        "type": "epic",
+        "rootTaskId": "T026",
+        "computedTaskIds": [
+          "T026",
+          "T027",
+          "T028",
+          "T029",
+          "T030",
+          "T031"
+        ]
+      },
+      "focus": {
+        "currentTask": "T027",
+        "currentPhase": null,
+        "previousTask": "T027",
+        "sessionNote": "Voyc v1.0.0 all 13 tasks complete. RPM built. Features: History/Debug/Privacy/About tabs, Push to Talk, VAD threshold, Post-processing UI, Latency metrics, ElevenLabs default, Log redaction.",
+        "nextAction": null,
+        "focusHistory": [
+          {
+            "taskId": "T027",
+            "timestamp": "2026-01-28T19:56:28Z",
+            "action": "focused"
+          },
+          {
+            "taskId": "T027",
+            "timestamp": "2026-01-28T20:00:58Z",
+            "action": "focused"
+          }
+        ]
+      },
+      "startedAt": "2026-01-28T19:56:28Z",
+      "lastActivity": "2026-01-28T23:59:13Z",
+      "suspendedAt": null,
+      "stats": {
+        "tasksCompleted": 0,
+        "focusChanges": 2,
+        "suspendCount": 0,
+        "resumeCount": 0
+      },
+      "startMetrics": {
+        "session_id": "session_20260128_115628_4620fd",
+        "start_timestamp": "2026-01-28T19:56:28Z",
+        "start_tokens": 0,
+        "max_tokens": 200000
+      },
+      "endedAt": "2026-01-28T23:59:13Z"
     }
   ],
   "sessionHistory": []

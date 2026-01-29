@@ -6,8 +6,8 @@ Voyc is a fast, minimal, GNOME-native voice dictation app for Linux Wayland.
 You toggle dictation via hotkey or tray button, speak, and text appears in the currently focused app.
 Accuracy and speed matter more than formatting.
 
-Primary platform: Fedora 43 GNOME on Wayland
-Tech stack: TypeScript + GJS + GTK4
+Primary platform: Fedora 43 GNOME on Wayland, with macOS/Windows planned
+Tech stack: Tauri (Rust backend + React frontend)
 
 ---
 
@@ -16,12 +16,12 @@ Tech stack: TypeScript + GJS + GTK4
 * Near-perfect transcription accuracy
 * Sub-second perceived latency from stop speaking to text insertion
 * Native GNOME UX that feels first-party
-* One codebase that later expands to Windows and macOS
+* One codebase for Linux, Windows, and macOS (via Tauri)
 * Ship v1 in hours, not weeks
+* Offline mode via local Whisper
 
 Non-goals for v1:
 
-* Offline mode
 * Advanced punctuation rules
 * Inline correction UI
 
@@ -68,11 +68,12 @@ Non-goals for v1:
 
 #### 4.3 Audio Capture
 
-* Use PipeWire via GJS
+* Use cpal (Rust, cross-platform audio library)
 * Record from system default microphone
 * Capture to memory buffer
 * Format: WAV 16-bit PCM, mono
 * No disk writes in v1
+* Note: On Linux, cpal uses PipeWire/PulseAudio backend automatically
 
 #### 4.4 Silence Detection
 
@@ -86,11 +87,12 @@ Non-goals for v1:
 
 Primary provider:
 
-* OpenAI Speech-to-Text
+* Local Whisper via whisper-rs (offline, privacy-first)
 
-Secondary provider:
+Secondary/fallback providers:
 
-* ElevenLabs STT as plugin
+* ElevenLabs STT (cloud)
+* OpenAI Speech-to-Text (cloud)
 
 Provider abstraction:
 
@@ -98,8 +100,14 @@ Provider abstraction:
 transcribe(audioBuffer): Promise<string>
 ```
 
-No model selection UI in v1
-API keys stored in user config, never hardcoded
+Model selection UI for local Whisper:
+
+* tiny (fastest, lower accuracy)
+* base
+* small
+* medium (slowest, highest accuracy)
+
+API keys for cloud providers stored in user config, never hardcoded
 
 #### 4.6 Text Injection
 
@@ -215,12 +223,13 @@ No blocking dialogs during dictation
 
 #### 9.2 Tech Stack
 
-* GJS latest stable
-* GTK4
-* TypeScript
-* ts-for-gir for bindings
-* PipeWire
-* ydotool
+* Tauri 2.x (application framework)
+* Rust (backend)
+* React + TypeScript (frontend)
+* whisper-rs (local speech-to-text)
+* cpal (cross-platform audio capture)
+* Specta (TypeScript IPC bindings)
+* ydotool (Linux text injection)
 
 ---
 
@@ -255,7 +264,6 @@ Post-v1 features:
 * Smart punctuation
 * User dictionary
 * Inline correction menu
-* Offline Whisper
 * Per-app paste profiles
 * Windows and macOS ports
 

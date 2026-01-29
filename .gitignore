@@ -34,3 +34,10 @@ secret/
 .env
 *.key
 *.pem
+
+# Tauri signing keys (NEVER commit private key)
+src-tauri/.tauri/updater.key
+
+# Rust build artifacts
+target/
+src-tauri/target/

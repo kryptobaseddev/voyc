@@ -1,0 +1,115 @@
+# AppImageBuilder configuration for Voyc (Tauri)
+# Build with: appimage-builder --recipe AppImageBuilder.yml
+# Requires: appimage-builder (pip install appimage-builder)
+#
+# NOTE: For production, use `cargo tauri build` which generates AppImages natively.
+# This file is provided for custom AppImage builds or CI/CD pipelines.
+
+version: 1
+script:
+  # Build the Tauri application
+  - cargo tauri build --target x86_64-unknown-linux-gnu
+  # Create AppDir structure
+  - mkdir -p AppDir/usr/bin
+  - mkdir -p AppDir/usr/share/applications
+  - mkdir -p AppDir/usr/share/icons/hicolor/scalable/apps
+  - mkdir -p AppDir/usr/share/icons/hicolor/128x128/apps
+  - mkdir -p AppDir/usr/share/icons/hicolor/256x256/apps
+  - mkdir -p AppDir/usr/share/metainfo
+  # Copy binary
+  - cp target/x86_64-unknown-linux-gnu/release/voyc AppDir/usr/bin/
+  # Copy desktop file and icons
+  - cp voyc.desktop AppDir/usr/share/applications/com.voyc.app.desktop
+  - cp appimage/voyc.svg AppDir/usr/share/icons/hicolor/scalable/apps/com.voyc.app.svg
+  - cp src-tauri/icons/128x128.png AppDir/usr/share/icons/hicolor/128x128/apps/com.voyc.app.png
+  - cp src-tauri/icons/128x128@2x.png AppDir/usr/share/icons/hicolor/256x256/apps/com.voyc.app.png
+  # Copy metainfo
+  - cp com.voyc.app.metainfo.xml AppDir/usr/share/metainfo/
+
+AppDir:
+  path: ./AppDir
+
+  app_info:
+    id: com.voyc.app
+    name: Voyc
+    icon: com.voyc.app
+    version: 1.0.0
+    exec: usr/bin/voyc
+    exec_args: $@
+
+  apt:
+    arch: amd64
+    sources:
+      - sourceline: 'deb http://archive.ubuntu.com/ubuntu/ jammy main restricted universe multiverse'
+        key_url: 'http://keyserver.ubuntu.com/pks/lookup?op=get&search=0x871920D1991BC93C'
+      - sourceline: 'deb http://archive.ubuntu.com/ubuntu/ jammy-updates main restricted universe multiverse'
+
+    include:
+      # WebKit2GTK (Tauri webview)
+      - libwebkit2gtk-4.1-0
+      - libjavascriptcoregtk-4.1-0
+
+      # GTK3
+      - libgtk-3-0
+
+      # System tray support
+      - libayatana-appindicator3-1
+
+      # Graphics and rendering
+      - libcairo2
+      - libpango-1.0-0
+      - libpangocairo-1.0-0
+
+      # SSL for API calls
+      - ca-certificates
+      - libssl3
+      - libgnutls30
+
+      # Audio (PipeWire/ALSA)
+      - libasound2
+
+    exclude:
+      # Exclude system packages that should use host versions
+      - systemd
+      - dbus-daemon
+      - libsystemd0
+      # Exclude X11/Wayland compositors (use host)
+      - xwayland
+      - wayland-protocols
+      # Exclude kernel modules
+      - linux-*
+      # Exclude documentation
+      - "*-doc"
+      - "*-dev"
+
+  files:
+    include:
+      - usr/bin/voyc
+
+    exclude:
+      - usr/share/doc
+      - usr/share/man
+      - usr/share/info
+      - usr/share/locale
+      - usr/include
+
+  runtime:
+    env:
+      # WebKit settings
+      WEBKIT_DISABLE_COMPOSITING_MODE: 1
+
+  test:
+    fedora-39:
+      image: fedora:39
+      command: ./AppRun --version
+      use_host_x: true
+    ubuntu-22.04:
+      image: ubuntu:22.04
+      command: ./AppRun --version
+      use_host_x: true
+
+AppImage:
+  update-information: None
+  sign-key: None
+  arch: x86_64
+  file_name: Voyc-1.0.0-x86_64.AppImage

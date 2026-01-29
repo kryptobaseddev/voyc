@@ -2,7 +2,19 @@
   "$schema": "../schemas/migrations.schema.json",
   "_meta": {
     "schemaVersion": "1.0.0",
-    "lastChecked": null
+    "lastChecked": "2026-01-28T18:25:40Z"
   },
-  "appliedMigrations": []
+  "appliedMigrations": [
+    {
+      "version": "2.10.0",
+      "fileType": "todo",
+      "functionName": "update_version_field",
+      "checksum": "4addb03c6cdc8a60533b979e36530528902b8f5d1a750dcb42e86d185c43ede1",
+      "appliedAt": "2026-01-28T18:25:40Z",
+      "status": "success",
+      "previousVersion": "2.9.0",
+      "executionTimeMs": 78,
+      "backupPath": null
+    }
+  ]
 }

@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop-application">
+  <id>com.voyc.app</id>
+  <name>Voyc</name>
+  <summary>Fast, minimal voice dictation for Linux</summary>
+  <metadata_license>CC0-1.0</metadata_license>
+  <project_license>MIT</project_license>
+
+  <description>
+    <p>
+      Voyc is a fast, minimal, GNOME-native voice dictation application for Linux Wayland.
+      It captures audio via PipeWire, transcribes using ElevenLabs or OpenAI speech-to-text APIs,
+      and injects the text directly into your focused application.
+    </p>
+    <p>Features:</p>
+    <ul>
+      <li>Global hotkey support (Ctrl+Alt+D) for hands-free operation</li>
+      <li>System tray integration for quick access</li>
+      <li>Support for ElevenLabs and OpenAI speech-to-text providers</li>
+      <li>Smart post-processing for improved punctuation and formatting</li>
+      <li>Native Wayland support with GTK4 and libadwaita</li>
+      <li>Privacy-focused: audio is processed in real-time and not stored</li>
+    </ul>
+  </description>
+
+  <launchable type="desktop-id">com.voyc.app.desktop</launchable>
+
+  <screenshots>
+    <screenshot type="default">
+      <caption>Voyc main window showing dictation controls</caption>
+      <image>https://raw.githubusercontent.com/voyc-app/voyc/main/docs/screenshots/main-window.png</image>
+    </screenshot>
+  </screenshots>
+
+  <url type="homepage">https://github.com/voyc-app/voyc</url>
+  <url type="bugtracker">https://github.com/voyc-app/voyc/issues</url>
+
+  <developer_name>Voyc Contributors</developer_name>
+
+  <provides>
+    <binary>voyc</binary>
+  </provides>
+
+  <requires>
+    <display_length compare="ge">360</display_length>
+  </requires>
+
+  <recommends>
+    <control>keyboard</control>
+    <control>pointing</control>
+  </recommends>
+
+  <categories>
+    <category>Utility</category>
+    <category>Audio</category>
+    <category>Accessibility</category>
+  </categories>
+
+  <keywords>
+    <keyword>dictation</keyword>
+    <keyword>voice</keyword>
+    <keyword>speech</keyword>
+    <keyword>stt</keyword>
+    <keyword>transcription</keyword>
+    <keyword>microphone</keyword>
+    <keyword>accessibility</keyword>
+  </keywords>
+
+  <content_rating type="oars-1.1" />
+
+  <releases>
+    <release version="1.0.0" date="2026-01-28">
+      <description>
+        <p>Initial release of Voyc voice dictation application.</p>
+      </description>
+    </release>
+  </releases>
+</component>

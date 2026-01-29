@@ -1,0 +1,12 @@
+[Desktop Entry]
+Type=Application
+Name=Voyc
+GenericName=Voice Dictation
+Comment=Fast, minimal, GNOME-native voice dictation app for Linux Wayland
+Exec=voyc
+Icon=com.voyc.app
+Terminal=false
+StartupNotify=true
+Categories=Utility;Audio;Accessibility;
+Keywords=dictation;voice;speech;stt;transcription;microphone;
+X-GNOME-UsesNotifications=true

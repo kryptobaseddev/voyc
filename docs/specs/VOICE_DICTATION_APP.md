@@ -28,16 +28,19 @@ injecting text into focused applications.
 | Portal Hotkey | A global hotkey registered via xdg-desktop-portal. |
 | Baseten LLaMA | A post-processing LLaMA model hosted on Baseten. |
 | VAD | Voice activity detection options used for streaming STT. |
+| Tauri | Desktop framework using Rust backend with web frontend via WebView. |
+| whisper-rs | Rust bindings for OpenAI Whisper speech recognition model. |
+| cpal | Cross-platform audio I/O library for Rust. |
 
 ---
 
 ## Architecture Decisions
 
-1. The App MUST be implemented with TypeScript using GJS and GTK4 for UI.
-2. Audio capture MUST use PipeWire for device access and routing.
+1. The App MUST be implemented with Tauri 2.x using a Rust backend and React/TypeScript frontend.
+2. Audio capture MUST use cpal for cross-platform support (PipeWire on Linux, CoreAudio on macOS, WASAPI on Windows).
 3. Text injection MUST be Wayland-safe (portal or input-method based) and MUST NOT
    rely on Wayland-unsafe tools (e.g., X11-only event injection).
-4. Global hotkeys MUST be registered through a portal (xdg-desktop-portal).
+4. Global hotkeys MUST be registered through Tauri's global shortcut API (which uses xdg-desktop-portal on Linux).
 5. The App MUST provide a tray UI for status, controls, and settings access.
 
 ---
@@ -62,9 +65,9 @@ configuration data to third parties except the selected providers.
 
 ### Audio Capture
 
-**REQ-004**: The App MUST capture microphone audio via PipeWire.
-- Rationale: PipeWire is required for modern Linux audio routing.
-- Verification: Audio capture works with PipeWire active and without Pulse-only APIs.
+**REQ-004**: The App MUST capture microphone audio via cpal.
+- Rationale: cpal provides cross-platform audio capture with native backend support.
+- Verification: Audio capture works on Linux (PipeWire/ALSA), macOS (CoreAudio), and Windows (WASAPI).
 
 **REQ-005**: The App MUST support configurable audio device selection.
 - Rationale: Users may have multiple input devices.
@@ -162,16 +165,54 @@ avoid logging raw audio or full transcripts by default.
 - Rationale: Reduce exposure of sensitive content.
 - Verification: Logs redact or omit sensitive fields by default.
 
+### Local STT and Model Management
+
+**REQ-021**: The App MUST support local speech-to-text via Whisper (whisper-rs).
+- Local STT MUST be the default mode when a model is downloaded.
+- Supported models MUST include: tiny, base, small, medium (Q8_0 quantized).
+- Rationale: Enable offline operation and reduce latency by avoiding network round-trips.
+- Verification: Transcription succeeds without network connectivity when a local model is available.
+
+**REQ-022**: The App MUST fallback to cloud STT when local confidence is below threshold.
+- Default fallback threshold MUST be 85% confidence.
+- Fallback threshold MUST be user-configurable.
+- Supported fallback providers MUST include: ElevenLabs, OpenAI.
+- Rationale: Ensure transcription quality when local model performance is insufficient.
+- Verification: Low-confidence local results trigger cloud STT request; threshold is adjustable in settings.
+
+**REQ-023**: The App MUST support on-demand model management.
+- The App MUST support downloading STT models on-demand.
+- The App MUST support idle model unloading with configurable timeout.
+- Model download progress MUST be visible to the user.
+- Rationale: Manage disk space and memory usage while providing user feedback during downloads.
+- Verification: Models can be downloaded from UI; progress indicator displays; idle models unload after timeout.
+
+### Cross-Platform Audio
+
+**REQ-024**: The App MUST use cpal for cross-platform audio capture.
+- The App MUST support device enumeration on all platforms.
+- Platform-specific backends MUST include: PipeWire/ALSA (Linux), CoreAudio (macOS), WASAPI (Windows).
+- Rationale: Enable consistent audio capture behavior across operating systems.
+- Verification: Device list populates correctly on each platform; capture works with default and selected devices.
+
+### Voice Activity Detection
+
+**REQ-025**: The App MUST use Silero VAD for voice activity detection.
+- VAD MUST filter silence before STT processing.
+- VAD threshold MUST be configurable.
+- Rationale: Reduce unnecessary STT processing and improve transcription accuracy by filtering non-speech audio.
+- Verification: Silent audio segments are not sent to STT; VAD threshold is adjustable in settings.
+
 ---
 
 ## Constraints
 
 | ID | Constraint | Enforcement |
 |----|------------|-------------|
-| CON-001 | UI framework MUST be GTK4 via GJS in TypeScript. | Build tooling and runtime selection enforce framework usage. |
-| CON-002 | Audio capture MUST use PipeWire APIs. | Capture module uses PipeWire; alternative capture paths rejected. |
+| CON-001 | UI framework MUST be Tauri with React frontend. | Build tooling enforces Tauri + React; no alternative UI frameworks permitted. |
+| CON-002 | Audio capture MUST use cpal for cross-platform support. | Capture module uses cpal; platform-specific APIs accessed only through cpal backends. |
 | CON-003 | Injection MUST be Wayland-safe and MUST NOT depend on X11-only tools. | CI/QA checks on Wayland; injection backend restricted. |
-| CON-004 | Global hotkeys MUST be registered via xdg-desktop-portal. | Hotkey module only exposes portal registration. |
+| CON-004 | Global hotkeys MUST be registered via Tauri global shortcuts (portal-based on Linux). | Hotkey module uses Tauri shortcut API; direct X11 grab rejected. |
 | CON-005 | Tray UI MUST exist for primary controls and status. | Release checklist requires tray UI functionality. |
 
 ---
@@ -179,12 +220,16 @@ avoid logging raw audio or full transcripts by default.
 ## Compliance
 
 An implementation is compliant if it satisfies all of the following:
-1. All requirements REQ-001 through REQ-020 are implemented and verified.
+1. All requirements REQ-001 through REQ-025 are implemented and verified.
 2. All constraints CON-001 through CON-005 are enforced.
-3. ElevenLabs STT defaults and API details are implemented as specified.
-4. Baseten LLaMA post-processing is supported and configurable, alongside
+3. Local STT via whisper-rs is functional with supported model variants.
+4. Cloud STT fallback (ElevenLabs, OpenAI) operates correctly when local confidence
+   is below threshold.
+5. Baseten LLaMA post-processing is supported and configurable, alongside
    additional providers.
-5. Latency and privacy requirements are implemented and documented.
+6. Cross-platform audio capture via cpal works on Linux, macOS, and Windows.
+7. Voice activity detection via Silero VAD filters silence before STT processing.
+8. Latency and privacy requirements are implemented and documented.
 
 Non-compliant implementations SHOULD provide remediation plans and MUST NOT be
 released as production builds.

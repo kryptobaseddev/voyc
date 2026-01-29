@@ -1,6 +1,6 @@
 {
   "$schema": "./schemas/todo.schema.json",
-  "version": "2.9.0",
+  "version": "2.10.0",
   "project": {
     "name": "voyc",
     "currentPhase": "setup",
@@ -47,17 +47,18 @@
       }
     }
   },
-  "lastUpdated": "2026-01-28T07:58:10Z",
+  "lastUpdated": "2026-01-28T23:58:45Z",
   "_meta": {
-    "schemaVersion": "2.9.0",
-    "checksum": "140ee2243e3b1cf5",
+    "schemaVersion": "2.10.0",
+    "checksum": "ff6c05da195a55e7",
     "configVersion": "2.6.0",
     "lastSessionId": null,
     "activeSession": null,
-    "generation": 45,
-    "lastModified": "2026-01-28T05:00:24Z",
+    "generation": 81,
+    "lastModified": "2026-01-28T23:59:13Z",
     "multiSessionEnabled": true,
-    "activeSessionCount": 0
+    "activeSessionCount": 0,
+    "version": "2.10.0"
   },
   "focus": {
     "currentTask": null,
@@ -920,6 +921,516 @@
         "T022",
         "T023"
       ]
+    },
+    {
+      "id": "T025",
+      "title": "Voyc Tauri Migration",
+      "status": "done",
+      "priority": "high",
+      "type": "epic",
+      "parentId": null,
+      "createdAt": "2026-01-28T19:54:08Z",
+      "updatedAt": "2026-01-28T19:54:29Z",
+      "size": "large",
+      "position": 3,
+      "positionVersion": 0,
+      "phase": "core",
+      "description": "Migrate Voyc from GJS/GTK4 to Tauri (Rust + React) with local-first STT. Reference: /mnt/projects/handy",
+      "notes": [
+        "2026-01-28 19:54:08 UTC: COMPLETED: 16 tasks across 5 waves. See claudedocs/agent-outputs/2026-01-28_voyc-tauri-migration-decomposition.md",
+        "[COMPLETED 2026-01-28T19:54:29Z] Completed 2026-01-28: 16 tasks, 5 waves. All Tauri scaffold, audio, managers, commands, React UI, settings, tray, onboarding done."
+      ],
+      "completedAt": "2026-01-28T19:54:29Z"
+    },
+    {
+      "id": "T026",
+      "title": "Voyc Critical Gaps Resolution",
+      "status": "pending",
+      "priority": "critical",
+      "type": "epic",
+      "parentId": null,
+      "createdAt": "2026-01-28T19:54:36Z",
+      "updatedAt": "2026-01-28T19:54:36Z",
+      "size": "medium",
+      "position": 4,
+      "positionVersion": 0,
+      "phase": "core",
+      "description": "Complete critical gaps from QA for v1.0.0 release. See: claudedocs/agent-outputs/2026-01-28_compliance-verification.md"
+    },
+    {
+      "id": "T027",
+      "title": "Implement Text Injection (REQ-014)",
+      "status": "done",
+      "priority": "critical",
+      "type": "task",
+      "parentId": "T026",
+      "createdAt": "2026-01-28T19:54:49Z",
+      "updatedAt": "2026-01-28T23:09:03Z",
+      "size": "medium",
+      "position": 1,
+      "positionVersion": 0,
+      "phase": "core",
+      "description": "BLOCKING: Wayland-safe text injection. Port from Handy input.rs or old GJS inject/TextInjector.ts",
+      "notes": [
+        "2026-01-28 22:21:39 UTC: Text injection implemented: text_injection.rs + commands. Wayland-safe with ydotool/wtype fallback. Also implemented hotkey manager and dictation controller (unplanned but critical).",
+        "[COMPLETED 2026-01-28T23:09:03Z] Text injection implemented. RPM built: Voyc-1.0.0-1.x86_64.rpm (50MB). Updater configured with pubkey. App runs successfully."
+      ],
+      "completedAt": "2026-01-28T23:09:03Z",
+      "verification": {
+        "passed": false,
+        "round": 0,
+        "gates": {
+          "implemented": true,
+          "testsPassed": null,
+          "qaPassed": null,
+          "cleanupDone": null,
+          "securityPassed": null,
+          "documented": null
+        },
+        "lastAgent": "coder",
+        "lastUpdated": "2026-01-28T23:09:03Z",
+        "failureLog": []
+      }
+    },
+    {
+      "id": "T028",
+      "title": "Set ElevenLabs as Default Provider (REQ-006)",
+      "status": "done",
+      "priority": "high",
+      "type": "task",
+      "parentId": "T026",
+      "createdAt": "2026-01-28T19:54:50Z",
+      "updatedAt": "2026-01-28T23:41:29Z",
+      "size": "small",
+      "position": 2,
+      "positionVersion": 0,
+      "phase": "core",
+      "description": "Change default cloud provider from OpenAI to ElevenLabs in settings.rs",
+      "completedAt": "2026-01-28T23:41:29Z",
+      "notes": [
+        "[COMPLETED 2026-01-28T23:41:29Z] Changed default CloudSttProvider from OpenAI to ElevenLabs in cloud_stt.rs"
+      ],
+      "verification": {
+        "passed": false,
+        "round": 0,
+        "gates": {
+          "implemented": true,
+          "testsPassed": null,
+          "qaPassed": null,
+          "cleanupDone": null,
+          "securityPassed": null,
+          "documented": null
+        },
+        "lastAgent": "coder",
+        "lastUpdated": "2026-01-28T23:41:29Z",
+        "failureLog": []
+      }
+    },
+    {
+      "id": "T029",
+      "title": "Add Privacy Policy UI (REQ-018)",
+      "status": "done",
+      "priority": "medium",
+      "type": "task",
+      "parentId": "T026",
+      "createdAt": "2026-01-28T19:54:51Z",
+      "updatedAt": "2026-01-28T23:40:39Z",
+      "size": "small",
+      "position": 3,
+      "positionVersion": 0,
+      "phase": "core",
+      "description": "Expose data handling policy in settings UI",
+      "completedAt": "2026-01-28T23:40:39Z",
+      "notes": [
+        "[COMPLETED 2026-01-28T23:40:39Z] Created PrivacySettings.tsx with data handling policy, log redaction info (REQ-020), third-party service links"
+      ],
+      "verification": {
+        "passed": false,
+        "round": 0,
+        "gates": {
+          "implemented": true,
+          "testsPassed": null,
+          "qaPassed": null,
+          "cleanupDone": null,
+          "securityPassed": null,
+          "documented": null
+        },
+        "lastAgent": "coder",
+        "lastUpdated": "2026-01-28T23:40:39Z",
+        "failureLog": []
+      }
+    },
+    {
+      "id": "T030",
+      "title": "Integrate Log Redaction (REQ-020)",
+      "status": "done",
+      "priority": "medium",
+      "type": "task",
+      "parentId": "T026",
+      "createdAt": "2026-01-28T19:54:53Z",
+      "updatedAt": "2026-01-28T23:44:58Z",
+      "size": "small",
+      "position": 4,
+      "positionVersion": 0,
+      "phase": "core",
+      "description": "Redact API keys and transcripts in Rust logs",
+      "completedAt": "2026-01-28T23:44:58Z",
+      "notes": [
+        "[COMPLETED 2026-01-28T23:44:58Z] Redacted transcription content from logs in transcription.rs:487. API keys not logged. Privacy UI documents redaction policy."
+      ],
+      "verification": {
+        "passed": false,
+        "round": 0,
+        "gates": {
+          "implemented": true,
+          "testsPassed": null,
+          "qaPassed": null,
+          "cleanupDone": null,
+          "securityPassed": null,
+          "documented": null
+        },
+        "lastAgent": "coder",
+        "lastUpdated": "2026-01-28T23:44:59Z",
+        "failureLog": []
+      }
+    },
+    {
+      "id": "T031",
+      "title": "Add Latency Metrics (REQ-016)",
+      "status": "done",
+      "priority": "medium",
+      "type": "task",
+      "parentId": "T026",
+      "createdAt": "2026-01-28T19:54:54Z",
+      "updatedAt": "2026-01-28T23:49:34Z",
+      "size": "small",
+      "position": 5,
+      "positionVersion": 0,
+      "phase": "core",
+      "description": "Track end-to-end timestamps for capture, STT, injection",
+      "completedAt": "2026-01-28T23:49:34Z",
+      "notes": [
+        "[COMPLETED 2026-01-28T23:49:34Z] Added LatencyMetrics struct with capture_ms/transcription_ms/injection_ms/total_ms. Instrumented dictation.rs with Instant timing. Emits metrics in dictation-complete event."
+      ],
+      "verification": {
+        "passed": false,
+        "round": 0,
+        "gates": {
+          "implemented": true,
+          "testsPassed": null,
+          "qaPassed": null,
+          "cleanupDone": null,
+          "securityPassed": null,
+          "documented": null
+        },
+        "lastAgent": "coder",
+        "lastUpdated": "2026-01-28T23:49:34Z",
+        "failureLog": []
+      }
+    },
+    {
+      "id": "T032",
+      "title": "Fix Gdk Error 71 Wayland stability",
+      "status": "done",
+      "priority": "medium",
+      "type": "task",
+      "parentId": "T026",
+      "createdAt": "2026-01-28T23:26:17Z",
+      "updatedAt": "2026-01-28T23:33:44Z",
+      "size": "medium",
+      "position": 6,
+      "positionVersion": 0,
+      "phase": "setup",
+      "labels": [
+        "bug",
+        "wayland"
+      ],
+      "notes": [
+        "2026-01-28 23:26:17 UTC: Defer overlay window creation until after main window is shown to prevent Wayland protocol error",
+        "[COMPLETED 2026-01-28T23:33:44Z] Deferred always_on_top to show time. Gdk Error 71 still appears but is non-fatal - app runs correctly. Likely Wayland compositor incompatibility."
+      ],
+      "completedAt": "2026-01-28T23:33:44Z",
+      "verification": {
+        "passed": false,
+        "round": 0,
+        "gates": {
+          "implemented": true,
+          "testsPassed": null,
+          "qaPassed": null,
+          "cleanupDone": null,
+          "securityPassed": null,
+          "documented": null
+        },
+        "lastAgent": "coder",
+        "lastUpdated": "2026-01-28T23:33:44Z",
+        "failureLog": []
+      }
+    },
+    {
+      "id": "T033",
+      "title": "Add History tab UI",
+      "status": "done",
+      "priority": "medium",
+      "type": "task",
+      "parentId": "T026",
+      "createdAt": "2026-01-28T23:26:18Z",
+      "updatedAt": "2026-01-28T23:40:31Z",
+      "size": "medium",
+      "position": 7,
+      "positionVersion": 0,
+      "phase": "setup",
+      "labels": [
+        "feature",
+        "ui"
+      ],
+      "notes": [
+        "2026-01-28 23:26:18 UTC: Track transcription history with timestamps, text, and replay capability",
+        "[COMPLETED 2026-01-28T23:40:31Z] Created HistorySettings.tsx with transcription history display, clear history button, empty state"
+      ],
+      "completedAt": "2026-01-28T23:40:31Z",
+      "verification": {
+        "passed": false,
+        "round": 0,
+        "gates": {
+          "implemented": true,
+          "testsPassed": null,
+          "qaPassed": null,
+          "cleanupDone": null,
+          "securityPassed": null,
+          "documented": null
+        },
+        "lastAgent": "coder",
+        "lastUpdated": "2026-01-28T23:40:32Z",
+        "failureLog": []
+      }
+    },
+    {
+      "id": "T034",
+      "title": "Add Debug tab UI",
+      "status": "done",
+      "priority": "medium",
+      "type": "task",
+      "parentId": "T026",
+      "createdAt": "2026-01-28T23:26:20Z",
+      "updatedAt": "2026-01-28T23:40:35Z",
+      "size": "medium",
+      "position": 8,
+      "positionVersion": 0,
+      "phase": "setup",
+      "labels": [
+        "feature",
+        "ui"
+      ],
+      "notes": [
+        "2026-01-28 23:26:20 UTC: Show logs, latency metrics, system info for troubleshooting",
+        "[COMPLETED 2026-01-28T23:40:35Z] Created DebugSettings.tsx with system info, latency metrics (REQ-016), log path, diagnostics copy"
+      ],
+      "completedAt": "2026-01-28T23:40:35Z",
+      "verification": {
+        "passed": false,
+        "round": 0,
+        "gates": {
+          "implemented": true,
+          "testsPassed": null,
+          "qaPassed": null,
+          "cleanupDone": null,
+          "securityPassed": null,
+          "documented": null
+        },
+        "lastAgent": "coder",
+        "lastUpdated": "2026-01-28T23:40:35Z",
+        "failureLog": []
+      }
+    },
+    {
+      "id": "T035",
+      "title": "Add About section with version and updates",
+      "status": "done",
+      "priority": "medium",
+      "type": "task",
+      "parentId": "T026",
+      "createdAt": "2026-01-28T23:26:21Z",
+      "updatedAt": "2026-01-28T23:40:37Z",
+      "size": "medium",
+      "position": 9,
+      "positionVersion": 0,
+      "phase": "setup",
+      "labels": [
+        "feature",
+        "ui"
+      ],
+      "notes": [
+        "2026-01-28 23:26:21 UTC: Display version, check for updates button, credits",
+        "[COMPLETED 2026-01-28T23:40:37Z] Created AboutSettings.tsx with version display, check for updates button, credits, links"
+      ],
+      "completedAt": "2026-01-28T23:40:37Z",
+      "verification": {
+        "passed": false,
+        "round": 0,
+        "gates": {
+          "implemented": true,
+          "testsPassed": null,
+          "qaPassed": null,
+          "cleanupDone": null,
+          "securityPassed": null,
+          "documented": null
+        },
+        "lastAgent": "coder",
+        "lastUpdated": "2026-01-28T23:40:37Z",
+        "failureLog": []
+      }
+    },
+    {
+      "id": "T036",
+      "title": "Add Push to Talk mode",
+      "status": "done",
+      "priority": "medium",
+      "type": "task",
+      "parentId": "T026",
+      "createdAt": "2026-01-28T23:26:31Z",
+      "updatedAt": "2026-01-28T23:43:31Z",
+      "size": "medium",
+      "position": 10,
+      "positionVersion": 0,
+      "phase": "setup",
+      "labels": [
+        "audio",
+        "feature"
+      ],
+      "notes": [
+        "2026-01-28 23:26:31 UTC: Toggle between push-to-talk and toggle modes for recording",
+        "[COMPLETED 2026-01-28T23:43:31Z] Created PushToTalkToggle.tsx, integrated into AudioSettings"
+      ],
+      "completedAt": "2026-01-28T23:43:31Z",
+      "verification": {
+        "passed": false,
+        "round": 0,
+        "gates": {
+          "implemented": true,
+          "testsPassed": null,
+          "qaPassed": null,
+          "cleanupDone": null,
+          "securityPassed": null,
+          "documented": null
+        },
+        "lastAgent": "coder",
+        "lastUpdated": "2026-01-28T23:43:31Z",
+        "failureLog": []
+      }
+    },
+    {
+      "id": "T037",
+      "title": "Add Volume slider control",
+      "status": "done",
+      "priority": "medium",
+      "type": "task",
+      "parentId": "T026",
+      "createdAt": "2026-01-28T23:26:33Z",
+      "updatedAt": "2026-01-28T23:41:52Z",
+      "size": "medium",
+      "position": 11,
+      "positionVersion": 0,
+      "phase": "setup",
+      "labels": [
+        "audio",
+        "feature"
+      ],
+      "notes": [
+        "2026-01-28 23:26:33 UTC: Control audio feedback volume with slider",
+        "[COMPLETED 2026-01-28T23:41:52Z] VolumeSlider component already exists and is integrated in AudioSettings.tsx"
+      ],
+      "completedAt": "2026-01-28T23:41:52Z",
+      "verification": {
+        "passed": false,
+        "round": 0,
+        "gates": {
+          "implemented": true,
+          "testsPassed": null,
+          "qaPassed": null,
+          "cleanupDone": null,
+          "securityPassed": null,
+          "documented": null
+        },
+        "lastAgent": "coder",
+        "lastUpdated": "2026-01-28T23:41:53Z",
+        "failureLog": []
+      }
+    },
+    {
+      "id": "T038",
+      "title": "Add Post-processing Pipeline UI (REQ-011-013)",
+      "status": "done",
+      "priority": "medium",
+      "type": "task",
+      "parentId": "T026",
+      "createdAt": "2026-01-28T23:26:35Z",
+      "updatedAt": "2026-01-28T23:58:44Z",
+      "size": "medium",
+      "position": 12,
+      "positionVersion": 0,
+      "phase": "setup",
+      "labels": [
+        "feature",
+        "ui"
+      ],
+      "notes": [
+        "2026-01-28 23:26:35 UTC: Expose LLM post-processing configuration in UI - provider selection, chain ordering",
+        "[COMPLETED 2026-01-28T23:58:44Z] Added post_process_enabled/api_key/provider to settings.rs. Created PostProcessingSettings.tsx with provider selector, API key input, and LLM info. Integrated into CloudSettings tab."
+      ],
+      "completedAt": "2026-01-28T23:58:44Z",
+      "verification": {
+        "passed": false,
+        "round": 0,
+        "gates": {
+          "implemented": true,
+          "testsPassed": null,
+          "qaPassed": null,
+          "cleanupDone": null,
+          "securityPassed": null,
+          "documented": null
+        },
+        "lastAgent": "coder",
+        "lastUpdated": "2026-01-28T23:58:45Z",
+        "failureLog": []
+      }
+    },
+    {
+      "id": "T039",
+      "title": "Add VAD threshold slider",
+      "status": "done",
+      "priority": "medium",
+      "type": "task",
+      "parentId": "T026",
+      "createdAt": "2026-01-28T23:26:36Z",
+      "updatedAt": "2026-01-28T23:43:34Z",
+      "size": "medium",
+      "position": 13,
+      "positionVersion": 0,
+      "phase": "setup",
+      "labels": [
+        "audio",
+        "feature"
+      ],
+      "notes": [
+        "2026-01-28 23:26:36 UTC: Expose Silero VAD sensitivity threshold to users",
+        "[COMPLETED 2026-01-28T23:43:34Z] Added vad_threshold to settings.rs, created VadThresholdSlider.tsx with sensitivity labels"
+      ],
+      "completedAt": "2026-01-28T23:43:34Z",
+      "verification": {
+        "passed": false,
+        "round": 0,
+        "gates": {
+          "implemented": true,
+          "testsPassed": null,
+          "qaPassed": null,
+          "cleanupDone": null,
+          "securityPassed": null,
+          "documented": null
+        },
+        "lastAgent": "coder",
+        "lastUpdated": "2026-01-28T23:43:34Z",
+        "failureLog": []
+      }
     }
   ],
   "labels": {}

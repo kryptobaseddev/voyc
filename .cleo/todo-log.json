@@ -4,9 +4,9 @@
   "project": "voyc",
   "_meta": {
     "schemaVersion": "2.4.0",
-    "totalEntries": 56,
+    "totalEntries": 99,
     "firstEntry": "2026-01-28T01:10:57Z",
-    "lastEntry": "2026-01-28T07:11:23Z",
+    "lastEntry": "2026-01-28T23:59:13Z",
     "entriesPruned": 0
   },
   "entries": [
@@ -1177,6 +1177,821 @@
         "title": "Create CI/CD Release Pipeline",
         "status": "pending",
         "priority": "high"
+      }
+    },
+    {
+      "id": "log-1769630048-a670d7",
+      "timestamp": "2026-01-28T19:54:08Z",
+      "action": "task_created",
+      "taskId": "T025",
+      "actor": "system",
+      "details": {
+        "title": "Voyc Tauri Migration",
+        "status": "pending",
+        "priority": "high"
+      },
+      "before": null,
+      "after": {
+        "title": "Voyc Tauri Migration",
+        "status": "pending",
+        "priority": "high"
+      }
+    },
+    {
+      "id": "log_ad2f44376bcb",
+      "timestamp": "2026-01-28T19:54:29Z",
+      "sessionId": null,
+      "action": "status_changed",
+      "actor": "system",
+      "taskId": "T025",
+      "before": {
+        "status": "pending",
+        "completedAt": null
+      },
+      "after": {
+        "status": "done",
+        "completedAt": "2026-01-28T19:54:29Z"
+      },
+      "details": {
+        "field": "status",
+        "operation": "complete"
+      }
+    },
+    {
+      "id": "log-1769630076-addd6a",
+      "timestamp": "2026-01-28T19:54:36Z",
+      "action": "task_created",
+      "taskId": "T026",
+      "actor": "system",
+      "details": {
+        "title": "Voyc Critical Gaps Resolution",
+        "status": "pending",
+        "priority": "critical"
+      },
+      "before": null,
+      "after": {
+        "title": "Voyc Critical Gaps Resolution",
+        "status": "pending",
+        "priority": "critical"
+      }
+    },
+    {
+      "id": "log-1769630089-2bb455",
+      "timestamp": "2026-01-28T19:54:49Z",
+      "action": "task_created",
+      "taskId": "T027",
+      "actor": "system",
+      "details": {
+        "title": "Implement Text Injection (REQ-014)",
+        "status": "pending",
+        "priority": "critical"
+      },
+      "before": null,
+      "after": {
+        "title": "Implement Text Injection (REQ-014)",
+        "status": "pending",
+        "priority": "critical"
+      }
+    },
+    {
+      "id": "log-1769630090-3fb417",
+      "timestamp": "2026-01-28T19:54:50Z",
+      "action": "task_created",
+      "taskId": "T028",
+      "actor": "system",
+      "details": {
+        "title": "Set ElevenLabs as Default Provider (REQ-006)",
+        "status": "pending",
+        "priority": "high"
+      },
+      "before": null,
+      "after": {
+        "title": "Set ElevenLabs as Default Provider (REQ-006)",
+        "status": "pending",
+        "priority": "high"
+      }
+    },
+    {
+      "id": "log-1769630091-b5bd6c",
+      "timestamp": "2026-01-28T19:54:51Z",
+      "action": "task_created",
+      "taskId": "T029",
+      "actor": "system",
+      "details": {
+        "title": "Add Privacy Policy UI (REQ-018)",
+        "status": "pending",
+        "priority": "medium"
+      },
+      "before": null,
+      "after": {
+        "title": "Add Privacy Policy UI (REQ-018)",
+        "status": "pending",
+        "priority": "medium"
+      }
+    },
+    {
+      "id": "log-1769630093-a8ce07",
+      "timestamp": "2026-01-28T19:54:53Z",
+      "action": "task_created",
+      "taskId": "T030",
+      "actor": "system",
+      "details": {
+        "title": "Integrate Log Redaction (REQ-020)",
+        "status": "pending",
+        "priority": "medium"
+      },
+      "before": null,
+      "after": {
+        "title": "Integrate Log Redaction (REQ-020)",
+        "status": "pending",
+        "priority": "medium"
+      }
+    },
+    {
+      "id": "log-1769630094-9260cd",
+      "timestamp": "2026-01-28T19:54:54Z",
+      "action": "task_created",
+      "taskId": "T031",
+      "actor": "system",
+      "details": {
+        "title": "Add Latency Metrics (REQ-016)",
+        "status": "pending",
+        "priority": "medium"
+      },
+      "before": null,
+      "after": {
+        "title": "Add Latency Metrics (REQ-016)",
+        "status": "pending",
+        "priority": "medium"
+      }
+    },
+    {
+      "id": "log_ceee44ec75ea",
+      "timestamp": "2026-01-28T19:56:28Z",
+      "sessionId": "session_20260128_115628_4620fd",
+      "action": "session_start",
+      "actor": "system",
+      "taskId": "T027",
+      "before": null,
+      "after": null,
+      "details": "Multi-session started",
+      "scope": {
+        "type": "epic",
+        "rootTaskId": "T026"
+      }
+    },
+    {
+      "id": "log_ecf9ea2e17d7",
+      "timestamp": "2026-01-28T20:00:58Z",
+      "sessionId": null,
+      "action": "session_focus_changed",
+      "actor": "claude",
+      "taskId": null,
+      "before": {
+        "currentTask": "T027"
+      },
+      "after": {
+        "currentTask": "T027"
+      },
+      "details": null
+    },
+    {
+      "id": "log_4c5f605b95d7",
+      "timestamp": "2026-01-28T22:21:39Z",
+      "sessionId": null,
+      "action": "task_updated",
+      "actor": "system",
+      "taskId": "T027",
+      "before": {
+        "title": "Implement Text Injection (REQ-014)",
+        "status": "active",
+        "priority": "critical",
+        "description": "BLOCKING: Wayland-safe text injection. Port from Handy input.rs or old GJS inject/TextInjector.ts",
+        "phase": "core",
+        "labels": null,
+        "files": null,
+        "acceptance": null,
+        "depends": null,
+        "blockedBy": null
+      },
+      "after": {
+        "title": "Implement Text Injection (REQ-014)",
+        "status": "active",
+        "priority": "critical",
+        "description": "BLOCKING: Wayland-safe text injection. Port from Handy input.rs or old GJS inject/TextInjector.ts",
+        "phase": "core",
+        "labels": null,
+        "files": null,
+        "acceptance": null,
+        "depends": null,
+        "blockedBy": null
+      },
+      "details": {
+        "operation": "update"
+      }
+    },
+    {
+      "id": "log_394f5dbe6197",
+      "timestamp": "2026-01-28T23:09:04Z",
+      "sessionId": null,
+      "action": "status_changed",
+      "actor": "system",
+      "taskId": "T027",
+      "before": {
+        "status": "active",
+        "completedAt": null
+      },
+      "after": {
+        "status": "done",
+        "completedAt": "2026-01-28T23:09:03Z"
+      },
+      "details": {
+        "field": "status",
+        "operation": "complete"
+      }
+    },
+    {
+      "id": "log-1769642777-164dee",
+      "timestamp": "2026-01-28T23:26:17Z",
+      "action": "task_created",
+      "taskId": "T032",
+      "actor": "system",
+      "details": {
+        "title": "Fix Gdk Error 71 Wayland stability",
+        "status": "pending",
+        "priority": "medium"
+      },
+      "before": null,
+      "after": {
+        "title": "Fix Gdk Error 71 Wayland stability",
+        "status": "pending",
+        "priority": "medium"
+      }
+    },
+    {
+      "id": "log-1769642778-c9607d",
+      "timestamp": "2026-01-28T23:26:18Z",
+      "action": "task_created",
+      "taskId": "T033",
+      "actor": "system",
+      "details": {
+        "title": "Add History tab UI",
+        "status": "pending",
+        "priority": "medium"
+      },
+      "before": null,
+      "after": {
+        "title": "Add History tab UI",
+        "status": "pending",
+        "priority": "medium"
+      }
+    },
+    {
+      "id": "log-1769642780-2538d5",
+      "timestamp": "2026-01-28T23:26:20Z",
+      "action": "task_created",
+      "taskId": "T034",
+      "actor": "system",
+      "details": {
+        "title": "Add Debug tab UI",
+        "status": "pending",
+        "priority": "medium"
+      },
+      "before": null,
+      "after": {
+        "title": "Add Debug tab UI",
+        "status": "pending",
+        "priority": "medium"
+      }
+    },
+    {
+      "id": "log-1769642781-f1f750",
+      "timestamp": "2026-01-28T23:26:21Z",
+      "action": "task_created",
+      "taskId": "T035",
+      "actor": "system",
+      "details": {
+        "title": "Add About section with version and updates",
+        "status": "pending",
+        "priority": "medium"
+      },
+      "before": null,
+      "after": {
+        "title": "Add About section with version and updates",
+        "status": "pending",
+        "priority": "medium"
+      }
+    },
+    {
+      "id": "log-1769642791-10d89f",
+      "timestamp": "2026-01-28T23:26:31Z",
+      "action": "task_created",
+      "taskId": "T036",
+      "actor": "system",
+      "details": {
+        "title": "Add Push to Talk mode",
+        "status": "pending",
+        "priority": "medium"
+      },
+      "before": null,
+      "after": {
+        "title": "Add Push to Talk mode",
+        "status": "pending",
+        "priority": "medium"
+      }
+    },
+    {
+      "id": "log-1769642793-8ceb53",
+      "timestamp": "2026-01-28T23:26:33Z",
+      "action": "task_created",
+      "taskId": "T037",
+      "actor": "system",
+      "details": {
+        "title": "Add Volume slider control",
+        "status": "pending",
+        "priority": "medium"
+      },
+      "before": null,
+      "after": {
+        "title": "Add Volume slider control",
+        "status": "pending",
+        "priority": "medium"
+      }
+    },
+    {
+      "id": "log-1769642795-7ec545",
+      "timestamp": "2026-01-28T23:26:35Z",
+      "action": "task_created",
+      "taskId": "T038",
+      "actor": "system",
+      "details": {
+        "title": "Add Post-processing Pipeline UI (REQ-011-013)",
+        "status": "pending",
+        "priority": "medium"
+      },
+      "before": null,
+      "after": {
+        "title": "Add Post-processing Pipeline UI (REQ-011-013)",
+        "status": "pending",
+        "priority": "medium"
+      }
+    },
+    {
+      "id": "log-1769642796-511725",
+      "timestamp": "2026-01-28T23:26:36Z",
+      "action": "task_created",
+      "taskId": "T039",
+      "actor": "system",
+      "details": {
+        "title": "Add VAD threshold slider",
+        "status": "pending",
+        "priority": "medium"
+      },
+      "before": null,
+      "after": {
+        "title": "Add VAD threshold slider",
+        "status": "pending",
+        "priority": "medium"
+      }
+    },
+    {
+      "id": "log_753dc725bf1c",
+      "timestamp": "2026-01-28T23:27:07Z",
+      "sessionId": null,
+      "action": "task_updated",
+      "actor": "system",
+      "taskId": "T032",
+      "before": {
+        "title": "Fix Gdk Error 71 Wayland stability",
+        "status": "pending",
+        "priority": "medium",
+        "description": null,
+        "phase": "setup",
+        "labels": [
+          "bug",
+          "wayland"
+        ],
+        "files": null,
+        "acceptance": null,
+        "depends": null,
+        "blockedBy": null
+      },
+      "after": {
+        "title": "Fix Gdk Error 71 Wayland stability",
+        "status": "active",
+        "priority": "medium",
+        "description": null,
+        "phase": "setup",
+        "labels": [
+          "bug",
+          "wayland"
+        ],
+        "files": null,
+        "acceptance": null,
+        "depends": null,
+        "blockedBy": null
+      },
+      "details": {
+        "operation": "update"
+      }
+    },
+    {
+      "id": "log_5e4fe557bd5f",
+      "timestamp": "2026-01-28T23:33:45Z",
+      "sessionId": null,
+      "action": "status_changed",
+      "actor": "system",
+      "taskId": "T032",
+      "before": {
+        "status": "active",
+        "completedAt": null
+      },
+      "after": {
+        "status": "done",
+        "completedAt": "2026-01-28T23:33:44Z"
+      },
+      "details": {
+        "field": "status",
+        "operation": "complete"
+      }
+    },
+    {
+      "id": "log_21bdf98b6e16",
+      "timestamp": "2026-01-28T23:40:32Z",
+      "sessionId": null,
+      "action": "status_changed",
+      "actor": "system",
+      "taskId": "T033",
+      "before": {
+        "status": "pending",
+        "completedAt": null
+      },
+      "after": {
+        "status": "done",
+        "completedAt": "2026-01-28T23:40:31Z"
+      },
+      "details": {
+        "field": "status",
+        "operation": "complete"
+      }
+    },
+    {
+      "id": "log_e0a35f12f940",
+      "timestamp": "2026-01-28T23:40:35Z",
+      "sessionId": null,
+      "action": "status_changed",
+      "actor": "system",
+      "taskId": "T034",
+      "before": {
+        "status": "pending",
+        "completedAt": null
+      },
+      "after": {
+        "status": "done",
+        "completedAt": "2026-01-28T23:40:35Z"
+      },
+      "details": {
+        "field": "status",
+        "operation": "complete"
+      }
+    },
+    {
+      "id": "log_3e22f1544776",
+      "timestamp": "2026-01-28T23:40:37Z",
+      "sessionId": null,
+      "action": "status_changed",
+      "actor": "system",
+      "taskId": "T035",
+      "before": {
+        "status": "pending",
+        "completedAt": null
+      },
+      "after": {
+        "status": "done",
+        "completedAt": "2026-01-28T23:40:37Z"
+      },
+      "details": {
+        "field": "status",
+        "operation": "complete"
+      }
+    },
+    {
+      "id": "log_a2aad852a232",
+      "timestamp": "2026-01-28T23:40:40Z",
+      "sessionId": null,
+      "action": "status_changed",
+      "actor": "system",
+      "taskId": "T029",
+      "before": {
+        "status": "pending",
+        "completedAt": null
+      },
+      "after": {
+        "status": "done",
+        "completedAt": "2026-01-28T23:40:39Z"
+      },
+      "details": {
+        "field": "status",
+        "operation": "complete"
+      }
+    },
+    {
+      "id": "log_48c9d8dc35bc",
+      "timestamp": "2026-01-28T23:40:57Z",
+      "sessionId": null,
+      "action": "task_updated",
+      "actor": "system",
+      "taskId": "T028",
+      "before": {
+        "title": "Set ElevenLabs as Default Provider (REQ-006)",
+        "status": "pending",
+        "priority": "high",
+        "description": "Change default cloud provider from OpenAI to ElevenLabs in settings.rs",
+        "phase": "core",
+        "labels": null,
+        "files": null,
+        "acceptance": null,
+        "depends": null,
+        "blockedBy": null
+      },
+      "after": {
+        "title": "Set ElevenLabs as Default Provider (REQ-006)",
+        "status": "active",
+        "priority": "high",
+        "description": "Change default cloud provider from OpenAI to ElevenLabs in settings.rs",
+        "phase": "core",
+        "labels": null,
+        "files": null,
+        "acceptance": null,
+        "depends": null,
+        "blockedBy": null
+      },
+      "details": {
+        "operation": "update"
+      }
+    },
+    {
+      "id": "log_3230f7c61861",
+      "timestamp": "2026-01-28T23:41:29Z",
+      "sessionId": null,
+      "action": "status_changed",
+      "actor": "system",
+      "taskId": "T028",
+      "before": {
+        "status": "active",
+        "completedAt": null
+      },
+      "after": {
+        "status": "done",
+        "completedAt": "2026-01-28T23:41:29Z"
+      },
+      "details": {
+        "field": "status",
+        "operation": "complete"
+      }
+    },
+    {
+      "id": "log_7b403e3b3ec9",
+      "timestamp": "2026-01-28T23:41:53Z",
+      "sessionId": null,
+      "action": "status_changed",
+      "actor": "system",
+      "taskId": "T037",
+      "before": {
+        "status": "pending",
+        "completedAt": null
+      },
+      "after": {
+        "status": "done",
+        "completedAt": "2026-01-28T23:41:52Z"
+      },
+      "details": {
+        "field": "status",
+        "operation": "complete"
+      }
+    },
+    {
+      "id": "log_0e6d457061cb",
+      "timestamp": "2026-01-28T23:43:31Z",
+      "sessionId": null,
+      "action": "status_changed",
+      "actor": "system",
+      "taskId": "T036",
+      "before": {
+        "status": "pending",
+        "completedAt": null
+      },
+      "after": {
+        "status": "done",
+        "completedAt": "2026-01-28T23:43:31Z"
+      },
+      "details": {
+        "field": "status",
+        "operation": "complete"
+      }
+    },
+    {
+      "id": "log_a9873491399c",
+      "timestamp": "2026-01-28T23:43:34Z",
+      "sessionId": null,
+      "action": "status_changed",
+      "actor": "system",
+      "taskId": "T039",
+      "before": {
+        "status": "pending",
+        "completedAt": null
+      },
+      "after": {
+        "status": "done",
+        "completedAt": "2026-01-28T23:43:34Z"
+      },
+      "details": {
+        "field": "status",
+        "operation": "complete"
+      }
+    },
+    {
+      "id": "log_6a2367fe6564",
+      "timestamp": "2026-01-28T23:43:53Z",
+      "sessionId": null,
+      "action": "task_updated",
+      "actor": "system",
+      "taskId": "T030",
+      "before": {
+        "title": "Integrate Log Redaction (REQ-020)",
+        "status": "pending",
+        "priority": "medium",
+        "description": "Redact API keys and transcripts in Rust logs",
+        "phase": "core",
+        "labels": null,
+        "files": null,
+        "acceptance": null,
+        "depends": null,
+        "blockedBy": null
+      },
+      "after": {
+        "title": "Integrate Log Redaction (REQ-020)",
+        "status": "active",
+        "priority": "medium",
+        "description": "Redact API keys and transcripts in Rust logs",
+        "phase": "core",
+        "labels": null,
+        "files": null,
+        "acceptance": null,
+        "depends": null,
+        "blockedBy": null
+      },
+      "details": {
+        "operation": "update"
+      }
+    },
+    {
+      "id": "log_be533d0a0352",
+      "timestamp": "2026-01-28T23:44:59Z",
+      "sessionId": null,
+      "action": "status_changed",
+      "actor": "system",
+      "taskId": "T030",
+      "before": {
+        "status": "active",
+        "completedAt": null
+      },
+      "after": {
+        "status": "done",
+        "completedAt": "2026-01-28T23:44:58Z"
+      },
+      "details": {
+        "field": "status",
+        "operation": "complete"
+      }
+    },
+    {
+      "id": "log_9e272fec0fb9",
+      "timestamp": "2026-01-28T23:45:09Z",
+      "sessionId": null,
+      "action": "task_updated",
+      "actor": "system",
+      "taskId": "T031",
+      "before": {
+        "title": "Add Latency Metrics (REQ-016)",
+        "status": "pending",
+        "priority": "medium",
+        "description": "Track end-to-end timestamps for capture, STT, injection",
+        "phase": "core",
+        "labels": null,
+        "files": null,
+        "acceptance": null,
+        "depends": null,
+        "blockedBy": null
+      },
+      "after": {
+        "title": "Add Latency Metrics (REQ-016)",
+        "status": "active",
+        "priority": "medium",
+        "description": "Track end-to-end timestamps for capture, STT, injection",
+        "phase": "core",
+        "labels": null,
+        "files": null,
+        "acceptance": null,
+        "depends": null,
+        "blockedBy": null
+      },
+      "details": {
+        "operation": "update"
+      }
+    },
+    {
+      "id": "log_f691d439245b",
+      "timestamp": "2026-01-28T23:49:34Z",
+      "sessionId": null,
+      "action": "status_changed",
+      "actor": "system",
+      "taskId": "T031",
+      "before": {
+        "status": "active",
+        "completedAt": null
+      },
+      "after": {
+        "status": "done",
+        "completedAt": "2026-01-28T23:49:34Z"
+      },
+      "details": {
+        "field": "status",
+        "operation": "complete"
+      }
+    },
+    {
+      "id": "log_af57793a609c",
+      "timestamp": "2026-01-28T23:49:44Z",
+      "sessionId": null,
+      "action": "task_updated",
+      "actor": "system",
+      "taskId": "T038",
+      "before": {
+        "title": "Add Post-processing Pipeline UI (REQ-011-013)",
+        "status": "pending",
+        "priority": "medium",
+        "description": null,
+        "phase": "setup",
+        "labels": [
+          "feature",
+          "ui"
+        ],
+        "files": null,
+        "acceptance": null,
+        "depends": null,
+        "blockedBy": null
+      },
+      "after": {
+        "title": "Add Post-processing Pipeline UI (REQ-011-013)",
+        "status": "active",
+        "priority": "medium",
+        "description": null,
+        "phase": "setup",
+        "labels": [
+          "feature",
+          "ui"
+        ],
+        "files": null,
+        "acceptance": null,
+        "depends": null,
+        "blockedBy": null
+      },
+      "details": {
+        "operation": "update"
+      }
+    },
+    {
+      "id": "log_8a72df026538",
+      "timestamp": "2026-01-28T23:58:45Z",
+      "sessionId": null,
+      "action": "status_changed",
+      "actor": "system",
+      "taskId": "T038",
+      "before": {
+        "status": "active",
+        "completedAt": null
+      },
+      "after": {
+        "status": "done",
+        "completedAt": "2026-01-28T23:58:44Z"
+      },
+      "details": {
+        "field": "status",
+        "operation": "complete"
+      }
+    },
+    {
+      "id": "log_f92162b0a066",
+      "timestamp": "2026-01-28T23:59:13Z",
+      "sessionId": "session_20260128_115628_4620fd",
+      "action": "session_end",
+      "actor": "system",
+      "taskId": null,
+      "before": null,
+      "after": null,
+      "details": {
+        "note": "Voyc v1.0.0 all 13 tasks complete. RPM built. Features: History/Debug/Privacy/About tabs, Push to Talk, VAD threshold, Post-processing UI, Latency metrics, ElevenLabs default, Log redaction."
       }
     }
   ]

@@ -1,27 +1,33 @@
 {
   "compilerOptions": {
     "target": "ES2020",
+    "useDefineForClassFields": true,
+    "lib": ["ES2020", "DOM", "DOM.Iterable"],
+    "types": ["node"],
     "module": "ESNext",
-    "moduleResolution": "node",
-    "lib": ["ES2020"],
-    "strict": true,
-    "esModuleInterop": true,
     "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": true,
-    "outDir": "./dist",
-    "rootDir": "./src",
-    "declaration": false,
-    "sourceMap": false,
-    "noEmitOnError": false,
-    "removeComments": false
+
+    /* Bundler mode */
+    "moduleResolution": "bundler",
+    "allowImportingTsExtensions": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "jsx": "react-jsx",
+
+    /* Path Aliases */
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"]
+    },
+
+    /* Linting */
+    "strict": true,
+    "noUnusedLocals": false,
+    "noUnusedParameters": false,
+    "noFallthroughCasesInSwitch": true
   },
-  "include": [
-    "src/**/*",
-    "types/**/*",
-    "node_modules/@girs/**/*"
-  ],
-  "exclude": [
-    "node_modules/@girs/**/package.json",
-    "dist"
-  ]
+  "include": ["src"],
+  "exclude": ["src/_old_gjs"],
+  "references": [{ "path": "./tsconfig.node.json" }]
 }
