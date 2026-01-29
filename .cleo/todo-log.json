@@ -2997,6 +2997,204 @@
         "field": "status",
         "operation": "complete"
       }
+    },
+    {
+      "id": "log-1769723612-7fd2a1",
+      "timestamp": "2026-01-29T21:53:32Z",
+      "action": "task_created",
+      "taskId": "T065",
+      "actor": "system",
+      "details": {
+        "title": "Testing and Bug Fixing Epic - comprehensive Voyc functionality testing",
+        "status": "pending",
+        "priority": "critical"
+      },
+      "before": null,
+      "after": {
+        "title": "Testing and Bug Fixing Epic - comprehensive Voyc functionality testing",
+        "status": "pending",
+        "priority": "critical"
+      }
+    },
+    {
+      "id": "log-1769723627-07ca83",
+      "timestamp": "2026-01-29T21:53:47Z",
+      "action": "task_created",
+      "taskId": "T066",
+      "actor": "system",
+      "details": {
+        "title": "Test hotkey registration and dictation trigger on GNOME/Wayland",
+        "status": "pending",
+        "priority": "critical"
+      },
+      "before": null,
+      "after": {
+        "title": "Test hotkey registration and dictation trigger on GNOME/Wayland",
+        "status": "pending",
+        "priority": "critical"
+      }
+    },
+    {
+      "id": "log-1769723630-d6d4b2",
+      "timestamp": "2026-01-29T21:53:50Z",
+      "action": "task_created",
+      "taskId": "T067",
+      "actor": "system",
+      "details": {
+        "title": "Test full dictation flow: record -> transcribe -> text injection",
+        "status": "pending",
+        "priority": "critical"
+      },
+      "before": null,
+      "after": {
+        "title": "Test full dictation flow: record -> transcribe -> text injection",
+        "status": "pending",
+        "priority": "critical"
+      }
+    },
+    {
+      "id": "log-1769723632-ff7c6a",
+      "timestamp": "2026-01-29T21:53:52Z",
+      "action": "task_created",
+      "taskId": "T068",
+      "actor": "system",
+      "details": {
+        "title": "HITL Review: Models tab - model loading, selection, download",
+        "status": "pending",
+        "priority": "high"
+      },
+      "before": null,
+      "after": {
+        "title": "HITL Review: Models tab - model loading, selection, download",
+        "status": "pending",
+        "priority": "high"
+      }
+    },
+    {
+      "id": "log-1769723634-af28ed",
+      "timestamp": "2026-01-29T21:53:54Z",
+      "action": "task_created",
+      "taskId": "T069",
+      "actor": "system",
+      "details": {
+        "title": "HITL Review: Settings tab - all settings work correctly",
+        "status": "pending",
+        "priority": "high"
+      },
+      "before": null,
+      "after": {
+        "title": "HITL Review: Settings tab - all settings work correctly",
+        "status": "pending",
+        "priority": "high"
+      }
+    },
+    {
+      "id": "log-1769723635-27eb5f",
+      "timestamp": "2026-01-29T21:53:55Z",
+      "action": "task_created",
+      "taskId": "T070",
+      "actor": "system",
+      "details": {
+        "title": "HITL Review: Hotkeys tab - shortcut configuration and display",
+        "status": "pending",
+        "priority": "high"
+      },
+      "before": null,
+      "after": {
+        "title": "HITL Review: Hotkeys tab - shortcut configuration and display",
+        "status": "pending",
+        "priority": "high"
+      }
+    },
+    {
+      "id": "log-1769723637-6ddb98",
+      "timestamp": "2026-01-29T21:53:57Z",
+      "action": "task_created",
+      "taskId": "T071",
+      "actor": "system",
+      "details": {
+        "title": "HITL Review: History tab - transcription history display",
+        "status": "pending",
+        "priority": "high"
+      },
+      "before": null,
+      "after": {
+        "title": "HITL Review: History tab - transcription history display",
+        "status": "pending",
+        "priority": "high"
+      }
+    },
+    {
+      "id": "log-1769723639-7970cf",
+      "timestamp": "2026-01-29T21:53:59Z",
+      "action": "task_created",
+      "taskId": "T072",
+      "actor": "system",
+      "details": {
+        "title": "HITL Review: Debug tab - logs and diagnostics",
+        "status": "pending",
+        "priority": "high"
+      },
+      "before": null,
+      "after": {
+        "title": "HITL Review: Debug tab - logs and diagnostics",
+        "status": "pending",
+        "priority": "high"
+      }
+    },
+    {
+      "id": "log-1769723641-c8d128",
+      "timestamp": "2026-01-29T21:54:01Z",
+      "action": "task_created",
+      "taskId": "T073",
+      "actor": "system",
+      "details": {
+        "title": "HITL Review: About tab - version, updates, icons",
+        "status": "pending",
+        "priority": "high"
+      },
+      "before": null,
+      "after": {
+        "title": "HITL Review: About tab - version, updates, icons",
+        "status": "pending",
+        "priority": "high"
+      }
+    },
+    {
+      "id": "log-1769723643-6e397f",
+      "timestamp": "2026-01-29T21:54:03Z",
+      "action": "task_created",
+      "taskId": "T074",
+      "actor": "system",
+      "details": {
+        "title": "Test tray icon states - idle, recording, transcribing, error",
+        "status": "pending",
+        "priority": "high"
+      },
+      "before": null,
+      "after": {
+        "title": "Test tray icon states - idle, recording, transcribing, error",
+        "status": "pending",
+        "priority": "high"
+      }
+    },
+    {
+      "id": "log-1769723645-88afe1",
+      "timestamp": "2026-01-29T21:54:05Z",
+      "action": "task_created",
+      "taskId": "T075",
+      "actor": "system",
+      "details": {
+        "title": "Test app icon display in launcher and taskbar",
+        "status": "pending",
+        "priority": "medium"
+      },
+      "before": null,
+      "after": {
+        "title": "Test app icon display in launcher and taskbar",
+        "status": "pending",
+        "priority": "medium"
+      }
     }
   ]
 }
