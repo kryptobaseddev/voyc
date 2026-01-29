@@ -18,7 +18,61 @@ Download the latest release from [GitHub Releases](https://github.com/kryptobase
 
 - `.deb` for Debian/Ubuntu
 - `.rpm` for Fedora/RHEL
-- `.AppImage` for portable use
+- `.AppImage` for portable use (see [AppImage Note](#appimage-note) below)
+
+### Local Installation (Recommended for AppImage)
+
+For a fully integrated installation without requiring FUSE or sudo:
+
+```bash
+# Clone and build
+git clone https://github.com/kryptobaseddev/voyc.git
+cd voyc
+bun install
+bun run build:release
+
+# Install locally (no sudo required)
+./scripts/install-local.sh
+```
+
+This installs Voyc to `~/.local/share/Voyc/` with:
+- Binary symlink at `~/.local/bin/voyc`
+- Desktop entry in application menu
+- Proper icon integration
+
+To uninstall: `./scripts/install-local.sh --remove`
+
+### AppImage Note
+
+AppImages require FUSE to run directly. If you see an error like:
+
+```
+dlopen(): error loading libfuse.so.2
+AppImages require FUSE to run.
+```
+
+You have three options:
+
+1. **Install FUSE** (requires sudo):
+   ```bash
+   # Fedora
+   sudo dnf install fuse-libs
+
+   # Ubuntu/Debian
+   sudo apt install fuse
+   ```
+
+2. **Use the local installer** (recommended, no sudo):
+   ```bash
+   ./scripts/install-local.sh
+   ```
+
+3. **Run with extract-and-run flag** (temporary, no installation):
+   ```bash
+   ./Voyc_1.0.0_amd64.AppImage --appimage-extract-and-run
+   # Or use the wrapper script:
+   ./scripts/run-appimage.sh
+   ```
 
 ### Build from Source
 
