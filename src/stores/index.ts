@@ -14,3 +14,5 @@ export type {
 
 export { useModelStore } from "./modelStore";
 export type { ModelInfo } from "./modelStore";
+
+export { useDictationStore } from "./dictationStore";

@@ -2,6 +2,7 @@ import { useEffect, useState, useRef } from "react";
 import { Toaster } from "sonner";
 import { OnboardingWizard } from "./components/onboarding";
 import { SettingsPage } from "./components/settings";
+import { useDictationStore } from "./stores/dictationStore";
 import { useModelStore } from "./stores/modelStore";
 import { useSettingsStore } from "./stores/settingsStore";
 import "./App.css";
@@ -12,9 +13,11 @@ function App() {
   const [appState, setAppState] = useState<AppState>("loading");
   const hasCompletedPostOnboardingInit = useRef(false);
 
-  const { checkFirstRun, isFirstRun, hasAnyModels } = useModelStore();
+  const { checkFirstRun, isFirstRun, hasAnyModels, initialize: initializeModels } = useModelStore();
   const { initialize: initializeSettings, refreshAudioDevices, refreshOutputDevices } =
     useSettingsStore();
+  const { initialize: initializeDictation, cleanup: cleanupDictation } =
+    useDictationStore();
 
   // Check onboarding status on mount
   useEffect(() => {
@@ -41,10 +44,15 @@ function App() {
     initializeApp();
   }, [checkFirstRun, initializeSettings]);
 
-  // Initialize audio devices when main app loads
+  // Initialize audio devices, models, and dictation event listeners when main app loads
   useEffect(() => {
     if (appState === "main" && !hasCompletedPostOnboardingInit.current) {
       hasCompletedPostOnboardingInit.current = true;
+
+      // Initialize model store (loads models, current model, and first run status)
+      initializeModels().catch((error) => {
+        console.error("Failed to initialize models:", error);
+      });
 
       // Refresh audio devices now that we're in the main app
       Promise.all([refreshAudioDevices(), refreshOutputDevices()]).catch(
@@ -53,9 +61,19 @@ function App() {
         }
       );
 
+      // Initialize dictation store event listeners
+      initializeDictation().catch((error) => {
+        console.error("Failed to initialize dictation listeners:", error);
+      });
+
       console.log("Voyc main app initialized");
     }
-  }, [appState, refreshAudioDevices, refreshOutputDevices]);
+
+    // Cleanup dictation listeners on unmount
+    return () => {
+      cleanupDictation();
+    };
+  }, [appState, initializeModels, refreshAudioDevices, refreshOutputDevices, initializeDictation, cleanupDictation]);
 
   const handleOnboardingComplete = () => {
     setAppState("main");
