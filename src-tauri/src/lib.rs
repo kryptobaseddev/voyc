@@ -15,6 +15,9 @@ pub mod utils;
 #[cfg(target_os = "linux")]
 pub mod wayland_shortcuts;
 
+#[cfg(target_os = "linux")]
+pub mod desktop_integration;
+
 use log::{info, warn};
 use managers::audio::AudioRecordingManager;
 use managers::model::ModelManager;
@@ -135,6 +138,10 @@ pub fn run() {
         .setup(move |app| {
             // Mount Specta events
             builder.mount_events(app);
+
+            // Perform desktop integration for AppImage builds (Linux only)
+            #[cfg(target_os = "linux")]
+            desktop_integration::setup_desktop_integration(&app.handle());
 
             // Initialize managers
             info!("Initializing managers...");
