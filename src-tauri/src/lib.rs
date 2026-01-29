@@ -171,17 +171,29 @@ pub fn run() {
             info!("DictationController initialized");
 
             // Set up hotkey event handlers to trigger dictation
+            info!("Setting up hotkey event listeners for dictation...");
             let dc_pressed = dictation_controller.clone();
             app.listen("shortcut-pressed", move |event| {
                 let payload = event.payload();
+                log::debug!("Received shortcut-pressed event with payload: {}", payload);
                 // Parse the binding_id from the JSON payload (it's a quoted string)
-                if let Ok(binding_id) = serde_json::from_str::<String>(payload) {
-                    if binding_id == "transcribe" {
-                        if let Err(e) = dc_pressed.start_dictation(&binding_id) {
-                            log::error!("Failed to start dictation: {}", e);
+                match serde_json::from_str::<String>(payload) {
+                    Ok(binding_id) => {
+                        log::debug!("Parsed shortcut-pressed binding_id: {}", binding_id);
+                        if binding_id == "transcribe" {
+                            if let Err(e) = dc_pressed.start_dictation(&binding_id) {
+                                log::error!("Failed to start dictation: {}", e);
+                            }
+                        } else if binding_id == "cancel" {
+                            dc_pressed.cancel_dictation();
                         }
-                    } else if binding_id == "cancel" {
-                        dc_pressed.cancel_dictation();
+                    }
+                    Err(e) => {
+                        log::error!(
+                            "Failed to parse shortcut-pressed payload '{}': {}",
+                            payload,
+                            e
+                        );
                     }
                 }
             });
@@ -189,20 +201,31 @@ pub fn run() {
             let dc_released = dictation_controller.clone();
             app.listen("shortcut-released", move |event| {
                 let payload = event.payload();
+                log::debug!("Received shortcut-released event with payload: {}", payload);
                 // Parse the binding_id from the JSON payload (it's a quoted string)
-                if let Ok(binding_id) = serde_json::from_str::<String>(payload) {
-                    if binding_id == "transcribe" {
-                        let dc = dc_released.clone();
-                        let binding = binding_id.clone();
-                        tauri::async_runtime::spawn(async move {
-                            if let Err(e) = dc.stop_dictation(&binding).await {
-                                log::error!("Failed to stop dictation: {}", e);
-                            }
-                        });
+                match serde_json::from_str::<String>(payload) {
+                    Ok(binding_id) => {
+                        log::debug!("Parsed shortcut-released binding_id: {}", binding_id);
+                        if binding_id == "transcribe" {
+                            let dc = dc_released.clone();
+                            let binding = binding_id.clone();
+                            tauri::async_runtime::spawn(async move {
+                                if let Err(e) = dc.stop_dictation(&binding).await {
+                                    log::error!("Failed to stop dictation: {}", e);
+                                }
+                            });
+                        }
+                    }
+                    Err(e) => {
+                        log::error!(
+                            "Failed to parse shortcut-released payload '{}': {}",
+                            payload,
+                            e
+                        );
                     }
                 }
             });
-            info!("Dictation event handlers registered");
+            info!("Hotkey event listeners registered and active");
 
             // Get the current theme to set the appropriate initial icon
             let app_handle = app.handle().clone();

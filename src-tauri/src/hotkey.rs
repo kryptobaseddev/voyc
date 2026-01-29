@@ -41,24 +41,78 @@ impl HotkeyManager {
     ///
     /// # Returns
     ///
-    /// * `Ok(())` - All shortcuts were registered successfully
-    /// * `Err(String)` - An error occurred during registration
+    /// * `Ok(())` - At least one shortcut was registered successfully
+    /// * `Err(String)` - All shortcut registrations failed
     pub fn register_all(&self) -> Result<(), String> {
+        // Log platform detection for debugging hotkey issues
+        self.log_platform_info();
+
         let settings = get_settings(&self.app_handle);
+
+        let mut total_bindings = 0;
+        let mut successful_registrations = 0;
+        let mut failed_registrations: Vec<String> = Vec::new();
 
         for (id, binding) in settings.bindings.iter() {
             if !binding.current_binding.is_empty() {
-                if let Err(e) = self.register_shortcut(id, &binding.current_binding) {
-                    warn!(
-                        "Failed to register shortcut '{}' for binding '{}': {}",
-                        binding.current_binding, id, e
-                    );
+                total_bindings += 1;
+                match self.register_shortcut(id, &binding.current_binding) {
+                    Ok(()) => {
+                        successful_registrations += 1;
+                    }
+                    Err(e) => {
+                        let error_msg = format!(
+                            "Failed to register shortcut '{}' for binding '{}': {}",
+                            binding.current_binding, id, e
+                        );
+                        warn!("{}", error_msg);
+                        failed_registrations.push(error_msg);
+                    }
                 }
             }
         }
 
-        info!("All shortcuts registered from settings");
+        // Log summary of registration results
+        info!(
+            "Shortcut registration complete: {}/{} successful",
+            successful_registrations, total_bindings
+        );
+
+        // Return error only if ALL registrations failed and there were bindings to register
+        if total_bindings > 0 && successful_registrations == 0 {
+            let error_summary = format!(
+                "All {} shortcut registrations failed. Errors: {}",
+                total_bindings,
+                failed_registrations.join("; ")
+            );
+            error!("{}", error_summary);
+            return Err(error_summary);
+        }
+
         Ok(())
+    }
+
+    /// Logs platform information for debugging hotkey issues.
+    fn log_platform_info(&self) {
+        // Detect Wayland vs X11 on Linux
+        if cfg!(target_os = "linux") {
+            if std::env::var("WAYLAND_DISPLAY").is_ok() {
+                info!("Platform: Linux (Wayland) - using xdg-desktop-portal for global shortcuts");
+                if let Ok(session_type) = std::env::var("XDG_SESSION_TYPE") {
+                    debug!("XDG_SESSION_TYPE: {}", session_type);
+                }
+            } else if std::env::var("DISPLAY").is_ok() {
+                info!("Platform: Linux (X11) - using XRecord for global shortcuts");
+            } else {
+                warn!("Platform: Linux (unknown display server) - hotkeys may not work");
+            }
+        } else if cfg!(target_os = "macos") {
+            info!("Platform: macOS - using CGEventTap for global shortcuts");
+        } else if cfg!(target_os = "windows") {
+            info!("Platform: Windows - using RegisterHotKey for global shortcuts");
+        } else {
+            info!("Platform: unknown - hotkey support may be limited");
+        }
     }
 
     /// Registers a single shortcut.
