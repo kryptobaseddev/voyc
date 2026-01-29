@@ -4,9 +4,9 @@
   "project": "voyc",
   "_meta": {
     "schemaVersion": "2.4.0",
-    "totalEntries": 99,
+    "totalEntries": 116,
     "firstEntry": "2026-01-28T01:10:57Z",
-    "lastEntry": "2026-01-28T23:59:13Z",
+    "lastEntry": "2026-01-29T01:32:47Z",
     "entriesPruned": 0
   },
   "entries": [
@@ -1992,6 +1992,434 @@
       "after": null,
       "details": {
         "note": "Voyc v1.0.0 all 13 tasks complete. RPM built. Features: History/Debug/Privacy/About tabs, Push to Talk, VAD threshold, Post-processing UI, Latency metrics, ElevenLabs default, Log redaction."
+      }
+    },
+    {
+      "id": "log_e00e93727f8d",
+      "timestamp": "2026-01-29T00:20:09Z",
+      "sessionId": "session_20260128_162009_a2e79c",
+      "action": "session_start",
+      "actor": "system",
+      "taskId": "T026",
+      "before": null,
+      "after": null,
+      "details": "Multi-session started",
+      "scope": {
+        "type": "epic",
+        "rootTaskId": "T026"
+      }
+    },
+    {
+      "id": "log-1769646014-e3191c",
+      "timestamp": "2026-01-29T00:20:14Z",
+      "action": "task_created",
+      "taskId": "T040",
+      "actor": "system",
+      "details": {
+        "title": "Fix Voyc crash on startup (Gdk Error 71 regression)",
+        "status": "pending",
+        "priority": "critical"
+      },
+      "before": null,
+      "after": {
+        "title": "Fix Voyc crash on startup (Gdk Error 71 regression)",
+        "status": "pending",
+        "priority": "critical"
+      }
+    },
+    {
+      "id": "log_11f8d3765520",
+      "timestamp": "2026-01-29T00:20:47Z",
+      "sessionId": "session_20260128_162009_a2e79c",
+      "action": "session_end",
+      "actor": "system",
+      "taskId": null,
+      "before": null,
+      "after": null,
+      "details": {
+        "note": "Switching focus to new crash fix task T040"
+      }
+    },
+    {
+      "id": "log_01258627070c",
+      "timestamp": "2026-01-29T00:20:48Z",
+      "sessionId": "session_20260128_162048_d65f7b",
+      "action": "session_start",
+      "actor": "system",
+      "taskId": "T040",
+      "before": null,
+      "after": null,
+      "details": "Multi-session started",
+      "scope": {
+        "type": "epic",
+        "rootTaskId": "T026"
+      }
+    },
+    {
+      "id": "log_dde646a3da16",
+      "timestamp": "2026-01-29T00:31:39Z",
+      "sessionId": null,
+      "action": "status_changed",
+      "actor": "system",
+      "taskId": "T040",
+      "before": {
+        "status": "active",
+        "completedAt": null
+      },
+      "after": {
+        "status": "done",
+        "completedAt": "2026-01-29T00:31:38Z"
+      },
+      "details": {
+        "field": "status",
+        "operation": "complete"
+      }
+    },
+    {
+      "id": "log_86ab570a6040",
+      "timestamp": "2026-01-29T00:31:45Z",
+      "sessionId": "session_20260128_162048_d65f7b",
+      "action": "session_end",
+      "actor": "system",
+      "taskId": null,
+      "before": null,
+      "after": null,
+      "details": {
+        "note": "T040 complete: Fixed Wayland crash by adding NVIDIA explicit sync workaround. App now runs stably on Wayland+NVIDIA systems."
+      }
+    },
+    {
+      "id": "log_fdddca22ebc5",
+      "timestamp": "2026-01-29T01:14:00Z",
+      "sessionId": "session_20260128_171400_91d86f",
+      "action": "session_start",
+      "actor": "system",
+      "taskId": "T040",
+      "before": null,
+      "after": null,
+      "details": "Multi-session started",
+      "scope": {
+        "type": "epic",
+        "rootTaskId": "T026"
+      }
+    },
+    {
+      "id": "log-1769649241-47b966",
+      "timestamp": "2026-01-29T01:14:01Z",
+      "action": "task_created",
+      "taskId": "T041",
+      "actor": "system",
+      "details": {
+        "title": "Fix frontend bundling - localhost connection refused",
+        "status": "pending",
+        "priority": "critical"
+      },
+      "before": null,
+      "after": {
+        "title": "Fix frontend bundling - localhost connection refused",
+        "status": "pending",
+        "priority": "critical"
+      }
+    },
+    {
+      "id": "log-1769649248-097b0e",
+      "timestamp": "2026-01-29T01:14:08Z",
+      "action": "task_created",
+      "taskId": "T042",
+      "actor": "system",
+      "details": {
+        "title": "Fix tray icon not showing custom icons",
+        "status": "pending",
+        "priority": "high"
+      },
+      "before": null,
+      "after": {
+        "title": "Fix tray icon not showing custom icons",
+        "status": "pending",
+        "priority": "high"
+      }
+    },
+    {
+      "id": "log-1769649256-37b9a9",
+      "timestamp": "2026-01-29T01:14:16Z",
+      "action": "task_created",
+      "taskId": "T043",
+      "actor": "system",
+      "details": {
+        "title": "Add transcribing icon spin animation",
+        "status": "pending",
+        "priority": "medium"
+      },
+      "before": null,
+      "after": {
+        "title": "Add transcribing icon spin animation",
+        "status": "pending",
+        "priority": "medium"
+      }
+    },
+    {
+      "id": "log-1769649258-0d5acc",
+      "timestamp": "2026-01-29T01:14:18Z",
+      "action": "task_created",
+      "taskId": "T044",
+      "actor": "system",
+      "details": {
+        "title": "Implement Error/Off tray states with UI",
+        "status": "pending",
+        "priority": "low"
+      },
+      "before": null,
+      "after": {
+        "title": "Implement Error/Off tray states with UI",
+        "status": "pending",
+        "priority": "low"
+      }
+    },
+    {
+      "id": "log_6d81d114cd85",
+      "timestamp": "2026-01-29T01:14:26Z",
+      "sessionId": "session_20260128_171400_91d86f",
+      "action": "session_end",
+      "actor": "system",
+      "taskId": null,
+      "before": null,
+      "after": null,
+      "details": {
+        "note": "Session handoff: T040 (crash fix) DONE. Created T041-T044 for remaining issues. Critical: T041 (frontend bundling), T042 (tray icons). See claudedocs/agent-outputs/2026-01-29_session-handoff-critical.md"
+      }
+    },
+    {
+      "id": "log_5ca5a2305106",
+      "timestamp": "2026-01-29T01:16:05Z",
+      "sessionId": "session_20260128_171605_5d7969",
+      "action": "session_start",
+      "actor": "system",
+      "taskId": "T041",
+      "before": null,
+      "after": null,
+      "details": "Multi-session started",
+      "scope": {
+        "type": "epic",
+        "rootTaskId": "T026"
+      }
+    },
+    {
+      "id": "log_a28efff6f053",
+      "timestamp": "2026-01-29T01:16:17Z",
+      "sessionId": null,
+      "action": "status_changed",
+      "actor": "system",
+      "taskId": "T040",
+      "before": {
+        "status": "pending",
+        "completedAt": "2026-01-29T00:31:38Z"
+      },
+      "after": {
+        "status": "done",
+        "completedAt": "2026-01-29T01:16:17Z"
+      },
+      "details": {
+        "field": "status",
+        "operation": "complete"
+      }
+    },
+    {
+      "id": "log_24fb911224fb",
+      "timestamp": "2026-01-29T01:27:23Z",
+      "sessionId": null,
+      "action": "status_changed",
+      "actor": "system",
+      "taskId": "T041",
+      "before": {
+        "status": "active",
+        "completedAt": null
+      },
+      "after": {
+        "status": "done",
+        "completedAt": "2026-01-29T01:27:22Z"
+      },
+      "details": {
+        "field": "status",
+        "operation": "complete"
+      }
+    },
+    {
+      "id": "log_379d06c7496d",
+      "timestamp": "2026-01-29T01:27:24Z",
+      "sessionId": null,
+      "action": "session_focus_changed",
+      "actor": "claude",
+      "taskId": null,
+      "before": {
+        "currentTask": "T041"
+      },
+      "after": {
+        "currentTask": "T042"
+      },
+      "details": null
+    },
+    {
+      "id": "log_8d8bd3e3627c",
+      "timestamp": "2026-01-29T01:32:47Z",
+      "sessionId": null,
+      "action": "status_changed",
+      "actor": "system",
+      "taskId": "T042",
+      "before": {
+        "status": "active",
+        "completedAt": null
+      },
+      "after": {
+        "status": "done",
+        "completedAt": "2026-01-29T01:32:46Z"
+      },
+      "details": {
+        "field": "status",
+        "operation": "complete"
+      }
+    },
+    {
+      "id": "log-1769667681-958f43",
+      "timestamp": "2026-01-29T06:21:21Z",
+      "action": "task_created",
+      "taskId": "T045",
+      "actor": "system",
+      "details": {
+        "title": "Commit all pending changes with proper git hygiene",
+        "status": "pending",
+        "priority": "critical"
+      },
+      "before": null,
+      "after": {
+        "title": "Commit all pending changes with proper git hygiene",
+        "status": "pending",
+        "priority": "critical"
+      }
+    },
+    {
+      "id": "log-1769667682-038eb7",
+      "timestamp": "2026-01-29T06:21:22Z",
+      "action": "task_created",
+      "taskId": "T046",
+      "actor": "system",
+      "details": {
+        "title": "Fix models tab - models keep spinning, never load",
+        "status": "pending",
+        "priority": "critical"
+      },
+      "before": null,
+      "after": {
+        "title": "Fix models tab - models keep spinning, never load",
+        "status": "pending",
+        "priority": "critical"
+      }
+    },
+    {
+      "id": "log-1769667684-2fe0c7",
+      "timestamp": "2026-01-29T06:21:24Z",
+      "action": "task_created",
+      "taskId": "T047",
+      "actor": "system",
+      "details": {
+        "title": "Fix dictation not working",
+        "status": "pending",
+        "priority": "critical"
+      },
+      "before": null,
+      "after": {
+        "title": "Fix dictation not working",
+        "status": "pending",
+        "priority": "critical"
+      }
+    },
+    {
+      "id": "log-1769667686-cbca67",
+      "timestamp": "2026-01-29T06:21:26Z",
+      "action": "task_created",
+      "taskId": "T048",
+      "actor": "system",
+      "details": {
+        "title": "Fix hotkeys not working",
+        "status": "pending",
+        "priority": "high"
+      },
+      "before": null,
+      "after": {
+        "title": "Fix hotkeys not working",
+        "status": "pending",
+        "priority": "high"
+      }
+    },
+    {
+      "id": "log-1769667687-cfc952",
+      "timestamp": "2026-01-29T06:21:27Z",
+      "action": "task_created",
+      "taskId": "T049",
+      "actor": "system",
+      "details": {
+        "title": "Add dark mode detection and switching",
+        "status": "pending",
+        "priority": "medium"
+      },
+      "before": null,
+      "after": {
+        "title": "Add dark mode detection and switching",
+        "status": "pending",
+        "priority": "medium"
+      }
+    },
+    {
+      "id": "log-1769667689-4ce86c",
+      "timestamp": "2026-01-29T06:21:29Z",
+      "action": "task_created",
+      "taskId": "T050",
+      "actor": "system",
+      "details": {
+        "title": "Add Voyc status display in app window",
+        "status": "pending",
+        "priority": "medium"
+      },
+      "before": null,
+      "after": {
+        "title": "Add Voyc status display in app window",
+        "status": "pending",
+        "priority": "medium"
+      }
+    },
+    {
+      "id": "log-1769667691-50a63a",
+      "timestamp": "2026-01-29T06:21:31Z",
+      "action": "task_created",
+      "taskId": "T051",
+      "actor": "system",
+      "details": {
+        "title": "Fix About page icon - use correct icon.png",
+        "status": "pending",
+        "priority": "medium"
+      },
+      "before": null,
+      "after": {
+        "title": "Fix About page icon - use correct icon.png",
+        "status": "pending",
+        "priority": "medium"
+      }
+    },
+    {
+      "id": "log-1769667692-15b904",
+      "timestamp": "2026-01-29T06:21:32Z",
+      "action": "task_created",
+      "taskId": "T052",
+      "actor": "system",
+      "details": {
+        "title": "Fix app update checking not working",
+        "status": "pending",
+        "priority": "medium"
+      },
+      "before": null,
+      "after": {
+        "title": "Fix app update checking not working",
+        "status": "pending",
+        "priority": "medium"
       }
     }
   ]

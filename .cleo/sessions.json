@@ -5,8 +5,8 @@
   "_meta": {
     "schemaVersion": "1.0.0",
     "checksum": "",
-    "lastModified": "2026-01-28T23:59:13Z",
-    "totalSessionsCreated": 5
+    "lastModified": "2026-01-29T01:27:24Z",
+    "totalSessionsCreated": 9
   },
   "config": {
     "maxConcurrentSessions": 5,
@@ -309,6 +309,241 @@
         "max_tokens": 200000
       },
       "endedAt": "2026-01-28T23:59:13Z"
+    },
+    {
+      "id": "session_20260128_162009_a2e79c",
+      "status": "ended",
+      "name": "Crash Fix Investigation",
+      "agentId": null,
+      "scope": {
+        "type": "epic",
+        "rootTaskId": "T026",
+        "computedTaskIds": [
+          "T026",
+          "T027",
+          "T028",
+          "T029",
+          "T030",
+          "T031",
+          "T032",
+          "T033",
+          "T034",
+          "T035",
+          "T036",
+          "T037",
+          "T038",
+          "T039"
+        ]
+      },
+      "focus": {
+        "currentTask": "T026",
+        "currentPhase": null,
+        "previousTask": null,
+        "sessionNote": "Switching focus to new crash fix task T040",
+        "nextAction": null,
+        "focusHistory": [
+          {
+            "taskId": "T026",
+            "timestamp": "2026-01-29T00:20:09Z",
+            "action": "focused"
+          }
+        ]
+      },
+      "startedAt": "2026-01-29T00:20:09Z",
+      "lastActivity": "2026-01-29T00:20:47Z",
+      "suspendedAt": null,
+      "stats": {
+        "tasksCompleted": 0,
+        "focusChanges": 1,
+        "suspendCount": 0,
+        "resumeCount": 0
+      },
+      "startMetrics": {
+        "session_id": "session_20260128_162009_a2e79c",
+        "start_timestamp": "2026-01-29T00:20:09Z",
+        "start_tokens": 0,
+        "max_tokens": 200000
+      },
+      "endedAt": "2026-01-29T00:20:47Z"
+    },
+    {
+      "id": "session_20260128_162048_d65f7b",
+      "status": "ended",
+      "name": "Crash Fix Investigation",
+      "agentId": null,
+      "scope": {
+        "type": "epic",
+        "rootTaskId": "T026",
+        "computedTaskIds": [
+          "T026",
+          "T027",
+          "T028",
+          "T029",
+          "T030",
+          "T031",
+          "T032",
+          "T033",
+          "T034",
+          "T035",
+          "T036",
+          "T037",
+          "T038",
+          "T039",
+          "T040"
+        ]
+      },
+      "focus": {
+        "currentTask": "T040",
+        "currentPhase": null,
+        "previousTask": null,
+        "sessionNote": "T040 complete: Fixed Wayland crash by adding NVIDIA explicit sync workaround. App now runs stably on Wayland+NVIDIA systems.",
+        "nextAction": null,
+        "focusHistory": [
+          {
+            "taskId": "T040",
+            "timestamp": "2026-01-29T00:20:48Z",
+            "action": "focused"
+          }
+        ]
+      },
+      "startedAt": "2026-01-29T00:20:48Z",
+      "lastActivity": "2026-01-29T00:31:45Z",
+      "suspendedAt": null,
+      "stats": {
+        "tasksCompleted": 0,
+        "focusChanges": 1,
+        "suspendCount": 0,
+        "resumeCount": 0
+      },
+      "startMetrics": {
+        "session_id": "session_20260128_162048_d65f7b",
+        "start_timestamp": "2026-01-29T00:20:48Z",
+        "start_tokens": 0,
+        "max_tokens": 200000
+      },
+      "endedAt": "2026-01-29T00:31:45Z"
+    },
+    {
+      "id": "session_20260128_171400_91d86f",
+      "status": "ended",
+      "name": "Critical Fixes",
+      "agentId": null,
+      "scope": {
+        "type": "epic",
+        "rootTaskId": "T026",
+        "computedTaskIds": [
+          "T026",
+          "T027",
+          "T028",
+          "T029",
+          "T030",
+          "T031",
+          "T032",
+          "T033",
+          "T034",
+          "T035",
+          "T036",
+          "T037",
+          "T038",
+          "T039",
+          "T040"
+        ]
+      },
+      "focus": {
+        "currentTask": "T040",
+        "currentPhase": null,
+        "previousTask": null,
+        "sessionNote": "Session handoff: T040 (crash fix) DONE. Created T041-T044 for remaining issues. Critical: T041 (frontend bundling), T042 (tray icons). See claudedocs/agent-outputs/2026-01-29_session-handoff-critical.md",
+        "nextAction": null,
+        "focusHistory": [
+          {
+            "taskId": "T040",
+            "timestamp": "2026-01-29T01:14:00Z",
+            "action": "focused"
+          }
+        ]
+      },
+      "startedAt": "2026-01-29T01:14:00Z",
+      "lastActivity": "2026-01-29T01:14:26Z",
+      "suspendedAt": null,
+      "stats": {
+        "tasksCompleted": 0,
+        "focusChanges": 1,
+        "suspendCount": 0,
+        "resumeCount": 0
+      },
+      "startMetrics": {
+        "session_id": "session_20260128_171400_91d86f",
+        "start_timestamp": "2026-01-29T01:14:00Z",
+        "start_tokens": 0,
+        "max_tokens": 200000
+      },
+      "endedAt": "2026-01-29T01:14:26Z"
+    },
+    {
+      "id": "session_20260128_171605_5d7969",
+      "status": "active",
+      "name": "Frontend Bundling Fix",
+      "agentId": null,
+      "scope": {
+        "type": "epic",
+        "rootTaskId": "T026",
+        "computedTaskIds": [
+          "T026",
+          "T027",
+          "T028",
+          "T029",
+          "T030",
+          "T031",
+          "T032",
+          "T033",
+          "T034",
+          "T035",
+          "T036",
+          "T037",
+          "T038",
+          "T039",
+          "T040",
+          "T041",
+          "T042",
+          "T043",
+          "T044"
+        ]
+      },
+      "focus": {
+        "currentTask": "T042",
+        "currentPhase": null,
+        "previousTask": "T041",
+        "sessionNote": null,
+        "nextAction": null,
+        "focusHistory": [
+          {
+            "taskId": "T041",
+            "timestamp": "2026-01-29T01:16:05Z",
+            "action": "focused"
+          },
+          {
+            "taskId": "T042",
+            "timestamp": "2026-01-29T01:27:24Z",
+            "action": "focused"
+          }
+        ]
+      },
+      "startedAt": "2026-01-29T01:16:05Z",
+      "lastActivity": "2026-01-29T01:27:24Z",
+      "suspendedAt": null,
+      "stats": {
+        "tasksCompleted": 0,
+        "focusChanges": 2,
+        "suspendCount": 0,
+        "resumeCount": 0
+      },
+      "startMetrics": {
+        "session_id": "session_20260128_171605_5d7969",
+        "start_timestamp": "2026-01-29T01:16:05Z",
+        "start_tokens": 0,
+        "max_tokens": 200000
+      }
     }
   ],
   "sessionHistory": []
