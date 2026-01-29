@@ -6,6 +6,7 @@
 
 import React, { useState } from "react";
 import { Sidebar, type SettingsSection } from "./Sidebar";
+import { DictationSettings } from "./DictationSettings";
 import { GeneralSettings } from "./GeneralSettings";
 import { AudioSettings } from "./AudioSettings";
 import { ModelSettings } from "./ModelSettings";
@@ -17,6 +18,7 @@ import { PrivacySettings } from "./PrivacySettings";
 import { AboutSettings } from "./AboutSettings";
 
 const SECTION_TITLES: Record<SettingsSection, string> = {
+  dictation: "Dictation",
   general: "General Settings",
   audio: "Audio Settings",
   models: "Model Settings",
@@ -29,10 +31,12 @@ const SECTION_TITLES: Record<SettingsSection, string> = {
 };
 
 export const SettingsPage: React.FC = () => {
-  const [activeSection, setActiveSection] = useState<SettingsSection>("general");
+  const [activeSection, setActiveSection] = useState<SettingsSection>("dictation");
 
   const renderContent = () => {
     switch (activeSection) {
+      case "dictation":
+        return <DictationSettings />;
       case "general":
         return <GeneralSettings />;
       case "audio":

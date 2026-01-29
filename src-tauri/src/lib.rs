@@ -262,7 +262,7 @@ pub fn run() {
                 )
                 .show_menu_on_left_click(true)
                 .icon_as_template(use_template)
-                .on_menu_event(|app, event| match event.id.as_ref() {
+                .on_menu_event(move |app, event| match event.id.as_ref() {
                     "settings" => {
                         show_main_window(app);
                     }
@@ -271,6 +271,15 @@ pub fn run() {
                         if settings.update_checks_enabled {
                             show_main_window(app);
                             let _ = app.emit("check-for-updates", ());
+                        }
+                    }
+                    "start_dictation" => {
+                        // Trigger dictation start via the controller
+                        if let Some(dc) = app.try_state::<std::sync::Arc<dictation::DictationController>>() {
+                            log::info!("Starting dictation from tray menu");
+                            if let Err(e) = dc.start_dictation("transcribe") {
+                                log::error!("Failed to start dictation: {}", e);
+                            }
                         }
                     }
                     "cancel" => {

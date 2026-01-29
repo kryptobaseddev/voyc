@@ -145,7 +145,33 @@ pub fn update_tray_menu(app: &AppHandle, state: &TrayIconState) {
             )
             .expect("failed to create menu")
         }
-        TrayIconState::Idle | TrayIconState::Error | TrayIconState::Off => Menu::with_items(
+        TrayIconState::Idle => {
+            // In idle state, show "Start Dictation" option
+            let start_dictation_i = MenuItem::with_id(
+                app,
+                "start_dictation",
+                "Start Dictation",
+                true,
+                None::<&str>,
+            )
+            .expect("failed to create start dictation item");
+
+            Menu::with_items(
+                app,
+                &[
+                    &version_i,
+                    &separator(),
+                    &start_dictation_i,
+                    &separator(),
+                    &settings_i,
+                    &check_updates_i,
+                    &separator(),
+                    &quit_i,
+                ],
+            )
+            .expect("failed to create menu")
+        }
+        TrayIconState::Error | TrayIconState::Off => Menu::with_items(
             app,
             &[
                 &version_i,
