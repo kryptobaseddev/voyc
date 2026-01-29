@@ -12,6 +12,9 @@ pub mod text_injection;
 pub mod tray;
 pub mod utils;
 
+#[cfg(target_os = "linux")]
+pub mod wayland_shortcuts;
+
 use log::{info, warn};
 use managers::audio::AudioRecordingManager;
 use managers::model::ModelManager;
@@ -92,6 +95,8 @@ pub fn run() {
         commands::hotkey::resume_binding,
         commands::hotkey::register_all_shortcuts,
         commands::hotkey::is_binding_suspended,
+        commands::hotkey::get_shortcut_backend_info,
+        commands::hotkey::open_shortcut_settings,
         // Dictation commands
         commands::dictation::start_dictation,
         commands::dictation::stop_dictation,
