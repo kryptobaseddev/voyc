@@ -8,13 +8,15 @@
 //! - Users configure shortcuts through System Settings
 //! - The portal notifies the app when shortcuts are activated
 
+use ashpd::desktop::global_shortcuts::{GlobalShortcuts, NewShortcut};
+use ashpd::WindowIdentifier;
 use log::{debug, error, info, warn};
+use raw_window_handle::{HasWindowHandle, RawWindowHandle};
+use serde_json;
 use std::collections::HashMap;
 use std::sync::Arc;
-use tauri::{AppHandle, Emitter};
+use tauri::{AppHandle, Emitter, Manager};
 use tokio::sync::RwLock;
-
-use ashpd::desktop::global_shortcuts::{GlobalShortcuts, NewShortcut};
 
 /// Action definition for Wayland global shortcuts
 #[derive(Debug, Clone)]
@@ -42,6 +44,59 @@ pub enum SessionState {
     Error(String),
 }
 
+/// Extracted window handles that can be sent across threads
+/// We store the handle type info rather than raw pointers
+#[derive(Debug, Clone)]
+pub struct WindowHandleInfo {
+    /// For X11: the window XID
+    pub x11_xid: Option<u32>,
+    /// For Wayland: we can't easily extract - will need to use None
+    pub is_wayland: bool,
+}
+
+impl WindowHandleInfo {
+    /// Extract window handle info from the app handle
+    /// This must be called on the main thread before spawning async tasks
+    pub fn from_app_handle(app_handle: &AppHandle) -> Option<Self> {
+        let window = app_handle.get_webview_window("main")?;
+
+        let window_handle = window.window_handle().ok()?;
+        let raw_window = window_handle.as_raw();
+
+        match raw_window {
+            RawWindowHandle::Xlib(handle) => Some(WindowHandleInfo {
+                x11_xid: Some(handle.window as u32),
+                is_wayland: false,
+            }),
+            RawWindowHandle::Xcb(handle) => Some(WindowHandleInfo {
+                x11_xid: Some(handle.window.get()),
+                is_wayland: false,
+            }),
+            RawWindowHandle::Wayland(_) => {
+                // On Wayland, we can't easily extract the handle in a Send-safe way
+                // The portal will need to work without a window identifier
+                Some(WindowHandleInfo {
+                    x11_xid: None,
+                    is_wayland: true,
+                })
+            }
+            _ => None,
+        }
+    }
+
+    /// Create a WindowIdentifier from the stored info
+    pub fn to_window_identifier(&self) -> Option<WindowIdentifier> {
+        if let Some(xid) = self.x11_xid {
+            // For X11, we can create the identifier directly
+            Some(WindowIdentifier::from_xid(xid as std::ffi::c_ulong))
+        } else {
+            // For Wayland or unknown, return None
+            // The portal should still work, it just won't have a parent window
+            None
+        }
+    }
+}
+
 /// Manager for Wayland global shortcuts via XDG Desktop Portal
 pub struct WaylandShortcutManager {
     app_handle: AppHandle,
@@ -50,6 +105,7 @@ pub struct WaylandShortcutManager {
     session_state: Arc<RwLock<SessionState>>,
     registered_shortcuts: Arc<RwLock<HashMap<String, ShortcutAction>>>,
     current_bindings: Arc<RwLock<HashMap<String, String>>>,
+    window_handle_info: Option<WindowHandleInfo>,
 }
 
 impl WaylandShortcutManager {
@@ -59,12 +115,26 @@ impl WaylandShortcutManager {
     /// * `app_handle` - Tauri application handle for event emission
     /// * `app_id` - Application ID (e.g., "com.voyc.dictation")
     pub fn new(app_handle: AppHandle, app_id: &str) -> Self {
+        // Extract window handle info on creation (must be on main thread)
+        let window_handle_info = WindowHandleInfo::from_app_handle(&app_handle);
+
+        if let Some(ref info) = window_handle_info {
+            if info.is_wayland {
+                debug!("WaylandShortcutManager: Running on Wayland, window identifier limited");
+            } else if info.x11_xid.is_some() {
+                debug!("WaylandShortcutManager: Got X11 window ID for portal");
+            }
+        } else {
+            warn!("WaylandShortcutManager: No window handle available");
+        }
+
         Self {
             app_handle,
             app_id: app_id.to_string(),
             session_state: Arc::new(RwLock::new(SessionState::Disconnected)),
             registered_shortcuts: Arc::new(RwLock::new(HashMap::new())),
             current_bindings: Arc::new(RwLock::new(HashMap::new())),
+            window_handle_info,
         }
     }
 
@@ -131,37 +201,38 @@ impl WaylandShortcutManager {
             })
             .collect();
 
-        // Bind shortcuts - note: GNOME 48 has a bug where this may error but still work
-        // We ignore the error and verify via list_shortcuts
-        // Pass None for WindowIdentifier since we don't have a window reference
-        // Pattern: .await? returns Request<T>, .response()? returns T
-        match proxy.bind_shortcuts(&session, &shortcuts, None).await {
-            Ok(request) => match request.response() {
-                Ok(_response) => {
-                    debug!("bind_shortcuts response received successfully");
-                }
-                Err(e) => {
-                    // Log but don't fail - GNOME 48 bug may cause error even when working
-                    warn!("bind_shortcuts response error (may still work): {}", e);
-                }
-            },
-            Err(e) => {
-                warn!("bind_shortcuts request error (may still work): {}", e);
-            }
+        // Get the WindowIdentifier if available
+        // On pure Wayland this will be None, which should still work
+        // The portal may not show a permission dialog but shortcuts may still register
+        let window_identifier = self
+            .window_handle_info
+            .as_ref()
+            .and_then(|info| info.to_window_identifier());
+
+        if window_identifier.is_some() {
+            info!("Using window identifier for portal shortcut registration");
+        } else {
+            info!("No window identifier available - portal will register without parent window");
+            info!(
+                "Note: On Wayland, shortcuts may need to be configured in System Settings > Keyboard > Shortcuts"
+            );
         }
 
-        // Get the actual shortcuts (to see what the user has configured)
-        match proxy.list_shortcuts(&session).await {
+        // Bind shortcuts with the window identifier (if available)
+        match proxy
+            .bind_shortcuts(&session, &shortcuts, window_identifier.as_ref())
+            .await
+        {
             Ok(request) => match request.response() {
-                Ok(list_response) => {
+                Ok(response) => {
+                    // Successfully bound - extract the registered shortcuts
                     let mut bindings = self.current_bindings.write().await;
                     bindings.clear();
 
-                    for shortcut in list_response.shortcuts() {
+                    for shortcut in response.shortcuts() {
                         let id = shortcut.id().to_string();
                         let trigger = shortcut.trigger_description().to_string();
-
-                        debug!("Shortcut '{}' bound to '{}'", id, trigger);
+                        info!("Shortcut '{}' registered with trigger: {}", id, trigger);
                         bindings.insert(id, trigger);
                     }
 
@@ -171,11 +242,63 @@ impl WaylandShortcutManager {
                     );
                 }
                 Err(e) => {
+                    // Response error - might be user cancelled or other issue
+                    warn!("bind_shortcuts response error: {}", e);
+                    warn!("This may indicate the portal requires user configuration");
+                    warn!(
+                        "Try: System Settings > Keyboard > Shortcuts > Custom > Add Voyc shortcuts"
+                    );
+                }
+            },
+            Err(e) => {
+                warn!("bind_shortcuts request error: {}", e);
+            }
+        }
+
+        // Verify by listing shortcuts (in case bind had issues but shortcuts exist)
+        match proxy.list_shortcuts(&session).await {
+            Ok(request) => match request.response() {
+                Ok(list_response) => {
+                    let mut bindings = self.current_bindings.write().await;
+                    let listed_count = list_response.shortcuts().len();
+
+                    // Only update if we got results
+                    if listed_count > 0 || bindings.is_empty() {
+                        bindings.clear();
+                        for shortcut in list_response.shortcuts() {
+                            let id = shortcut.id().to_string();
+                            let trigger = shortcut.trigger_description().to_string();
+                            debug!("Listed shortcut '{}' bound to '{}'", id, trigger);
+                            bindings.insert(id, trigger);
+                        }
+                    }
+
+                    if listed_count > 0 {
+                        info!("Verified {} shortcuts registered via portal", listed_count);
+                        // Emit success event with shortcut info
+                        let _ = self.app_handle.emit("shortcuts-configured", listed_count);
+                    } else {
+                        warn!("No shortcuts currently configured via portal");
+                        warn!(
+                            "Users need to configure shortcuts in GNOME Settings > Keyboard > Shortcuts"
+                        );
+                        // Emit event to frontend that shortcuts need configuration
+                        let _ = self.app_handle.emit(
+                            "shortcuts-need-configuration",
+                            serde_json::json!({
+                                "message": "Global shortcuts are not configured",
+                                "instructions": "Open System Settings > Keyboard > Keyboard Shortcuts > Custom Shortcuts and add shortcuts for Voyc",
+                                "actions": ["transcribe", "cancel"]
+                            }),
+                        );
+                    }
+                }
+                Err(e) => {
                     warn!("Failed to get list_shortcuts response: {}", e);
                 }
             },
             Err(e) => {
-                warn!("Failed to list shortcuts (may still work): {}", e);
+                warn!("Failed to list shortcuts: {}", e);
             }
         }
 
@@ -227,12 +350,14 @@ impl WaylandShortcutManager {
             let mut deactivated_stream = std::pin::pin!(deactivated_stream);
             let mut changed_stream = std::pin::pin!(changed_stream);
 
+            info!("Listening for portal shortcut events...");
+
             loop {
                 tokio::select! {
                     Some(event) = activated_stream.next() => {
                         let shortcut_id = event.shortcut_id().to_string();
                         let timestamp = event.timestamp().as_millis();
-                        debug!(
+                        info!(
                             "Wayland shortcut activated: {} at {}ms",
                             shortcut_id, timestamp
                         );
@@ -256,7 +381,7 @@ impl WaylandShortcutManager {
                         }
                     }
                     Some(_) = changed_stream.next() => {
-                        info!("User changed shortcut configuration");
+                        info!("User changed shortcut configuration via System Settings");
                         // Emit shortcuts changed event
                         if let Err(e) = app_handle.emit("shortcuts-changed", ()) {
                             error!("Failed to emit shortcuts-changed event: {}", e);

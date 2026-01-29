@@ -71,8 +71,9 @@ signal-hook = "0.3"
 
 [target.'cfg(target_os = "linux")'.dependencies]
 # XDG Desktop Portal for Wayland global shortcuts (GNOME 48+, KDE Plasma 6+)
-ashpd = { version = "0.10", features = ["tokio"] }
+ashpd = { version = "0.10", features = ["tokio", "raw_handle"] }
 zbus = "5"
+raw-window-handle = "0.6"
 
 [target.'cfg(not(any(target_os = "android", target_os = "ios")))'.dependencies]
 tauri-plugin-autostart = "2.5.1"

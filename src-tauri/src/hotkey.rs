@@ -527,7 +527,7 @@ impl HotkeyManager {
 
     /// Opens the system settings for configuring shortcuts (Wayland only).
     ///
-    /// On GNOME, this opens Settings > Applications
+    /// On GNOME, this opens Settings > Keyboard > Keyboard Shortcuts
     /// On KDE, this opens System Settings > Shortcuts
     ///
     /// # Returns
@@ -536,16 +536,28 @@ impl HotkeyManager {
     /// * `Err(String)` - Failed to open settings
     #[cfg(target_os = "linux")]
     pub fn open_shortcut_settings(&self) -> Result<(), String> {
-        // Try GNOME Settings first
+        // Try GNOME Settings Keyboard section (for GNOME 45+)
         if std::process::Command::new("gnome-control-center")
-            .args(["applications"])
+            .args(["keyboard"])
             .spawn()
             .is_ok()
         {
+            info!("Opened GNOME Settings > Keyboard");
+            info!("Navigate to: Keyboard Shortcuts > Custom Shortcuts to configure Voyc hotkeys");
             return Ok(());
         }
 
         // Try KDE System Settings
+        if std::process::Command::new("systemsettings")
+            .args(["kcm_keys"])
+            .spawn()
+            .is_ok()
+        {
+            info!("Opened KDE System Settings > Shortcuts");
+            return Ok(());
+        }
+
+        // Try older KDE global shortcuts module
         if std::process::Command::new("systemsettings")
             .args(["kcm_kglobalaccel"])
             .spawn()
