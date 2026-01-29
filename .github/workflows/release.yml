@@ -1,40 +1,28 @@
-# Release workflow - builds Flatpak and AppImage on tag push
+# Release workflow - builds Tauri app with signing for auto-updates
 name: Release
 
 on:
   push:
     tags:
       - 'v*'
+  workflow_dispatch:
+    inputs:
+      draft:
+        description: 'Create as draft release'
+        required: false
+        default: true
+        type: boolean
 
 permissions:
   contents: write
 
+env:
+  # Tauri requires these environment variables for signing
+  TAURI_SIGNING_PRIVATE_KEY: ${{ secrets.TAURI_SIGNING_PRIVATE_KEY }}
+  TAURI_SIGNING_PRIVATE_KEY_PASSWORD: ${{ secrets.TAURI_SIGNING_PRIVATE_KEY_PASSWORD }}
+
 jobs:
-  build-flatpak:
-    runs-on: ubuntu-latest
-    container:
-      image: bilelmoussaoui/flatpak-github-actions:gnome-46
-      options: --privileged
-
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-
-      - name: Build Flatpak
-        uses: flatpak/flatpak-github-actions/flatpak-builder@v6
-        with:
-          bundle: voyc.flatpak
-          manifest-path: org.voyc.Voyc.yml
-          cache-key: flatpak-builder-${{ github.sha }}
-
-      - name: Upload Flatpak artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: flatpak-bundle
-          path: voyc.flatpak
-          retention-days: 5
-
-  build-appimage:
+  build-linux:
     runs-on: ubuntu-22.04
 
     steps:
@@ -45,133 +33,90 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '20'
-          cache: 'npm'
 
-      - name: Install dependencies
-        run: npm ci
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
 
-      - name: Install AppImage build dependencies
+      - name: Install Rust stable
+        uses: dtolnay/rust-action@stable
+
+      - name: Rust cache
+        uses: swatinem/rust-cache@v2
+        with:
+          workspaces: './src-tauri -> target'
+
+      - name: Install Linux dependencies
         run: |
           sudo apt-get update
           sudo apt-get install -y \
-            gjs \
-            gir1.2-gtk-4.0 \
-            gir1.2-adw-1 \
-            libgtk-4-1 \
-            libadwaita-1-0 \
-            gstreamer1.0-tools \
-            libgstreamer1.0-0 \
-            gir1.2-gst-1.0 \
-            file \
-            fuse \
-            libfuse2
+            libwebkit2gtk-4.1-dev \
+            libappindicator3-dev \
+            librsvg2-dev \
+            patchelf \
+            libgtk-3-dev \
+            libayatana-appindicator3-dev \
+            libasound2-dev
 
-      - name: Install appimage-builder
-        run: |
-          pip3 install appimage-builder
+      - name: Install frontend dependencies
+        run: bun install
 
-      - name: Create AppImage assets directory
-        run: |
-          mkdir -p appimage
-          # Create desktop file
-          cat > appimage/com.voyc.app.desktop << 'EOF'
-          [Desktop Entry]
-          Type=Application
-          Name=Voyc
-          Comment=Fast, minimal voice dictation for Linux
-          Exec=voyc
-          Icon=com.voyc.app
-          Categories=Utility;Accessibility;
-          Keywords=voice;dictation;speech;accessibility;
-          StartupNotify=true
-          EOF
-
-          # Create SVG icon
-          cat > appimage/voyc.svg << 'EOF'
-          <?xml version="1.0" encoding="UTF-8"?>
-          <svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128">
-            <circle cx="64" cy="64" r="56" fill="#3584e4" stroke="#1a5fb4" stroke-width="4"/>
-            <path d="M64 28c-8.8 0-16 7.2-16 16v24c0 8.8 7.2 16 16 16s16-7.2 16-16V44c0-8.8-7.2-16-16-16z" fill="white"/>
-            <path d="M88 68c0 13.3-10.7 24-24 24s-24-10.7-24-24h-8c0 16.5 12.1 30.1 28 32.5V108h8V100.5c15.9-2.4 28-16 28-32.5h-8z" fill="white"/>
-          </svg>
-          EOF
-
-      - name: Build AppImage
-        env:
-          TAG_NAME: ${{ github.ref_name }}
-        run: |
-          # Extract version from tag (using env var for safety)
-          VERSION="${TAG_NAME#v}"
-          echo "Building AppImage version: $VERSION"
-
-          # Update version in AppImageBuilder.yml
-          sed -i "s/version: 1.0.0/version: $VERSION/" AppImageBuilder.yml
-          sed -i "s/Voyc-1.0.0-x86_64.AppImage/Voyc-$VERSION-x86_64.AppImage/" AppImageBuilder.yml
-
-          # Build the AppImage
-          appimage-builder --recipe AppImageBuilder.yml --skip-tests
-
-      - name: Upload AppImage artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: appimage-bundle
-          path: Voyc-*.AppImage
-          retention-days: 5
-
-  create-release:
-    needs: [build-flatpak, build-appimage]
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-
-      - name: Download Flatpak artifact
-        uses: actions/download-artifact@v4
-        with:
-          name: flatpak-bundle
-          path: ./artifacts
-
-      - name: Download AppImage artifact
-        uses: actions/download-artifact@v4
-        with:
-          name: appimage-bundle
-          path: ./artifacts
-
-      - name: Generate changelog
-        id: changelog
-        run: |
-          # Get the previous tag
-          PREV_TAG=$(git describe --tags --abbrev=0 HEAD^ 2>/dev/null || echo "")
-
-          if [ -z "$PREV_TAG" ]; then
-            # First release - get all commits
-            CHANGELOG=$(git log --pretty=format:"- %s (%h)" --no-merges)
-          else
-            # Get commits since last tag
-            CHANGELOG=$(git log ${PREV_TAG}..HEAD --pretty=format:"- %s (%h)" --no-merges)
-          fi
-
-          # Write to file for multiline handling
-          echo "$CHANGELOG" > changelog.txt
-
-          # Also create a summary
-          COMMIT_COUNT=$(echo "$CHANGELOG" | wc -l)
-          echo "commit_count=$COMMIT_COUNT" >> $GITHUB_OUTPUT
-
-      - name: Create GitHub Release
-        uses: softprops/action-gh-release@v2
+      - name: Build Tauri app
+        uses: tauri-apps/tauri-action@v0
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          TAG_NAME: ${{ github.ref_name }}
         with:
-          name: Voyc ${{ github.ref_name }}
-          body_path: changelog.txt
-          draft: false
-          prerelease: ${{ contains(github.ref_name, '-') }}
-          files: |
-            artifacts/voyc.flatpak
-            artifacts/Voyc-*.AppImage
-          generate_release_notes: true
+          tagName: ${{ github.ref_name }}
+          releaseName: 'Voyc ${{ github.ref_name }}'
+          releaseBody: |
+            See the [CHANGELOG](https://github.com/${{ github.repository }}/blob/main/CHANGELOG.md) for details.
+
+            ## Installation
+
+            **AppImage** (recommended):
+            1. Download the `.AppImage` file
+            2. Make it executable: `chmod +x Voyc_*.AppImage`
+            3. Run it: `./Voyc_*.AppImage`
+
+            **Debian/Ubuntu**:
+            ```bash
+            sudo dpkg -i voyc_*_amd64.deb
+            ```
+
+            ## Auto-Updates
+
+            Voyc supports automatic updates. You'll be notified when a new version is available.
+          releaseDraft: ${{ github.event_name == 'workflow_dispatch' && inputs.draft || false }}
+          prerelease: ${{ contains(github.ref_name, '-alpha') || contains(github.ref_name, '-beta') || contains(github.ref_name, '-rc') }}
+          includeUpdaterJson: true
+          updaterJsonPreferNsis: false
+
+  # Optional: Verify the release artifacts
+  verify-release:
+    needs: build-linux
+    runs-on: ubuntu-latest
+    if: ${{ !cancelled() && needs.build-linux.result == 'success' }}
+
+    steps:
+      - name: Verify latest.json exists
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          RELEASE_TAG: ${{ github.ref_name }}
+          REPO_NAME: ${{ github.repository }}
+        run: |
+          # Wait a moment for release assets to be fully uploaded
+          sleep 10
+
+          # Check if latest.json was uploaded
+          RELEASE_URL="https://github.com/${REPO_NAME}/releases/download/${RELEASE_TAG}/latest.json"
+
+          echo "Checking for latest.json at: ${RELEASE_URL}"
+
+          if curl -sSLf -o /dev/null "${RELEASE_URL}" 2>/dev/null; then
+            echo "latest.json found - auto-updates configured correctly"
+            curl -sSL "${RELEASE_URL}" | jq .
+          else
+            echo "Warning: latest.json not found at expected location"
+            echo "This may indicate signing was not configured or the upload is still in progress"
+          fi
