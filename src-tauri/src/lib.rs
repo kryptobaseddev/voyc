@@ -22,6 +22,8 @@ use std::sync::Arc;
 use tauri::image::Image;
 use tauri::tray::TrayIconBuilder;
 use tauri::{Emitter, Listener, Manager};
+#[cfg(debug_assertions)]
+use specta_typescript::Typescript;
 use tauri_specta::{collect_commands, Builder};
 use tray::{change_tray_icon, get_current_theme, get_icon_path, show_main_window, TrayIconState};
 
@@ -207,7 +209,11 @@ pub fn run() {
             let initial_theme = get_current_theme(&app_handle);
 
             // Choose the appropriate initial icon based on theme
-            let initial_icon_path = get_icon_path(initial_theme, TrayIconState::Idle);
+            let initial_icon_path = get_icon_path(initial_theme.clone(), TrayIconState::Idle);
+
+            // For colored theme (Linux), disable template mode to preserve colors
+            // For macOS dark/light themes, enable template mode for system-tinted icons
+            let use_template = !matches!(initial_theme, tray::AppTheme::Colored);
 
             let tray = TrayIconBuilder::new()
                 .icon(
@@ -220,7 +226,7 @@ pub fn run() {
                     .unwrap(),
                 )
                 .show_menu_on_left_click(true)
-                .icon_as_template(true)
+                .icon_as_template(use_template)
                 .on_menu_event(|app, event| match event.id.as_ref() {
                     "settings" => {
                         show_main_window(app);
@@ -257,14 +263,7 @@ pub fn run() {
                 }
             }
 
-            // Create the recording overlay window AFTER main window is shown
-            // This prevents Gdk Error 71 on Wayland by ensuring display is ready
-            #[cfg(target_os = "linux")]
-            {
-                if std::env::var("WAYLAND_DISPLAY").is_ok() {
-                    std::thread::sleep(std::time::Duration::from_millis(100));
-                }
-            }
+            // Create the recording overlay window (hidden by default)
             create_recording_overlay(&app_handle);
             info!("Recording overlay created");
 

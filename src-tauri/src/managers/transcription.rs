@@ -1,6 +1,6 @@
 use crate::audio_toolkit::{apply_custom_words, filter_transcription_output};
 use crate::cloud_stt::{
-    estimate_confidence, CloudSttClient, CloudSttConfig, CloudSttProvider, FallbackTriggeredEvent,
+    estimate_confidence, CloudSttClient, CloudSttConfig, FallbackTriggeredEvent,
 };
 use crate::managers::model::{EngineType, ModelManager};
 use crate::settings::{get_settings, AppSettings, ModelUnloadTimeout};

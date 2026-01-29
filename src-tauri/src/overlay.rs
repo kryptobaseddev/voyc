@@ -1,7 +1,7 @@
 use crate::settings;
 use crate::settings::OverlayPosition;
 use log::debug;
-use tauri::{AppHandle, Emitter, Manager, PhysicalPosition, PhysicalSize, WebviewWindowBuilder};
+use tauri::{AppHandle, Emitter, Manager, WebviewWindowBuilder};
 
 const OVERLAY_WIDTH: f64 = 172.0;
 const OVERLAY_HEIGHT: f64 = 36.0;
@@ -12,27 +12,6 @@ fn get_monitor_with_cursor(app_handle: &AppHandle) -> Option<tauri::Monitor> {
     // For Linux, we can try to use the primary monitor as cursor position detection
     // may not be available without additional dependencies
     app_handle.primary_monitor().ok().flatten()
-}
-
-fn is_mouse_within_monitor(
-    mouse_pos: (i32, i32),
-    monitor_pos: &PhysicalPosition<i32>,
-    monitor_size: &PhysicalSize<u32>,
-) -> bool {
-    let (mouse_x, mouse_y) = mouse_pos;
-    let PhysicalPosition {
-        x: monitor_x,
-        y: monitor_y,
-    } = *monitor_pos;
-    let PhysicalSize {
-        width: monitor_width,
-        height: monitor_height,
-    } = *monitor_size;
-
-    mouse_x >= monitor_x
-        && mouse_x < (monitor_x + monitor_width as i32)
-        && mouse_y >= monitor_y
-        && mouse_y < (monitor_y + monitor_height as i32)
 }
 
 fn calculate_overlay_position(app_handle: &AppHandle) -> Option<(f64, f64)> {
@@ -77,7 +56,7 @@ pub fn create_recording_overlay(app_handle: &AppHandle) {
         .closable(false)
         .accept_first_mouse(true)
         .decorations(false)
-        // Note: always_on_top is set when showing to avoid Wayland protocol errors
+        .always_on_top(true)
         .skip_taskbar(true)
         .transparent(true)
         .focused(false)
@@ -109,8 +88,6 @@ pub fn show_recording_overlay(app_handle: &AppHandle) {
                 .set_position(tauri::Position::Logical(tauri::LogicalPosition { x, y }));
         }
 
-        // Set always_on_top when showing (deferred to avoid Wayland protocol errors on init)
-        let _ = overlay_window.set_always_on_top(true);
         let _ = overlay_window.show();
 
         // Emit event to trigger fade-in animation with recording state

@@ -6,9 +6,11 @@ use tauri::{AppHandle, Manager, Theme};
 
 #[derive(Clone, Debug, PartialEq)]
 pub enum TrayIconState {
-    Idle,
-    Recording,
-    Transcribing,
+    Idle,        // Yellow - bored face
+    Recording,   // Green - happy face
+    Transcribing, // Green - happy face (TODO: spinning animation in frontend)
+    Error,       // Red - sad face
+    Off,         // Grey - dead face
 }
 
 #[derive(Clone, Debug, PartialEq)]
@@ -38,20 +40,33 @@ pub fn get_current_theme(app: &AppHandle) -> AppTheme {
 }
 
 /// Gets the appropriate icon path for the given theme and state
+/// Voyc custom icons:
+/// - happy.png (green) = recording/transcribing (active states)
+/// - bored.png (yellow) = idle
+/// - sad.png (red) = error
+/// - dead.png (grey) = off/disabled
 pub fn get_icon_path(theme: AppTheme, state: TrayIconState) -> &'static str {
     match (theme, state) {
-        // Dark theme uses light icons
+        // Colored theme (Linux default) - uses Voyc custom icons
+        (AppTheme::Colored, TrayIconState::Idle) => "resources/tray_idle.png",           // bored (yellow)
+        (AppTheme::Colored, TrayIconState::Recording) => "resources/tray_active.png",    // happy (green)
+        (AppTheme::Colored, TrayIconState::Transcribing) => "resources/tray_active.png", // happy (green)
+        (AppTheme::Colored, TrayIconState::Error) => "resources/tray_error.png",         // sad (red)
+        (AppTheme::Colored, TrayIconState::Off) => "resources/tray_off.png",             // dead (grey)
+
+        // Dark theme - uses monochrome light icons (for macOS/Windows dark mode)
         (AppTheme::Dark, TrayIconState::Idle) => "resources/tray_idle.png",
         (AppTheme::Dark, TrayIconState::Recording) => "resources/tray_recording.png",
         (AppTheme::Dark, TrayIconState::Transcribing) => "resources/tray_transcribing.png",
-        // Light theme uses dark icons
+        (AppTheme::Dark, TrayIconState::Error) => "resources/tray_error.png",
+        (AppTheme::Dark, TrayIconState::Off) => "resources/tray_off.png",
+
+        // Light theme - uses monochrome dark icons (for macOS/Windows light mode)
         (AppTheme::Light, TrayIconState::Idle) => "resources/tray_idle_dark.png",
         (AppTheme::Light, TrayIconState::Recording) => "resources/tray_recording_dark.png",
         (AppTheme::Light, TrayIconState::Transcribing) => "resources/tray_transcribing_dark.png",
-        // Colored theme uses colored icons (for Linux)
-        (AppTheme::Colored, TrayIconState::Idle) => "resources/voyc.png",
-        (AppTheme::Colored, TrayIconState::Recording) => "resources/recording.png",
-        (AppTheme::Colored, TrayIconState::Transcribing) => "resources/transcribing.png",
+        (AppTheme::Light, TrayIconState::Error) => "resources/tray_error.png",
+        (AppTheme::Light, TrayIconState::Off) => "resources/tray_off.png",
     }
 }
 
@@ -76,6 +91,7 @@ pub fn change_tray_icon(app: &AppHandle, icon: TrayIconState) {
 
 pub fn update_tray_menu(app: &AppHandle, state: &TrayIconState) {
     let settings = settings::get_settings(app);
+    let theme = get_current_theme(app);
 
     // Create common menu items
     let version_label = if cfg!(debug_assertions) {
@@ -129,7 +145,7 @@ pub fn update_tray_menu(app: &AppHandle, state: &TrayIconState) {
             )
             .expect("failed to create menu")
         }
-        TrayIconState::Idle => Menu::with_items(
+        TrayIconState::Idle | TrayIconState::Error | TrayIconState::Off => Menu::with_items(
             app,
             &[
                 &version_i,
@@ -145,7 +161,10 @@ pub fn update_tray_menu(app: &AppHandle, state: &TrayIconState) {
 
     let tray = app.state::<TrayIcon>();
     let _ = tray.set_menu(Some(menu));
-    let _ = tray.set_icon_as_template(true);
+    // For colored theme (Linux), disable template mode to preserve colors
+    // For macOS dark/light themes, enable template mode for system-tinted icons
+    let use_template = !matches!(theme, AppTheme::Colored);
+    let _ = tray.set_icon_as_template(use_template);
 }
 
 /// Show the main window
