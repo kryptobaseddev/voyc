@@ -4,9 +4,9 @@
   "project": "voyc",
   "_meta": {
     "schemaVersion": "2.4.0",
-    "totalEntries": 125,
+    "totalEntries": 128,
     "firstEntry": "2026-01-28T01:10:57Z",
-    "lastEntry": "2026-01-29T16:19:38Z",
+    "lastEntry": "2026-01-29T20:35:26Z",
     "entriesPruned": 0
   },
   "entries": [
@@ -2668,6 +2668,102 @@
       "after": {
         "status": "done",
         "completedAt": "2026-01-29T16:19:38Z"
+      },
+      "details": {
+        "field": "status",
+        "operation": "complete"
+      }
+    },
+    {
+      "id": "log-1769718353-3dea63",
+      "timestamp": "2026-01-29T20:25:53Z",
+      "action": "task_created",
+      "taskId": "T057",
+      "actor": "system",
+      "details": {
+        "title": "Implement sudo-free installation method (Flatpak, AppImage, or user-local)",
+        "status": "pending",
+        "priority": "critical"
+      },
+      "before": null,
+      "after": {
+        "title": "Implement sudo-free installation method (Flatpak, AppImage, or user-local)",
+        "status": "pending",
+        "priority": "critical"
+      }
+    },
+    {
+      "id": "log-1769718355-e46b67",
+      "timestamp": "2026-01-29T20:25:55Z",
+      "action": "task_created",
+      "taskId": "T058",
+      "actor": "system",
+      "details": {
+        "title": "Implement semver versioning and changelog management",
+        "status": "pending",
+        "priority": "critical"
+      },
+      "before": null,
+      "after": {
+        "title": "Implement semver versioning and changelog management",
+        "status": "pending",
+        "priority": "critical"
+      }
+    },
+    {
+      "id": "log_615d4d68e373",
+      "timestamp": "2026-01-29T20:35:12Z",
+      "sessionId": null,
+      "action": "status_changed",
+      "actor": "system",
+      "taskId": "T057",
+      "before": {
+        "status": "pending",
+        "completedAt": null
+      },
+      "after": {
+        "status": "done",
+        "completedAt": "2026-01-29T20:35:12Z"
+      },
+      "details": {
+        "field": "status",
+        "operation": "complete"
+      }
+    },
+    {
+      "id": "log_0fb5cff1515a",
+      "timestamp": "2026-01-29T20:35:14Z",
+      "sessionId": null,
+      "action": "status_changed",
+      "actor": "system",
+      "taskId": "T058",
+      "before": {
+        "status": "pending",
+        "completedAt": null
+      },
+      "after": {
+        "status": "done",
+        "completedAt": "2026-01-29T20:35:14Z"
+      },
+      "details": {
+        "field": "status",
+        "operation": "complete"
+      }
+    },
+    {
+      "id": "log_de793115c03a",
+      "timestamp": "2026-01-29T20:35:26Z",
+      "sessionId": null,
+      "action": "status_changed",
+      "actor": "system",
+      "taskId": "T053",
+      "before": {
+        "status": "pending",
+        "completedAt": null
+      },
+      "after": {
+        "status": "done",
+        "completedAt": "2026-01-29T20:35:26Z"
       },
       "details": {
         "field": "status",

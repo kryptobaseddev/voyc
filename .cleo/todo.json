@@ -47,14 +47,14 @@
       }
     }
   },
-  "lastUpdated": "2026-01-29T16:19:38Z",
+  "lastUpdated": "2026-01-29T20:35:26Z",
   "_meta": {
     "schemaVersion": "2.10.0",
-    "checksum": "e1bc9a880ff09cad",
+    "checksum": "00d7ece4b63de824",
     "configVersion": "2.6.0",
     "lastSessionId": null,
     "activeSession": null,
-    "generation": 108,
+    "generation": 114,
     "lastModified": "2026-01-29T01:27:24Z",
     "multiSessionEnabled": true,
     "activeSessionCount": 1,
@@ -1856,12 +1856,12 @@
     {
       "id": "T053",
       "title": "Implement Wayland/GNOME global shortcut workaround",
-      "status": "pending",
+      "status": "done",
       "priority": "high",
       "type": "task",
       "parentId": "T026",
       "createdAt": "2026-01-29T15:43:20Z",
-      "updatedAt": "2026-01-29T15:43:20Z",
+      "updatedAt": "2026-01-29T20:35:26Z",
       "size": "medium",
       "position": 27,
       "positionVersion": 0,
@@ -1872,7 +1872,26 @@
         "gnome",
         "hotkeys",
         "wayland"
-      ]
+      ],
+      "completedAt": "2026-01-29T20:35:26Z",
+      "notes": [
+        "[COMPLETED 2026-01-29T20:35:26Z] Superseded by T056 - native Wayland shortcuts implemented using ashpd crate"
+      ],
+      "verification": {
+        "passed": false,
+        "round": 0,
+        "gates": {
+          "implemented": true,
+          "testsPassed": null,
+          "qaPassed": null,
+          "cleanupDone": null,
+          "securityPassed": null,
+          "documented": null
+        },
+        "lastAgent": "coder",
+        "lastUpdated": "2026-01-29T20:35:26Z",
+        "failureLog": []
+      }
     },
     {
       "id": "T054",
@@ -1986,6 +2005,80 @@
         },
         "lastAgent": "coder",
         "lastUpdated": "2026-01-29T16:16:19Z",
+        "failureLog": []
+      }
+    },
+    {
+      "id": "T057",
+      "title": "Implement sudo-free installation method (Flatpak, AppImage, or user-local)",
+      "status": "done",
+      "priority": "critical",
+      "type": "task",
+      "parentId": "T026",
+      "createdAt": "2026-01-29T20:25:53Z",
+      "updatedAt": "2026-01-29T20:35:12Z",
+      "size": "medium",
+      "position": 31,
+      "positionVersion": 0,
+      "phase": "setup",
+      "labels": [
+        "packaging",
+        "ux"
+      ],
+      "completedAt": "2026-01-29T20:35:12Z",
+      "notes": [
+        "[COMPLETED 2026-01-29T20:35:12Z] Implemented AppImage self-integration: auto-creates .desktop file and copies icon to user directories, no sudo needed"
+      ],
+      "verification": {
+        "passed": false,
+        "round": 0,
+        "gates": {
+          "implemented": true,
+          "testsPassed": null,
+          "qaPassed": null,
+          "cleanupDone": null,
+          "securityPassed": null,
+          "documented": null
+        },
+        "lastAgent": "coder",
+        "lastUpdated": "2026-01-29T20:35:12Z",
+        "failureLog": []
+      }
+    },
+    {
+      "id": "T058",
+      "title": "Implement semver versioning and changelog management",
+      "status": "done",
+      "priority": "critical",
+      "type": "task",
+      "parentId": "T026",
+      "createdAt": "2026-01-29T20:25:55Z",
+      "updatedAt": "2026-01-29T20:35:14Z",
+      "size": "medium",
+      "position": 32,
+      "positionVersion": 0,
+      "phase": "setup",
+      "labels": [
+        "release",
+        "versioning"
+      ],
+      "completedAt": "2026-01-29T20:35:14Z",
+      "notes": [
+        "[COMPLETED 2026-01-29T20:35:14Z] Created VERSION file, CHANGELOG.md, and release scripts (bump-version.sh, generate-changelog.sh, release.sh)"
+      ],
+      "verification": {
+        "passed": false,
+        "round": 0,
+        "gates": {
+          "implemented": true,
+          "testsPassed": null,
+          "qaPassed": null,
+          "cleanupDone": null,
+          "securityPassed": null,
+          "documented": null
+        },
+        "lastAgent": "coder",
+        "lastUpdated": "2026-01-29T20:35:14Z",
         "failureLog": []
       }
     }
