@@ -4,9 +4,9 @@
   "project": "voyc",
   "_meta": {
     "schemaVersion": "2.4.0",
-    "totalEntries": 122,
+    "totalEntries": 125,
     "firstEntry": "2026-01-28T01:10:57Z",
-    "lastEntry": "2026-01-29T06:40:52Z",
+    "lastEntry": "2026-01-29T16:19:38Z",
     "entriesPruned": 0
   },
   "entries": [
@@ -2536,6 +2536,138 @@
       "after": {
         "status": "done",
         "completedAt": "2026-01-29T06:40:52Z"
+      },
+      "details": {
+        "field": "status",
+        "operation": "complete"
+      }
+    },
+    {
+      "id": "log-1769701400-9c8184",
+      "timestamp": "2026-01-29T15:43:20Z",
+      "action": "task_created",
+      "taskId": "T053",
+      "actor": "system",
+      "details": {
+        "title": "Implement Wayland/GNOME global shortcut workaround",
+        "status": "pending",
+        "priority": "high"
+      },
+      "before": null,
+      "after": {
+        "title": "Implement Wayland/GNOME global shortcut workaround",
+        "status": "pending",
+        "priority": "high"
+      }
+    },
+    {
+      "id": "log-1769701859-db6e3c",
+      "timestamp": "2026-01-29T15:50:59Z",
+      "action": "task_created",
+      "taskId": "T054",
+      "actor": "system",
+      "details": {
+        "title": "Fix desktop icon caching - icons not updating after RPM install",
+        "status": "pending",
+        "priority": "critical"
+      },
+      "before": null,
+      "after": {
+        "title": "Fix desktop icon caching - icons not updating after RPM install",
+        "status": "pending",
+        "priority": "critical"
+      }
+    },
+    {
+      "id": "log-1769701860-ab0a1f",
+      "timestamp": "2026-01-29T15:51:00Z",
+      "action": "task_created",
+      "taskId": "T055",
+      "actor": "system",
+      "details": {
+        "title": "Fix system tray icons still showing old icons",
+        "status": "pending",
+        "priority": "critical"
+      },
+      "before": null,
+      "after": {
+        "title": "Fix system tray icons still showing old icons",
+        "status": "pending",
+        "priority": "critical"
+      }
+    },
+    {
+      "id": "log-1769701862-29ee15",
+      "timestamp": "2026-01-29T15:51:02Z",
+      "action": "task_created",
+      "taskId": "T056",
+      "actor": "system",
+      "details": {
+        "title": "Fix keyboard shortcuts to work natively on GNOME/Wayland without workarounds",
+        "status": "pending",
+        "priority": "critical"
+      },
+      "before": null,
+      "after": {
+        "title": "Fix keyboard shortcuts to work natively on GNOME/Wayland without workarounds",
+        "status": "pending",
+        "priority": "critical"
+      }
+    },
+    {
+      "id": "log_40f736c6d1af",
+      "timestamp": "2026-01-29T16:16:17Z",
+      "sessionId": null,
+      "action": "status_changed",
+      "actor": "system",
+      "taskId": "T054",
+      "before": {
+        "status": "pending",
+        "completedAt": null
+      },
+      "after": {
+        "status": "done",
+        "completedAt": "2026-01-29T16:16:17Z"
+      },
+      "details": {
+        "field": "status",
+        "operation": "complete"
+      }
+    },
+    {
+      "id": "log_3403b4cff4f4",
+      "timestamp": "2026-01-29T16:16:19Z",
+      "sessionId": null,
+      "action": "status_changed",
+      "actor": "system",
+      "taskId": "T056",
+      "before": {
+        "status": "pending",
+        "completedAt": null
+      },
+      "after": {
+        "status": "done",
+        "completedAt": "2026-01-29T16:16:19Z"
+      },
+      "details": {
+        "field": "status",
+        "operation": "complete"
+      }
+    },
+    {
+      "id": "log_dddd373b181f",
+      "timestamp": "2026-01-29T16:19:38Z",
+      "sessionId": null,
+      "action": "status_changed",
+      "actor": "system",
+      "taskId": "T055",
+      "before": {
+        "status": "pending",
+        "completedAt": null
+      },
+      "after": {
+        "status": "done",
+        "completedAt": "2026-01-29T16:19:38Z"
       },
       "details": {
         "field": "status",

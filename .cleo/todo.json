@@ -47,14 +47,14 @@
       }
     }
   },
-  "lastUpdated": "2026-01-29T06:40:52Z",
+  "lastUpdated": "2026-01-29T16:19:38Z",
   "_meta": {
     "schemaVersion": "2.10.0",
-    "checksum": "5a325f3030ba2f91",
+    "checksum": "e1bc9a880ff09cad",
     "configVersion": "2.6.0",
     "lastSessionId": null,
     "activeSession": null,
-    "generation": 102,
+    "generation": 108,
     "lastModified": "2026-01-29T01:27:24Z",
     "multiSessionEnabled": true,
     "activeSessionCount": 1,
@@ -1850,6 +1850,142 @@
         },
         "lastAgent": "coder",
         "lastUpdated": "2026-01-29T06:40:52Z",
+        "failureLog": []
+      }
+    },
+    {
+      "id": "T053",
+      "title": "Implement Wayland/GNOME global shortcut workaround",
+      "status": "pending",
+      "priority": "high",
+      "type": "task",
+      "parentId": "T026",
+      "createdAt": "2026-01-29T15:43:20Z",
+      "updatedAt": "2026-01-29T15:43:20Z",
+      "size": "medium",
+      "position": 27,
+      "positionVersion": 0,
+      "phase": "setup",
+      "description": "GNOME on Wayland doesn't deliver global shortcut events via xdg-desktop-portal. Need to either: 1) Force X11 backend on GNOME, 2) Use GNOME-specific D-Bus shortcut API, or 3) Implement alternative activation method.",
+      "labels": [
+        "bug",
+        "gnome",
+        "hotkeys",
+        "wayland"
+      ]
+    },
+    {
+      "id": "T054",
+      "title": "Fix desktop icon caching - icons not updating after RPM install",
+      "status": "done",
+      "priority": "critical",
+      "type": "task",
+      "parentId": "T026",
+      "createdAt": "2026-01-29T15:50:59Z",
+      "updatedAt": "2026-01-29T16:16:17Z",
+      "size": "medium",
+      "position": 28,
+      "positionVersion": 0,
+      "phase": "setup",
+      "labels": [
+        "bug",
+        "icons",
+        "packaging"
+      ],
+      "completedAt": "2026-01-29T16:16:17Z",
+      "notes": [
+        "[COMPLETED 2026-01-29T16:16:17Z] Created rpm-postinstall.sh and rpm-postremove.sh scriptlets, updated tauri.conf.json"
+      ],
+      "verification": {
+        "passed": false,
+        "round": 0,
+        "gates": {
+          "implemented": true,
+          "testsPassed": null,
+          "qaPassed": null,
+          "cleanupDone": null,
+          "securityPassed": null,
+          "documented": null
+        },
+        "lastAgent": "coder",
+        "lastUpdated": "2026-01-29T16:16:17Z",
+        "failureLog": []
+      }
+    },
+    {
+      "id": "T055",
+      "title": "Fix system tray icons still showing old icons",
+      "status": "done",
+      "priority": "critical",
+      "type": "task",
+      "parentId": "T026",
+      "createdAt": "2026-01-29T15:51:00Z",
+      "updatedAt": "2026-01-29T16:19:38Z",
+      "size": "medium",
+      "position": 29,
+      "positionVersion": 0,
+      "phase": "setup",
+      "labels": [
+        "bug",
+        "icons",
+        "tray"
+      ],
+      "completedAt": "2026-01-29T16:19:38Z",
+      "notes": [
+        "[COMPLETED 2026-01-29T16:19:38Z] Rebuilt RPM with all 9 tray icons and verified resources bundled correctly"
+      ],
+      "verification": {
+        "passed": false,
+        "round": 0,
+        "gates": {
+          "implemented": true,
+          "testsPassed": null,
+          "qaPassed": null,
+          "cleanupDone": null,
+          "securityPassed": null,
+          "documented": null
+        },
+        "lastAgent": "coder",
+        "lastUpdated": "2026-01-29T16:19:38Z",
+        "failureLog": []
+      }
+    },
+    {
+      "id": "T056",
+      "title": "Fix keyboard shortcuts to work natively on GNOME/Wayland without workarounds",
+      "status": "done",
+      "priority": "critical",
+      "type": "task",
+      "parentId": "T026",
+      "createdAt": "2026-01-29T15:51:02Z",
+      "updatedAt": "2026-01-29T16:16:19Z",
+      "size": "medium",
+      "position": 30,
+      "positionVersion": 0,
+      "phase": "setup",
+      "labels": [
+        "bug",
+        "gnome",
+        "hotkeys",
+        "wayland"
+      ],
+      "completedAt": "2026-01-29T16:16:19Z",
+      "notes": [
+        "[COMPLETED 2026-01-29T16:16:19Z] Implemented native Wayland shortcuts using ashpd crate and xdg-desktop-portal GlobalShortcuts API"
+      ],
+      "verification": {
+        "passed": false,
+        "round": 0,
+        "gates": {
+          "implemented": true,
+          "testsPassed": null,
+          "qaPassed": null,
+          "cleanupDone": null,
+          "securityPassed": null,
+          "documented": null
+        },
+        "lastAgent": "coder",
+        "lastUpdated": "2026-01-29T16:16:19Z",
         "failureLog": []
       }
     }

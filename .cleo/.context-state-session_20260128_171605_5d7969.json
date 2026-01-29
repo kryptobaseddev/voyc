@@ -1,13 +1,13 @@
 {
   "version": "1.0.0",
-  "timestamp": "2026-01-29T06:43:48Z",
+  "timestamp": "2026-01-29T16:19:37Z",
   "staleAfterMs": 5000,
   "contextWindow": {
     "maxTokens": 200000,
-    "currentTokens": 115489,
-    "percentage": 57
+    "currentTokens": 154401,
+    "percentage": 77
   },
-  "status": "ok",
+  "status": "warning",
   "sessionId": "session_20260128_171605_5d7969",
   "workspace": "/mnt/projects/voyc"
 }
