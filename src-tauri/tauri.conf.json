@@ -62,7 +62,9 @@
       "rpm": {
         "compression": {
           "type": "none"
-        }
+        },
+        "postInstallScript": "../scripts/rpm-postinstall.sh",
+        "postRemoveScript": "../scripts/rpm-postremove.sh"
       },
       "appimage": {
         "bundleMediaFramework": true,
