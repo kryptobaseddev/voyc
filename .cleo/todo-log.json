@@ -4,9 +4,9 @@
   "project": "voyc",
   "_meta": {
     "schemaVersion": "2.4.0",
-    "totalEntries": 128,
+    "totalEntries": 134,
     "firstEntry": "2026-01-28T01:10:57Z",
-    "lastEntry": "2026-01-29T20:35:26Z",
+    "lastEntry": "2026-01-29T21:50:35Z",
     "entriesPruned": 0
   },
   "entries": [
@@ -2764,6 +2764,234 @@
       "after": {
         "status": "done",
         "completedAt": "2026-01-29T20:35:26Z"
+      },
+      "details": {
+        "field": "status",
+        "operation": "complete"
+      }
+    },
+    {
+      "id": "log-1769722804-e2060e",
+      "timestamp": "2026-01-29T21:40:04Z",
+      "action": "task_created",
+      "taskId": "T059",
+      "actor": "system",
+      "details": {
+        "title": "Create Release and Auto-Update Epic - full workflow for releases",
+        "status": "pending",
+        "priority": "critical"
+      },
+      "before": null,
+      "after": {
+        "title": "Create Release and Auto-Update Epic - full workflow for releases",
+        "status": "pending",
+        "priority": "critical"
+      }
+    },
+    {
+      "id": "log-1769722815-619b3d",
+      "timestamp": "2026-01-29T21:40:15Z",
+      "action": "task_created",
+      "taskId": "T060",
+      "actor": "system",
+      "details": {
+        "title": "Fix AppImage FUSE requirement - enable running without FUSE",
+        "status": "pending",
+        "priority": "critical"
+      },
+      "before": null,
+      "after": {
+        "title": "Fix AppImage FUSE requirement - enable running without FUSE",
+        "status": "pending",
+        "priority": "critical"
+      }
+    },
+    {
+      "id": "log-1769722817-5f1c1b",
+      "timestamp": "2026-01-29T21:40:17Z",
+      "action": "task_created",
+      "taskId": "T061",
+      "actor": "system",
+      "details": {
+        "title": "Setup signing key for auto-updates",
+        "status": "pending",
+        "priority": "critical"
+      },
+      "before": null,
+      "after": {
+        "title": "Setup signing key for auto-updates",
+        "status": "pending",
+        "priority": "critical"
+      }
+    },
+    {
+      "id": "log-1769722818-cdaf20",
+      "timestamp": "2026-01-29T21:40:18Z",
+      "action": "task_created",
+      "taskId": "T062",
+      "actor": "system",
+      "details": {
+        "title": "Configure GitHub Releases integration for auto-updates",
+        "status": "pending",
+        "priority": "critical"
+      },
+      "before": null,
+      "after": {
+        "title": "Configure GitHub Releases integration for auto-updates",
+        "status": "pending",
+        "priority": "critical"
+      }
+    },
+    {
+      "id": "log-1769722820-0a4ae0",
+      "timestamp": "2026-01-29T21:40:20Z",
+      "action": "task_created",
+      "taskId": "T063",
+      "actor": "system",
+      "details": {
+        "title": "Create GitHub Actions workflow for automated releases",
+        "status": "pending",
+        "priority": "high"
+      },
+      "before": null,
+      "after": {
+        "title": "Create GitHub Actions workflow for automated releases",
+        "status": "pending",
+        "priority": "high"
+      }
+    },
+    {
+      "id": "log-1769722822-adf397",
+      "timestamp": "2026-01-29T21:40:22Z",
+      "action": "task_created",
+      "taskId": "T064",
+      "actor": "system",
+      "details": {
+        "title": "Document full release process for maintainers",
+        "status": "pending",
+        "priority": "medium"
+      },
+      "before": null,
+      "after": {
+        "title": "Document full release process for maintainers",
+        "status": "pending",
+        "priority": "medium"
+      }
+    },
+    {
+      "id": "log_5016386644b6",
+      "timestamp": "2026-01-29T21:50:24Z",
+      "sessionId": null,
+      "action": "status_changed",
+      "actor": "system",
+      "taskId": "T060",
+      "before": {
+        "status": "pending",
+        "completedAt": null
+      },
+      "after": {
+        "status": "done",
+        "completedAt": "2026-01-29T21:50:23Z"
+      },
+      "details": {
+        "field": "status",
+        "operation": "complete"
+      }
+    },
+    {
+      "id": "log_e4bff6531bbe",
+      "timestamp": "2026-01-29T21:50:26Z",
+      "sessionId": null,
+      "action": "status_changed",
+      "actor": "system",
+      "taskId": "T061",
+      "before": {
+        "status": "pending",
+        "completedAt": null
+      },
+      "after": {
+        "status": "done",
+        "completedAt": "2026-01-29T21:50:26Z"
+      },
+      "details": {
+        "field": "status",
+        "operation": "complete"
+      }
+    },
+    {
+      "id": "log_71e3c0044725",
+      "timestamp": "2026-01-29T21:50:28Z",
+      "sessionId": null,
+      "action": "status_changed",
+      "actor": "system",
+      "taskId": "T062",
+      "before": {
+        "status": "pending",
+        "completedAt": null
+      },
+      "after": {
+        "status": "done",
+        "completedAt": "2026-01-29T21:50:28Z"
+      },
+      "details": {
+        "field": "status",
+        "operation": "complete"
+      }
+    },
+    {
+      "id": "log_c22d314f85d0",
+      "timestamp": "2026-01-29T21:50:31Z",
+      "sessionId": null,
+      "action": "status_changed",
+      "actor": "system",
+      "taskId": "T063",
+      "before": {
+        "status": "pending",
+        "completedAt": null
+      },
+      "after": {
+        "status": "done",
+        "completedAt": "2026-01-29T21:50:30Z"
+      },
+      "details": {
+        "field": "status",
+        "operation": "complete"
+      }
+    },
+    {
+      "id": "log_e7840af8c886",
+      "timestamp": "2026-01-29T21:50:33Z",
+      "sessionId": null,
+      "action": "status_changed",
+      "actor": "system",
+      "taskId": "T064",
+      "before": {
+        "status": "pending",
+        "completedAt": null
+      },
+      "after": {
+        "status": "done",
+        "completedAt": "2026-01-29T21:50:32Z"
+      },
+      "details": {
+        "field": "status",
+        "operation": "complete"
+      }
+    },
+    {
+      "id": "log_154c5490eed8",
+      "timestamp": "2026-01-29T21:50:35Z",
+      "sessionId": null,
+      "action": "status_changed",
+      "actor": "system",
+      "taskId": "T059",
+      "before": {
+        "status": "pending",
+        "completedAt": null
+      },
+      "after": {
+        "status": "done",
+        "completedAt": "2026-01-29T21:50:34Z"
       },
       "details": {
         "field": "status",

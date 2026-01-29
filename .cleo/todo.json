@@ -47,14 +47,14 @@
       }
     }
   },
-  "lastUpdated": "2026-01-29T20:35:26Z",
+  "lastUpdated": "2026-01-29T21:50:34Z",
   "_meta": {
     "schemaVersion": "2.10.0",
-    "checksum": "00d7ece4b63de824",
+    "checksum": "688244cff590b407",
     "configVersion": "2.6.0",
     "lastSessionId": null,
     "activeSession": null,
-    "generation": 114,
+    "generation": 125,
     "lastModified": "2026-01-29T01:27:24Z",
     "multiSessionEnabled": true,
     "activeSessionCount": 1,
@@ -2079,6 +2079,213 @@
         },
         "lastAgent": "coder",
         "lastUpdated": "2026-01-29T20:35:14Z",
+        "failureLog": []
+      }
+    },
+    {
+      "id": "T059",
+      "title": "Create Release and Auto-Update Epic - full workflow for releases",
+      "status": "done",
+      "priority": "critical",
+      "type": "epic",
+      "parentId": null,
+      "createdAt": "2026-01-29T21:40:04Z",
+      "updatedAt": "2026-01-29T21:50:34Z",
+      "size": "medium",
+      "position": 5,
+      "positionVersion": 0,
+      "phase": "setup",
+      "labels": [
+        "epic",
+        "release"
+      ],
+      "completedAt": "2026-01-29T21:50:34Z",
+      "notes": [
+        "[COMPLETED 2026-01-29T21:50:34Z] Release epic complete - local installer, GitHub Actions, signing docs all implemented"
+      ]
+    },
+    {
+      "id": "T060",
+      "title": "Fix AppImage FUSE requirement - enable running without FUSE",
+      "status": "done",
+      "priority": "critical",
+      "type": "task",
+      "parentId": "T059",
+      "createdAt": "2026-01-29T21:40:15Z",
+      "updatedAt": "2026-01-29T21:50:23Z",
+      "size": "medium",
+      "position": 1,
+      "positionVersion": 0,
+      "phase": "setup",
+      "labels": [
+        "appimage",
+        "bug"
+      ],
+      "completedAt": "2026-01-29T21:50:23Z",
+      "notes": [
+        "[COMPLETED 2026-01-29T21:50:23Z] Created install-local.sh and run-appimage.sh - extracts AppImage to ~/.local without FUSE/sudo"
+      ],
+      "verification": {
+        "passed": false,
+        "round": 0,
+        "gates": {
+          "implemented": true,
+          "testsPassed": null,
+          "qaPassed": null,
+          "cleanupDone": null,
+          "securityPassed": null,
+          "documented": null
+        },
+        "lastAgent": "coder",
+        "lastUpdated": "2026-01-29T21:50:23Z",
+        "failureLog": []
+      }
+    },
+    {
+      "id": "T061",
+      "title": "Setup signing key for auto-updates",
+      "status": "done",
+      "priority": "critical",
+      "type": "task",
+      "parentId": "T059",
+      "createdAt": "2026-01-29T21:40:17Z",
+      "updatedAt": "2026-01-29T21:50:26Z",
+      "size": "medium",
+      "position": 2,
+      "positionVersion": 0,
+      "phase": "setup",
+      "labels": [
+        "release",
+        "security"
+      ],
+      "completedAt": "2026-01-29T21:50:26Z",
+      "notes": [
+        "[COMPLETED 2026-01-29T21:50:26Z] Documented signing key setup in docs/RELEASE.md"
+      ],
+      "verification": {
+        "passed": false,
+        "round": 0,
+        "gates": {
+          "implemented": true,
+          "testsPassed": null,
+          "qaPassed": null,
+          "cleanupDone": null,
+          "securityPassed": null,
+          "documented": null
+        },
+        "lastAgent": "coder",
+        "lastUpdated": "2026-01-29T21:50:26Z",
+        "failureLog": []
+      }
+    },
+    {
+      "id": "T062",
+      "title": "Configure GitHub Releases integration for auto-updates",
+      "status": "done",
+      "priority": "critical",
+      "type": "task",
+      "parentId": "T059",
+      "createdAt": "2026-01-29T21:40:18Z",
+      "updatedAt": "2026-01-29T21:50:28Z",
+      "size": "medium",
+      "position": 3,
+      "positionVersion": 0,
+      "phase": "setup",
+      "labels": [
+        "github",
+        "release"
+      ],
+      "completedAt": "2026-01-29T21:50:28Z",
+      "notes": [
+        "[COMPLETED 2026-01-29T21:50:28Z] GitHub Actions workflow generates latest.json for auto-updates"
+      ],
+      "verification": {
+        "passed": false,
+        "round": 0,
+        "gates": {
+          "implemented": true,
+          "testsPassed": null,
+          "qaPassed": null,
+          "cleanupDone": null,
+          "securityPassed": null,
+          "documented": null
+        },
+        "lastAgent": "coder",
+        "lastUpdated": "2026-01-29T21:50:28Z",
+        "failureLog": []
+      }
+    },
+    {
+      "id": "T063",
+      "title": "Create GitHub Actions workflow for automated releases",
+      "status": "done",
+      "priority": "high",
+      "type": "task",
+      "parentId": "T059",
+      "createdAt": "2026-01-29T21:40:20Z",
+      "updatedAt": "2026-01-29T21:50:30Z",
+      "size": "medium",
+      "position": 4,
+      "positionVersion": 0,
+      "phase": "setup",
+      "labels": [
+        "ci",
+        "release"
+      ],
+      "completedAt": "2026-01-29T21:50:30Z",
+      "notes": [
+        "[COMPLETED 2026-01-29T21:50:30Z] Created .github/workflows/release.yml with tauri-action"
+      ],
+      "verification": {
+        "passed": false,
+        "round": 0,
+        "gates": {
+          "implemented": true,
+          "testsPassed": null,
+          "qaPassed": null,
+          "cleanupDone": null,
+          "securityPassed": null,
+          "documented": null
+        },
+        "lastAgent": "coder",
+        "lastUpdated": "2026-01-29T21:50:30Z",
+        "failureLog": []
+      }
+    },
+    {
+      "id": "T064",
+      "title": "Document full release process for maintainers",
+      "status": "done",
+      "priority": "medium",
+      "type": "task",
+      "parentId": "T059",
+      "createdAt": "2026-01-29T21:40:21Z",
+      "updatedAt": "2026-01-29T21:50:32Z",
+      "size": "medium",
+      "position": 5,
+      "positionVersion": 0,
+      "phase": "setup",
+      "labels": [
+        "docs",
+        "release"
+      ],
+      "completedAt": "2026-01-29T21:50:32Z",
+      "notes": [
+        "[COMPLETED 2026-01-29T21:50:32Z] Created docs/RELEASE.md with full release process documentation"
+      ],
+      "verification": {
+        "passed": false,
+        "round": 0,
+        "gates": {
+          "implemented": true,
+          "testsPassed": null,
+          "qaPassed": null,
+          "cleanupDone": null,
+          "securityPassed": null,
+          "documented": null
+        },
+        "lastAgent": "coder",
+        "lastUpdated": "2026-01-29T21:50:32Z",
         "failureLog": []
       }
     }
