@@ -47,14 +47,14 @@
       }
     }
   },
-  "lastUpdated": "2026-01-29T06:21:32Z",
+  "lastUpdated": "2026-01-29T06:40:52Z",
   "_meta": {
     "schemaVersion": "2.10.0",
-    "checksum": "777fdfa1ab3c23f9",
+    "checksum": "5a325f3030ba2f91",
     "configVersion": "2.6.0",
     "lastSessionId": null,
     "activeSession": null,
-    "generation": 90,
+    "generation": 102,
     "lastModified": "2026-01-29T01:27:24Z",
     "multiSessionEnabled": true,
     "activeSessionCount": 1,
@@ -1593,12 +1593,12 @@
     {
       "id": "T045",
       "title": "Commit all pending changes with proper git hygiene",
-      "status": "pending",
+      "status": "done",
       "priority": "critical",
       "type": "task",
       "parentId": "T026",
       "createdAt": "2026-01-29T06:21:21Z",
-      "updatedAt": "2026-01-29T06:21:21Z",
+      "updatedAt": "2026-01-29T06:23:03Z",
       "size": "medium",
       "position": 19,
       "positionVersion": 0,
@@ -1606,17 +1606,36 @@
       "labels": [
         "git",
         "release"
-      ]
+      ],
+      "completedAt": "2026-01-29T06:23:03Z",
+      "notes": [
+        "[COMPLETED 2026-01-29T06:23:03Z] Committed 7 changes: crash fix, tray icons, app icons, build script, docs, cleo state, removed unused build.js"
+      ],
+      "verification": {
+        "passed": false,
+        "round": 0,
+        "gates": {
+          "implemented": true,
+          "testsPassed": null,
+          "qaPassed": null,
+          "cleanupDone": null,
+          "securityPassed": null,
+          "documented": null
+        },
+        "lastAgent": "coder",
+        "lastUpdated": "2026-01-29T06:23:04Z",
+        "failureLog": []
+      }
     },
     {
       "id": "T046",
       "title": "Fix models tab - models keep spinning, never load",
-      "status": "pending",
+      "status": "done",
       "priority": "critical",
       "type": "task",
       "parentId": "T026",
       "createdAt": "2026-01-29T06:21:22Z",
-      "updatedAt": "2026-01-29T06:21:22Z",
+      "updatedAt": "2026-01-29T06:27:33Z",
       "size": "medium",
       "position": 20,
       "positionVersion": 0,
@@ -1625,17 +1644,36 @@
         "bug",
         "frontend",
         "models"
-      ]
+      ],
+      "completedAt": "2026-01-29T06:27:33Z",
+      "notes": [
+        "[COMPLETED 2026-01-29T06:27:33Z] Fixed: Added model store initialization in App.tsx - loadModels() now called on startup"
+      ],
+      "verification": {
+        "passed": false,
+        "round": 0,
+        "gates": {
+          "implemented": true,
+          "testsPassed": null,
+          "qaPassed": null,
+          "cleanupDone": null,
+          "securityPassed": null,
+          "documented": null
+        },
+        "lastAgent": "coder",
+        "lastUpdated": "2026-01-29T06:27:33Z",
+        "failureLog": []
+      }
     },
     {
       "id": "T047",
       "title": "Fix dictation not working",
-      "status": "pending",
+      "status": "done",
       "priority": "critical",
       "type": "task",
       "parentId": "T026",
       "createdAt": "2026-01-29T06:21:24Z",
-      "updatedAt": "2026-01-29T06:21:24Z",
+      "updatedAt": "2026-01-29T06:27:35Z",
       "size": "medium",
       "position": 21,
       "positionVersion": 0,
@@ -1644,17 +1682,36 @@
         "bug",
         "core",
         "dictation"
-      ]
+      ],
+      "completedAt": "2026-01-29T06:27:35Z",
+      "notes": [
+        "[COMPLETED 2026-01-29T06:27:35Z] Fixed: Created dictationStore.ts with event listeners, integrated in App.tsx"
+      ],
+      "verification": {
+        "passed": false,
+        "round": 0,
+        "gates": {
+          "implemented": true,
+          "testsPassed": null,
+          "qaPassed": null,
+          "cleanupDone": null,
+          "securityPassed": null,
+          "documented": null
+        },
+        "lastAgent": "coder",
+        "lastUpdated": "2026-01-29T06:27:35Z",
+        "failureLog": []
+      }
     },
     {
       "id": "T048",
       "title": "Fix hotkeys not working",
-      "status": "pending",
+      "status": "done",
       "priority": "high",
       "type": "task",
       "parentId": "T026",
       "createdAt": "2026-01-29T06:21:25Z",
-      "updatedAt": "2026-01-29T06:21:25Z",
+      "updatedAt": "2026-01-29T06:37:37Z",
       "size": "medium",
       "position": 22,
       "positionVersion": 0,
@@ -1662,7 +1719,26 @@
       "labels": [
         "bug",
         "hotkeys"
-      ]
+      ],
+      "completedAt": "2026-01-29T06:37:37Z",
+      "notes": [
+        "[COMPLETED 2026-01-29T06:37:37Z] Fixed: Added platform detection, registration summary logging, event parsing error logging"
+      ],
+      "verification": {
+        "passed": false,
+        "round": 0,
+        "gates": {
+          "implemented": true,
+          "testsPassed": null,
+          "qaPassed": null,
+          "cleanupDone": null,
+          "securityPassed": null,
+          "documented": null
+        },
+        "lastAgent": "coder",
+        "lastUpdated": "2026-01-29T06:37:37Z",
+        "failureLog": []
+      }
     },
     {
       "id": "T049",
@@ -1705,12 +1781,12 @@
     {
       "id": "T051",
       "title": "Fix About page icon - use correct icon.png",
-      "status": "pending",
+      "status": "done",
       "priority": "medium",
       "type": "task",
       "parentId": "T026",
       "createdAt": "2026-01-29T06:21:31Z",
-      "updatedAt": "2026-01-29T06:21:31Z",
+      "updatedAt": "2026-01-29T06:39:05Z",
       "size": "medium",
       "position": 25,
       "positionVersion": 0,
@@ -1719,17 +1795,36 @@
         "about",
         "bug",
         "ui"
-      ]
+      ],
+      "completedAt": "2026-01-29T06:39:05Z",
+      "notes": [
+        "[COMPLETED 2026-01-29T06:39:05Z] Fixed: Replaced inline SVG with actual Voyc icon from public/voyc-icon.png"
+      ],
+      "verification": {
+        "passed": false,
+        "round": 0,
+        "gates": {
+          "implemented": true,
+          "testsPassed": null,
+          "qaPassed": null,
+          "cleanupDone": null,
+          "securityPassed": null,
+          "documented": null
+        },
+        "lastAgent": "coder",
+        "lastUpdated": "2026-01-29T06:39:05Z",
+        "failureLog": []
+      }
     },
     {
       "id": "T052",
       "title": "Fix app update checking not working",
-      "status": "pending",
+      "status": "done",
       "priority": "medium",
       "type": "task",
       "parentId": "T026",
       "createdAt": "2026-01-29T06:21:32Z",
-      "updatedAt": "2026-01-29T06:21:32Z",
+      "updatedAt": "2026-01-29T06:40:52Z",
       "size": "medium",
       "position": 26,
       "positionVersion": 0,
@@ -1737,7 +1832,26 @@
       "labels": [
         "bug",
         "updates"
-      ]
+      ],
+      "completedAt": "2026-01-29T06:40:52Z",
+      "notes": [
+        "[COMPLETED 2026-01-29T06:40:52Z] Fixed: Added GitHub releases endpoint. Note: Requires actual releases to be published with latest.json manifest."
+      ],
+      "verification": {
+        "passed": false,
+        "round": 0,
+        "gates": {
+          "implemented": true,
+          "testsPassed": null,
+          "qaPassed": null,
+          "cleanupDone": null,
+          "securityPassed": null,
+          "documented": null
+        },
+        "lastAgent": "coder",
+        "lastUpdated": "2026-01-29T06:40:52Z",
+        "failureLog": []
+      }
     }
   ],
   "labels": {}
