@@ -191,6 +191,7 @@ impl AudioRecordingManager {
         let mut did_mute_guard = self.did_mute.lock().unwrap();
         *did_mute_guard = false;
 
+        // Try to resolve VAD model path - works for both dev and release modes
         let vad_path = self
             .app_handle
             .path()
@@ -198,7 +199,19 @@ impl AudioRecordingManager {
                 "resources/models/silero_vad_v4.onnx",
                 tauri::path::BaseDirectory::Resource,
             )
-            .map_err(|e| anyhow::anyhow!("Failed to resolve VAD path: {}", e))?;
+            .or_else(|_| {
+                // Fallback for development mode - look relative to src-tauri
+                let dev_path = std::path::PathBuf::from(env!("CARGO_MANIFEST_DIR"))
+                    .join("resources")
+                    .join("models")
+                    .join("silero_vad_v4.onnx");
+                if dev_path.exists() {
+                    Ok(dev_path)
+                } else {
+                    Err(tauri::Error::UnknownPath)
+                }
+            })
+            .map_err(|e| anyhow::anyhow!("Failed to resolve VAD path: {}. Ensure the model exists at resources/models/silero_vad_v4.onnx", e))?;
         let mut recorder_opt = self.recorder.lock().unwrap();
 
         if recorder_opt.is_none() {

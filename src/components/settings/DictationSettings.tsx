@@ -63,7 +63,7 @@ export const DictationSettings: React.FC = () => {
 
   const handleStopDictation = async () => {
     try {
-      await invoke("stop_dictation", {});
+      await invoke("stop_dictation", { bindingId: "transcribe" });
     } catch (err) {
       console.error("Failed to stop dictation:", err);
     }
