@@ -106,6 +106,10 @@ pub fn run() {
         commands::dictation::cancel_dictation,
         commands::dictation::is_dictation_active,
         commands::dictation::get_dictation_state,
+        // In-app dictation commands (no binding ID required)
+        commands::dictation::start_in_app_dictation,
+        commands::dictation::stop_in_app_dictation,
+        commands::dictation::cancel_in_app_dictation,
     ]);
 
     // Export TypeScript bindings in development

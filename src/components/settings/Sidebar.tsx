@@ -8,6 +8,7 @@ import React from "react";
 
 export type SettingsSection =
   | "dictation"
+  | "inapp"
   | "general"
   | "audio"
   | "models"
@@ -45,6 +46,25 @@ const NAV_ITEMS: NavItem[] = [
           strokeLinejoin="round"
           strokeWidth={2}
           d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4M12 3v4m-4.243.757L6.343 6.343m11.314 1.414L19.071 6.343M8 14h.01M12 14h.01M16 14h.01"
+        />
+      </svg>
+    ),
+  },
+  {
+    id: "inapp",
+    label: "In-App Dictation",
+    icon: (
+      <svg
+        className="w-5 h-5"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+      >
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth={2}
+          d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"
         />
       </svg>
     ),

@@ -114,3 +114,68 @@ pub fn get_dictation_state(
 ) -> DictationState {
     dictation_controller.get_state()
 }
+
+// ============================================================================
+// IN-APP DICTATION COMMANDS (No binding ID required)
+// These commands allow dictation directly within the app UI, bypassing
+// system hotkey limitations on Linux/Fedora
+// ============================================================================
+
+const IN_APP_BINDING_ID: &str = "in_app_dictation";
+
+/// Start in-app dictation recording
+///
+/// This is a simplified version for the in-app dictation interface.
+/// Does not require a binding ID - uses a fixed internal ID.
+///
+/// @task IN_APP_DICTATION
+#[tauri::command]
+#[specta::specta]
+pub fn start_in_app_dictation(
+    dictation_controller: State<Arc<DictationController>>,
+) -> Result<(), String> {
+    dictation_controller.start_dictation(IN_APP_BINDING_ID)
+}
+
+/// Stop in-app dictation and return text (without injecting)
+///
+/// This version returns the transcribed text directly without attempting
+/// to inject it into another application. Perfect for the in-app dictation
+/// interface where the user can copy the text manually.
+///
+/// @task IN_APP_DICTATION
+#[tauri::command]
+#[specta::specta]
+pub async fn stop_in_app_dictation(
+    dictation_controller: State<'_, Arc<DictationController>>,
+) -> Result<DictationResult, String> {
+    match dictation_controller.stop_dictation(IN_APP_BINDING_ID).await {
+        Ok(text) => Ok(DictationResult {
+            success: true,
+            text,
+            error: None,
+            used_fallback: false,
+            provider: None,
+            duration_ms: 0,
+        }),
+        Err(e) => Ok(DictationResult {
+            success: false,
+            text: String::new(),
+            error: Some(e),
+            used_fallback: false,
+            provider: None,
+            duration_ms: 0,
+        }),
+    }
+}
+
+/// Cancel in-app dictation
+///
+/// Cancels any ongoing in-app recording without processing.
+///
+/// @task IN_APP_DICTATION
+#[tauri::command]
+#[specta::specta]
+pub fn cancel_in_app_dictation(dictation_controller: State<Arc<DictationController>>) {
+    dictation_controller.cancel_dictation()
+}
