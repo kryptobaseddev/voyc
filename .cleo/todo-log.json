@@ -4,9 +4,9 @@
   "project": "voyc",
   "_meta": {
     "schemaVersion": "2.4.0",
-    "totalEntries": 176,
+    "totalEntries": 180,
     "firstEntry": "2026-01-28T01:10:57Z",
-    "lastEntry": "2026-02-14T08:48:19Z",
+    "lastEntry": "2026-02-14T08:55:55Z",
     "entriesPruned": 0
   },
   "entries": [
@@ -3445,6 +3445,155 @@
       "after": {
         "title": "HITL Review: History tab - transcription history display",
         "status": "active",
+        "priority": "high",
+        "description": null,
+        "phase": "setup",
+        "labels": [
+          "hitl",
+          "testing",
+          "ui"
+        ],
+        "files": null,
+        "acceptance": null,
+        "depends": null,
+        "blockedBy": null
+      },
+      "details": {
+        "operation": "update"
+      }
+    },
+    {
+      "id": "log_b3deac871e0f",
+      "timestamp": "2026-02-14T08:54:22Z",
+      "sessionId": null,
+      "action": "task_updated",
+      "actor": "system",
+      "taskId": "T077",
+      "before": {
+        "title": "Unify history storage across Dictation and In-App Dictation",
+        "status": "pending",
+        "priority": "high",
+        "description": "Implement shared persisted transcription history store; wire History tab and In-App Dictation to same data source.",
+        "phase": "setup",
+        "labels": [
+          "history",
+          "storage",
+          "ux"
+        ],
+        "files": null,
+        "acceptance": null,
+        "depends": null,
+        "blockedBy": null
+      },
+      "after": {
+        "title": "Unify history storage across Dictation and In-App Dictation",
+        "status": "done",
+        "priority": "high",
+        "description": "Implement shared persisted transcription history store; wire History tab and In-App Dictation to same data source.",
+        "phase": "setup",
+        "labels": [
+          "history",
+          "storage",
+          "ux"
+        ],
+        "files": null,
+        "acceptance": null,
+        "depends": null,
+        "blockedBy": null
+      },
+      "details": {
+        "operation": "update"
+      }
+    },
+    {
+      "id": "log_fa0a97046945",
+      "timestamp": "2026-02-14T08:54:22Z",
+      "sessionId": null,
+      "action": "task_updated",
+      "actor": "system",
+      "taskId": "T073",
+      "before": {
+        "title": "HITL Review: About tab - version, updates, icons",
+        "status": "pending",
+        "priority": "high",
+        "description": null,
+        "phase": "setup",
+        "labels": [
+          "hitl",
+          "testing",
+          "ui"
+        ],
+        "files": null,
+        "acceptance": null,
+        "depends": null,
+        "blockedBy": null
+      },
+      "after": {
+        "title": "HITL Review: About tab - version, updates, icons",
+        "status": "pending",
+        "priority": "high",
+        "description": null,
+        "phase": "setup",
+        "labels": [
+          "hitl",
+          "testing",
+          "ui"
+        ],
+        "files": null,
+        "acceptance": null,
+        "depends": null,
+        "blockedBy": null
+      },
+      "details": {
+        "operation": "update"
+      }
+    },
+    {
+      "id": "log_a66eed9172fe",
+      "timestamp": "2026-02-14T08:54:22Z",
+      "sessionId": null,
+      "action": "status_changed",
+      "actor": "system",
+      "taskId": "T077",
+      "before": {
+        "status": "pending",
+        "completedAt": null
+      },
+      "after": {
+        "status": "done",
+        "completedAt": "2026-02-14T08:54:21Z"
+      },
+      "details": {
+        "field": "status",
+        "operation": "complete"
+      }
+    },
+    {
+      "id": "log_8197e6acc2a9",
+      "timestamp": "2026-02-14T08:55:55Z",
+      "sessionId": null,
+      "action": "task_updated",
+      "actor": "system",
+      "taskId": "T073",
+      "before": {
+        "title": "HITL Review: About tab - version, updates, icons",
+        "status": "pending",
+        "priority": "high",
+        "description": null,
+        "phase": "setup",
+        "labels": [
+          "hitl",
+          "testing",
+          "ui"
+        ],
+        "files": null,
+        "acceptance": null,
+        "depends": null,
+        "blockedBy": null
+      },
+      "after": {
+        "title": "HITL Review: About tab - version, updates, icons",
+        "status": "pending",
         "priority": "high",
         "description": null,
         "phase": "setup",

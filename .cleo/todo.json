@@ -47,14 +47,14 @@
       }
     }
   },
-  "lastUpdated": "2026-02-14T08:54:21Z",
+  "lastUpdated": "2026-02-14T09:00:06Z",
   "_meta": {
     "schemaVersion": "2.10.0",
-    "checksum": "3d1c6148ea2acf5d",
+    "checksum": "70fd2631cdf611e8",
     "configVersion": "2.6.0",
     "lastSessionId": null,
     "activeSession": null,
-    "generation": 134,
+    "generation": 137,
     "lastModified": "2026-02-14T08:02:33Z",
     "multiSessionEnabled": true,
     "activeSessionCount": 1,
@@ -2465,12 +2465,12 @@
     {
       "id": "T073",
       "title": "HITL Review: About tab - version, updates, icons",
-      "status": "pending",
+      "status": "done",
       "priority": "high",
       "type": "task",
       "parentId": "T065",
       "createdAt": "2026-01-29T21:54:01Z",
-      "updatedAt": "2026-01-29T21:54:01Z",
+      "updatedAt": "2026-02-14T09:00:06Z",
       "size": "medium",
       "position": 8,
       "positionVersion": 0,
@@ -2479,7 +2479,12 @@
         "hitl",
         "testing",
         "ui"
-      ]
+      ],
+      "notes": [
+        "2026-02-14 08:55:54 UTC: Added resilient Install Update action visibility and fallback path: install button appears when update status indicates availability even if updater object is unavailable.",
+        "[COMPLETED 2026-02-14T09:00:06Z] Verified release and update lifecycle end-to-end: published v2026.2.3, updated manifest, install.sh --check-update detects 2026.2.2 -> 2026.2.3, and install.sh --update successfully upgrades to 2026.2.3. About screen now exposes install action when update is detected."
+      ],
+      "completedAt": "2026-02-14T09:00:06Z"
     },
     {
       "id": "T074",
@@ -2574,7 +2579,22 @@
         "2026-02-14 08:54:21 UTC: Implementing shared persisted history store and wiring tabs",
         "[COMPLETED 2026-02-14T08:54:21Z] Added shared Zustand history store with localStorage persistence, wired dictation events to store, updated History tab and In-App Dictation to use unified history. Verified via frontend build and update flow to 2026.2.2."
       ],
-      "completedAt": "2026-02-14T08:54:21Z"
+      "completedAt": "2026-02-14T08:54:21Z",
+      "verification": {
+        "passed": false,
+        "round": 0,
+        "gates": {
+          "implemented": true,
+          "testsPassed": null,
+          "qaPassed": null,
+          "cleanupDone": null,
+          "securityPassed": null,
+          "documented": null
+        },
+        "lastAgent": "coder",
+        "lastUpdated": "2026-02-14T08:54:22Z",
+        "failureLog": []
+      }
     },
     {
       "id": "T078",
