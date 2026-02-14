@@ -17,6 +17,7 @@ import { invoke } from "@tauri-apps/api/core";
 import { listen, UnlistenFn } from "@tauri-apps/api/event";
 import { writeText } from "@tauri-apps/plugin-clipboard-manager";
 import { toast } from "sonner";
+import { useTranscriptionHistoryStore } from "../../stores/transcriptionHistoryStore";
 
 interface DictationCompleteEvent {
   text: string;
@@ -31,20 +32,17 @@ interface DictationCompleteEvent {
   };
 }
 
-interface TranscriptionHistoryItem {
-  id: string;
-  text: string;
-  timestamp: Date;
-}
-
 type DictationState = "idle" | "recording" | "transcribing";
 
 export const InAppDictation: React.FC = () => {
   const [text, setText] = useState("");
   const [state, setState] = useState<DictationState>("idle");
   const [isCopied, setIsCopied] = useState(false);
-  const [history, setHistory] = useState<TranscriptionHistoryItem[]>([]);
   const [showHistory, setShowHistory] = useState(false);
+  const history = useTranscriptionHistoryStore((store) => store.entries);
+  const clearHistoryStore = useTranscriptionHistoryStore(
+    (store) => store.clearHistory,
+  );
   const textareaRef = useRef<HTMLTextAreaElement>(null);
   const unlistenRef = useRef<UnlistenFn | null>(null);
 
@@ -63,17 +61,6 @@ export const InAppDictation: React.FC = () => {
                 : transcribedText;
               return newText;
             });
-
-            // Add to history
-            setHistory((prev) => [
-              {
-                id: Date.now().toString(),
-                text: transcribedText,
-                timestamp: new Date(),
-              },
-              ...prev.slice(0, 49), // Keep last 50 items
-            ]);
-
             toast.success("Dictation complete! Text added to editor.");
 
             // Focus the textarea and scroll to bottom
@@ -163,11 +150,10 @@ export const InAppDictation: React.FC = () => {
     }
   };
 
-  const loadHistoryItem = (item: TranscriptionHistoryItem) => {
+  const loadHistoryItem = (item: { text: string; timestamp: string }) => {
+    const timestamp = new Date(item.timestamp).toLocaleTimeString();
     setText((prev) =>
-      prev
-        ? `${prev}\n\n[${item.timestamp.toLocaleTimeString()}] ${item.text}`
-        : item.text,
+      prev ? `${prev}\n\n[${timestamp}] ${item.text}` : item.text,
     );
     toast.info("History item loaded into editor");
   };
@@ -286,7 +272,7 @@ export const InAppDictation: React.FC = () => {
                 <button
                   onClick={() => {
                     if (confirm("Clear all history?")) {
-                      setHistory([]);
+                      clearHistoryStore();
                     }
                   }}
                   className="text-xs text-red-500 hover:text-red-600"
@@ -311,7 +297,7 @@ export const InAppDictation: React.FC = () => {
                     className="p-3 bg-mid-gray/5 rounded-lg cursor-pointer hover:bg-mid-gray/10 transition-colors border border-mid-gray/10"
                   >
                     <div className="text-xs text-mid-gray mb-1">
-                      {item.timestamp.toLocaleTimeString()}
+                      {new Date(item.timestamp).toLocaleTimeString()}
                     </div>
                     <div className="text-sm line-clamp-3">{item.text}</div>
                     <div className="text-xs text-logo-primary mt-1">

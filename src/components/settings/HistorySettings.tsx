@@ -3,36 +3,24 @@
  * Displays transcription history with timestamps and actions
  */
 
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { SettingsGroup } from "../ui/SettingsGroup";
-
-interface HistoryEntry {
-  id: string;
-  timestamp: Date;
-  text: string;
-  duration: number;
-  provider: string;
-}
+import { useTranscriptionHistoryStore } from "../../stores/transcriptionHistoryStore";
 
 export const HistorySettings: React.FC = () => {
-  const [history, setHistory] = useState<HistoryEntry[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
-
-  useEffect(() => {
-    // TODO: Load history from backend
-    setIsLoading(false);
-    // Placeholder data for UI development
-    setHistory([]);
-  }, []);
+  const history = useTranscriptionHistoryStore((state) => state.entries);
+  const clearHistoryStore = useTranscriptionHistoryStore(
+    (state) => state.clearHistory,
+  );
 
   const clearHistory = () => {
     if (confirm("Clear all transcription history?")) {
-      setHistory([]);
-      // TODO: Call backend to clear history
+      clearHistoryStore();
     }
   };
 
-  const formatTime = (date: Date) => {
+  const formatTime = (dateIso: string) => {
+    const date = new Date(dateIso);
     return date.toLocaleString();
   };
 
@@ -60,11 +48,7 @@ export const HistorySettings: React.FC = () => {
           </button>
         </div>
 
-        {isLoading ? (
-          <div className="flex items-center justify-center py-8">
-            <div className="animate-spin w-6 h-6 border-2 border-logo-primary border-t-transparent rounded-full" />
-          </div>
-        ) : history.length === 0 ? (
+        {history.length === 0 ? (
           <div className="text-center py-12 text-text/50">
             <svg
               className="w-12 h-12 mx-auto mb-4 opacity-50"
@@ -94,7 +78,7 @@ export const HistorySettings: React.FC = () => {
                     {formatTime(entry.timestamp)}
                   </span>
                   <span className="text-xs text-text/40">
-                    {formatDuration(entry.duration)} via {entry.provider}
+                    {formatDuration(entry.durationMs)} via {entry.provider}
                   </span>
                 </div>
                 <p className="text-sm">{entry.text}</p>

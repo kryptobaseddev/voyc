@@ -6,6 +6,7 @@
 
 import { create } from "zustand";
 import { listen, UnlistenFn } from "@tauri-apps/api/event";
+import { useTranscriptionHistoryStore } from "./transcriptionHistoryStore";
 
 // Matches Rust DictationState enum (serde rename_all = "snake_case")
 type DictationStateValue = "idle" | "recording" | "transcribing";
@@ -101,21 +102,27 @@ export const useDictationStore = create<DictationStore>((set) => ({
         } else if (state === "idle") {
           set({ isRecording: false, isTranscribing: false });
         }
-      }
+      },
     );
 
     // Listen for dictation completion
     const unlistenComplete = await listen<DictationCompleteEvent>(
       "dictation-complete",
       (event) => {
-        const { text, latency } = event.payload;
+        const { text, latency, duration_ms, provider } = event.payload;
         set({
           lastText: text,
           lastLatency: latency,
           isRecording: false,
           isTranscribing: false,
         });
-      }
+
+        useTranscriptionHistoryStore.getState().addEntry({
+          text,
+          durationMs: duration_ms,
+          provider: provider || "local",
+        });
+      },
     );
 
     // Listen for clipboard-only events (no paste tool available)
@@ -127,7 +134,13 @@ export const useDictationStore = create<DictationStore>((set) => ({
           lastText: text,
           clipboardOnlyReason: reason,
         });
-      }
+
+        useTranscriptionHistoryStore.getState().addEntry({
+          text,
+          durationMs: 0,
+          provider: "clipboard-only",
+        });
+      },
     );
 
     // Listen for dictation cancellation
