@@ -55,9 +55,9 @@
     "lastSessionId": null,
     "activeSession": null,
     "generation": 130,
-    "lastModified": "2026-01-30T05:45:29Z",
+    "lastModified": "2026-02-14T08:02:33Z",
     "multiSessionEnabled": true,
-    "activeSessionCount": 0,
+    "activeSessionCount": 1,
     "version": "2.10.0"
   },
   "focus": {
@@ -2348,12 +2348,12 @@
     {
       "id": "T067",
       "title": "Test full dictation flow: record -> transcribe -> text injection",
-      "status": "pending",
+      "status": "active",
       "priority": "critical",
       "type": "task",
       "parentId": "T065",
       "createdAt": "2026-01-29T21:53:50Z",
-      "updatedAt": "2026-01-30T05:45:29Z",
+      "updatedAt": "2026-02-14T08:02:33Z",
       "size": "medium",
       "position": 2,
       "positionVersion": 0,

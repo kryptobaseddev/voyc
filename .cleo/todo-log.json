@@ -4,9 +4,9 @@
   "project": "voyc",
   "_meta": {
     "schemaVersion": "2.4.0",
-    "totalEntries": 173,
+    "totalEntries": 174,
     "firstEntry": "2026-01-28T01:10:57Z",
-    "lastEntry": "2026-01-30T05:45:29Z",
+    "lastEntry": "2026-02-14T08:02:33Z",
     "entriesPruned": 0
   },
   "entries": [
@@ -3323,6 +3323,21 @@
       "after": null,
       "details": {
         "note": "T066 complete, T076 complete. T067 in progress - stop_dictation fix applied, needs rebuild and test. Handoff at claudedocs/agent-outputs/2026-01-30_T065-testing-epic-handoff.md"
+      }
+    },
+    {
+      "id": "log_53ef69607be4",
+      "timestamp": "2026-02-14T08:02:33Z",
+      "sessionId": "session_20260214_000233_2893aa",
+      "action": "session_start",
+      "actor": "system",
+      "taskId": "T067",
+      "before": null,
+      "after": null,
+      "details": "Multi-session started",
+      "scope": {
+        "type": "epic",
+        "rootTaskId": "T065"
       }
     }
   ]
