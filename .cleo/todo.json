@@ -47,21 +47,21 @@
       }
     }
   },
-  "lastUpdated": "2026-01-29T21:54:05Z",
+  "lastUpdated": "2026-01-29T23:53:03Z",
   "_meta": {
     "schemaVersion": "2.10.0",
-    "checksum": "63182a698c0132fb",
+    "checksum": "1b0c39d3552d44ac",
     "configVersion": "2.6.0",
     "lastSessionId": null,
     "activeSession": null,
-    "generation": 125,
-    "lastModified": "2026-01-29T01:27:24Z",
+    "generation": 130,
+    "lastModified": "2026-01-30T05:45:29Z",
     "multiSessionEnabled": true,
-    "activeSessionCount": 1,
+    "activeSessionCount": 0,
     "version": "2.10.0"
   },
   "focus": {
-    "currentTask": null,
+    "currentTask": "T067",
     "currentPhase": "setup",
     "blockedUntil": null,
     "sessionNote": null,
@@ -2311,12 +2311,12 @@
     {
       "id": "T066",
       "title": "Test hotkey registration and dictation trigger on GNOME/Wayland",
-      "status": "pending",
+      "status": "done",
       "priority": "critical",
       "type": "task",
       "parentId": "T065",
       "createdAt": "2026-01-29T21:53:47Z",
-      "updatedAt": "2026-01-29T21:53:47Z",
+      "updatedAt": "2026-01-29T23:23:05Z",
       "size": "medium",
       "position": 1,
       "positionVersion": 0,
@@ -2324,7 +2324,26 @@
       "labels": [
         "hotkeys",
         "testing"
-      ]
+      ],
+      "completedAt": "2026-01-29T23:23:05Z",
+      "notes": [
+        "[COMPLETED 2026-01-29T23:23:05Z] Investigated hotkey registration on GNOME/Wayland. Root cause: XDG Desktop Portal GlobalShortcuts requires WindowIdentifier for permission dialog, which needs xdg-foreign protocol. On pure Wayland, users must manually configure shortcuts in GNOME Settings > Keyboard > Shortcuts. Added improved logging, frontend events, and open_shortcut_settings command."
+      ],
+      "verification": {
+        "passed": false,
+        "round": 0,
+        "gates": {
+          "implemented": true,
+          "testsPassed": null,
+          "qaPassed": null,
+          "cleanupDone": null,
+          "securityPassed": null,
+          "documented": null
+        },
+        "lastAgent": "coder",
+        "lastUpdated": "2026-01-29T23:23:06Z",
+        "failureLog": []
+      }
     },
     {
       "id": "T067",
@@ -2334,7 +2353,7 @@
       "type": "task",
       "parentId": "T065",
       "createdAt": "2026-01-29T21:53:50Z",
-      "updatedAt": "2026-01-29T21:53:50Z",
+      "updatedAt": "2026-01-30T05:45:29Z",
       "size": "medium",
       "position": 2,
       "positionVersion": 0,
@@ -2493,6 +2512,40 @@
         "icons",
         "testing"
       ]
+    },
+    {
+      "id": "T076",
+      "title": "Add tray menu dictation controls and settings page",
+      "status": "done",
+      "priority": "critical",
+      "type": "task",
+      "parentId": "T065",
+      "createdAt": "2026-01-29T23:42:47Z",
+      "updatedAt": "2026-01-29T23:53:03Z",
+      "size": "medium",
+      "position": 11,
+      "positionVersion": 0,
+      "phase": "setup",
+      "description": "1. Add 'Start Dictation' and 'Stop' menu items to system tray for triggering without hotkeys. 2. Create a dedicated Dictation tab in Settings with: toggle on/off, transcription status display, and activity indicators. This enables Wayland users to use dictation without global shortcuts.",
+      "completedAt": "2026-01-29T23:53:03Z",
+      "notes": [
+        "[COMPLETED 2026-01-29T23:53:03Z] Added tray menu 'Start Dictation' item and DictationSettings UI component for manual control. Enables Wayland users to use dictation without hotkeys."
+      ],
+      "verification": {
+        "passed": false,
+        "round": 0,
+        "gates": {
+          "implemented": true,
+          "testsPassed": null,
+          "qaPassed": null,
+          "cleanupDone": null,
+          "securityPassed": null,
+          "documented": null
+        },
+        "lastAgent": "coder",
+        "lastUpdated": "2026-01-29T23:53:03Z",
+        "failureLog": []
+      }
     }
   ],
   "labels": {}

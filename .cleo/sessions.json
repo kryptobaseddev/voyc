@@ -5,8 +5,8 @@
   "_meta": {
     "schemaVersion": "1.0.0",
     "checksum": "",
-    "lastModified": "2026-01-29T01:27:24Z",
-    "totalSessionsCreated": 9
+    "lastModified": "2026-01-30T05:45:29Z",
+    "totalSessionsCreated": 10
   },
   "config": {
     "maxConcurrentSessions": 5,
@@ -482,7 +482,7 @@
     },
     {
       "id": "session_20260128_171605_5d7969",
-      "status": "active",
+      "status": "ended",
       "name": "Frontend Bundling Fix",
       "agentId": null,
       "scope": {
@@ -514,7 +514,7 @@
         "currentTask": "T042",
         "currentPhase": null,
         "previousTask": "T041",
-        "sessionNote": null,
+        "sessionNote": "Completed release epic T059, created testing epic T065. App installed at ~/.local/share/Voyc. Next: HITL testing of all tabs.",
         "nextAction": null,
         "focusHistory": [
           {
@@ -530,7 +530,7 @@
         ]
       },
       "startedAt": "2026-01-29T01:16:05Z",
-      "lastActivity": "2026-01-29T01:27:24Z",
+      "lastActivity": "2026-01-29T21:54:25Z",
       "suspendedAt": null,
       "stats": {
         "tasksCompleted": 0,
@@ -543,7 +543,71 @@
         "start_timestamp": "2026-01-29T01:16:05Z",
         "start_tokens": 0,
         "max_tokens": 200000
-      }
+      },
+      "endedAt": "2026-01-29T21:54:25Z"
+    },
+    {
+      "id": "session_20260129_135529_ac104c",
+      "status": "ended",
+      "name": "Testing Epic T065",
+      "agentId": null,
+      "scope": {
+        "type": "epic",
+        "rootTaskId": "T065",
+        "computedTaskIds": [
+          "T065",
+          "T066",
+          "T067",
+          "T068",
+          "T069",
+          "T070",
+          "T071",
+          "T072",
+          "T073",
+          "T074",
+          "T075"
+        ]
+      },
+      "focus": {
+        "currentTask": "T067",
+        "currentPhase": null,
+        "previousTask": "T066",
+        "sessionNote": "T066 complete, T076 complete. T067 in progress - stop_dictation fix applied, needs rebuild and test. Handoff at claudedocs/agent-outputs/2026-01-30_T065-testing-epic-handoff.md",
+        "nextAction": null,
+        "focusHistory": [
+          {
+            "taskId": "T066",
+            "timestamp": "2026-01-29T21:55:29Z",
+            "action": "focused"
+          },
+          {
+            "taskId": "T066",
+            "timestamp": "2026-01-29T21:55:33Z",
+            "action": "focused"
+          },
+          {
+            "taskId": "T067",
+            "timestamp": "2026-01-29T23:53:28Z",
+            "action": "focused"
+          }
+        ]
+      },
+      "startedAt": "2026-01-29T21:55:29Z",
+      "lastActivity": "2026-01-30T05:45:29Z",
+      "suspendedAt": null,
+      "stats": {
+        "tasksCompleted": 0,
+        "focusChanges": 3,
+        "suspendCount": 0,
+        "resumeCount": 0
+      },
+      "startMetrics": {
+        "session_id": "session_20260129_135529_ac104c",
+        "start_timestamp": "2026-01-29T21:55:29Z",
+        "start_tokens": 0,
+        "max_tokens": 200000
+      },
+      "endedAt": "2026-01-30T05:45:29Z"
     }
   ],
   "sessionHistory": []

@@ -4,9 +4,9 @@
   "project": "voyc",
   "_meta": {
     "schemaVersion": "2.4.0",
-    "totalEntries": 134,
+    "totalEntries": 173,
     "firstEntry": "2026-01-28T01:10:57Z",
-    "lastEntry": "2026-01-29T21:50:35Z",
+    "lastEntry": "2026-01-30T05:45:29Z",
     "entriesPruned": 0
   },
   "entries": [
@@ -3194,6 +3194,135 @@
         "title": "Test app icon display in launcher and taskbar",
         "status": "pending",
         "priority": "medium"
+      }
+    },
+    {
+      "id": "log_c8d3b8cc7b98",
+      "timestamp": "2026-01-29T21:54:25Z",
+      "sessionId": "session_20260128_171605_5d7969",
+      "action": "session_end",
+      "actor": "system",
+      "taskId": null,
+      "before": null,
+      "after": null,
+      "details": {
+        "note": "Completed release epic T059, created testing epic T065. App installed at ~/.local/share/Voyc. Next: HITL testing of all tabs."
+      }
+    },
+    {
+      "id": "log_ca0ea3ced4d0",
+      "timestamp": "2026-01-29T21:55:29Z",
+      "sessionId": "session_20260129_135529_ac104c",
+      "action": "session_start",
+      "actor": "system",
+      "taskId": "T066",
+      "before": null,
+      "after": null,
+      "details": "Multi-session started",
+      "scope": {
+        "type": "epic",
+        "rootTaskId": "T065"
+      }
+    },
+    {
+      "id": "log_aa7862b618b5",
+      "timestamp": "2026-01-29T21:55:33Z",
+      "sessionId": null,
+      "action": "session_focus_changed",
+      "actor": "claude",
+      "taskId": null,
+      "before": {
+        "currentTask": "T066"
+      },
+      "after": {
+        "currentTask": "T066"
+      },
+      "details": null
+    },
+    {
+      "id": "log_b1a4de46b6fe",
+      "timestamp": "2026-01-29T23:23:06Z",
+      "sessionId": null,
+      "action": "status_changed",
+      "actor": "system",
+      "taskId": "T066",
+      "before": {
+        "status": "active",
+        "completedAt": null
+      },
+      "after": {
+        "status": "done",
+        "completedAt": "2026-01-29T23:23:05Z"
+      },
+      "details": {
+        "field": "status",
+        "operation": "complete"
+      }
+    },
+    {
+      "id": "log-1769730167-c1b040",
+      "timestamp": "2026-01-29T23:42:47Z",
+      "action": "task_created",
+      "taskId": "T076",
+      "actor": "system",
+      "details": {
+        "title": "Add tray menu dictation controls and settings page",
+        "status": "pending",
+        "priority": "critical"
+      },
+      "before": null,
+      "after": {
+        "title": "Add tray menu dictation controls and settings page",
+        "status": "pending",
+        "priority": "critical"
+      }
+    },
+    {
+      "id": "log_a153851d63b3",
+      "timestamp": "2026-01-29T23:53:03Z",
+      "sessionId": null,
+      "action": "status_changed",
+      "actor": "system",
+      "taskId": "T076",
+      "before": {
+        "status": "pending",
+        "completedAt": null
+      },
+      "after": {
+        "status": "done",
+        "completedAt": "2026-01-29T23:53:03Z"
+      },
+      "details": {
+        "field": "status",
+        "operation": "complete"
+      }
+    },
+    {
+      "id": "log_7468d17a524d",
+      "timestamp": "2026-01-29T23:53:28Z",
+      "sessionId": null,
+      "action": "session_focus_changed",
+      "actor": "claude",
+      "taskId": null,
+      "before": {
+        "currentTask": "T066"
+      },
+      "after": {
+        "currentTask": "T067"
+      },
+      "details": null
+    },
+    {
+      "id": "log_155466166182",
+      "timestamp": "2026-01-30T05:45:29Z",
+      "sessionId": "session_20260129_135529_ac104c",
+      "action": "session_end",
+      "actor": "system",
+      "taskId": null,
+      "before": null,
+      "after": null,
+      "details": {
+        "note": "T066 complete, T076 complete. T067 in progress - stop_dictation fix applied, needs rebuild and test. Handoff at claudedocs/agent-outputs/2026-01-30_T065-testing-epic-handoff.md"
       }
     }
   ]
