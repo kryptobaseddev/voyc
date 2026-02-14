@@ -162,7 +162,7 @@ export const InAppDictation: React.FC = () => {
   const isTranscribing = state === "transcribing";
 
   return (
-    <div className="flex flex-col h-full gap-4">
+    <div className="flex flex-col gap-4">
       {/* Status Bar */}
       <div className="flex items-center justify-between px-4 py-3 bg-mid-gray/10 rounded-lg border border-mid-gray/20">
         <div className="flex items-center gap-3">

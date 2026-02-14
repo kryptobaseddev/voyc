@@ -8,6 +8,7 @@ import React, { useEffect, useState } from "react";
 import { invoke } from "@tauri-apps/api/core";
 import { listen } from "@tauri-apps/api/event";
 import { useDictationStore } from "../../stores/dictationStore";
+import { InAppDictation } from "./InAppDictation";
 
 // Platform detection
 const isWayland =
@@ -19,7 +20,9 @@ export const DictationSettings: React.FC = () => {
   const { isRecording, isTranscribing, lastText, lastLatency, error } =
     useDictationStore();
 
-  const [shortcutsConfigured, setShortcutsConfigured] = useState<boolean | null>(null);
+  const [shortcutsConfigured, setShortcutsConfigured] = useState<
+    boolean | null
+  >(null);
   const [isStarting, setIsStarting] = useState(false);
 
   // Listen for shortcut configuration events
@@ -29,14 +32,14 @@ export const DictationSettings: React.FC = () => {
         "shortcuts-configured",
         (event) => {
           setShortcutsConfigured(event.payload > 0);
-        }
+        },
       );
 
       const unlistenNeedConfig = await listen(
         "shortcuts-need-configuration",
         () => {
           setShortcutsConfigured(false);
-        }
+        },
       );
 
       return () => {
@@ -87,8 +90,18 @@ export const DictationSettings: React.FC = () => {
 
   // Determine status
   const getStatus = () => {
-    if (isRecording) return { text: "Recording...", color: "text-green-500", bg: "bg-green-500/20" };
-    if (isTranscribing) return { text: "Transcribing...", color: "text-blue-500", bg: "bg-blue-500/20" };
+    if (isRecording)
+      return {
+        text: "Recording...",
+        color: "text-green-500",
+        bg: "bg-green-500/20",
+      };
+    if (isTranscribing)
+      return {
+        text: "Transcribing...",
+        color: "text-blue-500",
+        bg: "bg-blue-500/20",
+      };
     return { text: "Idle", color: "text-mid-gray", bg: "bg-mid-gray/20" };
   };
 
@@ -101,7 +114,9 @@ export const DictationSettings: React.FC = () => {
         <h3 className="text-sm font-medium mb-3">Dictation Status</h3>
 
         <div className="flex items-center gap-3 mb-4">
-          <div className={`w-3 h-3 rounded-full ${isRecording ? "bg-green-500 animate-pulse" : isTranscribing ? "bg-blue-500 animate-pulse" : "bg-mid-gray"}`} />
+          <div
+            className={`w-3 h-3 rounded-full ${isRecording ? "bg-green-500 animate-pulse" : isTranscribing ? "bg-blue-500 animate-pulse" : "bg-mid-gray"}`}
+          />
           <span className={`font-medium ${status.color}`}>{status.text}</span>
         </div>
 
@@ -150,8 +165,10 @@ export const DictationSettings: React.FC = () => {
           </div>
           {lastLatency && (
             <div className="mt-2 text-xs text-mid-gray">
-              Total: {lastLatency.total_ms}ms | Capture: {lastLatency.capture_ms}ms |
-              Transcription: {lastLatency.transcription_ms}ms | Injection: {lastLatency.injection_ms}ms
+              Total: {lastLatency.total_ms}ms | Capture:{" "}
+              {lastLatency.capture_ms}ms | Transcription:{" "}
+              {lastLatency.transcription_ms}ms | Injection:{" "}
+              {lastLatency.injection_ms}ms
             </div>
           )}
         </div>
@@ -164,8 +181,8 @@ export const DictationSettings: React.FC = () => {
             Keyboard Shortcuts Not Configured
           </h3>
           <p className="text-sm text-amber-600/80 mb-3">
-            On Wayland/GNOME, you need to manually configure keyboard shortcuts in System Settings.
-            Click below to open the settings.
+            On Wayland/GNOME, you need to manually configure keyboard shortcuts
+            in System Settings. Click below to open the settings.
           </p>
           <button
             onClick={handleOpenShortcutSettings}
@@ -189,7 +206,14 @@ export const DictationSettings: React.FC = () => {
 
       {/* Tray Menu Tip */}
       <div className="text-xs text-mid-gray">
-        <strong>Tip:</strong> You can also start dictation from the system tray icon menu.
+        <strong>Tip:</strong> You can also start dictation from the system tray
+        icon menu.
+      </div>
+
+      {/* Unified in-app dictation workspace */}
+      <div className="pt-2 border-t border-mid-gray/20">
+        <h3 className="text-sm font-medium mb-3">In-App Dictation Workspace</h3>
+        <InAppDictation />
       </div>
     </div>
   );

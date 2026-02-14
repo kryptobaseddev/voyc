@@ -126,6 +126,26 @@ jobs:
           includeUpdaterJson: true
           updaterJsonPreferNsis: false
 
+      - name: Generate and upload latest.json
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          TAG: ${{ github.ref_name }}
+        run: |
+          cat > latest.json << EOF
+          {
+            "version": "${VERSION}",
+            "notes": "Automated release ${VERSION}",
+            "pub_date": "$(date -u +%Y-%m-%dT%H:%M:%SZ)",
+            "platforms": {
+              "linux-x86_64": {
+                "signature": "",
+                "url": "https://github.com/${{ github.repository }}/releases/download/${TAG}/Voyc_${VERSION}_amd64.deb"
+              }
+            }
+          }
+          EOF
+          gh release upload "${TAG}" latest.json --clobber
+
   # Optional: Verify the release artifacts
   verify-release:
     needs: build-linux
@@ -143,7 +163,7 @@ jobs:
           sleep 10
 
           # Check if latest.json was uploaded
-          RELEASE_URL="https://raw.githubusercontent.com/${REPO_NAME}/main/latest.json"
+          RELEASE_URL="https://github.com/${REPO_NAME}/releases/latest/download/latest.json"
 
           echo "Checking for latest.json at: ${RELEASE_URL}"
 

@@ -1,11 +1,13 @@
 import { useEffect, useState, useRef } from "react";
-import { Toaster } from "sonner";
+import { Toaster, toast } from "sonner";
 import { invoke } from "@tauri-apps/api/core";
+import { listen } from "@tauri-apps/api/event";
 import { OnboardingWizard } from "./components/onboarding";
 import { SettingsPage } from "./components/settings";
 import { useDictationStore } from "./stores/dictationStore";
 import { useModelStore } from "./stores/modelStore";
 import { useSettingsStore } from "./stores/settingsStore";
+import { useUpdaterStore } from "./stores/updaterStore";
 import "./App.css";
 
 type AppState = "loading" | "onboarding" | "main";
@@ -14,6 +16,7 @@ function App() {
   const [appState, setAppState] = useState<AppState>("loading");
   const [appVersion, setAppVersion] = useState<string>("...");
   const hasCompletedPostOnboardingInit = useRef(false);
+  const hasAutoCheckedUpdates = useRef(false);
 
   const {
     checkFirstRun,
@@ -28,6 +31,16 @@ function App() {
   } = useSettingsStore();
   const { initialize: initializeDictation, cleanup: cleanupDictation } =
     useDictationStore();
+  const updateChecksEnabled = useSettingsStore(
+    (state) => state.settings?.update_checks_enabled ?? true,
+  );
+  const {
+    hasUpdate,
+    latestVersion,
+    isInstalling,
+    checkForUpdates,
+    installUpdate,
+  } = useUpdaterStore();
 
   // Fetch app version on mount
   useEffect(() => {
@@ -97,6 +110,48 @@ function App() {
     cleanupDictation,
   ]);
 
+  // Startup/tray update checks
+  useEffect(() => {
+    if (
+      appState === "main" &&
+      appVersion !== "..." &&
+      updateChecksEnabled &&
+      !hasAutoCheckedUpdates.current
+    ) {
+      hasAutoCheckedUpdates.current = true;
+      checkForUpdates(appVersion).catch(console.error);
+    }
+  }, [appState, appVersion, updateChecksEnabled, checkForUpdates]);
+
+  useEffect(() => {
+    const setup = async () => {
+      const unlisten = await listen("check-for-updates", async () => {
+        if (appVersion !== "...") {
+          await checkForUpdates(appVersion);
+        }
+      });
+
+      return unlisten;
+    };
+
+    let cleanup: (() => void) | undefined;
+    setup().then((fn) => {
+      cleanup = fn;
+    });
+
+    return () => {
+      if (cleanup) {
+        cleanup();
+      }
+    };
+  }, [appVersion, checkForUpdates]);
+
+  useEffect(() => {
+    if (hasUpdate && latestVersion) {
+      toast.info(`Voyc v${latestVersion} is available`);
+    }
+  }, [hasUpdate, latestVersion]);
+
   const handleOnboardingComplete = () => {
     setAppState("main");
   };
@@ -151,8 +206,17 @@ function App() {
         <SettingsPage />
       </div>
       {/* Footer */}
-      <div className="border-t border-mid-gray/20 px-4 py-2 text-xs text-mid-gray">
-        Voyc v{appVersion} - Voice dictation for Linux
+      <div className="border-t border-mid-gray/20 px-4 py-2 text-xs text-mid-gray flex items-center justify-between">
+        <span>Voyc v{appVersion} - Voice dictation for Linux</span>
+        {hasUpdate && latestVersion && (
+          <button
+            onClick={() => installUpdate()}
+            disabled={isInstalling}
+            className="px-2 py-1 rounded bg-logo-primary/20 text-logo-primary hover:bg-logo-primary/30 disabled:opacity-50"
+          >
+            {isInstalling ? "Installing..." : `Update to v${latestVersion}`}
+          </button>
+        )}
       </div>
     </div>
   );
