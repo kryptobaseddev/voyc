@@ -2,7 +2,7 @@
   "$schema": "../schemas/migrations.schema.json",
   "_meta": {
     "schemaVersion": "1.0.0",
-    "lastChecked": "2026-01-28T18:25:40Z"
+    "lastChecked": "2026-02-14T07:40:08Z"
   },
   "appliedMigrations": [
     {
@@ -14,6 +14,61 @@
       "status": "success",
       "previousVersion": "2.9.0",
       "executionTimeMs": 78,
+      "backupPath": null
+    },
+    {
+      "version": "2.6.1",
+      "fileType": "config",
+      "functionName": "update_version_field",
+      "checksum": "4addb03c6cdc8a60533b979e36530528902b8f5d1a750dcb42e86d185c43ede1",
+      "appliedAt": "2026-02-14T07:40:07Z",
+      "status": "success",
+      "previousVersion": "2.6.0",
+      "executionTimeMs": 84,
+      "backupPath": null
+    },
+    {
+      "version": "2.7.0",
+      "fileType": "config",
+      "functionName": "update_version_field",
+      "checksum": "4addb03c6cdc8a60533b979e36530528902b8f5d1a750dcb42e86d185c43ede1",
+      "appliedAt": "2026-02-14T07:40:07Z",
+      "status": "success",
+      "previousVersion": "2.6.1",
+      "executionTimeMs": 89,
+      "backupPath": null
+    },
+    {
+      "version": "2.8.0",
+      "fileType": "config",
+      "functionName": "update_version_field",
+      "checksum": "4addb03c6cdc8a60533b979e36530528902b8f5d1a750dcb42e86d185c43ede1",
+      "appliedAt": "2026-02-14T07:40:07Z",
+      "status": "success",
+      "previousVersion": "2.7.0",
+      "executionTimeMs": 85,
+      "backupPath": null
+    },
+    {
+      "version": "2.9.0",
+      "fileType": "config",
+      "functionName": "update_version_field",
+      "checksum": "4addb03c6cdc8a60533b979e36530528902b8f5d1a750dcb42e86d185c43ede1",
+      "appliedAt": "2026-02-14T07:40:07Z",
+      "status": "success",
+      "previousVersion": "2.8.0",
+      "executionTimeMs": 91,
+      "backupPath": null
+    },
+    {
+      "version": "2.10.0",
+      "fileType": "config",
+      "functionName": "migrate_config_to_2_10_0",
+      "checksum": "3fe62f5cd584d8c1a6e2fc7c5858309999ce74aee4ad0cdefab9e8d740243ba3",
+      "appliedAt": "2026-02-14T07:40:08Z",
+      "status": "success",
+      "previousVersion": "2.9.0",
+      "executionTimeMs": 190,
       "backupPath": null
     }
   ]

@@ -31,11 +31,14 @@ export const DebugSettings: React.FC = () => {
 
   const loadSystemInfo = async () => {
     try {
-      // Get basic system info from Tauri
+      // Get app version from backend
+      const { invoke } = await import("@tauri-apps/api/core");
+      const version = await invoke<string>("get_app_version");
+
       const info = {
         platform: navigator.platform,
         arch: "x86_64",
-        version: "1.0.0",
+        version: version,
         tauriVersion: "2.9.1",
       };
       setSystemInfo(info);
@@ -99,7 +102,9 @@ Log Location: ${logPath}
           </div>
           <div className="flex justify-between p-2 rounded bg-mid-gray/5">
             <span className="text-text/60">Tauri Version</span>
-            <span className="font-mono">{systemInfo?.tauriVersion || "..."}</span>
+            <span className="font-mono">
+              {systemInfo?.tauriVersion || "..."}
+            </span>
           </div>
         </div>
       </SettingsGroup>
@@ -133,9 +138,7 @@ Log Location: ${logPath}
           <div className="flex justify-between items-center p-3 rounded bg-logo-primary/10 border border-logo-primary/20">
             <span className="text-sm font-medium">Total Latency</span>
             <span className="font-mono text-sm font-medium text-logo-primary">
-              {latencyStats.total > 0
-                ? `${latencyStats.total}ms`
-                : "—"}
+              {latencyStats.total > 0 ? `${latencyStats.total}ms` : "—"}
             </span>
           </div>
           <p className="text-xs text-text/40 mt-2">

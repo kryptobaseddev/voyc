@@ -1,10 +1,11 @@
 {
   "$schema": "./schemas/config.schema.json",
-  "version": "2.6.0",
+  "version": "2.10.0",
   "_meta": {
-    "schemaVersion": "2.6.0",
+    "schemaVersion": "2.10.0",
     "createdAt": "2026-01-28T01:10:57Z",
-    "updatedAt": "2026-01-28T01:10:57Z"
+    "updatedAt": "2026-01-28T01:10:57Z",
+    "version": "2.10.0"
   },
   "archive": {
     "enabled": true,
@@ -165,5 +166,8 @@
         "GEMINI.md": "not_found"
       }
     }
+  },
+  "release": {
+    "gates": []
   }
 }

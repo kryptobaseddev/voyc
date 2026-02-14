@@ -4,11 +4,17 @@ name: Release
 on:
   push:
     tags:
-      - 'v*'
+      - "v*"
+      - "[0-9]+.[0-9]+.[0-9]+"
+      - "[0-9]+.[0-9]+"
   workflow_dispatch:
     inputs:
+      version:
+        description: "Version to release (e.g., 2026.2.1)"
+        required: true
+        default: "2026.2.1"
       draft:
-        description: 'Create as draft release'
+        description: "Create as draft release"
         required: false
         default: true
         type: boolean
@@ -32,7 +38,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: "20"
 
       - name: Setup Bun
         uses: oven-sh/setup-bun@v2
@@ -45,7 +51,7 @@ jobs:
       - name: Rust cache
         uses: swatinem/rust-cache@v2
         with:
-          workspaces: './src-tauri -> target'
+          workspaces: "./src-tauri -> target"
 
       - name: Install Linux dependencies
         run: |
@@ -62,13 +68,41 @@ jobs:
       - name: Install frontend dependencies
         run: bun install
 
+      - name: Update version from tag
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            VERSION="${{ github.event.inputs.version }}"
+          else
+            VERSION="${GITHUB_REF#refs/tags/v}"
+            VERSION="${VERSION#refs/tags/}"
+          fi
+          echo "VERSION=$VERSION" >> $GITHUB_ENV
+          echo "Building version: $VERSION"
+
+          # Update version files
+          echo "$VERSION" > VERSION
+          node -e "
+          const fs = require('fs');
+          const pkg = JSON.parse(fs.readFileSync('package.json', 'utf8'));
+          pkg.version = '$VERSION';
+          fs.writeFileSync('package.json', JSON.stringify(pkg, null, 2) + '\n');
+
+          const config = JSON.parse(fs.readFileSync('src-tauri/tauri.conf.json', 'utf8'));
+          config.version = '$VERSION';
+          fs.writeFileSync('src-tauri/tauri.conf.json', JSON.stringify(config, null, 2) + '\n');
+
+          let cargo = fs.readFileSync('src-tauri/Cargo.toml', 'utf8');
+          cargo = cargo.replace(/version = \"[^\"]+\"/, 'version = \"$VERSION\"');
+          fs.writeFileSync('src-tauri/Cargo.toml', cargo);
+          "
+
       - name: Build Tauri app
         uses: tauri-apps/tauri-action@v0
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           tagName: ${{ github.ref_name }}
-          releaseName: 'Voyc ${{ github.ref_name }}'
+          releaseName: "Voyc ${{ github.ref_name }}"
           releaseBody: |
             See the [CHANGELOG](https://github.com/${{ github.repository }}/blob/main/CHANGELOG.md) for details.
 
