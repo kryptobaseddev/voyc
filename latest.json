@@ -1,11 +1,11 @@
 {
-  "version": "2026.2.2",
-  "notes": "Persisted history across tabs and restarts; update and versioning improvements.",
-  "pub_date": "2026-02-14T08:40:00Z",
+  "version": "2026.2.3",
+  "notes": "Update UX fix: always show install action when update is available; improved fallback install+relaunch flow.",
+  "pub_date": "2026-02-14T09:00:00Z",
   "platforms": {
     "linux-x86_64": {
       "signature": "",
-      "url": "https://github.com/kryptobaseddev/voyc/releases/download/v2026.2.2/Voyc_2026.2.2_amd64.deb"
+      "url": "https://github.com/kryptobaseddev/voyc/releases/download/v2026.2.3/Voyc_2026.2.3_amd64.deb"
     }
   }
 }

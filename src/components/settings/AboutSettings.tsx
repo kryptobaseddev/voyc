@@ -77,7 +77,6 @@ export const AboutSettings: React.FC = () => {
   };
 
   const installUpdate = async () => {
-    if (!pendingUpdate && !fallbackVersion) return;
     setIsInstallingUpdate(true);
     setUpdateStatus("Downloading and installing update...");
 
@@ -88,7 +87,8 @@ export const AboutSettings: React.FC = () => {
         await relaunch();
       } else {
         await invoke("run_user_update");
-        setUpdateStatus("Update installed. Please restart Voyc.");
+        setUpdateStatus("Update installed. Restarting app...");
+        await relaunch();
       }
     } catch (error) {
       console.error("Update install failed:", error);
@@ -158,7 +158,9 @@ export const AboutSettings: React.FC = () => {
             </button>
           </div>
 
-          {(pendingUpdate || fallbackVersion) && (
+          {(pendingUpdate ||
+            fallbackVersion ||
+            updateStatus?.includes("Update available")) && (
             <div className="flex justify-end">
               <button
                 onClick={installUpdate}
@@ -167,7 +169,7 @@ export const AboutSettings: React.FC = () => {
               >
                 {isInstallingUpdate
                   ? "Installing..."
-                  : `Install v${pendingUpdate?.version || fallbackVersion}`}
+                  : `Install v${pendingUpdate?.version || fallbackVersion || "latest"}`}
               </button>
             </div>
           )}
