@@ -4,9 +4,9 @@
   "project": "voyc",
   "_meta": {
     "schemaVersion": "2.4.0",
-    "totalEntries": 180,
+    "totalEntries": 182,
     "firstEntry": "2026-01-28T01:10:57Z",
-    "lastEntry": "2026-02-14T08:55:55Z",
+    "lastEntry": "2026-02-14T09:05:01Z",
     "entriesPruned": 0
   },
   "entries": [
@@ -3601,6 +3601,123 @@
           "hitl",
           "testing",
           "ui"
+        ],
+        "files": null,
+        "acceptance": null,
+        "depends": null,
+        "blockedBy": null
+      },
+      "details": {
+        "operation": "update"
+      }
+    },
+    {
+      "id": "log_26bf91245b5d",
+      "timestamp": "2026-02-14T09:00:07Z",
+      "sessionId": null,
+      "action": "status_changed",
+      "actor": "system",
+      "taskId": "T073",
+      "before": {
+        "status": "pending",
+        "completedAt": null
+      },
+      "after": {
+        "status": "done",
+        "completedAt": "2026-02-14T09:00:06Z"
+      },
+      "details": {
+        "field": "status",
+        "operation": "complete"
+      }
+    },
+    {
+      "id": "log-1771059753-26819a",
+      "timestamp": "2026-02-14T09:02:33Z",
+      "action": "task_created",
+      "taskId": "T079",
+      "actor": "system",
+      "details": {
+        "title": "Automate latest.json generation in release workflow",
+        "status": "pending",
+        "priority": "high"
+      },
+      "before": null,
+      "after": {
+        "title": "Automate latest.json generation in release workflow",
+        "status": "pending",
+        "priority": "high"
+      }
+    },
+    {
+      "id": "log-1771059754-73d901",
+      "timestamp": "2026-02-14T09:02:34Z",
+      "action": "task_created",
+      "taskId": "T080",
+      "actor": "system",
+      "details": {
+        "title": "Implement startup update notification + install CTA",
+        "status": "pending",
+        "priority": "high"
+      },
+      "before": null,
+      "after": {
+        "title": "Implement startup update notification + install CTA",
+        "status": "pending",
+        "priority": "high"
+      }
+    },
+    {
+      "id": "log-1771059754-41de22",
+      "timestamp": "2026-02-14T09:02:34Z",
+      "action": "task_created",
+      "taskId": "T081",
+      "actor": "system",
+      "details": {
+        "title": "Wire tray check-for-updates event to frontend updater",
+        "status": "pending",
+        "priority": "medium"
+      },
+      "before": null,
+      "after": {
+        "title": "Wire tray check-for-updates event to frontend updater",
+        "status": "pending",
+        "priority": "medium"
+      }
+    },
+    {
+      "id": "log_ea980b41ebf2",
+      "timestamp": "2026-02-14T09:05:01Z",
+      "sessionId": null,
+      "action": "task_updated",
+      "actor": "system",
+      "taskId": "T078",
+      "before": {
+        "title": "Investigate Wayland window control button hitbox issue",
+        "status": "pending",
+        "priority": "medium",
+        "description": "Minimize/maximize/close buttons require maximize toggle before responding. Reproduce and fix on Fedora GNOME Wayland.",
+        "phase": "setup",
+        "labels": [
+          "ui",
+          "wayland",
+          "window"
+        ],
+        "files": null,
+        "acceptance": null,
+        "depends": null,
+        "blockedBy": null
+      },
+      "after": {
+        "title": "Investigate Wayland window control button hitbox issue",
+        "status": "active",
+        "priority": "medium",
+        "description": "Minimize/maximize/close buttons require maximize toggle before responding. Reproduce and fix on Fedora GNOME Wayland.",
+        "phase": "setup",
+        "labels": [
+          "ui",
+          "wayland",
+          "window"
         ],
         "files": null,
         "acceptance": null,

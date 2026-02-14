@@ -47,14 +47,14 @@
       }
     }
   },
-  "lastUpdated": "2026-02-14T09:00:06Z",
+  "lastUpdated": "2026-02-14T09:11:29Z",
   "_meta": {
     "schemaVersion": "2.10.0",
-    "checksum": "70fd2631cdf611e8",
+    "checksum": "e25b313543386ec6",
     "configVersion": "2.6.0",
     "lastSessionId": null,
     "activeSession": null,
-    "generation": 137,
+    "generation": 141,
     "lastModified": "2026-02-14T08:02:33Z",
     "multiSessionEnabled": true,
     "activeSessionCount": 1,
@@ -2353,7 +2353,7 @@
       "type": "task",
       "parentId": "T065",
       "createdAt": "2026-01-29T21:53:50Z",
-      "updatedAt": "2026-02-14T08:02:33Z",
+      "updatedAt": "2026-02-14T09:11:29Z",
       "size": "medium",
       "position": 2,
       "positionVersion": 0,
@@ -2361,6 +2361,9 @@
       "labels": [
         "dictation",
         "testing"
+      ],
+      "notes": [
+        "2026-02-14 09:11:29 UTC: Merged dual dictation UX into single Dictation section by embedding In-App Dictation workspace and removing separate sidebar tab."
       ]
     },
     {
@@ -2484,7 +2487,22 @@
         "2026-02-14 08:55:54 UTC: Added resilient Install Update action visibility and fallback path: install button appears when update status indicates availability even if updater object is unavailable.",
         "[COMPLETED 2026-02-14T09:00:06Z] Verified release and update lifecycle end-to-end: published v2026.2.3, updated manifest, install.sh --check-update detects 2026.2.2 -> 2026.2.3, and install.sh --update successfully upgrades to 2026.2.3. About screen now exposes install action when update is detected."
       ],
-      "completedAt": "2026-02-14T09:00:06Z"
+      "completedAt": "2026-02-14T09:00:06Z",
+      "verification": {
+        "passed": false,
+        "round": 0,
+        "gates": {
+          "implemented": true,
+          "testsPassed": null,
+          "qaPassed": null,
+          "cleanupDone": null,
+          "securityPassed": null,
+          "documented": null
+        },
+        "lastAgent": "coder",
+        "lastUpdated": "2026-02-14T09:00:06Z",
+        "failureLog": []
+      }
     },
     {
       "id": "T074",
@@ -2599,12 +2617,12 @@
     {
       "id": "T078",
       "title": "Investigate Wayland window control button hitbox issue",
-      "status": "pending",
+      "status": "active",
       "priority": "medium",
       "type": "task",
       "parentId": "T065",
       "createdAt": "2026-02-14T08:48:12Z",
-      "updatedAt": "2026-02-14T08:48:12Z",
+      "updatedAt": "2026-02-14T09:05:01Z",
       "size": "medium",
       "position": 13,
       "positionVersion": 0,
@@ -2614,6 +2632,73 @@
         "ui",
         "wayland",
         "window"
+      ],
+      "notes": [
+        "2026-02-14 09:05:01 UTC: Starting investigation of Wayland window controls reliability"
+      ]
+    },
+    {
+      "id": "T079",
+      "title": "Automate latest.json generation in release workflow",
+      "status": "pending",
+      "priority": "high",
+      "type": "subtask",
+      "parentId": "T024",
+      "createdAt": "2026-02-14T09:02:33Z",
+      "updatedAt": "2026-02-14T09:02:33Z",
+      "size": "medium",
+      "position": 1,
+      "positionVersion": 0,
+      "phase": "setup",
+      "description": "Generate and publish latest.json automatically from tag/version in GitHub Actions so updater manifest is never manual.",
+      "labels": [
+        "ci",
+        "release",
+        "updater"
+      ]
+    },
+    {
+      "id": "T080",
+      "title": "Implement startup update notification + install CTA",
+      "status": "done",
+      "priority": "high",
+      "type": "subtask",
+      "parentId": "T073",
+      "createdAt": "2026-02-14T09:02:33Z",
+      "updatedAt": "2026-02-14T09:11:29Z",
+      "size": "medium",
+      "position": 1,
+      "positionVersion": 0,
+      "phase": "setup",
+      "description": "On app startup, if update_checks_enabled is true, run update check and show in-app banner/toast + persistent CTA button in About/footer. Include install progress states.",
+      "labels": [
+        "notifications",
+        "ui",
+        "updater"
+      ],
+      "completedAt": "2026-02-14T09:11:29Z",
+      "notes": [
+        "[COMPLETED 2026-02-14T09:11:29Z] Implemented startup update checks with shared updater store, footer update CTA, and install flow integration."
+      ]
+    },
+    {
+      "id": "T081",
+      "title": "Wire tray check-for-updates event to frontend updater",
+      "status": "pending",
+      "priority": "medium",
+      "type": "subtask",
+      "parentId": "T073",
+      "createdAt": "2026-02-14T09:02:34Z",
+      "updatedAt": "2026-02-14T09:02:34Z",
+      "size": "medium",
+      "position": 2,
+      "positionVersion": 0,
+      "phase": "setup",
+      "description": "Listen for backend 'check-for-updates' event in frontend and trigger About updater check workflow.",
+      "labels": [
+        "integration",
+        "tray",
+        "updater"
       ]
     }
   ],
