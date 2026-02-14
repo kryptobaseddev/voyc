@@ -50,11 +50,11 @@
   "lastUpdated": "2026-02-14T09:11:29Z",
   "_meta": {
     "schemaVersion": "2.10.0",
-    "checksum": "e25b313543386ec6",
+    "checksum": "0ce7e2bfd70ea7e7",
     "configVersion": "2.6.0",
     "lastSessionId": null,
     "activeSession": null,
-    "generation": 141,
+    "generation": 142,
     "lastModified": "2026-02-14T08:02:33Z",
     "multiSessionEnabled": true,
     "activeSessionCount": 1,
@@ -2348,7 +2348,7 @@
     {
       "id": "T067",
       "title": "Test full dictation flow: record -> transcribe -> text injection",
-      "status": "active",
+      "status": "done",
       "priority": "critical",
       "type": "task",
       "parentId": "T065",
@@ -2363,8 +2363,10 @@
         "testing"
       ],
       "notes": [
-        "2026-02-14 09:11:29 UTC: Merged dual dictation UX into single Dictation section by embedding In-App Dictation workspace and removing separate sidebar tab."
-      ]
+        "2026-02-14 09:11:29 UTC: Merged dual dictation UX into single Dictation section by embedding In-App Dictation workspace and removing separate sidebar tab.",
+        "[COMPLETED 2026-02-14T09:11:29Z] Streamlined Dictation/In-App UX into one section without removing features: kept system hotkey/status controls and added full in-app editor workspace. Removed separate In-App sidebar entry to eliminate confusion."
+      ],
+      "completedAt": "2026-02-14T09:11:29Z"
     },
     {
       "id": "T068",
@@ -2640,12 +2642,12 @@
     {
       "id": "T079",
       "title": "Automate latest.json generation in release workflow",
-      "status": "pending",
+      "status": "done",
       "priority": "high",
       "type": "subtask",
       "parentId": "T024",
       "createdAt": "2026-02-14T09:02:33Z",
-      "updatedAt": "2026-02-14T09:02:33Z",
+      "updatedAt": "2026-02-14T09:11:29Z",
       "size": "medium",
       "position": 1,
       "positionVersion": 0,
@@ -2655,17 +2657,21 @@
         "ci",
         "release",
         "updater"
+      ],
+      "completedAt": "2026-02-14T09:11:29Z",
+      "notes": [
+        "[COMPLETED 2026-02-14T09:11:29Z] Updated release workflow to auto-generate and upload latest.json to each tagged release; verification checks latest download endpoint."
       ]
     },
     {
       "id": "T080",
       "title": "Implement startup update notification + install CTA",
-      "status": "done",
+      "status": "pending",
       "priority": "high",
       "type": "subtask",
       "parentId": "T073",
       "createdAt": "2026-02-14T09:02:33Z",
-      "updatedAt": "2026-02-14T09:11:29Z",
+      "updatedAt": "2026-02-14T09:02:33Z",
       "size": "medium",
       "position": 1,
       "positionVersion": 0,
@@ -2675,10 +2681,6 @@
         "notifications",
         "ui",
         "updater"
-      ],
-      "completedAt": "2026-02-14T09:11:29Z",
-      "notes": [
-        "[COMPLETED 2026-02-14T09:11:29Z] Implemented startup update checks with shared updater store, footer update CTA, and install flow integration."
       ]
     },
     {
