@@ -143,7 +143,7 @@ jobs:
           sleep 10
 
           # Check if latest.json was uploaded
-          RELEASE_URL="https://github.com/${REPO_NAME}/releases/download/${RELEASE_TAG}/latest.json"
+          RELEASE_URL="https://raw.githubusercontent.com/${REPO_NAME}/main/latest.json"
 
           echo "Checking for latest.json at: ${RELEASE_URL}"
 

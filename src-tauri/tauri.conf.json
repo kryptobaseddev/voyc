@@ -28,9 +28,7 @@
       "assetProtocol": {
         "enable": true,
         "scope": {
-          "allow": [
-            "**"
-          ],
+          "allow": ["**"],
           "requireLiteralLeadingDot": false
         }
       }
@@ -40,10 +38,7 @@
     "active": true,
     "createUpdaterArtifacts": true,
     "targets": "all",
-    "resources": [
-      "resources/**/*",
-      "icons/**/*"
-    ],
+    "resources": ["resources/**/*", "icons/**/*"],
     "license": "MIT",
     "icon": [
       "icons/32x32.png",
@@ -81,7 +76,7 @@
     "updater": {
       "pubkey": "dW50cnVzdGVkIGNvbW1lbnQ6IG1pbmlzaWduIHB1YmxpYyBrZXk6IEUwMTkyQjlBNzYwMjAwQkIKUldTN0FBSjJtaXNaNENaRlRZbUxtUHdIWS82WWZ0Nk1kTnJHL1VkcUtDaUJvUnVqVER4bjh4T0sK",
       "endpoints": [
-        "https://github.com/kryptobaseddev/voyc/releases/latest/download/latest.json"
+        "https://raw.githubusercontent.com/kryptobaseddev/voyc/main/latest.json"
       ]
     }
   }
