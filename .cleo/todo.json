@@ -47,14 +47,14 @@
       }
     }
   },
-  "lastUpdated": "2026-02-14T07:40:08Z",
+  "lastUpdated": "2026-02-14T08:46:16Z",
   "_meta": {
     "schemaVersion": "2.10.0",
-    "checksum": "65158cf1b745c2c7",
+    "checksum": "64a85a1f5e80793f",
     "configVersion": "2.6.0",
     "lastSessionId": null,
     "activeSession": null,
-    "generation": 130,
+    "generation": 131,
     "lastModified": "2026-02-14T08:02:33Z",
     "multiSessionEnabled": true,
     "activeSessionCount": 1,
@@ -2423,12 +2423,12 @@
     {
       "id": "T071",
       "title": "HITL Review: History tab - transcription history display",
-      "status": "pending",
+      "status": "active",
       "priority": "high",
       "type": "task",
       "parentId": "T065",
       "createdAt": "2026-01-29T21:53:57Z",
-      "updatedAt": "2026-01-29T21:53:57Z",
+      "updatedAt": "2026-02-14T08:46:16Z",
       "size": "medium",
       "position": 6,
       "positionVersion": 0,
@@ -2437,6 +2437,9 @@
         "hitl",
         "testing",
         "ui"
+      ],
+      "notes": [
+        "2026-02-14 08:46:16 UTC: Implement shared persisted transcription history across tabs"
       ]
     },
     {
