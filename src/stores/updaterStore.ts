@@ -114,7 +114,8 @@ export const useUpdaterStore = create<UpdaterState>((set, get) => ({
       await relaunch();
     } catch {
       set({
-        status: "Update install failed. You can run: bash install.sh --update",
+        status:
+          "Update installation failed. Please try again. If the issue persists, open the GitHub Releases page from About > Links.",
       });
     } finally {
       set({ isInstalling: false });

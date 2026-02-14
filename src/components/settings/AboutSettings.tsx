@@ -82,9 +82,19 @@ export const AboutSettings: React.FC = () => {
 
     try {
       if (pendingUpdate) {
-        await pendingUpdate.downloadAndInstall();
-        setUpdateStatus("Update installed. Restarting app...");
-        await relaunch();
+        try {
+          await pendingUpdate.downloadAndInstall();
+          setUpdateStatus("Update installed. Restarting app...");
+          await relaunch();
+        } catch (tauriUpdaterError) {
+          console.warn(
+            "Signed updater install failed, falling back to user-space installer:",
+            tauriUpdaterError,
+          );
+          await invoke("run_user_update");
+          setUpdateStatus("Update installed via fallback. Restarting app...");
+          await relaunch();
+        }
       } else {
         await invoke("run_user_update");
         setUpdateStatus("Update installed. Restarting app...");
@@ -93,7 +103,7 @@ export const AboutSettings: React.FC = () => {
     } catch (error) {
       console.error("Update install failed:", error);
       setUpdateStatus(
-        "Update install failed. Check that release signatures and updater endpoint are configured correctly.",
+        "Update installation failed. Please try again. If it still fails, use the GitHub link below to download the latest release.",
       );
     } finally {
       setIsInstallingUpdate(false);
