@@ -1,11 +1,11 @@
 {
-  "version": "2026.2.5",
-  "notes": "Fix updater install fallback: if signed updater install fails, automatically use user-space installer update flow.",
-  "pub_date": "2026-02-14T09:40:00Z",
+  "version": "2026.2.6",
+  "notes": "Wayland reliability: added in-app window controls and refined production updater UX.",
+  "pub_date": "2026-02-14T10:05:00Z",
   "platforms": {
     "linux-x86_64": {
       "signature": "",
-      "url": "https://github.com/kryptobaseddev/voyc/releases/download/v2026.2.5/Voyc_2026.2.5_amd64.deb"
+      "url": "https://github.com/kryptobaseddev/voyc/releases/download/v2026.2.6/Voyc_2026.2.6_amd64.deb"
     }
   }
 }
