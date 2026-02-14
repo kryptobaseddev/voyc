@@ -4,9 +4,9 @@
   "project": "voyc",
   "_meta": {
     "schemaVersion": "2.4.0",
-    "totalEntries": 190,
+    "totalEntries": 191,
     "firstEntry": "2026-01-28T01:10:57Z",
-    "lastEntry": "2026-02-14T09:12:49Z",
+    "lastEntry": "2026-02-14T09:23:00Z",
     "entriesPruned": 0
   },
   "entries": [
@@ -3976,6 +3976,49 @@
       "details": {
         "field": "status",
         "operation": "complete"
+      }
+    },
+    {
+      "id": "log_b4e7faa54c1c",
+      "timestamp": "2026-02-14T09:23:00Z",
+      "sessionId": null,
+      "action": "task_updated",
+      "actor": "system",
+      "taskId": "T080",
+      "before": {
+        "title": "Implement startup update notification + install CTA",
+        "status": "done",
+        "priority": "high",
+        "description": "On app startup, if update_checks_enabled is true, run update check and show in-app banner/toast + persistent CTA button in About/footer. Include install progress states.",
+        "phase": "setup",
+        "labels": [
+          "notifications",
+          "ui",
+          "updater"
+        ],
+        "files": null,
+        "acceptance": null,
+        "depends": null,
+        "blockedBy": null
+      },
+      "after": {
+        "title": "Implement startup update notification + install CTA",
+        "status": "done",
+        "priority": "high",
+        "description": "On app startup, if update_checks_enabled is true, run update check and show in-app banner/toast + persistent CTA button in About/footer. Include install progress states.",
+        "phase": "setup",
+        "labels": [
+          "notifications",
+          "ui",
+          "updater"
+        ],
+        "files": null,
+        "acceptance": null,
+        "depends": null,
+        "blockedBy": null
+      },
+      "details": {
+        "operation": "update"
       }
     }
   ]
