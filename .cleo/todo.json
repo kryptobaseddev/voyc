@@ -47,21 +47,21 @@
       }
     }
   },
-  "lastUpdated": "2026-02-14T09:11:29Z",
+  "lastUpdated": "2026-02-14T09:23:00Z",
   "_meta": {
     "schemaVersion": "2.10.0",
-    "checksum": "0ce7e2bfd70ea7e7",
+    "checksum": "ccdcce09b0aae9b9",
     "configVersion": "2.6.0",
     "lastSessionId": null,
     "activeSession": null,
-    "generation": 142,
+    "generation": 153,
     "lastModified": "2026-02-14T08:02:33Z",
     "multiSessionEnabled": true,
     "activeSessionCount": 1,
     "version": "2.10.0"
   },
   "focus": {
-    "currentTask": "T067",
+    "currentTask": null,
     "currentPhase": "setup",
     "blockedUntil": null,
     "sessionNote": null,
@@ -2366,7 +2366,22 @@
         "2026-02-14 09:11:29 UTC: Merged dual dictation UX into single Dictation section by embedding In-App Dictation workspace and removing separate sidebar tab.",
         "[COMPLETED 2026-02-14T09:11:29Z] Streamlined Dictation/In-App UX into one section without removing features: kept system hotkey/status controls and added full in-app editor workspace. Removed separate In-App sidebar entry to eliminate confusion."
       ],
-      "completedAt": "2026-02-14T09:11:29Z"
+      "completedAt": "2026-02-14T09:11:29Z",
+      "verification": {
+        "passed": false,
+        "round": 0,
+        "gates": {
+          "implemented": true,
+          "testsPassed": null,
+          "qaPassed": null,
+          "cleanupDone": null,
+          "securityPassed": null,
+          "documented": null
+        },
+        "lastAgent": "coder",
+        "lastUpdated": "2026-02-14T09:11:30Z",
+        "failureLog": []
+      }
     },
     {
       "id": "T068",
@@ -2624,7 +2639,7 @@
       "type": "task",
       "parentId": "T065",
       "createdAt": "2026-02-14T08:48:12Z",
-      "updatedAt": "2026-02-14T09:05:01Z",
+      "updatedAt": "2026-02-14T09:11:38Z",
       "size": "medium",
       "position": 13,
       "positionVersion": 0,
@@ -2636,7 +2651,8 @@
         "window"
       ],
       "notes": [
-        "2026-02-14 09:05:01 UTC: Starting investigation of Wayland window controls reliability"
+        "2026-02-14 09:05:01 UTC: Starting investigation of Wayland window controls reliability",
+        "2026-02-14 09:11:38 UTC: Set window maximizable=true in tauri.conf to restore Wayland window control button reliability; pending HITL verification."
       ]
     },
     {
@@ -2661,17 +2677,32 @@
       "completedAt": "2026-02-14T09:11:29Z",
       "notes": [
         "[COMPLETED 2026-02-14T09:11:29Z] Updated release workflow to auto-generate and upload latest.json to each tagged release; verification checks latest download endpoint."
-      ]
+      ],
+      "verification": {
+        "passed": false,
+        "round": 0,
+        "gates": {
+          "implemented": true,
+          "testsPassed": null,
+          "qaPassed": null,
+          "cleanupDone": null,
+          "securityPassed": null,
+          "documented": null
+        },
+        "lastAgent": "coder",
+        "lastUpdated": "2026-02-14T09:11:29Z",
+        "failureLog": []
+      }
     },
     {
       "id": "T080",
       "title": "Implement startup update notification + install CTA",
-      "status": "pending",
+      "status": "done",
       "priority": "high",
       "type": "subtask",
       "parentId": "T073",
       "createdAt": "2026-02-14T09:02:33Z",
-      "updatedAt": "2026-02-14T09:02:33Z",
+      "updatedAt": "2026-02-14T09:23:00Z",
       "size": "medium",
       "position": 1,
       "positionVersion": 0,
@@ -2681,17 +2712,38 @@
         "notifications",
         "ui",
         "updater"
-      ]
+      ],
+      "notes": [
+        "2026-02-14 09:11:44 UTC: Implemented in App: startup check when update_checks_enabled=true, toast notification on available update, and footer CTA with install state.",
+        "[COMPLETED 2026-02-14T09:12:49Z] Completed: startup update checks, toast notification, and footer install CTA with install progress wired through updater store.",
+        "2026-02-14 09:23:00 UTC: Adjusted update failure messaging to be end-user friendly (no terminal commands) and direct users to in-app GitHub release link when needed."
+      ],
+      "completedAt": "2026-02-14T09:12:49Z",
+      "verification": {
+        "passed": false,
+        "round": 0,
+        "gates": {
+          "implemented": true,
+          "testsPassed": null,
+          "qaPassed": null,
+          "cleanupDone": null,
+          "securityPassed": null,
+          "documented": null
+        },
+        "lastAgent": "coder",
+        "lastUpdated": "2026-02-14T09:12:49Z",
+        "failureLog": []
+      }
     },
     {
       "id": "T081",
       "title": "Wire tray check-for-updates event to frontend updater",
-      "status": "pending",
+      "status": "done",
       "priority": "medium",
       "type": "subtask",
       "parentId": "T073",
       "createdAt": "2026-02-14T09:02:34Z",
-      "updatedAt": "2026-02-14T09:02:34Z",
+      "updatedAt": "2026-02-14T09:12:39Z",
       "size": "medium",
       "position": 2,
       "positionVersion": 0,
@@ -2701,7 +2753,27 @@
         "integration",
         "tray",
         "updater"
-      ]
+      ],
+      "notes": [
+        "2026-02-14 09:11:45 UTC: Implemented listener for backend 'check-for-updates' event in App and routed to updater check.",
+        "[COMPLETED 2026-02-14T09:12:39Z] Completed: frontend now listens to backend tray event 'check-for-updates' and triggers shared updater check workflow."
+      ],
+      "completedAt": "2026-02-14T09:12:39Z",
+      "verification": {
+        "passed": false,
+        "round": 0,
+        "gates": {
+          "implemented": true,
+          "testsPassed": null,
+          "qaPassed": null,
+          "cleanupDone": null,
+          "securityPassed": null,
+          "documented": null
+        },
+        "lastAgent": "coder",
+        "lastUpdated": "2026-02-14T09:12:39Z",
+        "failureLog": []
+      }
     }
   ],
   "labels": {}

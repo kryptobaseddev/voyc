@@ -4,9 +4,9 @@
   "project": "voyc",
   "_meta": {
     "schemaVersion": "2.4.0",
-    "totalEntries": 182,
+    "totalEntries": 190,
     "firstEntry": "2026-01-28T01:10:57Z",
-    "lastEntry": "2026-02-14T09:05:01Z",
+    "lastEntry": "2026-02-14T09:12:49Z",
     "entriesPruned": 0
   },
   "entries": [
@@ -3726,6 +3726,256 @@
       },
       "details": {
         "operation": "update"
+      }
+    },
+    {
+      "id": "log_632002d12ecb",
+      "timestamp": "2026-02-14T09:11:29Z",
+      "sessionId": null,
+      "action": "task_updated",
+      "actor": "system",
+      "taskId": "T067",
+      "before": {
+        "title": "Test full dictation flow: record -> transcribe -> text injection",
+        "status": "active",
+        "priority": "critical",
+        "description": null,
+        "phase": "setup",
+        "labels": [
+          "dictation",
+          "testing"
+        ],
+        "files": null,
+        "acceptance": null,
+        "depends": null,
+        "blockedBy": null
+      },
+      "after": {
+        "title": "Test full dictation flow: record -> transcribe -> text injection",
+        "status": "done",
+        "priority": "critical",
+        "description": null,
+        "phase": "setup",
+        "labels": [
+          "dictation",
+          "testing"
+        ],
+        "files": null,
+        "acceptance": null,
+        "depends": null,
+        "blockedBy": null
+      },
+      "details": {
+        "operation": "update"
+      }
+    },
+    {
+      "id": "log_9ad4f4aedd79",
+      "timestamp": "2026-02-14T09:11:30Z",
+      "sessionId": null,
+      "action": "status_changed",
+      "actor": "system",
+      "taskId": "T079",
+      "before": {
+        "status": "pending",
+        "completedAt": null
+      },
+      "after": {
+        "status": "done",
+        "completedAt": "2026-02-14T09:11:29Z"
+      },
+      "details": {
+        "field": "status",
+        "operation": "complete"
+      }
+    },
+    {
+      "id": "log_cb78d56028b4",
+      "timestamp": "2026-02-14T09:11:30Z",
+      "sessionId": null,
+      "action": "status_changed",
+      "actor": "system",
+      "taskId": "T067",
+      "before": {
+        "status": "active",
+        "completedAt": null
+      },
+      "after": {
+        "status": "done",
+        "completedAt": "2026-02-14T09:11:29Z"
+      },
+      "details": {
+        "field": "status",
+        "operation": "complete"
+      }
+    },
+    {
+      "id": "log_6d2522e19d1a",
+      "timestamp": "2026-02-14T09:11:38Z",
+      "sessionId": null,
+      "action": "task_updated",
+      "actor": "system",
+      "taskId": "T078",
+      "before": {
+        "title": "Investigate Wayland window control button hitbox issue",
+        "status": "active",
+        "priority": "medium",
+        "description": "Minimize/maximize/close buttons require maximize toggle before responding. Reproduce and fix on Fedora GNOME Wayland.",
+        "phase": "setup",
+        "labels": [
+          "ui",
+          "wayland",
+          "window"
+        ],
+        "files": null,
+        "acceptance": null,
+        "depends": null,
+        "blockedBy": null
+      },
+      "after": {
+        "title": "Investigate Wayland window control button hitbox issue",
+        "status": "active",
+        "priority": "medium",
+        "description": "Minimize/maximize/close buttons require maximize toggle before responding. Reproduce and fix on Fedora GNOME Wayland.",
+        "phase": "setup",
+        "labels": [
+          "ui",
+          "wayland",
+          "window"
+        ],
+        "files": null,
+        "acceptance": null,
+        "depends": null,
+        "blockedBy": null
+      },
+      "details": {
+        "operation": "update"
+      }
+    },
+    {
+      "id": "log_74d5cd9fed22",
+      "timestamp": "2026-02-14T09:11:45Z",
+      "sessionId": null,
+      "action": "task_updated",
+      "actor": "system",
+      "taskId": "T080",
+      "before": {
+        "title": "Implement startup update notification + install CTA",
+        "status": "pending",
+        "priority": "high",
+        "description": "On app startup, if update_checks_enabled is true, run update check and show in-app banner/toast + persistent CTA button in About/footer. Include install progress states.",
+        "phase": "setup",
+        "labels": [
+          "notifications",
+          "ui",
+          "updater"
+        ],
+        "files": null,
+        "acceptance": null,
+        "depends": null,
+        "blockedBy": null
+      },
+      "after": {
+        "title": "Implement startup update notification + install CTA",
+        "status": "active",
+        "priority": "high",
+        "description": "On app startup, if update_checks_enabled is true, run update check and show in-app banner/toast + persistent CTA button in About/footer. Include install progress states.",
+        "phase": "setup",
+        "labels": [
+          "notifications",
+          "ui",
+          "updater"
+        ],
+        "files": null,
+        "acceptance": null,
+        "depends": null,
+        "blockedBy": null
+      },
+      "details": {
+        "operation": "update"
+      }
+    },
+    {
+      "id": "log_1a3824b9471f",
+      "timestamp": "2026-02-14T09:11:45Z",
+      "sessionId": null,
+      "action": "task_updated",
+      "actor": "system",
+      "taskId": "T081",
+      "before": {
+        "title": "Wire tray check-for-updates event to frontend updater",
+        "status": "pending",
+        "priority": "medium",
+        "description": "Listen for backend 'check-for-updates' event in frontend and trigger About updater check workflow.",
+        "phase": "setup",
+        "labels": [
+          "integration",
+          "tray",
+          "updater"
+        ],
+        "files": null,
+        "acceptance": null,
+        "depends": null,
+        "blockedBy": null
+      },
+      "after": {
+        "title": "Wire tray check-for-updates event to frontend updater",
+        "status": "active",
+        "priority": "medium",
+        "description": "Listen for backend 'check-for-updates' event in frontend and trigger About updater check workflow.",
+        "phase": "setup",
+        "labels": [
+          "integration",
+          "tray",
+          "updater"
+        ],
+        "files": null,
+        "acceptance": null,
+        "depends": null,
+        "blockedBy": null
+      },
+      "details": {
+        "operation": "update"
+      }
+    },
+    {
+      "id": "log_ef484c608cf8",
+      "timestamp": "2026-02-14T09:12:40Z",
+      "sessionId": null,
+      "action": "status_changed",
+      "actor": "system",
+      "taskId": "T081",
+      "before": {
+        "status": "active",
+        "completedAt": null
+      },
+      "after": {
+        "status": "done",
+        "completedAt": "2026-02-14T09:12:39Z"
+      },
+      "details": {
+        "field": "status",
+        "operation": "complete"
+      }
+    },
+    {
+      "id": "log_e7a938b4ad7f",
+      "timestamp": "2026-02-14T09:12:49Z",
+      "sessionId": null,
+      "action": "status_changed",
+      "actor": "system",
+      "taskId": "T080",
+      "before": {
+        "status": "active",
+        "completedAt": null
+      },
+      "after": {
+        "status": "done",
+        "completedAt": "2026-02-14T09:12:49Z"
+      },
+      "details": {
+        "field": "status",
+        "operation": "complete"
       }
     }
   ]
