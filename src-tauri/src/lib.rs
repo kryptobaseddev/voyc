@@ -43,6 +43,7 @@ pub fn run() {
         commands::get_default_app_settings,
         commands::get_log_dir_path,
         commands::get_app_version,
+        commands::run_user_update,
         commands::open_log_dir,
         commands::open_app_data_dir,
         commands::update_setting,

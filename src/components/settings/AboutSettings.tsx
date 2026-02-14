@@ -6,13 +6,19 @@
 import React, { useState, useEffect } from "react";
 import { SettingsGroup } from "../ui/SettingsGroup";
 import { check } from "@tauri-apps/plugin-updater";
+import { relaunch } from "@tauri-apps/plugin-process";
 import { invoke } from "@tauri-apps/api/core";
 
 const BUILD_DATE = "2026-01-28";
 
 export const AboutSettings: React.FC = () => {
-  const [appVersion, setAppVersion] = useState<string>("1.0.0");
+  const [appVersion, setAppVersion] = useState<string>("...");
   const [isCheckingUpdate, setIsCheckingUpdate] = useState(false);
+  const [isInstallingUpdate, setIsInstallingUpdate] = useState(false);
+  const [pendingUpdate, setPendingUpdate] = useState<Awaited<
+    ReturnType<typeof check>
+  > | null>(null);
+  const [fallbackVersion, setFallbackVersion] = useState<string | null>(null);
   const [updateStatus, setUpdateStatus] = useState<string | null>(null);
 
   useEffect(() => {
@@ -22,20 +28,75 @@ export const AboutSettings: React.FC = () => {
 
   const checkForUpdates = async () => {
     setIsCheckingUpdate(true);
+    setPendingUpdate(null);
+    setFallbackVersion(null);
     setUpdateStatus(null);
 
     try {
       const update = await check();
       if (update) {
+        setPendingUpdate(update);
         setUpdateStatus(`Update available: v${update.version}`);
       } else {
         setUpdateStatus("You're running the latest version!");
       }
     } catch (error) {
-      console.error("Update check failed:", error);
-      setUpdateStatus("Unable to check for updates");
+      console.error(
+        "Tauri updater check failed, using GitHub fallback:",
+        error,
+      );
+      try {
+        const response = await fetch(
+          "https://api.github.com/repos/kryptobaseddev/voyc/releases/latest",
+        );
+        if (!response.ok) {
+          throw new Error(`GitHub API returned ${response.status}`);
+        }
+        const data = (await response.json()) as { tag_name?: string };
+        const latest = (data.tag_name || "").replace(/^v/, "");
+
+        if (!latest) {
+          throw new Error("Missing tag_name in GitHub response");
+        }
+
+        if (latest === appVersion) {
+          setUpdateStatus("You're running the latest version!");
+        } else {
+          setFallbackVersion(latest);
+          setUpdateStatus(`Update available: v${latest}`);
+        }
+      } catch (fallbackError) {
+        console.error("Fallback update check failed:", fallbackError);
+        setUpdateStatus(
+          "Unable to check for updates. Verify internet and release availability.",
+        );
+      }
     } finally {
       setIsCheckingUpdate(false);
+    }
+  };
+
+  const installUpdate = async () => {
+    if (!pendingUpdate && !fallbackVersion) return;
+    setIsInstallingUpdate(true);
+    setUpdateStatus("Downloading and installing update...");
+
+    try {
+      if (pendingUpdate) {
+        await pendingUpdate.downloadAndInstall();
+        setUpdateStatus("Update installed. Restarting app...");
+        await relaunch();
+      } else {
+        await invoke("run_user_update");
+        setUpdateStatus("Update installed. Please restart Voyc.");
+      }
+    } catch (error) {
+      console.error("Update install failed:", error);
+      setUpdateStatus(
+        "Update install failed. Check that release signatures and updater endpoint are configured correctly.",
+      );
+    } finally {
+      setIsInstallingUpdate(false);
     }
   };
 
@@ -96,6 +157,20 @@ export const AboutSettings: React.FC = () => {
               )}
             </button>
           </div>
+
+          {(pendingUpdate || fallbackVersion) && (
+            <div className="flex justify-end">
+              <button
+                onClick={installUpdate}
+                disabled={isInstallingUpdate}
+                className="px-4 py-2 text-sm rounded-lg bg-green-600 text-white hover:bg-green-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+              >
+                {isInstallingUpdate
+                  ? "Installing..."
+                  : `Install v${pendingUpdate?.version || fallbackVersion}`}
+              </button>
+            </div>
+          )}
 
           {updateStatus && (
             <div

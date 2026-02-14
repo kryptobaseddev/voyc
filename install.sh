@@ -28,7 +28,7 @@ log_step() { echo -e "${BLUE}==>${NC} $1"; }
 INSTALL_DIR="$HOME/.local/share/Voyc"
 BIN_DIR="$HOME/.local/bin"
 DESKTOP_DIR="$HOME/.local/share/applications"
-ICON_DIR="$HOME/.local/share/icons/hicolor/256x256/apps"
+ICON_DIR="$HOME/.local/share/icons/hicolor/128x128/apps"
 VERSION_FILE="$INSTALL_DIR/.version"
 
 # GitHub release URL
@@ -83,7 +83,7 @@ install_version() {
     mkdir -p "$BIN_DIR"
     cat > "$BIN_DIR/voyc" << EOF
 #!/bin/bash
-exec "$INSTALL_DIR/usr/bin/voyc" "\$@"
+exec "$INSTALL_DIR/bin/voyc" "\$@"
 EOF
     chmod +x "$BIN_DIR/voyc"
     
@@ -94,7 +94,7 @@ EOF
 Name=Voyc
 Comment=Voice dictation for Linux
 Exec=$BIN_DIR/voyc
-Icon=$INSTALL_DIR/usr/share/icons/hicolor/256x256/apps/voyc.png
+Icon=$INSTALL_DIR/share/icons/hicolor/128x128/apps/voyc.png
 Type=Application
 Categories=AudioVideo;Audio;Utility;
 Keywords=voice;dictation;speech;transcription;whisper;audio;
@@ -106,9 +106,9 @@ Version=$version
 EOF
     
     # Copy icon if needed
-    if [[ -f "$INSTALL_DIR/usr/share/icons/hicolor/256x256/apps/voyc.png" ]]; then
+    if [[ -f "$INSTALL_DIR/share/icons/hicolor/128x128/apps/voyc.png" ]]; then
         mkdir -p "$ICON_DIR"
-        cp "$INSTALL_DIR/usr/share/icons/hicolor/256x256/apps/voyc.png" "$ICON_DIR/"
+        cp "$INSTALL_DIR/share/icons/hicolor/128x128/apps/voyc.png" "$ICON_DIR/voyc.png"
     fi
     
     # Update desktop database

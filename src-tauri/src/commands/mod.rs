@@ -10,6 +10,7 @@ use crate::overlay::hide_recording_overlay;
 use crate::settings::{get_default_settings, get_settings, write_settings, AppSettings};
 use crate::tray::{change_tray_icon, TrayIconState};
 use log::{info, warn};
+use std::process::Command;
 use std::sync::Arc;
 use tauri::{AppHandle, Manager};
 use tauri_plugin_autostart::ManagerExt;
@@ -70,6 +71,23 @@ pub fn open_log_dir(app: AppHandle) -> Result<(), String> {
 #[specta::specta]
 pub fn get_app_version() -> String {
     env!("CARGO_PKG_VERSION").to_string()
+}
+
+/// Run user-local updater script to install latest release.
+#[tauri::command]
+#[specta::specta]
+pub fn run_user_update() -> Result<String, String> {
+    let status = Command::new("bash")
+        .arg("-lc")
+        .arg("curl -fsSL https://raw.githubusercontent.com/kryptobaseddev/voyc/main/install.sh | bash -s -- --update")
+        .status()
+        .map_err(|e| format!("Failed to launch updater: {}", e))?;
+
+    if status.success() {
+        Ok("Update completed successfully".to_string())
+    } else {
+        Err(format!("Updater exited with status: {}", status))
+    }
 }
 
 #[specta::specta]

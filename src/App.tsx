@@ -12,7 +12,7 @@ type AppState = "loading" | "onboarding" | "main";
 
 function App() {
   const [appState, setAppState] = useState<AppState>("loading");
-  const [appVersion, setAppVersion] = useState<string>("1.0.0");
+  const [appVersion, setAppVersion] = useState<string>("...");
   const hasCompletedPostOnboardingInit = useRef(false);
 
   const {
