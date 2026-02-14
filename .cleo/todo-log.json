@@ -4,9 +4,9 @@
   "project": "voyc",
   "_meta": {
     "schemaVersion": "2.4.0",
-    "totalEntries": 174,
+    "totalEntries": 176,
     "firstEntry": "2026-01-28T01:10:57Z",
-    "lastEntry": "2026-02-14T08:02:33Z",
+    "lastEntry": "2026-02-14T08:48:19Z",
     "entriesPruned": 0
   },
   "entries": [
@@ -3338,6 +3338,128 @@
       "scope": {
         "type": "epic",
         "rootTaskId": "T065"
+      }
+    },
+    {
+      "id": "log_d61e3327e50a",
+      "timestamp": "2026-02-14T08:46:16Z",
+      "sessionId": null,
+      "action": "task_updated",
+      "actor": "system",
+      "taskId": "T071",
+      "before": {
+        "title": "HITL Review: History tab - transcription history display",
+        "status": "pending",
+        "priority": "high",
+        "description": null,
+        "phase": "setup",
+        "labels": [
+          "hitl",
+          "testing",
+          "ui"
+        ],
+        "files": null,
+        "acceptance": null,
+        "depends": null,
+        "blockedBy": null
+      },
+      "after": {
+        "title": "HITL Review: History tab - transcription history display",
+        "status": "active",
+        "priority": "high",
+        "description": null,
+        "phase": "setup",
+        "labels": [
+          "hitl",
+          "testing",
+          "ui"
+        ],
+        "files": null,
+        "acceptance": null,
+        "depends": null,
+        "blockedBy": null
+      },
+      "details": {
+        "operation": "update"
+      }
+    },
+    {
+      "id": "log-1771058892-1f2b31",
+      "timestamp": "2026-02-14T08:48:12Z",
+      "action": "task_created",
+      "taskId": "T077",
+      "actor": "system",
+      "details": {
+        "title": "Unify history storage across Dictation and In-App Dictation",
+        "status": "pending",
+        "priority": "high"
+      },
+      "before": null,
+      "after": {
+        "title": "Unify history storage across Dictation and In-App Dictation",
+        "status": "pending",
+        "priority": "high"
+      }
+    },
+    {
+      "id": "log-1771058892-eef33a",
+      "timestamp": "2026-02-14T08:48:12Z",
+      "action": "task_created",
+      "taskId": "T078",
+      "actor": "system",
+      "details": {
+        "title": "Investigate Wayland window control button hitbox issue",
+        "status": "pending",
+        "priority": "medium"
+      },
+      "before": null,
+      "after": {
+        "title": "Investigate Wayland window control button hitbox issue",
+        "status": "pending",
+        "priority": "medium"
+      }
+    },
+    {
+      "id": "log_f36b4dd8a17b",
+      "timestamp": "2026-02-14T08:48:19Z",
+      "sessionId": null,
+      "action": "task_updated",
+      "actor": "system",
+      "taskId": "T071",
+      "before": {
+        "title": "HITL Review: History tab - transcription history display",
+        "status": "active",
+        "priority": "high",
+        "description": null,
+        "phase": "setup",
+        "labels": [
+          "hitl",
+          "testing",
+          "ui"
+        ],
+        "files": null,
+        "acceptance": null,
+        "depends": null,
+        "blockedBy": null
+      },
+      "after": {
+        "title": "HITL Review: History tab - transcription history display",
+        "status": "active",
+        "priority": "high",
+        "description": null,
+        "phase": "setup",
+        "labels": [
+          "hitl",
+          "testing",
+          "ui"
+        ],
+        "files": null,
+        "acceptance": null,
+        "depends": null,
+        "blockedBy": null
+      },
+      "details": {
+        "operation": "update"
       }
     }
   ]

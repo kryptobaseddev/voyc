@@ -47,14 +47,14 @@
       }
     }
   },
-  "lastUpdated": "2026-02-14T08:46:16Z",
+  "lastUpdated": "2026-02-14T08:54:21Z",
   "_meta": {
     "schemaVersion": "2.10.0",
-    "checksum": "64a85a1f5e80793f",
+    "checksum": "3d1c6148ea2acf5d",
     "configVersion": "2.6.0",
     "lastSessionId": null,
     "activeSession": null,
-    "generation": 131,
+    "generation": 134,
     "lastModified": "2026-02-14T08:02:33Z",
     "multiSessionEnabled": true,
     "activeSessionCount": 1,
@@ -2428,7 +2428,7 @@
       "type": "task",
       "parentId": "T065",
       "createdAt": "2026-01-29T21:53:57Z",
-      "updatedAt": "2026-02-14T08:46:16Z",
+      "updatedAt": "2026-02-14T08:48:18Z",
       "size": "medium",
       "position": 6,
       "positionVersion": 0,
@@ -2439,7 +2439,8 @@
         "ui"
       ],
       "notes": [
-        "2026-02-14 08:46:16 UTC: Implement shared persisted transcription history across tabs"
+        "2026-02-14 08:46:16 UTC: Implement shared persisted transcription history across tabs",
+        "2026-02-14 08:48:18 UTC: Implemented persisted transcription history using shared Zustand + localStorage store and wired HistorySettings + InAppDictation + dictation events"
       ]
     },
     {
@@ -2549,6 +2550,51 @@
         "lastUpdated": "2026-01-29T23:53:03Z",
         "failureLog": []
       }
+    },
+    {
+      "id": "T077",
+      "title": "Unify history storage across Dictation and In-App Dictation",
+      "status": "done",
+      "priority": "high",
+      "type": "task",
+      "parentId": "T065",
+      "createdAt": "2026-02-14T08:48:12Z",
+      "updatedAt": "2026-02-14T08:54:21Z",
+      "size": "medium",
+      "position": 12,
+      "positionVersion": 0,
+      "phase": "setup",
+      "description": "Implement shared persisted transcription history store; wire History tab and In-App Dictation to same data source.",
+      "labels": [
+        "history",
+        "storage",
+        "ux"
+      ],
+      "notes": [
+        "2026-02-14 08:54:21 UTC: Implementing shared persisted history store and wiring tabs",
+        "[COMPLETED 2026-02-14T08:54:21Z] Added shared Zustand history store with localStorage persistence, wired dictation events to store, updated History tab and In-App Dictation to use unified history. Verified via frontend build and update flow to 2026.2.2."
+      ],
+      "completedAt": "2026-02-14T08:54:21Z"
+    },
+    {
+      "id": "T078",
+      "title": "Investigate Wayland window control button hitbox issue",
+      "status": "pending",
+      "priority": "medium",
+      "type": "task",
+      "parentId": "T065",
+      "createdAt": "2026-02-14T08:48:12Z",
+      "updatedAt": "2026-02-14T08:48:12Z",
+      "size": "medium",
+      "position": 13,
+      "positionVersion": 0,
+      "phase": "setup",
+      "description": "Minimize/maximize/close buttons require maximize toggle before responding. Reproduce and fix on Fedora GNOME Wayland.",
+      "labels": [
+        "ui",
+        "wayland",
+        "window"
+      ]
     }
   ],
   "labels": {}
