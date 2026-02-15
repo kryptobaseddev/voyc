@@ -4147,6 +4147,96 @@
       "details": {
         "operation": "update"
       }
+    },
+    {
+      "id": "log-1771174251-ad4fe6",
+      "timestamp": "2026-02-15T16:50:51Z",
+      "action": "task_created",
+      "taskId": "T082",
+      "actor": "system",
+      "details": {
+        "title": "v2026.2.9 Release - Window Controls, Theme, Dictation UX",
+        "status": "pending",
+        "priority": "critical"
+      },
+      "before": null,
+      "after": {
+        "title": "v2026.2.9 Release - Window Controls, Theme, Dictation UX",
+        "status": "pending",
+        "priority": "critical"
+      }
+    },
+    {
+      "id": "log-1771174258-cb8172",
+      "timestamp": "2026-02-15T16:50:58Z",
+      "action": "task_created",
+      "taskId": "T083",
+      "actor": "system",
+      "details": {
+        "title": "Fix Wayland window controls (minimize/maximize/close)",
+        "status": "pending",
+        "priority": "critical"
+      },
+      "before": null,
+      "after": {
+        "title": "Fix Wayland window controls (minimize/maximize/close)",
+        "status": "pending",
+        "priority": "critical"
+      }
+    },
+    {
+      "id": "log-1771174266-a7ed26",
+      "timestamp": "2026-02-15T16:51:06Z",
+      "action": "task_created",
+      "taskId": "T084",
+      "actor": "system",
+      "details": {
+        "title": "Implement theme system with light/dark/system toggle",
+        "status": "pending",
+        "priority": "high"
+      },
+      "before": null,
+      "after": {
+        "title": "Implement theme system with light/dark/system toggle",
+        "status": "pending",
+        "priority": "high"
+      }
+    },
+    {
+      "id": "log-1771174267-5c629f",
+      "timestamp": "2026-02-15T16:51:07Z",
+      "action": "task_created",
+      "taskId": "T085",
+      "actor": "system",
+      "details": {
+        "title": "Add dictation_text_mode backend handler and UI toggle",
+        "status": "pending",
+        "priority": "high"
+      },
+      "before": null,
+      "after": {
+        "title": "Add dictation_text_mode backend handler and UI toggle",
+        "status": "pending",
+        "priority": "high"
+      }
+    },
+    {
+      "id": "log-1771174267-ba0741",
+      "timestamp": "2026-02-15T16:51:07Z",
+      "action": "task_created",
+      "taskId": "T086",
+      "actor": "system",
+      "details": {
+        "title": "Add multi-select and copy for history items",
+        "status": "pending",
+        "priority": "medium"
+      },
+      "before": null,
+      "after": {
+        "title": "Add multi-select and copy for history items",
+        "status": "pending",
+        "priority": "medium"
+      }
     }
   ]
 }
