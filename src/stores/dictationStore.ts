@@ -126,6 +126,7 @@ export const useDictationStore = create<DictationStore>((set) => ({
     );
 
     // Listen for clipboard-only events (no paste tool available)
+    // Note: Don't add to history here - dictation-complete already adds it
     const unlistenClipboard = await listen<TextClipboardOnlyEvent>(
       "text-clipboard-only",
       (event) => {
@@ -134,12 +135,7 @@ export const useDictationStore = create<DictationStore>((set) => ({
           lastText: text,
           clipboardOnlyReason: reason,
         });
-
-        useTranscriptionHistoryStore.getState().addEntry({
-          text,
-          durationMs: 0,
-          provider: "clipboard-only",
-        });
+        // History is already added by dictation-complete event
       },
     );
 

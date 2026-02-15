@@ -4,9 +4,9 @@
   "project": "voyc",
   "_meta": {
     "schemaVersion": "2.4.0",
-    "totalEntries": 193,
+    "totalEntries": 194,
     "firstEntry": "2026-01-28T01:10:57Z",
-    "lastEntry": "2026-02-14T18:01:32Z",
+    "lastEntry": "2026-02-15T15:39:00Z",
     "entriesPruned": 0
   },
   "entries": [
@@ -4097,6 +4097,47 @@
           "ui",
           "wayland",
           "window"
+        ],
+        "files": null,
+        "acceptance": null,
+        "depends": null,
+        "blockedBy": null
+      },
+      "details": {
+        "operation": "update"
+      }
+    },
+    {
+      "id": "log_00a333cb718a",
+      "timestamp": "2026-02-15T15:39:00Z",
+      "sessionId": null,
+      "action": "task_updated",
+      "actor": "system",
+      "taskId": "T067",
+      "before": {
+        "title": "Test full dictation flow: record -> transcribe -> text injection",
+        "status": "done",
+        "priority": "critical",
+        "description": null,
+        "phase": "setup",
+        "labels": [
+          "dictation",
+          "testing"
+        ],
+        "files": null,
+        "acceptance": null,
+        "depends": null,
+        "blockedBy": null
+      },
+      "after": {
+        "title": "Test full dictation flow: record -> transcribe -> text injection",
+        "status": "done",
+        "priority": "critical",
+        "description": null,
+        "phase": "setup",
+        "labels": [
+          "dictation",
+          "testing"
         ],
         "files": null,
         "acceptance": null,

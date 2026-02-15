@@ -8,7 +8,6 @@ import { useDictationStore } from "./stores/dictationStore";
 import { useModelStore } from "./stores/modelStore";
 import { useSettingsStore } from "./stores/settingsStore";
 import { useUpdaterStore } from "./stores/updaterStore";
-import { WindowControls } from "./components/ui/WindowControls";
 import "./App.css";
 
 type AppState = "loading" | "onboarding" | "main";
@@ -202,16 +201,6 @@ function App() {
           },
         }}
       />
-      <div
-        className="h-10 px-3 border-b border-mid-gray/20 flex items-center justify-between"
-        data-tauri-drag-region
-      >
-        <div className="text-xs text-mid-gray" data-tauri-drag-region>
-          Voyc
-        </div>
-        <WindowControls />
-      </div>
-
       {/* Main settings content */}
       <div className="flex-1 overflow-hidden">
         <SettingsPage />
