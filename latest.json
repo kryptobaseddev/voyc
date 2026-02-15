@@ -1,11 +1,11 @@
 {
-  "version": "2026.2.6",
-  "notes": "Wayland reliability: added in-app window controls and refined production updater UX.",
-  "pub_date": "2026-02-14T10:05:00Z",
+  "version": "2026.2.7",
+  "notes": "Restored In-App Dictation workspace, fixed double title bar, improved audio recording error diagnostics",
+  "pub_date": "2026-02-15T03:45:00Z",
   "platforms": {
     "linux-x86_64": {
       "signature": "",
-      "url": "https://github.com/kryptobaseddev/voyc/releases/download/v2026.2.6/Voyc_2026.2.6_amd64.deb"
+      "url": "https://github.com/kryptobaseddev/voyc/releases/download/v2026.2.7/Voyc_2026.2.7_amd64.deb"
     }
   }
 }
