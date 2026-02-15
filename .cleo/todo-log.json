@@ -4,9 +4,9 @@
   "project": "voyc",
   "_meta": {
     "schemaVersion": "2.4.0",
-    "totalEntries": 191,
+    "totalEntries": 193,
     "firstEntry": "2026-01-28T01:10:57Z",
-    "lastEntry": "2026-02-14T09:23:00Z",
+    "lastEntry": "2026-02-14T18:01:32Z",
     "entriesPruned": 0
   },
   "entries": [
@@ -4011,6 +4011,92 @@
           "notifications",
           "ui",
           "updater"
+        ],
+        "files": null,
+        "acceptance": null,
+        "depends": null,
+        "blockedBy": null
+      },
+      "details": {
+        "operation": "update"
+      }
+    },
+    {
+      "id": "log_e92415a50639",
+      "timestamp": "2026-02-14T17:56:52Z",
+      "sessionId": null,
+      "action": "task_updated",
+      "actor": "system",
+      "taskId": "T078",
+      "before": {
+        "title": "Investigate Wayland window control button hitbox issue",
+        "status": "active",
+        "priority": "medium",
+        "description": "Minimize/maximize/close buttons require maximize toggle before responding. Reproduce and fix on Fedora GNOME Wayland.",
+        "phase": "setup",
+        "labels": [
+          "ui",
+          "wayland",
+          "window"
+        ],
+        "files": null,
+        "acceptance": null,
+        "depends": null,
+        "blockedBy": null
+      },
+      "after": {
+        "title": "Investigate Wayland window control button hitbox issue",
+        "status": "active",
+        "priority": "medium",
+        "description": "Minimize/maximize/close buttons require maximize toggle before responding. Reproduce and fix on Fedora GNOME Wayland.",
+        "phase": "setup",
+        "labels": [
+          "ui",
+          "wayland",
+          "window"
+        ],
+        "files": null,
+        "acceptance": null,
+        "depends": null,
+        "blockedBy": null
+      },
+      "details": {
+        "operation": "update"
+      }
+    },
+    {
+      "id": "log_4b4a679cc02c",
+      "timestamp": "2026-02-14T18:01:32Z",
+      "sessionId": null,
+      "action": "task_updated",
+      "actor": "system",
+      "taskId": "T078",
+      "before": {
+        "title": "Investigate Wayland window control button hitbox issue",
+        "status": "active",
+        "priority": "medium",
+        "description": "Minimize/maximize/close buttons require maximize toggle before responding. Reproduce and fix on Fedora GNOME Wayland.",
+        "phase": "setup",
+        "labels": [
+          "ui",
+          "wayland",
+          "window"
+        ],
+        "files": null,
+        "acceptance": null,
+        "depends": null,
+        "blockedBy": null
+      },
+      "after": {
+        "title": "Investigate Wayland window control button hitbox issue",
+        "status": "active",
+        "priority": "medium",
+        "description": "Minimize/maximize/close buttons require maximize toggle before responding. Reproduce and fix on Fedora GNOME Wayland.",
+        "phase": "setup",
+        "labels": [
+          "ui",
+          "wayland",
+          "window"
         ],
         "files": null,
         "acceptance": null,

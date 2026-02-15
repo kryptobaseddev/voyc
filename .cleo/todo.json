@@ -47,14 +47,14 @@
       }
     }
   },
-  "lastUpdated": "2026-02-14T17:56:52Z",
+  "lastUpdated": "2026-02-15T15:38:59Z",
   "_meta": {
     "schemaVersion": "2.10.0",
-    "checksum": "bbad2f14c079eabf",
+    "checksum": "22234c76462877cf",
     "configVersion": "2.6.0",
     "lastSessionId": null,
     "activeSession": null,
-    "generation": 154,
+    "generation": 156,
     "lastModified": "2026-02-14T08:02:33Z",
     "multiSessionEnabled": true,
     "activeSessionCount": 1,
@@ -2353,7 +2353,7 @@
       "type": "task",
       "parentId": "T065",
       "createdAt": "2026-01-29T21:53:50Z",
-      "updatedAt": "2026-02-14T09:11:29Z",
+      "updatedAt": "2026-02-15T15:38:59Z",
       "size": "medium",
       "position": 2,
       "positionVersion": 0,
@@ -2364,7 +2364,8 @@
       ],
       "notes": [
         "2026-02-14 09:11:29 UTC: Merged dual dictation UX into single Dictation section by embedding In-App Dictation workspace and removing separate sidebar tab.",
-        "[COMPLETED 2026-02-14T09:11:29Z] Streamlined Dictation/In-App UX into one section without removing features: kept system hotkey/status controls and added full in-app editor workspace. Removed separate In-App sidebar entry to eliminate confusion."
+        "[COMPLETED 2026-02-14T09:11:29Z] Streamlined Dictation/In-App UX into one section without removing features: kept system hotkey/status controls and added full in-app editor workspace. Removed separate In-App sidebar entry to eliminate confusion.",
+        "2026-02-15 15:38:59 UTC: Restored InAppDictation in Dictation section after user feedback; user likes the text editor and history features"
       ],
       "completedAt": "2026-02-14T09:11:29Z",
       "verification": {
@@ -2639,7 +2640,7 @@
       "type": "task",
       "parentId": "T065",
       "createdAt": "2026-02-14T08:48:12Z",
-      "updatedAt": "2026-02-14T17:56:52Z",
+      "updatedAt": "2026-02-14T18:01:32Z",
       "size": "medium",
       "position": 13,
       "positionVersion": 0,
@@ -2653,7 +2654,8 @@
       "notes": [
         "2026-02-14 09:05:01 UTC: Starting investigation of Wayland window controls reliability",
         "2026-02-14 09:11:38 UTC: Set window maximizable=true in tauri.conf to restore Wayland window control button reliability; pending HITL verification.",
-        "2026-02-14 17:56:52 UTC: Implementing in-app window control buttons (minimize/maximize/close) for Wayland reliability, independent of native frame button hit-testing."
+        "2026-02-14 17:56:52 UTC: Implementing in-app window control buttons (minimize/maximize/close) for Wayland reliability, independent of native frame button hit-testing.",
+        "2026-02-14 18:01:32 UTC: Implemented in-app window controls component (minimize/maximize/close) in top bar with drag region for Wayland reliability; set window maximizable=true."
       ]
     },
     {
