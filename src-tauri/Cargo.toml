@@ -1,6 +1,6 @@
 [package]
 name = "voyc"
-version = "2026.2.6"
+version = "2026.2.7"
 description = "Voyc - Voice dictation for Linux"
 authors = ["Voyc Contributors"]
 edition = "2021"

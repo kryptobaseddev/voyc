@@ -106,8 +106,15 @@ impl DictationController {
         // Start recording
         if !audio_manager.try_start_recording(binding_id) {
             self.is_active.store(false, Ordering::SeqCst);
-            error!("Failed to start recording for binding: {}", binding_id);
-            return Err("Failed to start recording".to_string());
+            let current_state = audio_manager.is_recording();
+            error!(
+                "Failed to start recording for binding: {} (audio_manager.is_recording={})",
+                binding_id, current_state
+            );
+            return Err(format!(
+                "Failed to start recording (microphone may be in use or unavailable). is_recording={}",
+                current_state
+            ));
         }
 
         // Apply mute after audio feedback plays

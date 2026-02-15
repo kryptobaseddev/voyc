@@ -210,9 +210,8 @@ export const DictationSettings: React.FC = () => {
         icon menu.
       </div>
 
-      {/* Unified in-app dictation workspace */}
-      <div className="pt-2 border-t border-mid-gray/20">
-        <h3 className="text-sm font-medium mb-3">In-App Dictation Workspace</h3>
+      {/* Text Editor Workspace */}
+      <div className="pt-4 border-t border-mid-gray/20">
         <InAppDictation />
       </div>
     </div>
