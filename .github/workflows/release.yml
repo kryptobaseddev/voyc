@@ -23,9 +23,8 @@ permissions:
   contents: write
 
 env:
-  # Tauri requires these environment variables for signing
+  # Tauri requires this environment variable for signing (key has no password)
   TAURI_SIGNING_PRIVATE_KEY: ${{ secrets.TAURI_SIGNING_PRIVATE_KEY }}
-  TAURI_SIGNING_PRIVATE_KEY_PASSWORD: ${{ secrets.TAURI_SIGNING_PRIVATE_KEY_PASSWORD }}
 
 jobs:
   build-linux:
