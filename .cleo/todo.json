@@ -47,14 +47,14 @@
       }
     }
   },
-  "lastUpdated": "2026-02-15T16:51:18Z",
+  "lastUpdated": "2026-02-16T03:39:49Z",
   "_meta": {
     "schemaVersion": "2.10.0",
-    "checksum": "4832d5181907455e",
+    "checksum": "3177242f7a3126ad",
     "configVersion": "2.6.0",
     "lastSessionId": null,
     "activeSession": null,
-    "generation": 157,
+    "generation": 159,
     "lastModified": "2026-02-14T08:02:33Z",
     "multiSessionEnabled": true,
     "activeSessionCount": 1,
@@ -2800,12 +2800,12 @@
     {
       "id": "T083",
       "title": "Fix Wayland window controls (minimize/maximize/close)",
-      "status": "active",
+      "status": "done",
       "priority": "critical",
       "type": "task",
       "parentId": "T082",
       "createdAt": "2026-02-15T16:50:58Z",
-      "updatedAt": "2026-02-15T16:51:18Z",
+      "updatedAt": "2026-02-16T03:39:49Z",
       "size": "medium",
       "position": 1,
       "positionVersion": 0,
@@ -2815,7 +2815,15 @@
         "bug",
         "wayland",
         "window"
-      ]
+      ],
+      "notes": [
+        "2026-02-15 16:53:07 UTC: Fixed: Added explicit window control permissions to capabilities/default.json - core:window:default only includes read-only permissions, not allow-close/minimize/maximize/toggle-maximize. Added 10 window permissions.",
+        "[COMPLETED 2026-02-16T03:39:49Z] Fixed: Added explicit window control permissions (allow-close, allow-minimize, allow-maximize, allow-toggle-maximize, etc.) to capabilities/default.json. Root cause: core:window:default only includes read-only permissions."
+      ],
+      "files": [
+        "capabilities/default.json"
+      ],
+      "completedAt": "2026-02-16T03:39:49Z"
     },
     {
       "id": "T084",

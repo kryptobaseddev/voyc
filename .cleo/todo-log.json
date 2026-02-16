@@ -4,9 +4,9 @@
   "project": "voyc",
   "_meta": {
     "schemaVersion": "2.4.0",
-    "totalEntries": 194,
+    "totalEntries": 196,
     "firstEntry": "2026-01-28T01:10:57Z",
-    "lastEntry": "2026-02-15T15:39:00Z",
+    "lastEntry": "2026-02-15T16:53:08Z",
     "entriesPruned": 0
   },
   "entries": [
@@ -4236,6 +4236,94 @@
         "title": "Add multi-select and copy for history items",
         "status": "pending",
         "priority": "medium"
+      }
+    },
+    {
+      "id": "log_57a8adad46fc",
+      "timestamp": "2026-02-15T16:51:19Z",
+      "sessionId": null,
+      "action": "task_updated",
+      "actor": "system",
+      "taskId": "T083",
+      "before": {
+        "title": "Fix Wayland window controls (minimize/maximize/close)",
+        "status": "pending",
+        "priority": "critical",
+        "description": "Custom TitleBar with decorations:false not working. Buttons visible but minimize/maximize/close don't work on Wayland. Need to investigate Tauri 2.0 Wayland window management.",
+        "phase": "setup",
+        "labels": [
+          "bug",
+          "wayland",
+          "window"
+        ],
+        "files": null,
+        "acceptance": null,
+        "depends": null,
+        "blockedBy": null
+      },
+      "after": {
+        "title": "Fix Wayland window controls (minimize/maximize/close)",
+        "status": "active",
+        "priority": "critical",
+        "description": "Custom TitleBar with decorations:false not working. Buttons visible but minimize/maximize/close don't work on Wayland. Need to investigate Tauri 2.0 Wayland window management.",
+        "phase": "setup",
+        "labels": [
+          "bug",
+          "wayland",
+          "window"
+        ],
+        "files": null,
+        "acceptance": null,
+        "depends": null,
+        "blockedBy": null
+      },
+      "details": {
+        "operation": "update"
+      }
+    },
+    {
+      "id": "log_5aa6a70978b6",
+      "timestamp": "2026-02-15T16:53:08Z",
+      "sessionId": null,
+      "action": "task_updated",
+      "actor": "system",
+      "taskId": "T083",
+      "before": {
+        "title": "Fix Wayland window controls (minimize/maximize/close)",
+        "status": "active",
+        "priority": "critical",
+        "description": "Custom TitleBar with decorations:false not working. Buttons visible but minimize/maximize/close don't work on Wayland. Need to investigate Tauri 2.0 Wayland window management.",
+        "phase": "setup",
+        "labels": [
+          "bug",
+          "wayland",
+          "window"
+        ],
+        "files": null,
+        "acceptance": null,
+        "depends": null,
+        "blockedBy": null
+      },
+      "after": {
+        "title": "Fix Wayland window controls (minimize/maximize/close)",
+        "status": "active",
+        "priority": "critical",
+        "description": "Custom TitleBar with decorations:false not working. Buttons visible but minimize/maximize/close don't work on Wayland. Need to investigate Tauri 2.0 Wayland window management.",
+        "phase": "setup",
+        "labels": [
+          "bug",
+          "wayland",
+          "window"
+        ],
+        "files": [
+          "capabilities/default.json"
+        ],
+        "acceptance": null,
+        "depends": null,
+        "blockedBy": null
+      },
+      "details": {
+        "operation": "update"
       }
     }
   ]
