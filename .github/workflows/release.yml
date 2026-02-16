@@ -40,11 +40,6 @@ jobs:
         with:
           node-version: "20"
 
-      - name: Setup Bun
-        uses: oven-sh/setup-bun@v2
-        with:
-          bun-version: latest
-
       - name: Install Rust stable
         uses: dtolnay/rust-toolchain@stable
 
@@ -65,7 +60,7 @@ jobs:
             libasound2-dev
 
       - name: Install frontend dependencies
-        run: bun install
+        run: npm ci
 
       - name: Update version from tag
         run: |
