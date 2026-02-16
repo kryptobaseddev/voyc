@@ -1,7 +1,6 @@
 /**
  * Log Level Selector Component for Voyc
  * Allows users to configure logging verbosity
- * Adapted from Handy's LogLevelSelector
  */
 
 import React from "react";
@@ -27,18 +26,15 @@ export const LogLevelSelector: React.FC<LogLevelSelectorProps> = ({
   grouped = false,
 }) => {
   const { settings, updateSetting, isUpdating } = useSettings();
-  // Note: log_level might need to be added to AppSettings if not present
-  const currentLevel = "info"; // Default fallback
+
+  const currentLevel = settings?.log_level ?? "info";
 
   const handleSelect = async (value: string) => {
     if (value === currentLevel) return;
-
-    try {
-      // TODO: Implement log level setting when backend supports it
-      console.log("Log level would be set to:", value);
-    } catch (error) {
-      console.error("Failed to update log level:", error);
-    }
+    await updateSetting(
+      "log_level",
+      value as "error" | "warn" | "info" | "debug" | "trace",
+    );
   };
 
   return (
@@ -53,7 +49,7 @@ export const LogLevelSelector: React.FC<LogLevelSelectorProps> = ({
         options={LOG_LEVEL_OPTIONS}
         selectedValue={currentLevel}
         onSelect={handleSelect}
-        disabled={!settings}
+        disabled={!settings || isUpdating("log_level")}
       />
     </SettingContainer>
   );

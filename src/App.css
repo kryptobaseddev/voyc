@@ -43,8 +43,10 @@
   --color-text: #fbfbfb;
   --color-background: #1a1a2e;
   --color-background-secondary: #16213e;
+  --color-background-ui: #4f46e5;
   --color-logo-primary: #a5b4fc;
   --color-logo-stroke: #c7d2fe;
+  --color-text-stroke: #1e1e3a;
   --color-mid-gray: #9ca3af;
 }
 
@@ -54,8 +56,10 @@
     --color-text: #fbfbfb;
     --color-background: #1a1a2e;
     --color-background-secondary: #16213e;
+    --color-background-ui: #4f46e5;
     --color-logo-primary: #a5b4fc;
     --color-logo-stroke: #c7d2fe;
+    --color-text-stroke: #1e1e3a;
     --color-mid-gray: #9ca3af;
   }
 }

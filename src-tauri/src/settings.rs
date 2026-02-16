@@ -167,6 +167,9 @@ pub struct AppSettings {
     // Theme mode: "system", "light", or "dark"
     #[serde(default = "default_theme_mode")]
     pub theme_mode: String,
+    // Log level: "error", "warn", "info", "debug", "trace"
+    #[serde(default = "default_log_level")]
+    pub log_level: String,
 }
 
 fn default_post_process_provider() -> String {
@@ -219,6 +222,10 @@ fn default_dictation_text_mode() -> String {
 
 fn default_theme_mode() -> String {
     "system".to_string() // Default to follow system theme
+}
+
+fn default_log_level() -> String {
+    "info".to_string()
 }
 
 fn default_sound_theme() -> SoundTheme {
@@ -286,6 +293,7 @@ pub fn get_default_settings() -> AppSettings {
         post_process_provider: default_post_process_provider(),
         dictation_text_mode: default_dictation_text_mode(),
         theme_mode: default_theme_mode(),
+        log_level: default_log_level(),
     }
 }
 

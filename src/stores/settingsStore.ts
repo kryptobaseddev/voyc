@@ -67,6 +67,8 @@ export interface AppSettings {
   dictation_text_mode: "append" | "replace";
   // Theme mode
   theme_mode: "system" | "light" | "dark";
+  // Log level
+  log_level: "error" | "warn" | "info" | "debug" | "trace";
 }
 
 export interface AudioDevice {
@@ -134,6 +136,8 @@ const SETTING_KEYS_REQUIRING_BACKEND_UPDATE: (keyof AppSettings)[] = [
   "mute_while_recording",
   "dictation_text_mode",
   "theme_mode",
+  "log_level",
+  "sound_theme",
 ];
 
 export const useSettingsStore = create<SettingsStore>()(

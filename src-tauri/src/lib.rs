@@ -48,6 +48,7 @@ pub fn run() {
         commands::open_app_data_dir,
         commands::update_setting,
         commands::cancel_operation,
+        commands::get_system_color_scheme,
         // Autostart commands
         commands::get_autostart_enabled,
         commands::set_autostart_enabled,
@@ -304,8 +305,19 @@ pub fn run() {
             // Initialize tray menu with idle state
             change_tray_icon(&app_handle, TrayIconState::Idle);
 
-            // Show main window on setup (unless start_hidden is enabled)
+            // Apply saved log level
             let settings = get_settings(&app_handle);
+            let log_level = match settings.log_level.as_str() {
+                "error" => log::LevelFilter::Error,
+                "warn" => log::LevelFilter::Warn,
+                "debug" => log::LevelFilter::Debug,
+                "trace" => log::LevelFilter::Trace,
+                _ => log::LevelFilter::Info,
+            };
+            log::set_max_level(log_level);
+            info!("Log level set to: {}", settings.log_level);
+
+            // Show main window on setup (unless start_hidden is enabled)
             if !settings.start_hidden {
                 if let Some(main_window) = app.get_webview_window("main") {
                     let _ = main_window.show();
@@ -316,6 +328,28 @@ pub fn run() {
             // Create the recording overlay window (hidden by default)
             create_recording_overlay(&app_handle);
             info!("Recording overlay created");
+
+            // Subscribe to system color scheme changes via XDG Desktop Portal (Linux)
+            #[cfg(target_os = "linux")]
+            {
+                let theme_app_handle = app_handle.clone();
+                tauri::async_runtime::spawn(async move {
+                    if let Ok(settings) = ashpd::desktop::settings::Settings::new().await {
+                        use futures_util::StreamExt;
+                        if let Ok(mut stream) = settings.receive_color_scheme_changed().await {
+                            while let Some(scheme) = stream.next().await {
+                                let value = match scheme {
+                                    ashpd::desktop::settings::ColorScheme::PreferDark => "dark",
+                                    ashpd::desktop::settings::ColorScheme::PreferLight => "light",
+                                    _ => "no-preference",
+                                };
+                                info!("System color scheme changed to: {}", value);
+                                let _ = theme_app_handle.emit("system-theme-changed", value);
+                            }
+                        }
+                    }
+                });
+            }
 
             info!("Application setup complete");
             Ok(())

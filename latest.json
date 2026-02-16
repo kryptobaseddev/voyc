@@ -1,11 +1,11 @@
 {
-  "version": "2026.2.11",
-  "notes": "Fix settings persistence, theme detection, and updater fallback",
-  "pub_date": "2026-02-16T18:15:00Z",
+  "version": "2026.2.12",
+  "notes": "Fix system theme detection, log level, sound themes, and dark mode UI",
+  "pub_date": "2026-02-16T19:00:00Z",
   "platforms": {
     "linux-x86_64": {
       "signature": "",
-      "url": "https://github.com/kryptobaseddev/voyc/releases/download/v2026.2.11/Voyc_2026.2.11_amd64.deb"
+      "url": "https://github.com/kryptobaseddev/voyc/releases/download/v2026.2.12/Voyc_2026.2.12_amd64.deb"
     }
   }
 }

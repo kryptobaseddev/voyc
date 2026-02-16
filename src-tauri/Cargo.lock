@@ -6828,7 +6828,7 @@ checksum = "051eb1abcf10076295e815102942cc58f9d5e3b4560e46e53c21e8ff6f3af7b1"
 
 [[package]]
 name = "voyc"
-version = "2026.2.10"
+version = "2026.2.11"
 dependencies = [
  "anyhow",
  "ashpd",

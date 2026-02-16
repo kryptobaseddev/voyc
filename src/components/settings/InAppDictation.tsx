@@ -239,7 +239,7 @@ export const InAppDictation: React.FC = () => {
             {/* Overlay during transcribing */}
             {isTranscribing && (
               <div className="absolute inset-0 bg-yellow-500/5 pointer-events-none flex items-center justify-center">
-                <div className="bg-yellow-500 text-white px-4 py-2 rounded-full font-medium flex items-center gap-2">
+                <div className="bg-blue-500 text-white px-4 py-2 rounded-full font-medium flex items-center gap-2">
                   <svg className="animate-spin h-5 w-5" viewBox="0 0 24 24">
                     <circle
                       className="opacity-25"

@@ -2,12 +2,15 @@
  * Theme management hook for Voyc
  * Applies light/dark/system theme mode to the document root element.
  *
- * For "system" mode we actively query `matchMedia("(prefers-color-scheme: dark)")`
- * rather than relying on the CSS media query alone, because WebKitGTK on Linux
- * does not always propagate the GTK/GNOME dark-mode preference to CSS.
+ * For "system" mode, queries the Rust backend which uses the XDG Desktop Portal
+ * Settings interface to detect the actual OS color scheme. This works reliably
+ * on GNOME, KDE, and other Linux desktops — unlike matchMedia which WebKitGTK
+ * does not implement correctly on Linux.
  */
 
 import { useEffect } from "react";
+import { invoke } from "@tauri-apps/api/core";
+import { listen } from "@tauri-apps/api/event";
 import { useSettingsStore } from "../stores/settingsStore";
 
 type ThemeMode = "system" | "light" | "dark";
@@ -39,17 +42,39 @@ export function useTheme() {
       return;
     }
 
-    // "system" mode: detect OS preference via matchMedia and listen for changes
-    const mq = window.matchMedia("(prefers-color-scheme: dark)");
-    applyThemeClass(mq.matches ? "dark" : "light");
+    // "system" mode: query the Rust backend for the real OS color scheme
+    let cancelled = false;
 
-    const handler = (e: MediaQueryListEvent) => {
-      applyThemeClass(e.matches ? "dark" : "light");
+    const detectAndApply = async () => {
+      try {
+        const scheme = await invoke<string>("get_system_color_scheme");
+        if (!cancelled) {
+          applyThemeClass(scheme === "dark" ? "dark" : "light");
+        }
+      } catch {
+        // Fallback to matchMedia if Rust command fails
+        if (!cancelled) {
+          const mq = window.matchMedia("(prefers-color-scheme: dark)");
+          applyThemeClass(mq.matches ? "dark" : "light");
+        }
+      }
     };
-    mq.addEventListener("change", handler);
+
+    detectAndApply();
+
+    // Listen for system theme changes emitted from the Rust backend
+    let unlisten: (() => void) | null = null;
+    listen<string>("system-theme-changed", (event) => {
+      if (!cancelled) {
+        applyThemeClass(event.payload === "dark" ? "dark" : "light");
+      }
+    }).then((fn) => {
+      unlisten = fn;
+    });
 
     return () => {
-      mq.removeEventListener("change", handler);
+      cancelled = true;
+      if (unlisten) unlisten();
     };
   }, [themeMode]);
 

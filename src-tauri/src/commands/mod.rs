@@ -73,6 +73,48 @@ pub fn get_app_version() -> String {
     env!("CARGO_PKG_VERSION").to_string()
 }
 
+/// Get system color scheme via XDG Desktop Portal.
+/// Returns "dark", "light", or "no-preference".
+#[tauri::command]
+#[specta::specta]
+pub async fn get_system_color_scheme() -> String {
+    #[cfg(target_os = "linux")]
+    {
+        // Try XDG Desktop Portal Settings interface first (works on GNOME, KDE, etc.)
+        if let Ok(settings) = ashpd::desktop::settings::Settings::new().await {
+            match settings.color_scheme().await {
+                Ok(ashpd::desktop::settings::ColorScheme::PreferDark) => {
+                    return "dark".to_string();
+                }
+                Ok(ashpd::desktop::settings::ColorScheme::PreferLight) => {
+                    return "light".to_string();
+                }
+                Ok(_) => {
+                    // NoPreference - fall through to gsettings check
+                }
+                Err(e) => {
+                    log::debug!("XDG portal color-scheme query failed: {}", e);
+                }
+            }
+        }
+
+        // Fallback: check gsettings for GNOME
+        if let Ok(output) = std::process::Command::new("gsettings")
+            .args(["get", "org.gnome.desktop.interface", "color-scheme"])
+            .output()
+        {
+            let stdout = String::from_utf8_lossy(&output.stdout);
+            if stdout.contains("prefer-dark") {
+                return "dark".to_string();
+            } else if stdout.contains("prefer-light") || stdout.contains("default") {
+                return "light".to_string();
+            }
+        }
+    }
+
+    "no-preference".to_string()
+}
+
 /// Run user-local updater script to install latest release.
 #[tauri::command]
 #[specta::specta]
@@ -141,6 +183,10 @@ pub enum SettingUpdate {
     DictationTextMode(String),
     #[serde(rename = "theme_mode")]
     ThemeMode(String),
+    #[serde(rename = "log_level")]
+    LogLevel(String),
+    #[serde(rename = "sound_theme")]
+    SoundTheme(String),
 }
 
 /// Update a single setting with type-safe value.
@@ -196,6 +242,28 @@ pub fn update_setting(app: AppHandle, update: SettingUpdate) -> Result<(), Strin
                 return Err(format!("Invalid theme_mode: '{}'. Must be 'system', 'light', or 'dark'", v));
             }
             settings.theme_mode = v;
+        }
+        SettingUpdate::LogLevel(v) => {
+            let level = match v.as_str() {
+                "error" => log::LevelFilter::Error,
+                "warn" => log::LevelFilter::Warn,
+                "info" => log::LevelFilter::Info,
+                "debug" => log::LevelFilter::Debug,
+                "trace" => log::LevelFilter::Trace,
+                _ => return Err(format!("Invalid log_level: '{}'. Must be 'error', 'warn', 'info', 'debug', or 'trace'", v)),
+            };
+            log::set_max_level(level);
+            info!("Log level changed to: {}", v);
+            settings.log_level = v;
+        }
+        SettingUpdate::SoundTheme(v) => {
+            let theme = match v.as_str() {
+                "marimba" => crate::settings::SoundTheme::Marimba,
+                "pop" => crate::settings::SoundTheme::Pop,
+                "custom" => crate::settings::SoundTheme::Custom,
+                _ => return Err(format!("Invalid sound_theme: '{}'. Must be 'marimba', 'pop', or 'custom'", v)),
+            };
+            settings.sound_theme = theme;
         }
     }
 
