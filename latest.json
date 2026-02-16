@@ -1,11 +1,11 @@
 {
-  "version": "2026.2.7",
-  "notes": "Restored In-App Dictation workspace, fixed double title bar, improved audio recording error diagnostics",
-  "pub_date": "2026-02-15T03:45:00Z",
+  "version": "2026.2.9",
+  "notes": "Fix Wayland window controls, theme system (light/dark/system), dictation text mode toggle (append/replace), history multi-select copy",
+  "pub_date": "2026-02-16T03:40:00Z",
   "platforms": {
     "linux-x86_64": {
       "signature": "",
-      "url": "https://github.com/kryptobaseddev/voyc/releases/download/v2026.2.7/Voyc_2026.2.7_amd64.deb"
+      "url": "https://github.com/kryptobaseddev/voyc/releases/download/v2026.2.9/Voyc_2026.2.9_amd64.deb"
     }
   }
 }

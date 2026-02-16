@@ -4,9 +4,9 @@
   "project": "voyc",
   "_meta": {
     "schemaVersion": "2.4.0",
-    "totalEntries": 196,
+    "totalEntries": 203,
     "firstEntry": "2026-01-28T01:10:57Z",
-    "lastEntry": "2026-02-15T16:53:08Z",
+    "lastEntry": "2026-02-16T03:40:08Z",
     "entriesPruned": 0
   },
   "entries": [
@@ -4324,6 +4324,215 @@
       },
       "details": {
         "operation": "update"
+      }
+    },
+    {
+      "id": "log_3bcd793b8d5e",
+      "timestamp": "2026-02-16T03:39:50Z",
+      "sessionId": null,
+      "action": "status_changed",
+      "actor": "system",
+      "taskId": "T083",
+      "before": {
+        "status": "active",
+        "completedAt": null
+      },
+      "after": {
+        "status": "done",
+        "completedAt": "2026-02-16T03:39:49Z"
+      },
+      "details": {
+        "field": "status",
+        "operation": "complete"
+      }
+    },
+    {
+      "id": "log_00e7bf2321bc",
+      "timestamp": "2026-02-16T03:39:50Z",
+      "sessionId": null,
+      "action": "task_updated",
+      "actor": "system",
+      "taskId": "T085",
+      "before": {
+        "title": "Add dictation_text_mode backend handler and UI toggle",
+        "status": "pending",
+        "priority": "high",
+        "description": "Backend SettingUpdate enum missing DictationTextMode variant. Add it and update UnifiedDictation to respect append/replace mode setting.",
+        "phase": "setup",
+        "labels": [
+          "dictation",
+          "feature",
+          "settings"
+        ],
+        "files": null,
+        "acceptance": null,
+        "depends": null,
+        "blockedBy": null
+      },
+      "after": {
+        "title": "Add dictation_text_mode backend handler and UI toggle",
+        "status": "active",
+        "priority": "high",
+        "description": "Backend SettingUpdate enum missing DictationTextMode variant. Add it and update UnifiedDictation to respect append/replace mode setting.",
+        "phase": "setup",
+        "labels": [
+          "dictation",
+          "feature",
+          "settings"
+        ],
+        "files": null,
+        "acceptance": null,
+        "depends": null,
+        "blockedBy": null
+      },
+      "details": {
+        "operation": "update"
+      }
+    },
+    {
+      "id": "log_e428329a972d",
+      "timestamp": "2026-02-16T03:39:51Z",
+      "sessionId": null,
+      "action": "task_updated",
+      "actor": "system",
+      "taskId": "T084",
+      "before": {
+        "title": "Implement theme system with light/dark/system toggle",
+        "status": "pending",
+        "priority": "high",
+        "description": "Add user-selectable theme mode (light/dark/system). Currently only uses prefers-color-scheme media query. Need settings toggle and proper CSS class-based theme switching.",
+        "phase": "setup",
+        "labels": [
+          "feature",
+          "theme",
+          "ux"
+        ],
+        "files": null,
+        "acceptance": null,
+        "depends": null,
+        "blockedBy": null
+      },
+      "after": {
+        "title": "Implement theme system with light/dark/system toggle",
+        "status": "active",
+        "priority": "high",
+        "description": "Add user-selectable theme mode (light/dark/system). Currently only uses prefers-color-scheme media query. Need settings toggle and proper CSS class-based theme switching.",
+        "phase": "setup",
+        "labels": [
+          "feature",
+          "theme",
+          "ux"
+        ],
+        "files": null,
+        "acceptance": null,
+        "depends": null,
+        "blockedBy": null
+      },
+      "details": {
+        "operation": "update"
+      }
+    },
+    {
+      "id": "log_53f08fe55e92",
+      "timestamp": "2026-02-16T03:39:51Z",
+      "sessionId": null,
+      "action": "task_updated",
+      "actor": "system",
+      "taskId": "T086",
+      "before": {
+        "title": "Add multi-select and copy for history items",
+        "status": "pending",
+        "priority": "medium",
+        "description": "Allow selecting multiple transcription history items and copying them to clipboard. Currently can only click individual items.",
+        "phase": "setup",
+        "labels": [
+          "feature",
+          "history",
+          "ux"
+        ],
+        "files": null,
+        "acceptance": null,
+        "depends": null,
+        "blockedBy": null
+      },
+      "after": {
+        "title": "Add multi-select and copy for history items",
+        "status": "active",
+        "priority": "medium",
+        "description": "Allow selecting multiple transcription history items and copying them to clipboard. Currently can only click individual items.",
+        "phase": "setup",
+        "labels": [
+          "feature",
+          "history",
+          "ux"
+        ],
+        "files": null,
+        "acceptance": null,
+        "depends": null,
+        "blockedBy": null
+      },
+      "details": {
+        "operation": "update"
+      }
+    },
+    {
+      "id": "log_f069e332f180",
+      "timestamp": "2026-02-16T03:40:05Z",
+      "sessionId": null,
+      "action": "status_changed",
+      "actor": "system",
+      "taskId": "T084",
+      "before": {
+        "status": "active",
+        "completedAt": null
+      },
+      "after": {
+        "status": "done",
+        "completedAt": "2026-02-16T03:40:04Z"
+      },
+      "details": {
+        "field": "status",
+        "operation": "complete"
+      }
+    },
+    {
+      "id": "log_7644f48853d8",
+      "timestamp": "2026-02-16T03:40:06Z",
+      "sessionId": null,
+      "action": "status_changed",
+      "actor": "system",
+      "taskId": "T085",
+      "before": {
+        "status": "active",
+        "completedAt": null
+      },
+      "after": {
+        "status": "done",
+        "completedAt": "2026-02-16T03:40:06Z"
+      },
+      "details": {
+        "field": "status",
+        "operation": "complete"
+      }
+    },
+    {
+      "id": "log_f6392f7c1e6c",
+      "timestamp": "2026-02-16T03:40:08Z",
+      "sessionId": null,
+      "action": "status_changed",
+      "actor": "system",
+      "taskId": "T086",
+      "before": {
+        "status": "active",
+        "completedAt": null
+      },
+      "after": {
+        "status": "done",
+        "completedAt": "2026-02-16T03:40:07Z"
+      },
+      "details": {
+        "field": "status",
+        "operation": "complete"
       }
     }
   ]

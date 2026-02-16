@@ -5,3 +5,4 @@
 
 export { useSettings } from "./useSettings";
 export { useOsType, type OSType } from "./useOsType";
+export { useTheme } from "./useTheme";

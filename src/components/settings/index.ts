@@ -17,6 +17,7 @@ export { CloudSettings } from "./CloudSettings";
 export { Sidebar, type SettingsSection } from "./Sidebar";
 
 // Individual setting components
+export { ThemeSelector } from "./ThemeSelector";
 export { AutostartToggle } from "./AutostartToggle";
 export { UpdateChecksToggle } from "./UpdateChecksToggle";
 export { LogLevelSelector } from "./LogLevelSelector";

@@ -15,6 +15,7 @@ import { writeText } from "@tauri-apps/plugin-clipboard-manager";
 import { toast } from "sonner";
 import { useTranscriptionHistoryStore } from "../../stores/transcriptionHistoryStore";
 import { useDictationStore } from "../../stores/dictationStore";
+import { useSettingsStore } from "../../stores/settingsStore";
 
 interface DictationCompleteEvent {
   text: string;
@@ -33,10 +34,19 @@ export const UnifiedDictation: React.FC = () => {
   // Use global dictation store for state (single source of truth)
   const { isRecording, isTranscribing, error } = useDictationStore();
 
+  // Settings store for dictation text mode
+  const dictationTextMode = useSettingsStore(
+    (state) => state.settings?.dictation_text_mode ?? "append",
+  );
+  const updateSetting = useSettingsStore((state) => state.updateSetting);
+
   // Local state for text editing
   const [text, setText] = useState("");
   const [isCopied, setIsCopied] = useState(false);
   const [showHistory, setShowHistory] = useState(true);
+  const [selectedHistoryIds, setSelectedHistoryIds] = useState<Set<string>>(
+    new Set(),
+  );
 
   // History from store
   const history = useTranscriptionHistoryStore((store) => store.entries);
@@ -47,6 +57,13 @@ export const UnifiedDictation: React.FC = () => {
   const textareaRef = useRef<HTMLTextAreaElement>(null);
   const unlistenRef = useRef<UnlistenFn | null>(null);
 
+  // Use a ref to track the current text mode so the listener closure
+  // always has the latest value without re-subscribing
+  const textModeRef = useRef(dictationTextMode);
+  useEffect(() => {
+    textModeRef.current = dictationTextMode;
+  }, [dictationTextMode]);
+
   // Listen for dictation completion to add to editor
   useEffect(() => {
     const setupListeners = async () => {
@@ -55,13 +72,19 @@ export const UnifiedDictation: React.FC = () => {
         (event) => {
           const { text: transcribedText, provider } = event.payload;
           if (transcribedText && provider !== "clipboard-only") {
-            // Only add to editor if it's not a clipboard-only injection
-            setText((prev) => {
-              if (prev) {
-                return `${prev}\n\n${transcribedText}`;
-              }
-              return transcribedText;
-            });
+            const mode = textModeRef.current;
+            if (mode === "replace") {
+              // Replace mode: clear previous text
+              setText(transcribedText);
+            } else {
+              // Append mode (default): add to existing text
+              setText((prev) => {
+                if (prev) {
+                  return `${prev}\n\n${transcribedText}`;
+                }
+                return transcribedText;
+              });
+            }
             toast.success("Dictation complete!");
 
             // Scroll to bottom
@@ -148,6 +171,47 @@ export const UnifiedDictation: React.FC = () => {
       return `[${timestamp}] ${item.text}`;
     });
     toast.info("History item loaded");
+  };
+
+  const toggleHistorySelection = (id: string, e: React.MouseEvent) => {
+    e.stopPropagation();
+    setSelectedHistoryIds((prev) => {
+      const next = new Set(prev);
+      if (next.has(id)) {
+        next.delete(id);
+      } else {
+        next.add(id);
+      }
+      return next;
+    });
+  };
+
+  const handleCopySelected = async () => {
+    if (selectedHistoryIds.size === 0) return;
+    const selectedItems = history
+      .filter((item) => selectedHistoryIds.has(item.id))
+      .map((item) => item.text);
+    try {
+      await writeText(selectedItems.join("\n\n"));
+      toast.success(`Copied ${selectedItems.length} item(s) to clipboard!`);
+      setSelectedHistoryIds(new Set());
+    } catch (err) {
+      console.error("Failed to copy selected:", err);
+      toast.error("Failed to copy selected items");
+    }
+  };
+
+  const handleSelectAllHistory = () => {
+    if (selectedHistoryIds.size === history.length) {
+      setSelectedHistoryIds(new Set());
+    } else {
+      setSelectedHistoryIds(new Set(history.map((item) => item.id)));
+    }
+  };
+
+  const handleToggleTextMode = () => {
+    const newMode = dictationTextMode === "append" ? "replace" : "append";
+    updateSetting("dictation_text_mode", newMode);
   };
 
   // Get status display
@@ -297,13 +361,61 @@ export const UnifiedDictation: React.FC = () => {
 
           {/* Editor Toolbar */}
           <div className="flex items-center justify-between mt-2">
-            <div className="text-xs text-mid-gray">
-              {hasText && (
-                <>
-                  {text.length} chars |{" "}
-                  {text.split(/\s+/).filter((w) => w.length > 0).length} words
-                </>
-              )}
+            <div className="flex items-center gap-3">
+              <div className="text-xs text-mid-gray">
+                {hasText && (
+                  <>
+                    {text.length} chars |{" "}
+                    {text.split(/\s+/).filter((w) => w.length > 0).length} words
+                  </>
+                )}
+              </div>
+              {/* Text Mode Toggle */}
+              <button
+                onClick={handleToggleTextMode}
+                className="flex items-center gap-1.5 px-2 py-1 rounded text-xs font-medium border border-mid-gray/20 hover:bg-mid-gray/10 transition-colors"
+                title={
+                  dictationTextMode === "append"
+                    ? "Append mode: new text is added to existing text"
+                    : "Replace mode: new text replaces existing text"
+                }
+              >
+                {dictationTextMode === "append" ? (
+                  <>
+                    <svg
+                      className="w-3 h-3 text-logo-primary"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M12 6v12m6-6H6"
+                      />
+                    </svg>
+                    <span className="text-logo-primary">Append</span>
+                  </>
+                ) : (
+                  <>
+                    <svg
+                      className="w-3 h-3 text-amber-500"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M4 4h16M4 12h16M4 20h16"
+                      />
+                    </svg>
+                    <span className="text-amber-500">Replace</span>
+                  </>
+                )}
+              </button>
             </div>
             <div className="flex items-center gap-2">
               <button
@@ -361,7 +473,7 @@ export const UnifiedDictation: React.FC = () => {
         {/* History Sidebar */}
         {showHistory && (
           <div className="w-1/3 min-w-[220px] max-w-[280px] flex flex-col border-l border-mid-gray/20 pl-4">
-            <div className="flex items-center justify-between mb-3">
+            <div className="flex items-center justify-between mb-2">
               <h3 className="font-semibold text-sm">History</h3>
               <div className="flex items-center gap-2">
                 {history.length > 0 && (
@@ -369,6 +481,7 @@ export const UnifiedDictation: React.FC = () => {
                     onClick={() => {
                       if (confirm("Clear all history?")) {
                         clearHistoryStore();
+                        setSelectedHistoryIds(new Set());
                       }
                     }}
                     className="text-xs text-red-500 hover:text-red-600"
@@ -398,6 +511,41 @@ export const UnifiedDictation: React.FC = () => {
               </div>
             </div>
 
+            {/* Multi-select controls */}
+            {history.length > 0 && (
+              <div className="flex items-center gap-2 mb-2">
+                <button
+                  onClick={handleSelectAllHistory}
+                  className="text-xs text-mid-gray hover:text-text transition-colors"
+                >
+                  {selectedHistoryIds.size === history.length
+                    ? "Deselect All"
+                    : "Select All"}
+                </button>
+                {selectedHistoryIds.size > 0 && (
+                  <button
+                    onClick={handleCopySelected}
+                    className="flex items-center gap-1 text-xs px-2 py-0.5 bg-logo-primary/10 text-logo-primary rounded hover:bg-logo-primary/20 transition-colors"
+                  >
+                    <svg
+                      className="w-3 h-3"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"
+                      />
+                    </svg>
+                    Copy {selectedHistoryIds.size}
+                  </button>
+                )}
+              </div>
+            )}
+
             <div className="flex-1 overflow-y-auto space-y-2">
               {history.length === 0 ? (
                 <div className="text-sm text-mid-gray text-center py-8">
@@ -407,14 +555,36 @@ export const UnifiedDictation: React.FC = () => {
                 history.map((item) => (
                   <div
                     key={item.id}
-                    onClick={() => loadHistoryItem(item)}
-                    className="p-2.5 bg-mid-gray/5 rounded-lg cursor-pointer hover:bg-mid-gray/10 transition-colors border border-mid-gray/10"
+                    className={`p-2.5 rounded-lg cursor-pointer hover:bg-mid-gray/10 transition-colors border ${
+                      selectedHistoryIds.has(item.id)
+                        ? "border-logo-primary/40 bg-logo-primary/5"
+                        : "border-mid-gray/10 bg-mid-gray/5"
+                    }`}
                   >
-                    <div className="text-xs text-mid-gray mb-1">
-                      {new Date(item.timestamp).toLocaleTimeString()} •{" "}
-                      {item.provider}
+                    <div className="flex items-start gap-2">
+                      <input
+                        type="checkbox"
+                        checked={selectedHistoryIds.has(item.id)}
+                        onChange={(e) =>
+                          toggleHistorySelection(
+                            item.id,
+                            e as unknown as React.MouseEvent,
+                          )
+                        }
+                        className="mt-0.5 accent-logo-primary cursor-pointer flex-shrink-0"
+                        onClick={(e) => e.stopPropagation()}
+                      />
+                      <div
+                        className="flex-1 min-w-0"
+                        onClick={() => loadHistoryItem(item)}
+                      >
+                        <div className="text-xs text-mid-gray mb-1">
+                          {new Date(item.timestamp).toLocaleTimeString()} •{" "}
+                          {item.provider}
+                        </div>
+                        <div className="text-sm line-clamp-3">{item.text}</div>
+                      </div>
                     </div>
-                    <div className="text-sm line-clamp-3">{item.text}</div>
                   </div>
                 ))
               )}

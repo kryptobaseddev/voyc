@@ -63,6 +63,10 @@ export interface AppSettings {
   post_process_enabled: boolean;
   post_process_api_key: string;
   post_process_provider: string;
+  // Dictation text editor mode
+  dictation_text_mode: "append" | "replace";
+  // Theme mode
+  theme_mode: "system" | "light" | "dark";
 }
 
 export interface AudioDevice {
@@ -85,7 +89,7 @@ interface SettingsStore {
   loadDefaultSettings: () => Promise<void>;
   updateSetting: <K extends keyof AppSettings>(
     key: K,
-    value: AppSettings[K]
+    value: AppSettings[K],
   ) => Promise<void>;
   resetSetting: (key: keyof AppSettings) => Promise<void>;
   refreshSettings: () => Promise<void>;
@@ -95,7 +99,9 @@ interface SettingsStore {
   checkCustomSounds: () => Promise<void>;
 
   // Getters
-  getSetting: <K extends keyof AppSettings>(key: K) => AppSettings[K] | undefined;
+  getSetting: <K extends keyof AppSettings>(
+    key: K,
+  ) => AppSettings[K] | undefined;
   isUpdatingKey: (key: string) => boolean;
 
   // Internal state setters
@@ -126,6 +132,8 @@ const SETTING_KEYS_REQUIRING_BACKEND_UPDATE: (keyof AppSettings)[] = [
   "translate_to_english",
   "selected_language",
   "mute_while_recording",
+  "dictation_text_mode",
+  "theme_mode",
 ];
 
 export const useSettingsStore = create<SettingsStore>()(
@@ -174,11 +182,13 @@ export const useSettingsStore = create<SettingsStore>()(
     // Load audio devices
     refreshAudioDevices: async () => {
       try {
-        const devices = await invoke<AudioDevice[]>("get_available_microphones");
+        const devices = await invoke<AudioDevice[]>(
+          "get_available_microphones",
+        );
         const devicesWithDefault = [
           DEFAULT_AUDIO_DEVICE,
           ...devices.filter(
-            (d) => d.name !== "Default" && d.name !== "default"
+            (d) => d.name !== "Default" && d.name !== "default",
           ),
         ];
         set({ audioDevices: devicesWithDefault });
@@ -191,11 +201,13 @@ export const useSettingsStore = create<SettingsStore>()(
     // Load output devices
     refreshOutputDevices: async () => {
       try {
-        const devices = await invoke<AudioDevice[]>("get_available_output_devices");
+        const devices = await invoke<AudioDevice[]>(
+          "get_available_output_devices",
+        );
         const devicesWithDefault = [
           DEFAULT_AUDIO_DEVICE,
           ...devices.filter(
-            (d) => d.name !== "Default" && d.name !== "default"
+            (d) => d.name !== "Default" && d.name !== "default",
           ),
         ];
         set({ outputDevices: devicesWithDefault });
@@ -217,7 +229,7 @@ export const useSettingsStore = create<SettingsStore>()(
     checkCustomSounds: async () => {
       try {
         const sounds = await invoke<{ start: boolean; stop: boolean }>(
-          "check_custom_sounds"
+          "check_custom_sounds",
         );
         get().setCustomSounds(sounds);
       } catch (error) {
@@ -228,7 +240,7 @@ export const useSettingsStore = create<SettingsStore>()(
     // Update a specific setting
     updateSetting: async <K extends keyof AppSettings>(
       key: K,
-      value: AppSettings[K]
+      value: AppSettings[K],
     ) => {
       const { settings, setUpdating } = get();
       const updateKey = String(key);
@@ -244,7 +256,9 @@ export const useSettingsStore = create<SettingsStore>()(
 
         // Handle special cases with dedicated commands
         if (key === "always_on_microphone") {
-          await invoke("update_microphone_mode", { alwaysOn: value as boolean });
+          await invoke("update_microphone_mode", {
+            alwaysOn: value as boolean,
+          });
         } else if (key === "selected_microphone") {
           const deviceName =
             (value as string | null) === null || value === "Default"
@@ -290,7 +304,7 @@ export const useSettingsStore = create<SettingsStore>()(
     loadDefaultSettings: async () => {
       try {
         const defaultSettings = await invoke<AppSettings>(
-          "get_default_app_settings"
+          "get_default_app_settings",
         );
         set({ defaultSettings });
       } catch (error) {
@@ -312,5 +326,5 @@ export const useSettingsStore = create<SettingsStore>()(
         checkCustomSounds(),
       ]);
     },
-  }))
+  })),
 );

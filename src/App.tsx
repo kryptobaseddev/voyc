@@ -8,6 +8,8 @@ import { useDictationStore } from "./stores/dictationStore";
 import { useModelStore } from "./stores/modelStore";
 import { useSettingsStore } from "./stores/settingsStore";
 import { useUpdaterStore } from "./stores/updaterStore";
+import { TitleBar } from "./components/ui/TitleBar";
+import { useTheme } from "./hooks/useTheme";
 import "./App.css";
 
 type AppState = "loading" | "onboarding" | "main";
@@ -41,6 +43,13 @@ function App() {
     checkForUpdates,
     installUpdate,
   } = useUpdaterStore();
+
+  // Apply theme based on user setting
+  const { themeMode } = useTheme();
+
+  // Get Sonner toast theme - maps our theme_mode to Sonner's theme prop
+  const toasterTheme =
+    themeMode === "system" ? "system" : themeMode === "dark" ? "dark" : "light";
 
   // Fetch app version on mount
   useEffect(() => {
@@ -170,7 +179,7 @@ function App() {
     return (
       <>
         <Toaster
-          theme="system"
+          theme={toasterTheme}
           toastOptions={{
             unstyled: true,
             classNames: {
@@ -189,8 +198,9 @@ function App() {
   // Main app state
   return (
     <div className="h-screen flex flex-col select-none cursor-default">
+      <TitleBar />
       <Toaster
-        theme="system"
+        theme={toasterTheme}
         toastOptions={{
           unstyled: true,
           classNames: {

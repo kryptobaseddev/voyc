@@ -3,6 +3,7 @@
 :root {
   --color-text: #0f0f0f;
   --color-background: #fbfbfb;
+  --color-background-secondary: #f0f0f4;
   --color-background-ui: #6366f1;
   --color-logo-primary: #818cf8;
   --color-logo-stroke: #312e81;
@@ -10,19 +11,33 @@
   --color-mid-gray: #808080;
 }
 
+/* Dark theme variables - applied via class */
+.dark-theme {
+  --color-text: #fbfbfb;
+  --color-background: #1a1a2e;
+  --color-background-secondary: #16213e;
+  --color-logo-primary: #a5b4fc;
+  --color-logo-stroke: #c7d2fe;
+  --color-mid-gray: #9ca3af;
+}
+
+/* System mode: follow OS preference (when no explicit class set) */
 @media (prefers-color-scheme: dark) {
-  :root {
+  :root:not(.light-theme) {
     --color-text: #fbfbfb;
     --color-background: #1a1a2e;
+    --color-background-secondary: #16213e;
     --color-logo-primary: #a5b4fc;
     --color-logo-stroke: #c7d2fe;
+    --color-mid-gray: #9ca3af;
   }
 }
 
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
-    Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu,
+    Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: var(--color-text);

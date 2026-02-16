@@ -47,14 +47,14 @@
       }
     }
   },
-  "lastUpdated": "2026-02-16T03:39:49Z",
+  "lastUpdated": "2026-02-16T03:40:07Z",
   "_meta": {
     "schemaVersion": "2.10.0",
-    "checksum": "3177242f7a3126ad",
+    "checksum": "bb953784c62d8729",
     "configVersion": "2.6.0",
     "lastSessionId": null,
     "activeSession": null,
-    "generation": 159,
+    "generation": 169,
     "lastModified": "2026-02-14T08:02:33Z",
     "multiSessionEnabled": true,
     "activeSessionCount": 1,
@@ -2823,17 +2823,32 @@
       "files": [
         "capabilities/default.json"
       ],
-      "completedAt": "2026-02-16T03:39:49Z"
+      "completedAt": "2026-02-16T03:39:49Z",
+      "verification": {
+        "passed": false,
+        "round": 0,
+        "gates": {
+          "implemented": true,
+          "testsPassed": null,
+          "qaPassed": null,
+          "cleanupDone": null,
+          "securityPassed": null,
+          "documented": null
+        },
+        "lastAgent": "coder",
+        "lastUpdated": "2026-02-16T03:39:49Z",
+        "failureLog": []
+      }
     },
     {
       "id": "T084",
       "title": "Implement theme system with light/dark/system toggle",
-      "status": "pending",
+      "status": "done",
       "priority": "high",
       "type": "task",
       "parentId": "T082",
       "createdAt": "2026-02-15T16:51:06Z",
-      "updatedAt": "2026-02-15T16:51:06Z",
+      "updatedAt": "2026-02-16T03:40:04Z",
       "size": "medium",
       "position": 2,
       "positionVersion": 0,
@@ -2843,17 +2858,37 @@
         "feature",
         "theme",
         "ux"
-      ]
+      ],
+      "notes": [
+        "2026-02-16 03:39:51 UTC: Implemented: Added theme_mode setting to backend, useTheme hook, ThemeSelector component. CSS class-based switching with system/light/dark modes.",
+        "[COMPLETED 2026-02-16T03:40:04Z] Theme system implemented with CSS class-based switching. Added theme_mode to settings backend, useTheme hook, ThemeSelector component in General Settings. Supports system/light/dark modes."
+      ],
+      "completedAt": "2026-02-16T03:40:04Z",
+      "verification": {
+        "passed": false,
+        "round": 0,
+        "gates": {
+          "implemented": true,
+          "testsPassed": null,
+          "qaPassed": null,
+          "cleanupDone": null,
+          "securityPassed": null,
+          "documented": null
+        },
+        "lastAgent": "coder",
+        "lastUpdated": "2026-02-16T03:40:05Z",
+        "failureLog": []
+      }
     },
     {
       "id": "T085",
       "title": "Add dictation_text_mode backend handler and UI toggle",
-      "status": "pending",
+      "status": "done",
       "priority": "high",
       "type": "task",
       "parentId": "T082",
       "createdAt": "2026-02-15T16:51:06Z",
-      "updatedAt": "2026-02-15T16:51:06Z",
+      "updatedAt": "2026-02-16T03:40:06Z",
       "size": "medium",
       "position": 3,
       "positionVersion": 0,
@@ -2863,17 +2898,37 @@
         "dictation",
         "feature",
         "settings"
-      ]
+      ],
+      "notes": [
+        "2026-02-16 03:39:50 UTC: Added DictationTextMode variant to SettingUpdate enum and match arm. Updated UnifiedDictation to read setting and switch between append/replace modes.",
+        "[COMPLETED 2026-02-16T03:40:06Z] Added DictationTextMode to SettingUpdate enum. UI toggle in editor toolbar. Append mode adds new text, replace mode clears before adding."
+      ],
+      "completedAt": "2026-02-16T03:40:06Z",
+      "verification": {
+        "passed": false,
+        "round": 0,
+        "gates": {
+          "implemented": true,
+          "testsPassed": null,
+          "qaPassed": null,
+          "cleanupDone": null,
+          "securityPassed": null,
+          "documented": null
+        },
+        "lastAgent": "coder",
+        "lastUpdated": "2026-02-16T03:40:06Z",
+        "failureLog": []
+      }
     },
     {
       "id": "T086",
       "title": "Add multi-select and copy for history items",
-      "status": "pending",
+      "status": "done",
       "priority": "medium",
       "type": "task",
       "parentId": "T082",
       "createdAt": "2026-02-15T16:51:07Z",
-      "updatedAt": "2026-02-15T16:51:07Z",
+      "updatedAt": "2026-02-16T03:40:07Z",
       "size": "medium",
       "position": 4,
       "positionVersion": 0,
@@ -2883,7 +2938,27 @@
         "feature",
         "history",
         "ux"
-      ]
+      ],
+      "notes": [
+        "2026-02-16 03:39:51 UTC: Implemented: Added multi-select checkboxes, select all, and copy selected button to history sidebar in UnifiedDictation.",
+        "[COMPLETED 2026-02-16T03:40:07Z] Added checkbox multi-select in history sidebar. Select All/Deselect All toggle. Copy N button copies selected items joined with double newline."
+      ],
+      "completedAt": "2026-02-16T03:40:07Z",
+      "verification": {
+        "passed": false,
+        "round": 0,
+        "gates": {
+          "implemented": true,
+          "testsPassed": null,
+          "qaPassed": null,
+          "cleanupDone": null,
+          "securityPassed": null,
+          "documented": null
+        },
+        "lastAgent": "coder",
+        "lastUpdated": "2026-02-16T03:40:07Z",
+        "failureLog": []
+      }
     }
   ],
   "labels": {}

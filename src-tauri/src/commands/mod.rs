@@ -137,6 +137,10 @@ pub enum SettingUpdate {
     AlwaysOnMicrophone(bool),
     #[serde(rename = "cloud_stt_enabled")]
     CloudSttEnabled(bool),
+    #[serde(rename = "dictation_text_mode")]
+    DictationTextMode(String),
+    #[serde(rename = "theme_mode")]
+    ThemeMode(String),
 }
 
 /// Update a single setting with type-safe value.
@@ -179,6 +183,20 @@ pub fn update_setting(app: AppHandle, update: SettingUpdate) -> Result<(), Strin
         SettingUpdate::MuteWhileRecording(v) => settings.mute_while_recording = v,
         SettingUpdate::AlwaysOnMicrophone(v) => settings.always_on_microphone = v,
         SettingUpdate::CloudSttEnabled(v) => settings.cloud_stt_enabled = v,
+        SettingUpdate::DictationTextMode(v) => {
+            // Validate value is either "append" or "replace"
+            if v != "append" && v != "replace" {
+                return Err(format!("Invalid dictation_text_mode: '{}'. Must be 'append' or 'replace'", v));
+            }
+            settings.dictation_text_mode = v;
+        }
+        SettingUpdate::ThemeMode(v) => {
+            // Validate value is "system", "light", or "dark"
+            if v != "system" && v != "light" && v != "dark" {
+                return Err(format!("Invalid theme_mode: '{}'. Must be 'system', 'light', or 'dark'", v));
+            }
+            settings.theme_mode = v;
+        }
     }
 
     write_settings(&app, settings);

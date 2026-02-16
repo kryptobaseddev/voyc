@@ -161,6 +161,12 @@ pub struct AppSettings {
     pub post_process_api_key: String,
     #[serde(default = "default_post_process_provider")]
     pub post_process_provider: String,
+    // Dictation text editor mode: "append" or "replace"
+    #[serde(default = "default_dictation_text_mode")]
+    pub dictation_text_mode: String,
+    // Theme mode: "system", "light", or "dark"
+    #[serde(default = "default_theme_mode")]
+    pub theme_mode: String,
 }
 
 fn default_post_process_provider() -> String {
@@ -205,6 +211,14 @@ fn default_word_correction_threshold() -> f64 {
 
 fn default_audio_feedback_volume() -> f32 {
     1.0
+}
+
+fn default_dictation_text_mode() -> String {
+    "append".to_string() // Default to append mode
+}
+
+fn default_theme_mode() -> String {
+    "system".to_string() // Default to follow system theme
 }
 
 fn default_sound_theme() -> SoundTheme {
@@ -270,6 +284,8 @@ pub fn get_default_settings() -> AppSettings {
         post_process_enabled: false,
         post_process_api_key: String::new(),
         post_process_provider: default_post_process_provider(),
+        dictation_text_mode: default_dictation_text_mode(),
+        theme_mode: default_theme_mode(),
     }
 }
 
