@@ -1,11 +1,11 @@
 {
-  "version": "2026.2.10",
-  "notes": "Bump Tauri to 2.10.x, fix CI build workflow",
-  "pub_date": "2026-02-16T16:30:00Z",
+  "version": "2026.2.11",
+  "notes": "Fix settings persistence, theme detection, and updater fallback",
+  "pub_date": "2026-02-16T18:15:00Z",
   "platforms": {
     "linux-x86_64": {
       "signature": "",
-      "url": "https://github.com/kryptobaseddev/voyc/releases/download/v2026.2.10/Voyc_2026.2.10_amd64.deb"
+      "url": "https://github.com/kryptobaseddev/voyc/releases/download/v2026.2.11/Voyc_2026.2.11_amd64.deb"
     }
   }
 }
