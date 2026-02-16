@@ -53,16 +53,22 @@ jobs:
         with:
           workspaces: "./src-tauri -> target"
 
+      - name: Install Vulkan SDK
+        run: |
+          wget -qO- https://packages.lunarg.com/lunarg-signing-key-pub.asc | sudo tee /etc/apt/trusted.gpg.d/lunarg.asc
+          sudo wget -qO /etc/apt/sources.list.d/lunarg-vulkan-jammy.list https://packages.lunarg.com/vulkan/lunarg-vulkan-jammy.list
+          sudo apt-get update
+
       - name: Install Linux dependencies
         run: |
-          sudo apt-get update
           sudo apt-get install -y \
             libwebkit2gtk-4.1-dev \
             librsvg2-dev \
             patchelf \
             libgtk-3-dev \
             libayatana-appindicator3-dev \
-            libasound2-dev
+            libasound2-dev \
+            vulkan-sdk
 
       - name: Install frontend dependencies
         run: bun install
