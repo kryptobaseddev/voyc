@@ -1,6 +1,10 @@
 /**
  * Theme management hook for Voyc
- * Applies light/dark/system theme mode to the document root element
+ * Applies light/dark/system theme mode to the document root element.
+ *
+ * For "system" mode we actively query `matchMedia("(prefers-color-scheme: dark)")`
+ * rather than relying on the CSS media query alone, because WebKitGTK on Linux
+ * does not always propagate the GTK/GNOME dark-mode preference to CSS.
  */
 
 import { useEffect } from "react";
@@ -8,13 +12,16 @@ import { useSettingsStore } from "../stores/settingsStore";
 
 type ThemeMode = "system" | "light" | "dark";
 
-/**
- * Applies the correct CSS class to <html> based on the theme_mode setting.
- *
- * - "dark": adds .dark-theme class
- * - "light": adds .light-theme class (prevents dark media query from applying)
- * - "system": removes both classes, letting prefers-color-scheme handle it
- */
+function applyThemeClass(mode: "light" | "dark") {
+  const root = document.documentElement;
+  root.classList.remove("dark-theme", "light-theme");
+  if (mode === "dark") {
+    root.classList.add("dark-theme");
+  } else {
+    root.classList.add("light-theme");
+  }
+}
+
 export function useTheme() {
   const themeMode = useSettingsStore(
     (state) => (state.settings?.theme_mode as ThemeMode) ?? "system",
@@ -22,17 +29,28 @@ export function useTheme() {
   const updateSetting = useSettingsStore((state) => state.updateSetting);
 
   useEffect(() => {
-    const root = document.documentElement;
-
-    // Remove both theme classes first
-    root.classList.remove("dark-theme", "light-theme");
-
     if (themeMode === "dark") {
-      root.classList.add("dark-theme");
-    } else if (themeMode === "light") {
-      root.classList.add("light-theme");
+      applyThemeClass("dark");
+      return;
     }
-    // "system" mode: no class added, CSS prefers-color-scheme handles it
+
+    if (themeMode === "light") {
+      applyThemeClass("light");
+      return;
+    }
+
+    // "system" mode: detect OS preference via matchMedia and listen for changes
+    const mq = window.matchMedia("(prefers-color-scheme: dark)");
+    applyThemeClass(mq.matches ? "dark" : "light");
+
+    const handler = (e: MediaQueryListEvent) => {
+      applyThemeClass(e.matches ? "dark" : "light");
+    };
+    mq.addEventListener("change", handler);
+
+    return () => {
+      mq.removeEventListener("change", handler);
+    };
   }, [themeMode]);
 
   const setTheme = (mode: ThemeMode) => {

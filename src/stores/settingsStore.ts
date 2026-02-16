@@ -273,7 +273,9 @@ export const useSettingsStore = create<SettingsStore>()(
           await invoke("set_selected_output_device", { deviceName });
         } else if (SETTING_KEYS_REQUIRING_BACKEND_UPDATE.includes(key)) {
           // Use generic update_setting command for supported keys
-          await invoke("update_setting", { key: updateKey, value });
+          await invoke("update_setting", {
+            update: { key: updateKey, value },
+          });
         } else if (key !== "bindings" && key !== "selected_model") {
           // For unsupported keys, log warning but don't fail
           console.warn(`No handler for setting: ${String(key)}`);

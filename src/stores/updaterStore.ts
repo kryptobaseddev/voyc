@@ -105,13 +105,34 @@ export const useUpdaterStore = create<UpdaterState>((set, get) => ({
 
     try {
       if (pendingUpdate) {
-        await pendingUpdate.downloadAndInstall();
+        try {
+          await pendingUpdate.downloadAndInstall();
+          set({
+            status: "Update installed. Restarting app...",
+            hasUpdate: false,
+          });
+          await relaunch();
+        } catch (tauriError) {
+          console.warn(
+            "Signed updater install failed, falling back to user-space installer:",
+            tauriError,
+          );
+          set({ status: "Retrying update via fallback installer..." });
+          await invoke("run_user_update");
+          set({
+            status: "Update installed via fallback. Restarting app...",
+            hasUpdate: false,
+          });
+          await relaunch();
+        }
       } else {
         await invoke("run_user_update");
+        set({
+          status: "Update installed. Restarting app...",
+          hasUpdate: false,
+        });
+        await relaunch();
       }
-
-      set({ status: "Update installed. Restarting app...", hasUpdate: false });
-      await relaunch();
     } catch {
       set({
         status:
