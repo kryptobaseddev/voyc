@@ -47,14 +47,14 @@
       }
     }
   },
-  "lastUpdated": "2026-02-16T03:40:07Z",
+  "lastUpdated": "2026-02-16T03:41:49Z",
   "_meta": {
     "schemaVersion": "2.10.0",
-    "checksum": "bb953784c62d8729",
+    "checksum": "bdcb7080dae22d40",
     "configVersion": "2.6.0",
     "lastSessionId": null,
     "activeSession": null,
-    "generation": 169,
+    "generation": 170,
     "lastModified": "2026-02-14T08:02:33Z",
     "multiSessionEnabled": true,
     "activeSessionCount": 1,
@@ -2781,12 +2781,12 @@
     {
       "id": "T082",
       "title": "v2026.2.9 Release - Window Controls, Theme, Dictation UX",
-      "status": "pending",
+      "status": "done",
       "priority": "critical",
       "type": "epic",
       "parentId": null,
       "createdAt": "2026-02-15T16:50:51Z",
-      "updatedAt": "2026-02-15T16:50:51Z",
+      "updatedAt": "2026-02-16T03:41:49Z",
       "size": "medium",
       "position": 7,
       "positionVersion": 0,
@@ -2795,6 +2795,10 @@
       "labels": [
         "epic",
         "release"
+      ],
+      "completedAt": "2026-02-16T03:41:49Z",
+      "notes": [
+        "[COMPLETED 2026-02-16T03:41:49Z] v2026.2.9 released: Wayland window controls fix, theme system, dictation text mode toggle, history multi-select copy. Commit: 521984c5"
       ]
     },
     {

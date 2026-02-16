@@ -4,9 +4,9 @@
   "project": "voyc",
   "_meta": {
     "schemaVersion": "2.4.0",
-    "totalEntries": 203,
+    "totalEntries": 204,
     "firstEntry": "2026-01-28T01:10:57Z",
-    "lastEntry": "2026-02-16T03:40:08Z",
+    "lastEntry": "2026-02-16T03:41:49Z",
     "entriesPruned": 0
   },
   "entries": [
@@ -4529,6 +4529,26 @@
       "after": {
         "status": "done",
         "completedAt": "2026-02-16T03:40:07Z"
+      },
+      "details": {
+        "field": "status",
+        "operation": "complete"
+      }
+    },
+    {
+      "id": "log_88f0dd8c73ce",
+      "timestamp": "2026-02-16T03:41:49Z",
+      "sessionId": null,
+      "action": "status_changed",
+      "actor": "system",
+      "taskId": "T082",
+      "before": {
+        "status": "pending",
+        "completedAt": null
+      },
+      "after": {
+        "status": "done",
+        "completedAt": "2026-02-16T03:41:49Z"
       },
       "details": {
         "field": "status",
